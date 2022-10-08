@@ -1,0 +1,21 @@
+name: rec-sys
+channels:
+    - defaults
+    - pytorch
+    - conda-forge
+dependencies:
+    - seaborn
+    - matplotlib
+    - numpy=1.21
+    - pandas
+    - jupyterlab
+    - scikit-learn
+    - django
+    - pip
+    - pip:
+        - --extra-index-url https://download.pytorch.org/whl/cu116
+        - torch==1.12.1+cu116
+        - torchvision==0.13.1+cu116
+        - pytorch-common==0.0.21
+        - transformers
+        - sentence-transformers
