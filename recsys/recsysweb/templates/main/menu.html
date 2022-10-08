@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="/recommendations">Recommendations</>
-        <a class="nav-item nav-link active" href="/likes">Likes</>
+        <a class="nav-item nav-link active" href="{% url 'home' %}">Home</>
+        <a class="nav-item nav-link active" href="{% url 'recommendations' %}">Recommendations</>
+        <a class="nav-item nav-link active" href="{% url 'likes' %}">Likes</>
     </div>
 </nav>
