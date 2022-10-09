@@ -2,7 +2,7 @@
 
 {%block menu%}{% include "single/menu.html" %}{% endblock %}
 
-{%block head%}Swimlanes{% endblock %}
+{%block head%}Recommendations{% endblock %}
 
 {%block content%}
     <script>
@@ -25,8 +25,8 @@
                                 >
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ item.name }}</h5>
-                                <p class="card-text">{{ item.description }}</p>
+                                <h5 class="card-title">{{ item.name|truncatechars:100 }}</h5>
+                                <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:100 }}</p>
                             </div>
                         </div>
                     </div>
