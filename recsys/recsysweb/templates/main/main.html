@@ -14,9 +14,8 @@
         <link rel="stylesheet" href="{% static 'main.css' %}">
     </head>
     <body>
-        {% if user.is_authenticated %}
-            {%block menu%} {% endblock %}
-        {% endif %}
+        {%block menu%} {% endblock %}
+
         <div class="container">
             {%block title%} {% endblock %}
             {%block content%} {% endblock %}

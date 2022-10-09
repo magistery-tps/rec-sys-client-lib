@@ -8,6 +8,16 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
+@login_required
+def recommendations(request):
+    recommendations = {
+        'populars': list(Item.objects.all()[:10])
+    }
+    print(recommendations)
+    return render(request, 'single/recommendations.html', { 'recommendations': recommendations })
+
+
+
 def sign_in(request):
     if request.method != "POST":
         return render(request, 'authentication/sign_in.html')
@@ -21,7 +31,7 @@ def sign_in(request):
         return redirect('home')
     else:
         messages.success(request, 'There was an sign in error. Try again!')
-        return redirect(request, 'authentication/sign_in.html')
+        return render(request, 'authentication/sign_in.html')
 
 @login_required
 def sign_out(request):
@@ -32,9 +42,6 @@ def sign_out(request):
 def home(request):
     return render(request, 'single/home.html')
 
-@login_required
-def recommendations(request):
-    return render(request, 'single/recommendations.html')
 
 @login_required
 def likes(request):

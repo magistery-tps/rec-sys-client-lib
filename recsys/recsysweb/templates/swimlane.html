@@ -1,125 +1,26 @@
+
+{%block title%}<h3 class="display-5 fw-bold">{{ name.capitalize }}</h3>{% endblock %}
+
+
 <div id="carouselExampleControls" class="carousel carousel-dark" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        {% for item in items %}
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                        <img
+                            src="{{ item.image }}"
+                            alt="{{ item.name }}" 
+                            class="d-block  w-100"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 4</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 5</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="card">
-                <div class="img-wrapper">
-                    <img
-                        src="https://m.media-amazon.com/images/M/MV5BYjY5MTYwMDYtNDk4OS00NmE1LWI2ZjItY2Q5ZmVmNTU4NTAyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UY759_.jp"
-                        alt="Chris Pratt and Keegan-Michael Key in The Super Mario Bros. Movie (2023)" 
-                        class="d-block  w-100"
-                    >
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title 6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

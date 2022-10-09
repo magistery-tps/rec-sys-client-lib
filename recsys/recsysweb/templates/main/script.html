@@ -33,4 +33,10 @@
       } else {
         $(multipleCardCarousel).addClass("slide");
       }
+
+    $(function(){
+        $('.disabled').on('click', function(event){
+            event.preventDefault();
+        });
+    });
 </script>
