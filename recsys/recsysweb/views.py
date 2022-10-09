@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Item, Interaction
 from .forms import ItemForm, InteractionForm
+from django.core.paginator import Paginator
+
+
 
 # Create your views here.
 
@@ -33,8 +36,11 @@ def edit_item(request, id):
         return render(request, 'items/edit.html', {'form': form, 'id': id})
 
 def list_items(request):
-    items = Item.objects.all()
-    return render(request, 'items/list.html', {'items': items})
+    items       = Item.objects.all()
+    paginator   = Paginator(items, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'items/list.html', {'page': page_obj})
 
 def remove_item(request, id):
     item = Item.objects.get(id=id)

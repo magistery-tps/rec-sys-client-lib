@@ -5,13 +5,40 @@
 {%block title%}<h1 class="display-5 fw-bold">Items Management</h1>{% endblock %}
 
 {%block content%}
-  <div class="card">
-    <div class="card-header">
-      Items
+
+
+<div class="card">
+
+  <div class="card-header text-end">
+      {% if page.has_previous %}
+          <a 
+            class="btn btn-primary btn-lg"
+            role="button"
+            href="?page=1"
+          >Start</a>
+            
+          <a 
+          class="btn btn-primary btn-lg"
+          role="button"
+          href="?page={{ page.previous_page_number }}"
+        ><<</a>
+      {% endif %}
+      {% if page.has_next %}
+          <a 
+            class="btn btn-primary btn-lg"
+            role="button"
+            href="?page={{ page.next_page_number }}"
+          >>></a>
+            
+          <a 
+          class="btn btn-primary btn-lg"
+          role="button"
+          href="?page={{ page.next_page_number }}"
+        >End</a>
+      {% endif %}
     </div>
+    
     <div class="card-body">
-
-
       <table class="table">
         <thead>
             <tr>
@@ -23,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-          {% for item in items %}
+          {% for item in page %}
             <tr scope="row">
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
@@ -37,8 +64,12 @@
         </tbody>
       </table>
 
+      <span class="step-links">
+        Page {{ page.number }} of {{ page.paginator.num_pages }}.
+      </span>
     </div>
-    <div class="card-footer">
+
+    <div class="card-footer text-end">
       <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.create' %}">Add</a>
     </div>
   </div>
