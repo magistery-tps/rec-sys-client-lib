@@ -1,0 +1,43 @@
+{% extends "main/main.html" %}
+
+{%block head%}Items Management{% endblock %}
+
+{%block title%}<h1 class="display-5 fw-bold">Items Management</h1>{% endblock %}
+
+{%block content%}
+  <div class="card">
+    <div class="card-header">
+      Items
+    </div>
+    <div class="card-body">
+
+
+      <table class="table">
+        <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">1</td>
+            <td>Item 1</td>
+            <td>A item</td>
+            <td>image.png</td>
+            <td class="text-end">
+              <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' %}">Edit</a> 
+              <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.remove' %}">Remove</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="card-footer">
+      <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.create' %}">Add</a>
+    </div>
+  </div>
+{% endblock %}

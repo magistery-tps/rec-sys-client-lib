@@ -5,7 +5,7 @@
 
 * [anaconda](https://www.anaconda.com/products/individual) / [miniconda](https://docs.conda.io/en/latest/miniconda.html) / [mamba (Recomendado)](https://github.com/mamba-org/mamba)
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
-
+* mariadb/mysql
 
 ## Comenzando
 
@@ -29,10 +29,25 @@ $ conda env create -f environment.yml
 $ conda activate rec-sys
 ```
 
+**Step 4**: Create database.
+
+```bash
+$ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS recsys"
+$ python manage.py migrate
+```
+
+**Step 5**: Create admin user.
+
+```bash
+$ python manage.py createsuperuser
+```
+
+**Step 6**: Boot web application.
+
 ```bash
 $ cd recsys
 $ python manage.py runserver
 ```
 
-**Step 4**: Ir a http://127.0.0.1:8000.
+**Step 7**: Ir a http://127.0.0.1:8000.
 
