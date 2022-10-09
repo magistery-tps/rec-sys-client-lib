@@ -52,3 +52,8 @@
 .container {
     margin-top: 25px;
 }
+
+.card-like{
+    margin-top: 25px;
+    max-width: 50%;
+}
