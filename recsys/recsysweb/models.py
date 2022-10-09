@@ -30,3 +30,10 @@ class Interaction(models.Model):
 
     def __str__(self):
         return f'User: {self.user} | Item: {self.item} |  Rating: {self.rating}'
+
+
+class Recommendations:
+    def __init__(self, name, items):
+        self.name  = name
+        self.id    = name.replace(' ', '-')
+        self.items = list(items)

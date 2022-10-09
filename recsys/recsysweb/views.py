@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Item, Interaction
+from .models import Item, Interaction, Recommendations
 from .forms import ItemForm, InteractionForm
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
@@ -10,10 +10,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def recommendations(request):
-    recommendations = {
-        'populars': list(Item.objects.all()[:10])
-    }
-    print(recommendations)
+    recommendations = [
+        Recommendations('populars', Item.objects.all()[:10]),
+        Recommendations('recommended for you', Item.objects.all()[:10])
+    ]
     return render(request, 'single/recommendations.html', { 'recommendations': recommendations })
 
 

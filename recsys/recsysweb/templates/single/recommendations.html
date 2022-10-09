@@ -5,7 +5,76 @@
 {%block head%}Swimlanes{% endblock %}
 
 {%block content%}
-    {% for name, items in recommendations.items %}
-        {% include "swimlane.html" with name=name items=items %}
+    <script>
+        var context = {}
+    </script>
+
+    {% for recommendation in recommendations %}
+        <h3 class="display-5 fw-bold">{{ recommendation.name.capitalize }}</h3>
+
+        <div id="{{recommendation.id}}" class="carousel carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for item in recommendation.items %}
+                    <div class="carousel-item active">
+                        <div class="card">
+                            <div class="img-wrapper">
+                                <img
+                                    src="{{ item.image }}"
+                                    alt="{{ item.name }}" 
+                                    class="d-block  w-100"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#{{recommendation.id}}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#{{recommendation.id}}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <script> 
+            context['{{recommendation.id}}'] = {
+                multipleCardCarousel: document.querySelector("#{{recommendation.id}}")
+            }
+    
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                context['{{recommendation.id}}']['carousel']       =  new bootstrap.Carousel(context['{{recommendation.id}}'].multipleCardCarousel, {interval: false}),
+                context['{{recommendation.id}}']['carouselWidth']  = $("#{{recommendation.id}} .carousel-inner")[0].scrollWidth,
+                context['{{recommendation.id}}']['cardWidth']       = $("#{{recommendation.id}} .carousel-item").width(),
+                context['{{recommendation.id}}']['scrollPosition'] = 0
+    
+                $("#{{recommendation.id}} .carousel-control-next").on("click", function () {
+                    if (context['{{recommendation.id}}'].scrollPosition < context['{{recommendation.id}}'].carouselWidth - context['{{recommendation.id}}'].cardWidth * 4) {
+                        context['{{recommendation.id}}'].scrollPosition += context['{{recommendation.id}}'].cardWidth;
+                        $("#{{recommendation.id}} .carousel-inner").animate(
+                            { scrollLeft: context['{{recommendation.id}}'].scrollPosition },
+                            600
+                        );
+                    }
+                });
+    
+                $("#{{recommendation.id}} .carousel-control-prev").on("click", function () {
+                    if (context['{{recommendation.id}}'].scrollPosition > 0) {
+                        context['{{recommendation.id}}'].scrollPosition -= context['{{recommendation.id}}'].cardWidth;
+                        $("#{{recommendation.id}} .carousel-inner").animate(
+                            { scrollLeft: context['{{recommendation.id}}'].scrollPosition },
+                            600
+                        );
+                    }
+                });
+            } else {
+                $(context['{{recommendation.id}}'].multipleCardCarousel).addClass("slide");
+            }
+        </script>
     {% endfor %}
 {% endblock %}
