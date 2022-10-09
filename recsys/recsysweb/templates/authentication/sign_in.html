@@ -1,0 +1,32 @@
+{% extends "main/main.html" %}
+
+{%block head%}Sign in{% endblock %}
+
+{%block content%}
+    <form action="" method=post>
+        {% csrf_token %}                        
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5">
+                    <div class="card px-5 py-5" id="form1">
+                        {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>  {{ message }}</strong>
+                                </div>
+                        {% endfor %}
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

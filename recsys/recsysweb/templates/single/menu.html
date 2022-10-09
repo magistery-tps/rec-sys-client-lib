@@ -1,9 +1,12 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'home' %}">Home</>
+<nav class="navbar navbar-expand navbar-dark bg-primary ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Rec-Sys</>
+    </div>
+    <div class="container-fluid nav navbar-nav  justify-content-end">
         <a class="nav-item nav-link active" href="{% url 'recommendations' %}">Recommendations</>
         <a class="nav-item nav-link active" href="{% url 'likes' %}">Likes</>
         <a class="nav-item nav-link active" href="{% url 'items' %}">Items</>
         <a class="nav-item nav-link active" href="/admin">Admin</>
+        <a class="nav-item nav-link active" href="{% url 'sign-out' %}">Sign Out</>
     </div>
 </nav>
