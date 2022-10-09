@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import Item, Interaction
+from .forms import ItemForm, InteractionForm
+
 # Create your views here.
 
 def home(request):
@@ -11,15 +14,29 @@ def recommendations(request):
 def likes(request):
     return render(request, 'single/likes.html')
 
-
 def create_item(request):
-    return render(request, 'items/create.html')
+    form = ItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('items')
+    else:
+        return render(request, 'items/create.html', {'form': form})
 
-def edit_item(request):
-    return render(request, 'items/edit.html')
+def edit_item(request, id):
+    item = Item.objects.get(id=id)
+    form = ItemForm(request.POST or None, instance=item)
+
+    if form.is_valid():
+        form.save()
+        return redirect('items')
+    else:
+        return render(request, 'items/edit.html', {'form': form, 'id': id})
 
 def list_items(request):
-    return render(request, 'items/list.html')
+    items = Item.objects.all()
+    return render(request, 'items/list.html', {'items': items})
 
-def remove_item(request):
-    return list_items(request)
+def remove_item(request, id):
+    item = Item.objects.get(id=id)
+    item.delete()
+    return redirect('items')
