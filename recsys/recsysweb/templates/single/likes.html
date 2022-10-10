@@ -8,37 +8,33 @@
 
 {%block content%}
 {% if item %}
-    <div class="mx-auto" style="width: 300px;">
-        <div class="card">
-            <div class="img-wrapper">
-                <img
-                src="{{ item.image }}"
-                alt="{{ item.name }}" 
-                class="d-block  w-100"
-                >
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ item.name|truncatechars:100 }}</h5>
-                <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:100 }}</p>
-            
-                <form method="post" action="{% url 'likes' %}">
-                    {% csrf_token %}
-                    
-                    <input  type="text" name="item_id" value="{{ item.id }}">
-                    <div class="mb-3">
-                        <input  type="number" name="rating" value="0">
-                    </div>
+<div class="mx-auto" style="width: 300px;">
+    <div class="card">
+        <div class="img-wrapper">
+            <img
+            src="{{ item.image }}"
+            alt="{{ item.name }}" 
+            class="d-block  w-100"
+            >
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.name|truncatechars:100 }}</h5>
+            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:100 }}</p>
+        
+            <form method="post" action="{% url 'likes' %}">
+                {% csrf_token %}
                 
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-success">Vote</button>
-                    </div>
-                </form>
-            </div>
+                <input  type="text" name="item_id" value="{{ item.id }}">
+                <div class="mb-3">
+                    <input  type="number" name="rating" value="0">
+                </div>
+            
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Vote</button>
+                </div>
+            </form>
         </div>
     </div>
-{% else %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Not found items!
-    </div>
+</div>
 {% endif %}
 {% endblock %}

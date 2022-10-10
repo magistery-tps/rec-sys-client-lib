@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Item, Interaction, Recommendations
+from .service import ItemRecService
 from .forms import ItemForm, InteractionForm
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+
+item_rec_service = ItemRecService()
 
 
 @login_required
@@ -31,15 +34,17 @@ def likes(request):
             item = item_query[0]
             return render(request, 'single/likes.html', {'item': item})
         else:
-            return render(request, 'single/likes.html')
+            return render(request, 'single/likes.html', {'messages': ['Not found Items!']})
 
 @login_required
 def recommendations(request):
-    recommendations = [
-        Recommendations('populars', Item.objects.all()[:10]),
-        Recommendations('recommended for you', Item.objects.all()[:10])
-    ]
-    return render(request, 'single/recommendations.html', { 'recommendations': recommendations })
+    recs = item_rec_service.find_all(user=request.user)
+
+    response = { 'recommendations': recs }
+    if not recs:
+        response['messages'] = ['Not found Items!']
+
+    return render(request, 'single/recommendations.html', response)
 
 
 def sign_in(request):

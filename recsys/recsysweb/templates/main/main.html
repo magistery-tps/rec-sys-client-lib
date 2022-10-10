@@ -21,6 +21,13 @@
         {%block menu%} {% endblock %}
 
         <div class="container">
+            {% if user.is_authenticated %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
             {%block title%} {% endblock %}
             {%block content%} {% endblock %}
         </div>

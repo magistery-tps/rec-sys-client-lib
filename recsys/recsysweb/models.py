@@ -35,3 +35,5 @@ class Recommendations:
         self.name  = name
         self.id    = name.replace(' ', '-')
         self.items = list(items)
+    
+    def is_empty(self): return len(self.items) == 0
