@@ -13,9 +13,47 @@ class ItemRecService:
         interaction.save()
 
 
-    def find_unrated_by(self, user):
+    def find_items_non_scored_by(self, user, limit = 100):
         return Item.objects.raw(
-            f'SELECT it.id FROM recsys.recsysweb_item AS it LEFT JOIN recsys.recsysweb_interaction AS i ON it.id = i.item_id AND i.user_id != {user.id} ORDER BY i.rating DESC LIMIT 1'
+            """
+                SELECT
+                    t.item_id as id,
+                    t.name,
+                    t.description,
+                    sum(t.rating) / count(t.rating) as rating
+                FROM
+                (
+                    SELECT 
+                        it.id     as item_id,
+                        i.user_id as user_id,
+                        IF(i.rating IS NULL, 0, i.rating) as rating,
+                        it.name   as name,
+                        it.description as description,
+                        it.image  as image
+                    FROM 
+                        recsysweb_item AS it 
+                        LEFT JOIN 
+                        recsysweb_interaction AS i 
+                        ON it.id = i.item_id
+                ) as t
+                WHERE
+                    t.item_id NOT IN (
+                        SELECT 
+                            DISTINCT i.item_id
+                        FROM 
+                            recsysweb_interaction AS i 
+                        WHERE
+                            i.user_id = :USER_ID
+                    )
+                GROUP BY
+                    t.item_id
+                ORDER BY
+                    rating DESC
+                LIMIT :LIMIT
+            """ \
+                .replace('\n', ' ') \
+                .replace(':USER_ID', str(user.id)) \
+                .replace(':LIMIT', str(limit))
         )
 
 

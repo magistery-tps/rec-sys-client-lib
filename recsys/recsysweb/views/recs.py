@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from ..service import ItemRecService
-
+from ..forms import LikeForm
 
 item_rec_service = ItemRecService()
 
@@ -10,11 +10,12 @@ item_rec_service = ItemRecService()
 @login_required
 def likes(request):
     if request.method == "POST":
-        item_id, rating = request.POST['item_id'], request.POST['rating']
-        item_rec_service.rate_item_for(item_id, request.user, rating)
+        form = LikeForm(request)
+        print(form)
+        item_rec_service.rate_item_for(form.item_id, request.user, form.rating)
         return redirect('likes')
     else:
-        items = item_rec_service.find_unrated_by(request.user)
+        items = item_rec_service.find_items_non_scored_by(request.user)
 
         response = {}
         if items:
