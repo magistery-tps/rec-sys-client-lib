@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 def sign_in(request):
     if request.method != "POST":
-        return render(request, 'authentication/sign_in.html')
+        return render(request, 'single/sign_in.html')
 
     username = request.POST['username']
     password = request.POST['password']
@@ -17,7 +17,7 @@ def sign_in(request):
         return redirect('home')
     else:
         messages.success(request, 'There was an sign in error. Try again!')
-        return render(request, 'authentication/sign_in.html')
+        return render(request, 'single/sign_in.html')
 
 @login_required
 def sign_out(request):

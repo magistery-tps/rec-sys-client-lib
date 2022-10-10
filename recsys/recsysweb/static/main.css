@@ -4,14 +4,14 @@
 
 .card {
     margin: 0 0.5em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.483);
     border: none;
     height: 100%;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #717171b5;
+    background-color: #717171b5;100
     width: 5vh;
     height: 5vh;
     border-radius: 50%;
