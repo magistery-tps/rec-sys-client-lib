@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Item
-from .forms import ItemForm, InteractionForm
+from ..models import Item
+from ..forms import ItemForm, InteractionForm
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
