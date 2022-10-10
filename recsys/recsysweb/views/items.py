@@ -4,6 +4,7 @@ from ..forms import ItemForm, InteractionForm
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 
 @login_required
@@ -29,7 +30,7 @@ def edit_item(request, id):
 @login_required
 def list_items(request):
     items       = Item.objects.all()
-    paginator   = Paginator(items, 2)
+    paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'items/list.html', {'page': page_obj})

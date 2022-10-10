@@ -13,11 +13,15 @@ class Item(models.Model):
         return f'{self.name}'
 
 class Interaction(models.Model):
-    user = models.ForeignKey(
-        'auth.User', 
-        db_column  = 'user_id',  
-        on_delete  = models.DO_NOTHING,
-        unique     = False
+#    user = models.ForeignKey(
+#        'auth.User', 
+#        db_column  = 'user_id',  
+#        on_delete  = models.DO_NOTHING,
+#        unique     = False
+#   )
+    user = models.IntegerField(
+         db_column  = 'user_id',
+         unique     = False
     )
     item = models.ForeignKey(
         Item,

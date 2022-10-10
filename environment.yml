@@ -12,6 +12,7 @@ dependencies:
     - scikit-learn
     - django
     - pymysql
+    - mysql-connector-python
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116

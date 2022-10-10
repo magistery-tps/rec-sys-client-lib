@@ -134,3 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/sign-in'
 
 SCORE_LEVELS = [1, 2, 3, 4, 5]
+
+ITEMS_PAGE_SIZE = 50

@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+
 from ..service import ItemRecService
 from ..forms import LikeForm
 
 item_rec_service = ItemRecService()
 
-from django.conf import settings
+
 
 @login_required
 def likes(request):
