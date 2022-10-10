@@ -8,7 +8,7 @@
 
 {%block content%}
 {% if item %}
-<div class="mx-auto" style="width: 345px;">
+<div class="mx-auto" style="width: 415px;">
     <div class="card-like">
         <div class="img-wrapper">
             <img
@@ -36,6 +36,8 @@
   
                     <div class="p-1 btn-group align-content-xl-end">
                         <button type="submit" class="btn btn-success"><span class="bi-award"> Vote</button>
+                        <pre> </pre>
+                        <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-chevron-right"> Next</a>
                     </div>
                 </div>
             </form>
