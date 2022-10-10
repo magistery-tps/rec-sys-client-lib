@@ -6,23 +6,23 @@ from ..forms import LikeForm
 
 item_rec_service = ItemRecService()
 
+from django.conf import settings
 
 @login_required
 def likes(request):
+    response = { 'score_levels': settings.SCORE_LEVELS }
+
     if request.method == "POST":
         form = LikeForm(request)
-        print(form)
         item_rec_service.rate_item_for(form.item_id, request.user, form.rating)
-        return redirect('likes')
-    else:
-        items = item_rec_service.find_items_non_scored_by(request.user)
 
-        response = {}
-        if items:
-            response['item'] = items[0]
-        else:
-            response['messages'] = ['Not found Items!']
-        return render(request, 'single/likes.html', response)
+    items = item_rec_service.find_items_non_scored_by(request.user)
+
+    if items:
+        response['item'] = items[0]
+    else:
+        response['messages'] = ['Not found Items!']
+    return render(request, 'single/likes.html', response)
 
 
 @login_required

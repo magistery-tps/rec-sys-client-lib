@@ -11,9 +11,9 @@
 
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #717171b5;100
-    width: 5vh;
-    height: 5vh;
+    background-color: #717171b5;
+    width: 6vh;
+    height: 6vh;
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);

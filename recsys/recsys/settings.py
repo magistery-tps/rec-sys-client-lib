@@ -133,4 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/sign-in'
 
-RATING_LEVELS = [1, 2, 3, 4, 5]
+SCORE_LEVELS = [1, 2, 3, 4, 5]

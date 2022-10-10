@@ -28,20 +28,10 @@
 
                 <div class="btn-toolbar">
                     <div class="btn-group">
-                        <input type="radio" class="btn-check" name="rating" id="rating_1" value="1" autocomplete="off">
-                        <label class="btn btn-primary" for="rating_1">1</label>
-
-                        <input type="radio" class="btn-check" name="rating" id="rating_2" value="2" autocomplete="off">
-                        <label class="btn btn-primary" for="rating_2">2</label>                          
-                        
-                        <input type="radio" class="btn-check" name="rating" id="rating_3" value="3" autocomplete="off">
-                        <label class="btn btn-primary" for="rating_3">3</label>    
-                        
-                        <input type="radio" class="btn-check" name="rating" id="rating_4" value="4" autocomplete="off">
-                        <label class="btn btn-primary" for="rating_4">4</label>    
-                        
-                        <input type="radio" class="btn-check" name="rating" id="rating_5" value="5" autocomplete="off">
-                        <label class="btn btn-primary" for="rating_5">5</label>    
+                        {% for score_level  in score_levels %}
+                            <input type="radio" class="btn-check" name="rating" id="rating_{{score_level}}" value="{{score_level}}" autocomplete="off">
+                            <label class="btn btn-primary" for="rating_{{score_level}}">{{score_level}}</label>
+                        {% endfor %}
                     </div>
                     <div class="btn-group">
                         <pre>  </pre><button type="submit" class="btn btn-success me-auto">Vote</button>
