@@ -12,12 +12,12 @@
 }
 
 .carousel-control-prev {
-    left: -2%;
+    left: 0%;
 }
 
 
 .carousel-control-next {
-    left: 95.5%;
+    left: 97%;
 }
 
 .carousel-control-next-icon
@@ -29,7 +29,7 @@
 @media (min-width: 768px) {
     .carousel-item {
         margin-right: 0;
-        flex: 0 0 24.5%;
+        flex: 0 0 300px;
         display: block;
     }
     .carousel-inner {
@@ -91,6 +91,13 @@
 }
 
 
+.recommendations-container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    padding-left: 150px;
+    padding-right: 150px;
+}
 
 .container {
     margin-top: 25px;
