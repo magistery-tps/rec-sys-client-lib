@@ -98,7 +98,7 @@ class ItemRecService:
         )
 
 
-    def find_all(self, user, limit=10):
+    def find_all(self, user, limit=20):
         recs = [
             self.find_populars(limit),
             self.find_recommended_for( user, limit)
