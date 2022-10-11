@@ -9,74 +9,109 @@
 {%block title%}<h3 class="display-8 fw-bold"><span class="bi-server">&ensp;Items</h1>{% endblock %}
 
 {%block content%}
-
-
 <div class="card">
-
   <div class="card-header text-end">
+    <div class="btn-group">
       {% if page.has_previous %}
           <a 
-            class="btn btn-secondary btn-lg"
+            class="btn btn-primary btn-lg"
             role="button"
             href="?page=1"
           ><span class="bi-chevron-double-left"></span></a>
 
           <a 
-          class="btn btn-secondary btn-lg"
+          class="btn btn-primary btn-lg"
           role="button"
           href="?page={{ page.previous_page_number }}"
         ><span class="bi-chevron-left"></a>
       {% endif %}
       {% if page.has_next %}
-          <a 
-            class="btn btn-secondary btn-lg"
+          <a
+            class="btn btn-primary btn-lg"
             role="button"
             href="?page={{ page.next_page_number }}"
           ><span class="bi-chevron-right"></a>
             
           <a 
-          class="btn btn-secondary btn-lg"
+          class="btn btn-primary btn-lg"
           role="button"
           href="?page={{ page.paginator.num_pages }}"
         ><span class="bi-chevron-double-right"></span></a>
       {% endif %}
     </div>
-    
-    <div class="card-body">
-      <span class="step-links">
-        Page <strong>{{ page.number }}</strong> of <strong>{{ page.paginator.num_pages }}</strong>
-      </span>
-      <table class="table">
-        <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Image</th>
-              <th></th>
-            </tr>
-        </thead>
-        <tbody>
-          {% for item in page %}
-            <tr scope="row">
-              <td>{{ item.id }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.description }}</td>
-              <td><img src="{{ item.image }}" style="width: 100%" /></td>
-              <td class="text-end">
-                <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' item.id  %}"><span class="bi-pencil-square"></a>
-                <a class="btn btn-danger btn-lg" role="button"  href="{% url 'items.remove' item.id %}"><span class="bi-eraser"></a></td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      <span class="step-links">
-        Page <strong>{{ page.number }}</strong> of <strong>{{ page.paginator.num_pages }}</strong>
-      </span>
-    </div>
 
-    <div class="card-footer text-end">
+    <div class="btn-group">
       <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
     </div>
   </div>
+    
+  <div class="card-body">
+    <span class="step-links">
+      Page <strong>{{ page.number }}</strong> of <strong>{{ page.paginator.num_pages }}</strong>
+    </span>
+    <table class="table">
+      <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for item in page %}
+          <tr scope="row">
+            <td><img src="{{ item.image }}" style="width: 100%" /></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' item.id  %}"><span class="bi-pencil-square"></a>
+                <a class="btn btn-danger btn-lg" role="button"  href="{% url 'items.remove' item.id %}"><span class="bi-eraser"></a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <span class="step-links">
+      Page <strong>{{ page.number }}</strong> of <strong>{{ page.paginator.num_pages }}</strong>
+    </span>
+  </div>
+
+  <div class="card-footer text-end">
+    <div class="btn-group">
+      {% if page.has_previous %}
+          <a 
+            class="btn btn-primary btn-lg"
+            role="button"
+            href="?page=1"
+          ><span class="bi-chevron-double-left"></span></a>
+
+          <a 
+          class="btn btn-primary btn-lg"
+          role="button"
+          href="?page={{ page.previous_page_number }}"
+        ><span class="bi-chevron-left"></a>
+      {% endif %}
+      {% if page.has_next %}
+          <a
+            class="btn btn-primary btn-lg"
+            role="button"
+            href="?page={{ page.next_page_number }}"
+          ><span class="bi-chevron-right"></a>
+            
+          <a 
+          class="btn btn-primary btn-lg"
+          role="button"
+          href="?page={{ page.paginator.num_pages }}"
+        ><span class="bi-chevron-double-right"></span></a>
+      {% endif %}
+    </div>
+
+    <div class="btn-group">
+      <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
+    </div>
+  </div>
+</div>
 {% endblock %}
