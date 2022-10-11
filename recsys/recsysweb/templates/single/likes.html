@@ -4,11 +4,11 @@
 
 {%block head%}Score your tastes{% endblock %}
 
-{%block title%}<h3 class="display-8 fw-bold text-center">Score your tastes</h1>{% endblock %}
+{%block title%}<h3 class="display-8 fw-bold text-center"><span class="bi-star-fill">&ensp;Scoring your tastes</h1>{% endblock %}
 
 {%block content%}
 {% if item %}
-<div class="mx-auto" style="width: 415px;">
+<div class="mx-auto likes">
     <div class="card-like">
         <div class="img-wrapper">
             <img
@@ -18,8 +18,8 @@
             >
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ item.name|truncatechars:100 }}</h5>
-            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:100 }}</p>
+            <h5 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h5>
+            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:600 }}</p>
         
             <form method="post" action="{% url 'likes' %}">
                 {% csrf_token %}
@@ -30,14 +30,13 @@
                     <div class="p-1 btn-group align-content-xl-start">
                         {% for score_level  in score_levels %}
                             <input type="radio" class="btn-check" name="rating" id="rating_{{score_level}}" value="{{score_level}}" autocomplete="off">
-                            <label class="btn btn-primary" for="rating_{{score_level}}">{{score_level}}</label>
+                            <label class="btn btn-primary" for="rating_{{score_level}}"><strong>{{score_level}}</strong></label>
                         {% endfor %}
                     </div>
-  
                     <div class="p-1 btn-group align-content-xl-end">
-                        <button type="submit" class="btn btn-success"><span class="bi-award"> Vote</button>
-                        <pre> </pre>
-                        <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-chevron-right"> Next</a>
+                        <button type="submit" class="btn btn-success"><span class="bi-award">&ensp;<strong>Vote</strong></button>
+         
+                        <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                     </div>
                 </div>
             </form>

@@ -1,21 +1,9 @@
 .carousel-inner {
     padding: 1em;
 }
-
-.card {
-    margin: 0 0.5em;
-    box-shadow: 2px 6px 10px 0 rgba(22, 22, 26, 0.483);
-    border: none;
-    height: 100%;
-    padding-top: 18px;
-    padding-left: 5px;
-    padding-right: 5px;
-    max-width: 100%;
-}
-
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #717171b5;
+    background-color: #e4e4e4cf;
     width: 6vh;
     height: 6vh;
     border-radius: 50%;
@@ -23,18 +11,44 @@
     transform: translateY(-50%);
 }
 
+.carousel-control-prev {
+    left: -2%;
+}
+
+
+.carousel-control-next {
+    left: 95.5%;
+}
+
+.carousel-control-next-icon
+.carousel-control-prev-icon {
+    width: 5rem;
+    height: 5rem;
+}
+
 @media (min-width: 768px) {
     .carousel-item {
         margin-right: 0;
-        flex: 0 0 25%;
+        flex: 0 0 24.5%;
         display: block;
     }
-
     .carousel-inner {
         display: flex;
     }
 }
 
+
+
+.card {
+    margin: 0 0.5em;
+    box-shadow: 2px 6px 10px 0 rgb(22 22 26 / 83%);
+    border: none;
+    height: 100%;
+    padding-top: 9px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 100%;
+}
 .card .img-wrapper {
     max-width: 100%;
     height: 26em;
@@ -42,41 +56,42 @@
     align-items: center;
     align-self: center;
 }
-
-
 .card img {
     max-height: 100%;
 }
-
 @media (max-width: 767px) {
     .card .img-wrapper {
         height: 17em;
     }
 }
 
-.container {
-    margin-top: 25px;
+.card-like {
+    box-shadow:  2px 3px 14px 0 rgb(22 22 26 / 83);
+    border: none;
+    height: 100%;
+    padding: 11px;
+    max-width: 100%;
+    border-radius: 0.6%;
 }
-
-
-
 .card-like img {
     max-height: 100%;
-}
+}   
 .card-like .img-wrapper {
     max-width: 100%;
-    height:42em;
+    height: 37em;
     display: flex;
     align-items: center;
     align-self: center;
 }
 
 
-.card-like {
-    box-shadow: 2px 6px 10px 0 rgba(22, 22, 26, 0.483);
-    border: none;
-    height: 100%;
-    padding: 11px;
-    max-width: 100%;
-    border-radius: 0.5%;
+
+.container {
+    margin-top: 25px;
+}
+
+
+.likes {
+    width: 415px;
+    padding-top: 20px;
 }
