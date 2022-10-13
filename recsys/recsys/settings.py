@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recsysweb'
+    'recsysweb',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,17 @@ LOGIN_URL = '/sign-in'
 SCORE_LEVELS = [1, 2, 3, 4, 5]
 
 ITEMS_PAGE_SIZE = 5
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
+
+
+ALLOWED_HOSTS = ['*']
