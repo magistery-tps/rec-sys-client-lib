@@ -11,6 +11,7 @@ dependencies:
     - jupyterlab
     - scikit-learn
     - django
+    - django-allauth
     - pymysql
     - mysql-connector-python
     - pip
