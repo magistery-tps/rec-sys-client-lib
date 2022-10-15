@@ -20,7 +20,7 @@
         </div>
         <div class="card-body">
             <h5 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h5>
-            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:500 }}</p>
+            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:280 }}</p>
             <form method="post" action="{% url 'likes' %}">
                 {% csrf_token %}
 
