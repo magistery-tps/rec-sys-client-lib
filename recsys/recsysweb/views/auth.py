@@ -14,6 +14,7 @@ def sign_in(request):
 
     if user is not None:
         login(request, user)
+        messages.success(request, f'Successfully signed in as {request.user}.')
         return redirect('home')
     else:
         messages.success(request, 'There was an sign in error. Try again!')
