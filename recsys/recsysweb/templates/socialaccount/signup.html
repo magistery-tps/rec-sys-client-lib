@@ -1,0 +1,38 @@
+{% extends "content.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{%block container_class %}container{% endblock %}
+
+{%block menu%}{% include "single/menu.html" %}{% endblock %}
+
+{%block head%}Sign up{% endblock %}
+
+{%block content%} 
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-5">
+          <div class="card px-5 py-5">
+            <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+  
+              {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+
+              <button type="submit" class="btn btn-primary" style="width: 100%"><span class="bi-person-fill">&ensp;<b>Sign Up</b></button>
+            </form>    
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+

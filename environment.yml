@@ -12,6 +12,7 @@ dependencies:
     - scikit-learn
     - django
     - django-allauth
+    - djangorestframework
     - pymysql
     - mysql-connector-python
     - pip

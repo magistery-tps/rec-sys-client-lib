@@ -1,5 +1,6 @@
 from django import forms
 from .models import Item, Interaction
+from allauth.account.forms import LoginForm
 
 
 class ItemForm(forms.ModelForm):

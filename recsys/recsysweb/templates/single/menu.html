@@ -4,15 +4,17 @@
     </div>
     {% if user.is_authenticated %}
         <div class="container-fluid nav navbar-nav  justify-content-end">
+            <a class="nav-item nav-link active"><strong><span class="bi-person-fill">&ensp;{{ request.user}}&ensp;</strong>
+            <span class="bi-three-dots-vertical">
             <a class="nav-item nav-link active" href="{% url 'recommendations' %}"><strong><span class="bi-bar-chart-line-fill">&ensp;Recommendations&ensp;</strong></>
             <span class="bi-three-dots-vertical">
-            <a class="nav-item nav-link active" href="{% url 'likes' %}"><strong><span class="bi-star-half">&ensp;Scoring&ensp;</strong></>
+            <a class="nav-item nav-link active" href="{% url 'likes' %}"><strong><span class="bi-star-half">&ensp;Scoring&ensp;</strong>
             <span class="bi-three-dots-vertical">
-            <a class="nav-item nav-link active" href="{% url 'items' %}"><strong><span class="bi-server">&ensp;Items&ensp;</strong></>
+            <a class="nav-item nav-link active" href="{% url 'items' %}"><strong><span class="bi-server">&ensp;Items&ensp;</strong>
             <span class="bi-three-dots-vertical">
-            <a class="nav-item nav-link active" href="/admin"><strong><span class="bi-wrench">&ensp;Admin&ensp;</strong></>
+            <a class="nav-item nav-link active" href="/admin"><strong><span class="bi-wrench">&ensp;Admin&ensp;</strong>
             <span class="bi-three-dots-vertical">
-            <a class="nav-item nav-link active" href="/api"><strong><span class="bi-plug-fill">&ensp;API&ensp;</strong></>
+            <a class="nav-item nav-link active" href="/api"><strong><span class="bi-plug-fill">&ensp;API&ensp;</strong>
             <span class="bi-three-dots-vertical">
             <a class="nav-item nav-link active" href="{% url 'sign-out' %}"><strong><span class="bi-door-open-fill">&ensp;Sign Out</strong></a>
         </div>

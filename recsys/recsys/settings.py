@@ -174,7 +174,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
-SITE_ID = 3
+SITE_ID = 5
 LOGIN_REDIRECT_URL = '/'
 
 # Additional configuration settings
@@ -183,6 +183,7 @@ ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
