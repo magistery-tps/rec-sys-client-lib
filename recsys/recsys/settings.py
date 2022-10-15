@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n_y^v1h!=m#_1c26pz=tw(#z76rkifug(%x_wvc1wgg0==-o0#'
+# SECRET_KEY = 'django-insecure-n_y^v1h!=m#_1c26pz=tw(#z76rkifug(%x_wvc1wgg0==-o0#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -137,10 +137,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "recsysweb/static"
 ]
 
 # Default primary key field type
@@ -196,3 +196,6 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+import django_heroku
+django_heroku.settings(locals())

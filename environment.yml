@@ -13,6 +13,7 @@ dependencies:
     - django
     - django-allauth
     - djangorestframework
+    - django-heroku
     - pymysql
     - mysql-connector-python
     - pip
