@@ -68,7 +68,9 @@
     box-shadow:  2px 3px 14px 0 rgb(22 22 26 / 83);
     border: none;
     height: 100%;
-    padding: 11px;
+    padding-top: 11px;
+    padding-left: 11px;
+    padding-right: 11px;
     max-width: 100%;
     border-radius: 0.6%;
 }
@@ -103,9 +105,18 @@
     padding-top: 10px;
 }
 
-.google-button {
-
+.likes .card-body {
+    padding-top: 11px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
+
+.likes .card-title {
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 
 .google-cont {
    background-color: #fff;

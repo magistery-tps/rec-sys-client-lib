@@ -16,6 +16,7 @@
                                 <strong>{{ message }}</strong>
                             </div>
                         {% endfor %}
+                        <hr style="height:1px; width:100%; border-width:0; color:#ced4da; background-color:red">
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="mb-3">
@@ -28,8 +29,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary" style="width: 100%"><span class="bi-person-fill">&ensp;<b>Sign in</b></button>
                         </form>
-                        <hr style="height:1px; width:100%; border-width:0; color:#ced4da; background-color:red">
-                  
+                        <hr style="height:1px; width:100%; border-width:0; color:#ced4da; background-color:red">                  
                         <script>
                             function sanitize_url(form) {
                                 form.action = '{% provider_login_url 'google' %}?next=/'; 

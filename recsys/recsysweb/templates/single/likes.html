@@ -19,27 +19,28 @@
             >
         </div>
         <div class="card-body">
-            <h5 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h5>
-            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:280 }}</p>
             <form method="post" action="{% url 'likes' %}">
                 {% csrf_token %}
-
                 <input  type="hidden" name="item_id" value="{{ item.id }}">
-
+                <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
                 <div class="d-flex">
-                    <div class="p-1 btn-group align-content-xl-start">
+                    <div class="p1 btn-group align-content-xl-start">
                         {% for score_level  in score_levels %}
                             <input type="radio" class="btn-check" name="rating" id="rating_{{score_level}}" value="{{score_level}}" autocomplete="off">
                             <label class="btn btn-primary" for="rating_{{score_level}}"><strong>{{score_level}}</strong></label>
                         {% endfor %}
                     </div>
-                    <div class="p-1 btn-group align-content-xl-end">
+                    <pre>      </pre>
+                    <div class="btn-group align-content-xl-end">
                         <button type="submit" class="btn btn-success"><span class="bi-award">&ensp;<strong>Vote</strong></button>
          
                         <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                     </div>
                 </div>
             </form>
+            <hr style="height:1px; width:99%; border-width:0; margin-top: 11px; margin-bottom: 10px; color:#ced4da; background-color:red">
+            <!-- <h6 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h6> -->
+            <p class="card-text" style="overflow-wrap: anywhere;">{{ item.description|truncatechars:350 }}</p>
         </div>
     </div>
 </div>
