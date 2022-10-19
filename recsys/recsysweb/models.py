@@ -33,6 +33,24 @@ class Interaction(models.Model):
     def __str__(self):
         return f'User: {self.user} | Item: {self.item} |  Rating: {self.rating}'
 
+class DistancesMatrix(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=200, verbose_name='Name')
+    description = models.TextField(max_length=1000, verbose_name='Description')
+
+class DistancesMatrixCell(models.Model):
+    row    = models.IntegerField(db_column='row')
+    column = models.IntegerField(db_column='column')
+    matrix = models.ForeignKey(
+        DistancesMatrix,
+        db_column  = 'distances_matrix_id',
+        on_delete  = models.DO_NOTHING,
+        unique     = False
+    )
+    value = models.FloatField()
+    def __str__(self):
+        return f'row: {self.row} | Column: {self.columns} | Value: {self.value}'
+
 
 class Recommendations:
     def __init__(self, name, items):
