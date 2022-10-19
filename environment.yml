@@ -9,6 +9,7 @@ dependencies:
     - numpy=1.21
     - pandas
     - jupyterlab
+    - ipywidgets
     - scikit-learn
     - django
     - django-allauth
@@ -16,8 +17,12 @@ dependencies:
     - django-heroku
     - pymysql
     - mysql-connector-python
+    - tqdm
+    - bunch
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116
         - torch==1.12.1+cu116
         - torchvision==0.13.1+cu116
+        - pytorch-common==0.0.19
+        - torchmetrics
