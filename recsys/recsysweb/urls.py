@@ -10,7 +10,7 @@ router = routers.DefaultRouter()
 router.register(r'items', ItemViewSet)
 router.register(r'interactions', InteractionViewSet)
 router.register(r'distances-matrix', DistancesMatrixViewSet)
-router.register(r'distances-matrix/cells', DistancesMatrixCellViewSet)
+router.register(r'distances-matrix-cells', DistancesMatrixCellViewSet)
 
 
 urlpatterns = [ 
