@@ -15,6 +15,7 @@ dependencies:
     - django-allauth
     - djangorestframework
     - django-heroku
+    - django-cors-headers
     - pymysql
     - mysql-connector-python
     - tqdm
@@ -26,3 +27,4 @@ dependencies:
         - torchvision==0.13.1+cu116
         - pytorch-common==0.0.19
         - torchmetrics
+        - simple-rest-client

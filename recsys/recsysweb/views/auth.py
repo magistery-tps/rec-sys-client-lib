@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-
 def sign_in(request):
     if request.method != "POST":
         return render(request, 'single/sign_in.html')
@@ -14,10 +13,10 @@ def sign_in(request):
 
     if user is not None:
         login(request, user)
-        messages.success(request, f'Successfully signed in as {request.user}.')
+        messages.success(request, f'Successfully signed in as {request.user}')
         return redirect('home')
     else:
-        messages.success(request, 'There was an sign in error. Try again!')
+        messages.success(request, 'There was an sign in error. Try again! ')
         return render(request, 'single/sign_in.html')
 
 @login_required
