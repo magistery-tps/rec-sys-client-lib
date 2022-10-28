@@ -1,0 +1,37 @@
+{
+  "id": "B0962L6H56",
+  "title": "Keds Women's Kickback Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/71VgbXuMzgL._AC_UX695_.jpg"
+    ]
+  ],
+  "rating": 4.3,
+  "reviews_count": 57,
+  "reviews_link": "https://www.amazon.comNone",
+  "price_range": {
+    "from": 54.95,
+    "to": 55.0
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B09618XT7F/ref=twister_B0962L6H56",
+      "id": "B09618XT7F"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09J7JBXDJ/ref=twister_B0962L6H56",
+      "id": "B09J7JBXDJ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0961J6D6Y/ref=twister_B0962L6H56",
+      "id": "B0961J6D6Y"
+    }
+  ]
+}

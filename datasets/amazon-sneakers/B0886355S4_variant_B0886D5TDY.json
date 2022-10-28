@@ -1,0 +1,82 @@
+{
+  "id": "B0886D5TDY",
+  "title": "GOOBON Air Shoes for Women Tennis Sports Athletic Workout Gym Running Sneakers (Size 5.5-10)",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY695_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY500_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY575_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY625_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY395_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY675_.jpg",
+      "https://m.media-amazon.com/images/I/7100aSc2XHL._AC_UY535_.jpg"
+    ]
+  ],
+  "rating": 4.2,
+  "reviews_count": 4033,
+  "reviews_link": "https://www.amazon.comNone",
+  "price_range": "Was: $42.99 $42.99 Details The Was Price is determined using the 90-day median price paid by customers for the product on Amazon. We exclude prices paid by customers for the product during a limited time deal. Learn more .reinventPrice_legalMessage_icon {\n        width: 12px;\n        fill: #969696;\n        vertical-align: middle;\n        padding-bottom: 2px;\n    }\n\n    .reinventPrice_legalMessage_icon:hover {\n        fill: #555555;\n    } P.when('A', 'a-popover').execute('a-popover-count', function (A) {\n        A.declarative('a-popover', 'mouseenter', function() {\n            ue.count(\"tooltip.popover.opened\", 1);\n        });\n    }); With Deal: $30.09 $30.09 P.when(\"A\", \"jQuery\").execute(function(A, $) {\n    $(\"#selectQuantity [name='quantity'], #mobileQuantityDropDown\").live(\"change\", function (event) {\n      if (event.updatePromiseBadgeOnQuantityChange) {\n          return;\n      }\n\n      event.updatePromiseBadgeOnQuantityChange = 1;\n\n       \n          // \"#buybox\" is included in this list because if there is no accordion row, then it is a single-offer layout\n          // possible id's may include \"usedAccordionRow\", \"newAccordionRow_1\", \"newAccordionRow_2\"\n          var accordionRow = $(this).closest('[id$=\"AccordionRow\"], #buybox, [id^=\"newAccordionRow\"]');\n          \n\n      var quantity = $(this).val();\n      // This asin and merchantId will support use case in US marketplace.\n      // DDM will be required here to support the feature in IN marketplace\n      var asin = accordionRow.find(\"#deliveryBlockSelectAsin\").val();\n      var merchantId = accordionRow.find(\"#deliveryBlockSelectMerchant\").val();\n\n      if (!asin) {\n        asin = accordionRow.find(\"#ftSelectAsin\").val();\n      }\n      if (!merchantId) {\n        merchantId = accordionRow.find(\"#ftSelectMerchant\").val();\n      }\n\n      if (!asin || !quantity) {\n        return;\n      }\n\n      var params = [];\n      params.push(\"asin=\" + asin);\n      params.push(\"quantity=\" + quantity);\n      params.push(\"exclusiveMerchantId=\" + merchantId);\n      params.push(\"merchantId=\" + merchantId);\n      params.push(\"clientId=retailwebsite\");\n      params.push(\"deviceType=web\");\n      params.push(\"showFeatures=priceBlockMs3Mir\");\n      params.push(\"ie=UTF8\");\n      params.push(\"experienceId=priceBadgingQuantityRefreshAjaxExperience\");\n\n      $.ajax({\n        type: \"GET\",\n        url: \"/gp/product/ajax?\",\n        contentType: 'application/x-www-form-urlencoded;charset=utf-8',\n        data: params.join('&'),\n        accordionRow: accordionRow,\n        dataType: \"html\",\n        success: function (objResponse) {\n          if (objResponse != null && objResponse != \"\") {\n            accordionRow.find(\"#priceBadging_feature_div\").replaceWith(objResponse);\n\n             \n                // If it's a single buying option layout or the new buy box quantity changed, update data outside the buy box\n                if ($(\"#buyBoxAccordion, #buybox\").children().length === 1 || accordionRow.attr(\"id\").match(/^newAccordionRow/)) {\n                \n              $(\"#price #priceblock_ourprice_row #ourprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#newOfferShippingMessage_feature_div #ourPrice_availability #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#price #priceblock_saleprice_row #saleprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#price #priceblock_dealprice_row #dealprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n            }\n          }\n        }\n      });\n\n      return;\n    });\n  }); FREE Returns Return this item for free You can return this item for any reason: no shipping charges. The item must be returned in new and unused condition. Read the full returns policy How to return this item: Go to Your Orders to start the return Print the return shipping label Ship it! You Save: $12.90 $12.90 (30%)",
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B0885T3Z4H/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0885T3Z4H"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09HX8FW3W/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B09HX8FW3W"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08867M4VW/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B08867M4VW"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0886BS8YS/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0886BS8YS"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09HX8M16D/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B09HX8M16D"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0887Z5KPY/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0887Z5KPY"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0886446Q4/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0886446Q4"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08MPZMZXF/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B08MPZMZXF"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0887WLN4M/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0887WLN4M"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0886CM37Y/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0886CM37Y"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08MQ3KH5J/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B08MQ3KH5J"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09HX8HWVT/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B09HX8HWVT"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0886355S4/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B0886355S4"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09HX73TR3/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B09HX73TR3"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09HX63X1G/ref=twister_B0885Q6FR1?_encoding=UTF8&psc=1",
+      "id": "B09HX63X1G"
+    }
+  ]
+}

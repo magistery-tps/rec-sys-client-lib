@@ -1,0 +1,37 @@
+{
+  "id": "B0837LRGBY",
+  "title": "Keds Women's Core Double Decker Lthr Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71glapQTZvL._AC_UX535_.jpg"
+    ]
+  ],
+  "rating": 4.4,
+  "reviews_count": 2151,
+  "reviews_link": "https://www.amazon.com/Keds-Womens-Double-Leather-Sneaker/product-reviews/B0837LRGBY/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 51.35,
+    "to": 54.99
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B078WLJVWH/ref=twister_B0837LRGBY",
+      "id": "B078WLJVWH"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0837LMPGZ/ref=twister_B0837LRGBY",
+      "id": "B0837LMPGZ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09613FC5K/ref=twister_B0837LRGBY",
+      "id": "B09613FC5K"
+    }
+  ]
+}

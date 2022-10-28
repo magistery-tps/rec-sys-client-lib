@@ -1,0 +1,61 @@
+{
+  "id": "B08176RC34",
+  "title": "Tommy Hilfiger Men's Pandora Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71wKIyEz-mL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.4,
+  "reviews_count": 7360,
+  "reviews_link": "https://www.amazon.com/Tommy-Hilfiger-Mens-Pandora2-Sneaker/product-reviews/B08176RC34/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 49.95,
+    "to": 49.95
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B08178X395/ref=twister_B08176RC34",
+      "id": "B08178X395"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B014GNE6BK/ref=twister_B08176RC34",
+      "id": "B014GNE6BK"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B014GNEMWS/ref=twister_B08176RC34",
+      "id": "B014GNEMWS"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B014GMU4LM/ref=twister_B08176RC34",
+      "id": "B014GMU4LM"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B088MGRVRK/ref=twister_B08176RC34",
+      "id": "B088MGRVRK"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09TS2827Y/ref=twister_B08176RC34",
+      "id": "B09TS2827Y"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B091FYYJRN/ref=twister_B08176RC34",
+      "id": "B091FYYJRN"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09TS15S6Q/ref=twister_B08176RC34",
+      "id": "B09TS15S6Q"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B091G16B6W/ref=twister_B08176RC34",
+      "id": "B091G16B6W"
+    }
+  ]
+}

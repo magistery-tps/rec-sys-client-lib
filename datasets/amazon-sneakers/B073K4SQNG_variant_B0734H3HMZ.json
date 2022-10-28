@@ -1,0 +1,41 @@
+{
+  "id": "B093QX7GKH",
+  "title": "Cole Haan Men's Grand Crosscourt II Sneakers",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/71-Lf5YHy3L._AC_UX500_.jpg"
+    ]
+  ],
+  "rating": 4.5,
+  "reviews_count": 11813,
+  "reviews_link": "https://www.amazon.com/Cole-Haan-Grand-Crosscourt-Sneakers/product-reviews/B093QX7GKH/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 49.96,
+    "to": 187.4
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B073K37QC7/ref=twister_B093QX7GKH",
+      "id": "B073K37QC7"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07B9ZPN12/ref=twister_B093QX7GKH",
+      "id": "B07B9ZPN12"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B073K4SKWJ/ref=twister_B093QX7GKH",
+      "id": "B073K4SKWJ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B073KPR4MM/ref=twister_B093QX7GKH",
+      "id": "B073KPR4MM"
+    }
+  ]
+}

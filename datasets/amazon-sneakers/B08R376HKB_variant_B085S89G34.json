@@ -1,0 +1,33 @@
+{
+  "id": "B0B83SZY7X",
+  "title": "Skechers Women's Performance Go Walk Arch Fit-Unify Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71YT4+npsxL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.5,
+  "reviews_count": 1135,
+  "reviews_link": "https://www.amazon.com/Skechers-Womens-Performance-Fit-Unify-Sneaker/product-reviews/B0B83SZY7X/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 60.0,
+    "to": 154.99
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B085S87ZDK/ref=twister_B0B83SZY7X",
+      "id": "B085S87ZDK"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08R35Z1H1/ref=twister_B0B83SZY7X",
+      "id": "B08R35Z1H1"
+    }
+  ]
+}

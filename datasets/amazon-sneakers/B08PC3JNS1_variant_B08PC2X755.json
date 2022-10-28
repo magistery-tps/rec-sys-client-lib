@@ -1,0 +1,78 @@
+{
+  "id": "B08PC2X755",
+  "title": "APRILSPRING Womens Walking Shoes Running Fashion Non Slip Type Sneakers",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY675_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY395_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY695_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY575_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY535_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY625_.jpg",
+      "https://m.media-amazon.com/images/I/71JKu4TQN2L._AC_UY500_.jpg"
+    ]
+  ],
+  "rating": 4.2,
+  "reviews_count": 13421,
+  "reviews_link": "https://www.amazon.com/APRILSPRING-Womens-Walking-Runing-Resistant/product-reviews/B08PC2X755/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": "Was: $45.99 $45.99 Details The Was Price is determined using the 90-day median price paid by customers for the product on Amazon. We exclude prices paid by customers for the product during a limited time deal. Learn more .reinventPrice_legalMessage_icon {\n        width: 12px;\n        fill: #969696;\n        vertical-align: middle;\n        padding-bottom: 2px;\n    }\n\n    .reinventPrice_legalMessage_icon:hover {\n        fill: #555555;\n    } P.when('A', 'a-popover').execute('a-popover-count', function (A) {\n        A.declarative('a-popover', 'mouseenter', function() {\n            ue.count(\"tooltip.popover.opened\", 1);\n        });\n    }); With Deal: $36.79 $36.79 P.when(\"A\", \"jQuery\").execute(function(A, $) {\n    $(\"#selectQuantity [name='quantity'], #mobileQuantityDropDown\").live(\"change\", function (event) {\n      if (event.updatePromiseBadgeOnQuantityChange) {\n          return;\n      }\n\n      event.updatePromiseBadgeOnQuantityChange = 1;\n\n       \n          // \"#buybox\" is included in this list because if there is no accordion row, then it is a single-offer layout\n          // possible id's may include \"usedAccordionRow\", \"newAccordionRow_1\", \"newAccordionRow_2\"\n          var accordionRow = $(this).closest('[id$=\"AccordionRow\"], #buybox, [id^=\"newAccordionRow\"]');\n          \n\n      var quantity = $(this).val();\n      // This asin and merchantId will support use case in US marketplace.\n      // DDM will be required here to support the feature in IN marketplace\n      var asin = accordionRow.find(\"#deliveryBlockSelectAsin\").val();\n      var merchantId = accordionRow.find(\"#deliveryBlockSelectMerchant\").val();\n\n      if (!asin) {\n        asin = accordionRow.find(\"#ftSelectAsin\").val();\n      }\n      if (!merchantId) {\n        merchantId = accordionRow.find(\"#ftSelectMerchant\").val();\n      }\n\n      if (!asin || !quantity) {\n        return;\n      }\n\n      var params = [];\n      params.push(\"asin=\" + asin);\n      params.push(\"quantity=\" + quantity);\n      params.push(\"exclusiveMerchantId=\" + merchantId);\n      params.push(\"merchantId=\" + merchantId);\n      params.push(\"clientId=retailwebsite\");\n      params.push(\"deviceType=web\");\n      params.push(\"showFeatures=priceBlockMs3Mir\");\n      params.push(\"ie=UTF8\");\n      params.push(\"experienceId=priceBadgingQuantityRefreshAjaxExperience\");\n\n      $.ajax({\n        type: \"GET\",\n        url: \"/gp/product/ajax?\",\n        contentType: 'application/x-www-form-urlencoded;charset=utf-8',\n        data: params.join('&'),\n        accordionRow: accordionRow,\n        dataType: \"html\",\n        success: function (objResponse) {\n          if (objResponse != null && objResponse != \"\") {\n            accordionRow.find(\"#priceBadging_feature_div\").replaceWith(objResponse);\n\n             \n                // If it's a single buying option layout or the new buy box quantity changed, update data outside the buy box\n                if ($(\"#buyBoxAccordion, #buybox\").children().length === 1 || accordionRow.attr(\"id\").match(/^newAccordionRow/)) {\n                \n              $(\"#price #priceblock_ourprice_row #ourprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#newOfferShippingMessage_feature_div #ourPrice_availability #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#price #priceblock_saleprice_row #saleprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n              $(\"#price #priceblock_dealprice_row #dealprice_shippingmessage #priceBadging_feature_div\").replaceWith(objResponse);\n            }\n          }\n        }\n      });\n\n      return;\n    });\n  }); FREE Returns Return this item for free You can return this item for any reason: no shipping charges. The item must be returned in new and unused condition. Read the full returns policy How to return this item: Go to Your Orders to start the return Print the return shipping label Ship it! You Save: $9.20 $9.20 (20%)",
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B08PC3JNS1/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC3JNS1"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC3C4W6/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC3C4W6"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B099DH88JC/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B099DH88JC"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC2TT79/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC2TT79"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC27T8F/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC27T8F"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09F9F5X4P/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B09F9F5X4P"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC43V9H/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC43V9H"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08X1MDRMC/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08X1MDRMC"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08Q3NWW8D/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08Q3NWW8D"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09F9FV2C5/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B09F9FV2C5"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC48HGD/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC48HGD"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PC38MZP/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B08PC38MZP"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0B4DF6G1Q/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B0B4DF6G1Q"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0B4DCRCSC/ref=twister_B08PPCXCJS?_encoding=UTF8&psc=1",
+      "id": "B0B4DCRCSC"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "B0BCKJCPCC",
+  "title": "Niluber Women's Chunky Platform Dad Lace-Up Casual Walking Sport Sneakers",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/518DoH6ztnL._AC_UX500_.jpg"
+    ]
+  ],
+  "rating": 4.5,
+  "reviews_count": 2,
+  "reviews_link": "https://www.amazon.comNone",
+  "price_range": {
+    "from": 40.99,
+    "to": 40.99
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B0BCKKDB3X/ref=twister_B0BCKJCPCC",
+      "id": "B0BCKKDB3X"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0BCKKVWWB/ref=twister_B0BCKJCPCC",
+      "id": "B0BCKKVWWB"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0BCKKVQKD/ref=twister_B0BCKJCPCC",
+      "id": "B0BCKKVQKD"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "B00DJSRER2",
+  "title": "Skechers Men's Afterburn Memory-Foam Lace-up Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/81c0u+I9QgL._AC_UX675_.jpg"
+    ]
+  ],
+  "rating": 4.4,
+  "reviews_count": 64312,
+  "reviews_link": "https://www.amazon.com/Skechers-Afterburn-Memory-Foam-Lace-up-Sneaker/product-reviews/B00DJSRER2/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 54.95,
+    "to": 64.95
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B00FZN20DM/ref=twister_B00DJSRER2",
+      "id": "B00FZN20DM"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00FZN1KPQ/ref=twister_B00DJSRER2",
+      "id": "B00FZN1KPQ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00FGNJMOG/ref=twister_B00DJSRER2",
+      "id": "B00FGNJMOG"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00HR1NAO8/ref=twister_B00DJSRER2",
+      "id": "B00HR1NAO8"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00FFXUJZ8/ref=twister_B00DJSRER2",
+      "id": "B00FFXUJZ8"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00FZN1TZM/ref=twister_B00DJSRER2",
+      "id": "B00FZN1TZM"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08PCBP72N/ref=twister_B00DJSRER2",
+      "id": "B08PCBP72N"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07YQBT8DQ/ref=twister_B00DJSRER2",
+      "id": "B07YQBT8DQ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0923977PC/ref=twister_B00DJSRER2",
+      "id": "B0923977PC"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09239BYPZ/ref=twister_B00DJSRER2",
+      "id": "B09239BYPZ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08QDS5QMV/ref=twister_B00DJSRER2",
+      "id": "B08QDS5QMV"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09238JRTY/ref=twister_B00DJSRER2",
+      "id": "B09238JRTY"
+    }
+  ]
+}

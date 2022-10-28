@@ -1,0 +1,33 @@
+{
+  "id": "B0B5B678SH",
+  "title": "Reebok Women's Classic Renaissance Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/61Ezm7-UAaL._AC_UX675_.jpg"
+    ]
+  ],
+  "rating": 4.3,
+  "reviews_count": 17649,
+  "reviews_link": "https://www.amazon.com/Reebok-Womens-Classic-Renaissance-Sneaker/product-reviews/B0B5B678SH/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 29.99,
+    "to": 49.95
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B00R54XMVS/ref=twister_B0B5B678SH",
+      "id": "B00R54XMVS"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00R54WOC6/ref=twister_B0B5B678SH",
+      "id": "B00R54WOC6"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "B00DHNZTLW",
+  "title": "Inov-8 Women's F-Lite 185 Cross-Training Shoe",
+  "description": "This ultra lightweight trainer from Inov-8 offers amazing grip and stability when running or training functionally. Based in \"England's last wilderness,\" the North Pennines, inov-8 is a British company that is passionate about specialist off-road running products and creating the lightest weight, most flexible footwear on the market. Since the company's launch in 2003, it has become one of the fastest growing off-road running brands in the United States. From the footwear to the hydration packs, inov-8 products are created to complement the natural functions of human body biomechanics. Inov-8 designs its athletic gear to meet the demands of various environments and terrains at a peak level of performance. The comfort and durability of inov-8 products is what makes this brand a top-quality choice for the high-performance athlete and the recreational user alike.",
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/61IqlIB1DlL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.3,
+  "reviews_count": 15920,
+  "reviews_link": "https://www.amazon.com/Inov-8-Womens-F-Lite-Cross-Training-Shoe/product-reviews/B00DHNZTLW/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 36.28,
+    "to": 89.99
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B00C8Q0NXS/ref=twister_B00DHNZTLW",
+      "id": "B00C8Q0NXS"
+    }
+  ]
+}

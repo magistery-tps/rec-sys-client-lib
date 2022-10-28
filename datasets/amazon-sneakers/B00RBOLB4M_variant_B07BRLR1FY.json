@@ -1,0 +1,46 @@
+{
+  "id": "B07BRLR1FY",
+  "title": "K-Swiss Women's ST329 CMF Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71u8OaDSGYL._AC_UX675_.jpg"
+    ]
+  ],
+  "rating": 4.6,
+  "reviews_count": 4250,
+  "reviews_link": "https://www.amazon.com/K-Swiss-Womens-ST329-Sneaker-Black/product-reviews/B07BRLR1FY/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": null,
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B00RBOLB4M/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B00RBOLB4M"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00RBOL2QO/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B00RBOL2QO"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07PM7HMNW/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B07PM7HMNW"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B073WR1KD3/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B073WR1KD3"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07C9KTJ8Y/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B07C9KTJ8Y"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01MZFK70H/ref=twister_B075MDBJ1W?_encoding=UTF8&psc=1",
+      "id": "B01MZFK70H"
+    }
+  ]
+}

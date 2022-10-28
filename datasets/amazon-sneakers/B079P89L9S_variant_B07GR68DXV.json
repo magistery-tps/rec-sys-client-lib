@@ -1,0 +1,37 @@
+{
+  "id": "B079P89L9S",
+  "title": "Rockport Men's Colle Tie Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY395_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY625_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY500_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY695_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY675_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY535_.jpg",
+      "https://m.media-amazon.com/images/I/61In+XBJ8dL._AC_UY575_.jpg"
+    ]
+  ],
+  "rating": 4.4,
+  "reviews_count": 1850,
+  "reviews_link": "https://www.amazon.com/Rockport-Mens-Colle-Tie-Sneaker/product-reviews/B079P89L9S/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 65.02,
+    "to": 105.59
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B073HJT7DH/ref=twister_B079P89L9S",
+      "id": "B073HJT7DH"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B073HDFK4F/ref=twister_B079P89L9S",
+      "id": "B073HDFK4F"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B079JP9J72/ref=twister_B079P89L9S",
+      "id": "B079JP9J72"
+    }
+  ]
+}
