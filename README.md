@@ -1,4 +1,4 @@
-# UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendation
+# UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación
 
 
 ## Requisitos
