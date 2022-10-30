@@ -14,7 +14,7 @@ class ItemRecService:
         interaction.save()
 
 
-    def find_items_non_scored_by(self, user, limit = 1000):
+    def find_items_non_scored_by(self, user, limit = 100):
         return Item.objects.raw(
             """
                 SELECT
