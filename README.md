@@ -7,8 +7,24 @@
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
-## Comenzando
 
+## Componentes
+
+* **recsys**: Web app de recomendación de items. Permite recomendar items personalizados.
+
+![RecSys Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
+
+* **Notebooks**
+    * Pre-carga de datasets amazon sneakers o movie-lens.
+        * **Amazon sneakers**: Datasets de zapatillas extraído de Amazon US.
+            * [build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/build-datasets.ipynb): Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
+            * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de **recsys**.
+        * **Movie Lens**: Datasets de películas con scoring personalizado.
+            * [preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)
+            * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb): Carga de datos en la base de datos de **recsys**.
+
+
+## Comenzando
 
 **Step 1**: Clonar repo.
 
