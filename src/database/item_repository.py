@@ -1,9 +1,8 @@
+from .repository import Repository
 
 
-class ItemRepository:
-    def __init__(self, database):
-        self.database = database
-
+class ItemRepository(Repository):
+    def __init__(self, database): super().__init__(database)
     def save(self, row):
         query = """
             INSERT INTO 
