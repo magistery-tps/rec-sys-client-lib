@@ -23,6 +23,11 @@
             * [preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)
             * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb): Carga de datos en la base de datos de **recsys**.
 
+* **[amazon-spider-scrapper](https://github.com/adrianmarino/amazon-spider-scrapper)**
+    * Es un fork del proyecto amazon-scrapper.
+    * Dada una búsqueda en Amazon, permite realizar scrapping del detalle de todos los resultados (Productos) y sus variaciones, junto con sus reviews.
+    * Utiliza headers fake, proxies random y delays variables para minimizar el banning de Amazon.
+    * Permite, reanudar el proceso de scrapping desde el ultimo productos scrappeado.
 
 ## Comenzando
 
