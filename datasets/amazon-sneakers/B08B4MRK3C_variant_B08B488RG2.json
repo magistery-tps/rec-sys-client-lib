@@ -1,0 +1,53 @@
+{
+  "id": "B08B4MRK3C",
+  "title": "Steve Madden Women's Click Sneaker",
+  "description": "Although sporty on the outside, with knit upper and a rubber sneaker sole, CLICK hides a secret wedge that lifts and flatters. Step into the style with ease using its dual zipper closures.",
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71chs+2LjiL._AC_UX675_.jpg"
+    ]
+  ],
+  "rating": 4.5,
+  "reviews_count": 595,
+  "reviews_link": "https://www.amazon.com/Steve-Madden-Womens-Click-Sneaker/product-reviews/B08B4MRK3C/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 70.0,
+    "to": 70.0
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B08B47J3NR/ref=twister_B08B4MRK3C",
+      "id": "B08B47J3NR"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08B491QM2/ref=twister_B08B4MRK3C",
+      "id": "B08B491QM2"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08B47G2GD/ref=twister_B08B4MRK3C",
+      "id": "B08B47G2GD"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08B493F23/ref=twister_B08B4MRK3C",
+      "id": "B08B493F23"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08MF8D2RQ/ref=twister_B08B4MRK3C",
+      "id": "B08MF8D2RQ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08L6VCDNZ/ref=twister_B08B4MRK3C",
+      "id": "B08L6VCDNZ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08LVBT2W8/ref=twister_B08B4MRK3C",
+      "id": "B08LVBT2W8"
+    }
+  ]
+}

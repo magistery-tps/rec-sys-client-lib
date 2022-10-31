@@ -1,0 +1,502 @@
+[
+  {
+    "user": "Peter p",
+    "rating": 5.0,
+    "message": "This shoes are like a centimeter larger than the other 8 pairs on same style different color that I have. All pairs are 9.5, this is 9.5 too but it\u2019s larger and I don\u2019t know why."
+  },
+  {
+    "user": "John Flack",
+    "rating": 5.0,
+    "message": "Love these shoes. Nice classics"
+  },
+  {
+    "user": "Steven",
+    "rating": 4.0,
+    "message": "I am 5'10, 215. These are awesomely comfortable. Daily wear."
+  },
+  {
+    "user": "Maureen Toomire",
+    "rating": 5.0,
+    "message": "Excellent quality shoe, affordable price, comfortable from day one with no break in needed. I\u2019ve been wearing these shoes daily for a month now and I can\u2019t say enough good things about them. I\u2019m so satisfied I bought the Harman Work shoes for work too. I\u2019ve been a die hard Newbalance fan for years and always bought that brand but Reebok managed to top them both comfort and affordability. I have a new favorite shoe brand. Highly recommend!"
+  },
+  {
+    "user": "daniel chavez",
+    "rating": 5.0,
+    "message": "Son c\u00f3modos y atractivos"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 4.0,
+    "message": "I love the shoe . They fit well."
+  },
+  {
+    "user": "neneloco",
+    "rating": 4.0,
+    "message": "I purchased the shoes cause I like the old skool look and color scheme, but they were also comfortable. After using them a few times, I realized that they are probably my most comfortable shoes due to the cushion. I was in a hurry and had to run in them a couple of times and they felt great. Although I purchased them purely for aesthetics, they are very functional. I'm thinking of buying a pair just for walking/jogging. I'm a size 9 and they fit as expected. They feel a bit more narrow than other shoes like adidas or nike, but not as bad as vans or pumas."
+  },
+  {
+    "user": "Clayton",
+    "rating": 5.0,
+    "message": "Looks great and has good comfort/stabilization."
+  },
+  {
+    "user": "Tahir Youngblood",
+    "rating": 4.0,
+    "message": "A classic simple look.  They're more for casual use imo.  I have not and will not work out in them."
+  },
+  {
+    "user": "Eric",
+    "rating": 5.0,
+    "message": "Excelente calsado"
+  },
+  {
+    "user": "karen wilburn",
+    "rating": 4.0,
+    "message": "Runs small order a size to 11/2 sizes up otherwise good shoe"
+  },
+  {
+    "user": "Paul Gonzales",
+    "rating": 5.0,
+    "message": "Las zapatillas las uso para caminatas largas y son bastante c\u00f3modas y ajustan bien siempre y cuando compres una talla menor a la que usualmente usas."
+  },
+  {
+    "user": "Millie",
+    "rating": 5.0,
+    "message": "I got them for my hubby and he is just a happy camper now"
+  },
+  {
+    "user": "Vannie Kerr Jr",
+    "rating": 5.0,
+    "message": "I finally received these bad boys, after months of browsing all over the internet for a pair in size, \u201c11\u201d, \u201cGOD IS GREAT\u201d! First off, it is very hard to find a name brand, pair of SNEAKERS\u201d, with a \u201cBROWN\u201d, colorway! Pick any, \u201cBRAND\u201d or pick any, \u201cMODEL\u201d, of sneaker and go, see if they have that sneaker with a \u201cBROWN\u201d, colorway?! ..... \u201cGOOD LUCK\u201d! I just unboxed this sneaker and man, they are a thing of beauty! I must own 10 to 12 pairs of Reebok sneakers already! However, with the exception of my Fluid Blue Reebok Classics in leather and my Maroon Reebok Club C 85 sneakers, I purchased months ago, these are the \u201cBEST\u201d, looking REEBOKS, I have in my sneaker collection and that\u2019s \u201cNOT\u201d, because they\u2019re new! It\u2019s because of their look, their color and their design! I can\u2019t wait to wear them outdoors! On my feet though, they feel comfortable, just like all Reebok sneakers tend to feel! So, I have no doubt I will be totally satisfied once I break them in, \u201cFULLY\u201d, at some point! This particular version is incredibly hard to find in a decent size, too! So, if you\u2019re into sneakers like I am, I would advise you to jump on them now, while they\u2019re still available and \u201cBEFORE\u201d, the season changes! They\u2019re worth every penny, in my opinion and bring something, \u201cUNIQUE\u201d, to your footwear wardrobe! \u201cTRUST ME\u201d, I get compliments all the time about my shoes and sneakers! Purchasing sneakers like this is \u201cONE\u201d, of the reasons why? I would recommend them to anyone for purchasing, you \u201cCAN\u2019T\u201d, go wrong! They\u2019re a, \u201cGEM\u201d!"
+  },
+  {
+    "user": "George B.",
+    "rating": 5.0,
+    "message": "Tennis muy bonitas y de exelente calidad buen regalo para mi hijo"
+  },
+  {
+    "user": "Troy Glauss",
+    "rating": 5.0,
+    "message": "Justamente lo que esperaba, buen confort y calidad"
+  },
+  {
+    "user": "Copetin",
+    "rating": 5.0,
+    "message": "Son hermosos me encantaron y son muy c\u00f3modos"
+  },
+  {
+    "user": "charles darling",
+    "rating": 5.0,
+    "message": "Very comfortable doesn\u2019t hurt feet at all"
+  },
+  {
+    "user": "Elyse",
+    "rating": 5.0,
+    "message": "Bought these for my boyfriend. He has another pair that he has worn out. So comfortable that he wears them like slippers"
+  },
+  {
+    "user": "Ivon Carolina Henriquez",
+    "rating": 3.0,
+    "message": "I don't like how is feel"
+  },
+  {
+    "user": "Julieta",
+    "rating": 5.0,
+    "message": "Me quedo un poquito peque\u00f1o pero son c\u00f3modos y buenos para caminar"
+  },
+  {
+    "user": "Jeremy W Fath",
+    "rating": 5.0,
+    "message": ""
+  },
+  {
+    "user": "Mike Huesmann",
+    "rating": 5.0,
+    "message": "Love the shoes and seller was great"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 5.0,
+    "message": "Gift to my husband for Father\u2019s Day"
+  },
+  {
+    "user": "Mark",
+    "rating": 5.0,
+    "message": "Good"
+  },
+  {
+    "user": "Taylor",
+    "rating": 5.0,
+    "message": "The shoes are perfect! Not too big and not too small. Ordered my usual size and they are great! Thank you so much!"
+  },
+  {
+    "user": "Britt",
+    "rating": 5.0,
+    "message": "I usually worry about buying shoes online, especially when it comes to walking shoes that I know I'm gonna be wearing most of the time. I have to say that these were JUST WHAT I HOPED FOR! I usually tie my shoes on the second loop on shoes unless they're hiking boots. Sometimes this makes the shoe too loose for some, but it was placed just right. NOT TOO TIGHT around the ankles and NOT SLIPPING OFF my heel, JUST PERFECT! Also, the sole gives just enough padding where my FOOT FITS SNUG and DOESN'T SLIP around in the shoe. HIGHLY RECOMMEND, AND DEFINITELY WOULD BUY AGAIN! *caps weren't meant for shouting, just emphasis, Cheers!"
+  },
+  {
+    "user": "Jackie",
+    "rating": 5.0,
+    "message": "He doesn't use them for working out, but his normal everyday use of them works freat."
+  },
+  {
+    "user": "Mohammad A. Khalil",
+    "rating": 4.0,
+    "message": "It\u2019s cool, you\u2019re gonna get exactly what you\u2019re gonna order. 60 bucks is a great price compared going to the mall where a simple ugly shoe cost more then 60 bucks."
+  },
+  {
+    "user": "footballfan",
+    "rating": 5.0,
+    "message": "I love these sneakers. It's comfortable and stylish. I wear these all the time. They're great."
+  },
+  {
+    "user": "Kesta Campbell",
+    "rating": 5.0,
+    "message": "Very good quality...so far so good"
+  },
+  {
+    "user": "Matthew Goodwin",
+    "rating": 5.0,
+    "message": "These shoes are amazing comfortable for work if your of your feet all day."
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 3.0,
+    "message": "The shoe doesn\u2019t looks nice anymore my son has only worn it a couple of times and the outside looks old and ugly Would not suggest buying these for an active boy"
+  },
+  {
+    "user": "ozan kucuktuncel",
+    "rating": 4.0,
+    "message": "work"
+  },
+  {
+    "user": "Andrew Jay Asher",
+    "rating": 5.0,
+    "message": "These are comfortable af"
+  },
+  {
+    "user": "Wendi",
+    "rating": 4.0,
+    "message": "Awesome old school"
+  },
+  {
+    "user": "Deanna Pennington",
+    "rating": 5.0,
+    "message": "i like comfort"
+  },
+  {
+    "user": "chantal norvell",
+    "rating": 5.0,
+    "message": "The shoes where extremely nice i loved my p"
+  },
+  {
+    "user": "Einav Gefen",
+    "rating": 4.0,
+    "message": "Great shoe, good quality. Shoe was a little too narrow for my husband so we had to return it ( he has wide feet)."
+  },
+  {
+    "user": "Carlos",
+    "rating": 5.0,
+    "message": "Muy c\u00f3moda me agrado"
+  },
+  {
+    "user": "Danny",
+    "rating": 5.0,
+    "message": "Money worth it"
+  },
+  {
+    "user": "eddie r.",
+    "rating": 5.0,
+    "message": "Very comfortable sneaker for me."
+  },
+  {
+    "user": "Melissa grady",
+    "rating": 5.0,
+    "message": "They fit perfectly"
+  },
+  {
+    "user": "Scott Johnson",
+    "rating": 4.0,
+    "message": "Just a heads up, for those with big feet (size 15 here) these fit a bit tight if you happen to be familiar with the sizing and width of a New Balance 574 \u2014 New Balance is one shoe brand that\u2019s good for offering us with extra large sizes so I imagine many of you who\u2019ve found an option here in Reebok\u2019s classic.  I have a slender profiled insole and it\u2019s taken about a month to get them to break in.. wish they had a wide option.  Good luck!"
+  },
+  {
+    "user": "Sometimes_A_Fantasy",
+    "rating": 5.0,
+    "message": "The shoes are just what I wanted and at a great price. The only thing that surprised me was that I ordered a size ten, and that's what I got, but they were a little too large. I probably could have ordered a nine had I known they run a little large. I can still wear them but just to let people know , you might want to consider a size smaller. actually a half size smaller would have been perfect. otherwise they are great."
+  },
+  {
+    "user": "Nicolaus",
+    "rating": 5.0,
+    "message": "I never thought life could be this easy! I once skateboarded through a wall of key lime pies on a dare, and I thought THAT was living. Until I put on these shoes for the first time and took a step. It reminds me of a spring day like for example April 17th where it\u2019s not to hot or cold and your feet are telling you that everything is going to be alright."
+  },
+  {
+    "user": "Danny",
+    "rating": 5.0,
+    "message": ""
+  },
+  {
+    "user": "MARCO P.",
+    "rating": 5.0,
+    "message": "Me agrado mucho"
+  },
+  {
+    "user": "Raidel Tellechea",
+    "rating": 5.0,
+    "message": "Muy c\u00f3modo y se ajusta s\u00faper"
+  },
+  {
+    "user": "Nelson santana",
+    "rating": 5.0,
+    "message": "C\u00f3modo bonito  y duradero"
+  },
+  {
+    "user": "Kirk Thomson",
+    "rating": 4.0,
+    "message": "Nice sneaker little tight on side but loosening up as I wear them."
+  },
+  {
+    "user": "Jose Alvarado",
+    "rating": 5.0,
+    "message": "I do like this brand, they are comfortable, very light to wear, they last longer, my Son is so happy wearing them."
+  },
+  {
+    "user": "edith",
+    "rating": 5.0,
+    "message": "LA TALLA HAY QUE BAJARLE UN NUMERO, VIENEN AMPLIOS. ORIGINALES Y TAL CUAL EL DISENO"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 5.0,
+    "message": "Exactly what I needed and quick turnaround time thank you for your quick response and a great shoe at a good price"
+  },
+  {
+    "user": "Lil Jeffy",
+    "rating": 5.0,
+    "message": "These have held up great I work in office at furniture company and constantly have to walk back to warehouse Thus I never wear white shoes to work These are comfortable and don\u2019t show dust easily I wear them every day cause they are my favorites and the most comfortable Highly recommend"
+  },
+  {
+    "user": "mario",
+    "rating": 4.0,
+    "message": "A la medida exacta  y el materia y color igual a los mostrados por el vendedor."
+  },
+  {
+    "user": "Freddy Vicente Diaz",
+    "rating": 4.0,
+    "message": "El size es un poco m\u00e1s grande del tama\u00f1o que deber\u00eda pero no me quedo mal"
+  },
+  {
+    "user": "Ronald Ortega Miers",
+    "rating": 5.0,
+    "message": "Recomiendo perfecto"
+  },
+  {
+    "user": "bryan l.",
+    "rating": 4.0,
+    "message": "I feel the seller should say that these are orthopedic shoes. Or at least ortho light. Its not a problem but because of that they do run larger and wider so they seem bulky. For me I wear them to work and stand all day so it's ok but I feel like a lot of people could benefit from knowing they are not regular sneakers"
+  },
+  {
+    "user": "Spliff Smallz",
+    "rating": 4.0,
+    "message": "The color isn't tan/khaki. It's more of a tinted clear and mint. And it's says synthetic leather,  nah more like synthetic swede. Tread lightly in these shoes. I still like them tho."
+  },
+  {
+    "user": "Mervin",
+    "rating": 5.0,
+    "message": "Price was good. Shipping was quick and a good product."
+  },
+  {
+    "user": "Nancy Gust",
+    "rating": 5.0,
+    "message": "The Reebok Classic is my son's favorite fit.  I also bought them for my husband.  Both guys were pleased and are enjoying them right now."
+  },
+  {
+    "user": "William Jaber",
+    "rating": 5.0,
+    "message": ""
+  },
+  {
+    "user": "Andy B.",
+    "rating": 5.0,
+    "message": "These are the 4th pair I've had in a few years. They hold up nicely and the white, blue and yellow is a nice bright colorway. These are always the most comfortable shoes for me to wear, since Reebok doesn't make them for slim-footed alien people. I have lots of room and they fit as expected. Reebok is about the only athletic/casual shoe i've worn for a few years now. New pair of socks with these and it's one of those small pleasures."
+  },
+  {
+    "user": "Nestor",
+    "rating": 5.0,
+    "message": "Nice design. I love the color combinations. Great classic sneaker."
+  },
+  {
+    "user": "David",
+    "rating": 5.0,
+    "message": "The Reebok Harman Runs are extremely comfortable and supportive with the modern insoles in the already comfortable classic shoe. They also have a very nice and comfortable sock liner and tongue and they are light, flexible and super quiet while walking hard surfaces and the lugged soles are great in dirt, rocks and gravel.  They seem to be just as great of quality as Reebok has always been which IMHO is one of the best in the business. I have worn all kinds of Reeboks over the decades and they remain my favorite brand in comfort and durability. The size fit just as expected.  And yes people these are 100% real Reeboks. :)"
+  },
+  {
+    "user": "Andre D.",
+    "rating": 4.0,
+    "message": "I love the way these shoes look, and I have received a ton of people asking me where i got them and saying they're cool. But, they have very little arch support, so if you need that (like I do) they may not be the most comfortable.."
+  },
+  {
+    "user": "Angie",
+    "rating": 3.0,
+    "message": "nice shoes but not true to size. Size down"
+  },
+  {
+    "user": "lilga.boy",
+    "rating": 4.0,
+    "message": "These shoes appear to run a half size small. I normally wear a size 11 with perfect toe room. Another pair of Reebok classics I have are an 11 and feel a half size too big, which I can deal with. I may have to return these after I sleep on it."
+  },
+  {
+    "user": "Patrick",
+    "rating": 5.0,
+    "message": "These sneakers are very light and comfortable.  They are legit unlike some of the other reviews I have read. Also, the sizing is on point. 11.5 in Nike is a perfect fit for me, so I winged it and ordered the same size in these Reebok. I was skeptical but turns out they are a perfect fit as well."
+  },
+  {
+    "user": "Jean G.",
+    "rating": 3.0,
+    "message": "None"
+  },
+  {
+    "user": "Project Guy",
+    "rating": 5.0,
+    "message": "AAAA+++  As described."
+  },
+  {
+    "user": "ToniWind",
+    "rating": 5.0,
+    "message": "I bought these sneakers for my fiance' to workout in but they were so comfortable that he made them his go to shoe.They are a great looking pair of sneakers,I didn't expect them to be so attractive.Great buy!!!"
+  },
+  {
+    "user": "Carmen J Perez",
+    "rating": 5.0,
+    "message": "Too tight on sides\u2639\ufe0f"
+  },
+  {
+    "user": "Mario Rojas Chacon",
+    "rating": 4.0,
+    "message": "Son muy lindas"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 5.0,
+    "message": "Comfortable shoe, like the new insoles \ud83d\udc4d\ud83c\udfff"
+  },
+  {
+    "user": "Vallee",
+    "rating": 4.0,
+    "message": "Comfortable and light weight. My husband wants to order another one."
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 4.0,
+    "message": "I really liked the way it looked. The toe box is big. I work as a PE teacher and deal with wet grass soaking through my shoes. This shoe does a great job keeping the wetness out. One thing I wish it had more cushion support, but overall a pretty good shoe."
+  },
+  {
+    "user": "Tyler crim",
+    "rating": 5.0,
+    "message": "Very comfortable, they look great, they were reasonably priced, didn\u2019t have to break them in. This is how shoes should be made right here"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 3.0,
+    "message": "La suela peso mucho.  Lo dem\u00e1s correcto"
+  },
+  {
+    "user": "Geckos to the Max",
+    "rating": 4.0,
+    "message": "I have been buying Reeboks for more years than I can count. I love them but these blue gel inserts they started putting in a couple years ago are not my thing. They get holes in them quickly and I end up buying a new pair of shoes every 3 months. There should be an option of having the new gel insert or the original."
+  },
+  {
+    "user": "Ennice Ross II",
+    "rating": 4.0,
+    "message": "I love these shoes! They fit perfectly & everything but there was a small cut onthe shoe that i know will become a huge problem sooner or later! I would simply like to damage my own shoes not wear a brand new pair already damaged! But besides that like i said i love them!"
+  },
+  {
+    "user": "Matt Coultress",
+    "rating": 4.0,
+    "message": "I've worn this brand and style of athletic shoe for at least two decades.  It's comfortable and works for me.  Unfortunately, the price, on Amazon, has gone through the roof over the past several years, so I'll probably switch to another brand or find another source. I recommend the Reeboks, but you'll want to shop around for a better price."
+  },
+  {
+    "user": "Jonathan Silva",
+    "rating": 5.0,
+    "message": "Good"
+  },
+  {
+    "user": "Michael",
+    "rating": 5.0,
+    "message": "I really like these shoes. They\u2019re very comfortable and they fit very well. The seller was so nice and they were super nice to me for the first time I ordered a wrong size and they will able to cancel my order right away. Also with my new order I received them within two days! They made me so happy. I highly recommend this seller. THEY ARE THE BEST EVER."
+  },
+  {
+    "user": "Yahh0o",
+    "rating": 5.0,
+    "message": "Purchased men size 4(blk and blu)for my daughter, $18. VS kids female size 3(blk and wht) also for my daughter, $58. Both shoes looks alike, comfortable, lite and great for walk/run. The only difference is the price! I wore these models of Reebok in grade school, Jr High, H.S, college and now still wearing these same models because of comfort. Daughter loves it! \ud83d\ude0d"
+  },
+  {
+    "user": "Amazon Customer",
+    "rating": 1.0,
+    "message": "I wear a lot of different shoes. Big supportive hiking boots to running in minimalist shoes. I wanted something that didn't look as goofy for when I was out and about in shorts. The other goal was to have some shoes with a little more cushioning. Maybe some bounce when walking and running. Many modern shoes look goofy as hell and I liked the way these looked. However, after putting them on my feet for a day, I couldn't stand them. These honestly felt like powerlifting shoes - no cushion, just a hard surface. Not at all what I was looking for."
+  },
+  {
+    "user": "Raw Osorio",
+    "rating": 1.0,
+    "message": "I send this back because they didn't fit plus i found something else I wanted so I send them back for a refund that I never got back . It's been a few months now an never got my refund Thank you for nothing.. next time just ask to take my money"
+  },
+  {
+    "user": "Zoto3.E",
+    "rating": 4.0,
+    "message": "Great looking shoe, it\u2019s a great shoe for casual wear. Not a long distance run or 5k shoe but is comfortable to wear to hang out shop or walking at the zoo. But I do like them for fashion and looks great with jeans and khakis."
+  },
+  {
+    "user": "Zandra Ross",
+    "rating": 4.0,
+    "message": "Like the comfort, need to go down a half size"
+  },
+  {
+    "user": "aaron",
+    "rating": 4.0,
+    "message": "9.5 fits big. More like a 10 to 10.5"
+  },
+  {
+    "user": "Haztive Dominicana",
+    "rating": 5.0,
+    "message": "The Reeboks are extremely comfortable and supportive with modern insoles in already comfortable classic footwear.  They also have a very nice and comfortable lining and tongue and they are light, flexible and super quiet while walking on hard surfaces and the dragged soles are excellent on dirt, rocks and gravel.  They seem to be as good quality as Reebok has ever been.  Size fits as expected."
+  },
+  {
+    "user": "Bernardo Reyes",
+    "rating": 4.0,
+    "message": "Son muy comodo y el color es crema claro,no son rosado como se ven en la foto,y el colir crema es hermoso. Excelente calzado."
+  },
+  {
+    "user": "eric",
+    "rating": 5.0,
+    "message": "I bought these specific colors because they match my sports team. And at a much better cost. They are very comfortable. Im on my feet all day. Probably one of the best pair of shoes I have owned in a while. Easy to get on and off and they fit great. and have extra room so your feet don't sweat. very nice design. I will be purchasing the same pair again."
+  },
+  {
+    "user": "Ricardo Romero",
+    "rating": 5.0,
+    "message": "Todo bien"
+  },
+  {
+    "user": "Kanatbek",
+    "rating": 5.0,
+    "message": "I love Redbook's shoes and t-shirts particularly because I like how they mix colors and create unique design for each its product. As usually,  this shoes perfectly fit to my size and match its quality. Moreover, it's  even arrived earlier than it was expected. I would love to order another design soon."
+  },
+  {
+    "user": "Charla",
+    "rating": 5.0,
+    "message": "Love this shoe and the color combination. I am a female and I tend to like men\u2019s style sneakers and they look smaller on my feet, as I wear a woman size 10. I did get an 8.5 in the men size, as that would be the size in comparison. I may have been able to take an 8, as I had a little room in my toe top part in the 8.5. I figure if I have socks on then the fit will be fine, as it\u2019s not unfitting with no socks. I plan to get this brand in others styles as well."
+  },
+  {
+    "user": "Jc2099",
+    "rating": 4.0,
+    "message": "If anyone is a wears a size 15 in other shoes make sure u buy a 14 or it will be to big. Also no matter how tight u tie them they will slide up and down your heel"
+  },
+  {
+    "user": "Frank",
+    "rating": 5.0,
+    "message": "These were the first shoes I have ever took out of the box put on and could wear everyday. No break in period extremely comfortable and I will definitely be buying more."
+  },
+  {
+    "user": "Sybil Koning",
+    "rating": 3.0,
+    "message": "Super disappointed with the exchange process. I needed a smaller size but the price increased $25. Really a bummer that you can't exchange for the price of the original purchase. I am a true size 5 and these are at least 1/2 size too large for me."
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "id": "B000ARKMQA",
+  "title": "Skechers Sport Women's Premium Sneaker",
+  "description": "The Premium sneaker from Skechers has all the protection that you need in an easy style that you want. Its padded insole, heel collar, and tongue will comfort your foot and keep you stabilized when you're all laced up and ready to work out or go for a run. The treaded sole will keep you sturdy and in control while its subtle glints of color show off your simple style. Skechers is an award-winning global leader in the lifestyle footwear industry that designs, develops, and markets lifestyle footwear that appeals to trend-savvy men, women and children. The company's success stems from it's high quality, diversified, and affordable product line that meets consumers' various lifestyle needs. Since it's inception in 1992, the Skechers diverse product offering has grown from utility style boots to include seven Skechers brands and five uniquely branded fashion lines for men and women.",
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71jxHwBisDL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.6,
+  "reviews_count": 11693,
+  "reviews_link": "https://www.amazon.com/Skechers-Sport-Womens-Premium-Sneaker/product-reviews/B000ARKMQA/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 40.99,
+    "to": 113.57
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B000ARB8UO/ref=twister_B000ARKMQA",
+      "id": "B000ARB8UO"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B000E6Q0T0/ref=twister_B000ARKMQA",
+      "id": "B000E6Q0T0"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B000E6MIYG/ref=twister_B000ARKMQA",
+      "id": "B000E6MIYG"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08MYNPBBB/ref=twister_B000ARKMQA",
+      "id": "B08MYNPBBB"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B000B28TFK/ref=twister_B000ARKMQA",
+      "id": "B000B28TFK"
+    }
+  ]
+}

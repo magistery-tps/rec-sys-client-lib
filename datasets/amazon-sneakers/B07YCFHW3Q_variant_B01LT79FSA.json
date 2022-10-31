@@ -1,0 +1,77 @@
+{
+  "id": "B07YCFHW3Q",
+  "title": "Skechers Women's Flex Appeal 2.0 Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71Xj6RLuBNL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.6,
+  "reviews_count": 18770,
+  "reviews_link": "https://www.amazon.com/Skechers-Womens-Flex-Appeal-Sneaker/product-reviews/B07YCFHW3Q/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 49.95,
+    "to": 59.95
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B07219745T/ref=twister_B07YCFHW3Q",
+      "id": "B07219745T"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01EOUVUNM/ref=twister_B07YCFHW3Q",
+      "id": "B01EOUVUNM"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09252K3GS/ref=twister_B07YCFHW3Q",
+      "id": "B09252K3GS"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0854BR6G7/ref=twister_B07YCFHW3Q",
+      "id": "B0854BR6G7"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07FN1N1ZY/ref=twister_B07YCFHW3Q",
+      "id": "B07FN1N1ZY"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B08LNWH5H7/ref=twister_B07YCFHW3Q",
+      "id": "B08LNWH5H7"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01AHK54MG/ref=twister_B07YCFHW3Q",
+      "id": "B01AHK54MG"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01BHS1M96/ref=twister_B07YCFHW3Q",
+      "id": "B01BHS1M96"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01G72Q12U/ref=twister_B07YCFHW3Q",
+      "id": "B01G72Q12U"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01J5AE560/ref=twister_B07YCFHW3Q",
+      "id": "B01J5AE560"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01NCZ1UYH/ref=twister_B07YCFHW3Q",
+      "id": "B01NCZ1UYH"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B076DXX6PV/ref=twister_B07YCFHW3Q",
+      "id": "B076DXX6PV"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01LT79C10/ref=twister_B07YCFHW3Q",
+      "id": "B01LT79C10"
+    }
+  ]
+}

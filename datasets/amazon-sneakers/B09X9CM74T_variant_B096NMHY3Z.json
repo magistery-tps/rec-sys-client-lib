@@ -1,0 +1,41 @@
+{
+  "id": "B09X9CM74T",
+  "title": "New Balance Men's 574 V2 Spilled Paint Sneaker",
+  "description": null,
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/71ezigw4hRL._AC_UX625_.jpg"
+    ]
+  ],
+  "rating": 4.6,
+  "reviews_count": 330,
+  "reviews_link": "https://www.amazon.com/New-Balance-Spilled-Paint-Sneaker/product-reviews/B09X9CM74T/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 59.99,
+    "to": 137.4
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B096NLKJPH/ref=twister_B09X9CM74T",
+      "id": "B096NLKJPH"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B096NM6283/ref=twister_B09X9CM74T",
+      "id": "B096NM6283"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B096NLNWG5/ref=twister_B09X9CM74T",
+      "id": "B096NLNWG5"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B093X5FB5C/ref=twister_B09X9CM74T",
+      "id": "B093X5FB5C"
+    }
+  ]
+}

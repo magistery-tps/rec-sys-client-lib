@@ -1,0 +1,33 @@
+{
+  "id": "B01M8K13AN",
+  "title": "Steve Madden Men's Fenta Fashion Sneaker",
+  "description": "Low top fashion sneaker Steve Madden, the company, was founded by Steve Madden, the man, in 1990 in Brooklyn, where he started out making trend-advancing shoes one pair at a time. It was not long after that the Steve Madden focus on \"now-ness\" earned rave reviews from young female fans mad for the funky, chic, and yet competitively priced footwear it produced. The company popularized the \"dressy sneaker,\" and continues to man the forefront of trends.",
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX695_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/81gaoP8XgVL._AC_UX395_.jpg"
+    ]
+  ],
+  "rating": 4.3,
+  "reviews_count": 5187,
+  "reviews_link": "https://www.amazon.com/Steve-Madden-Fenta-Fashion-Sneaker/product-reviews/B01M8K13AN/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 36.7,
+    "to": 59.95
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B01LVYXKTD/ref=twister_B01M8K13AN",
+      "id": "B01LVYXKTD"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B01LVWD6TD/ref=twister_B01M8K13AN",
+      "id": "B01LVWD6TD"
+    }
+  ]
+}

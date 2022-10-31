@@ -1,0 +1,73 @@
+{
+  "id": "B003M68UN8",
+  "title": "Skechers Sport Men's Stamina Nuovo Cutback Lace-Up Sneaker",
+  "description": "Enjoy classic, sporty styling and exceptional comfort in this casual sneaker from Skechers.1 1/2 inch heel height Enjoy classic sporty styling and exceptional cushioned comfort in the men's Stamina Nuovo sneaker from Skechers. This casual trainer features a smooth nubuck leather upper with reflective metallic trim for enhanced visibility. P.when('A').execute(function(A) {\n                  A.on('a:expander:toggle_description:toggle:collapse', function(data) {\n                    window.scroll(0, data.expander.$expander[0].offsetTop-100);\n                  });\n                }); Skechers is an award-winning global leader in the lifestyle footwear industry that designs, develops, and markets lifestyle footwear that appeals to trend-savvy men, women, and children. The company's success stems from its high-quality, diversified, and affordable product line that meets consumers' various lifestyle needs. Since its inception in 1992, Skechers' diverse product offering has grown from utility-styled boots to include seven Skechers brands and five uniquely branded fashion lines for the whole family. See more",
+  "images": [
+    [
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX675_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX575_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX535_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX395_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX500_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX625_.jpg",
+      "https://m.media-amazon.com/images/I/81Ys2tYhPnL._AC_UX695_.jpg"
+    ]
+  ],
+  "rating": 4.6,
+  "reviews_count": 15836,
+  "reviews_link": "https://www.amazon.com/Skechers-Stamina-Cutback-Lace-Up-Sneaker/product-reviews/B003M68UN8/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  "price_range": {
+    "from": 59.99,
+    "to": 76.77
+  },
+  "variants": [
+    {
+      "url": "https://www.amazon.com/dp/B00VR5QISA/ref=twister_B003M68UN8",
+      "id": "B00VR5QISA"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00VR5PT30/ref=twister_B003M68UN8",
+      "id": "B00VR5PT30"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09238PQX2/ref=twister_B003M68UN8",
+      "id": "B09238PQX2"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07NQSBYVH/ref=twister_B003M68UN8",
+      "id": "B07NQSBYVH"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07P23GGMD/ref=twister_B003M68UN8",
+      "id": "B07P23GGMD"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0037UZAMI/ref=twister_B003M68UN8",
+      "id": "B0037UZAMI"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B0037UZB7W/ref=twister_B003M68UN8",
+      "id": "B0037UZB7W"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07P23DY79/ref=twister_B003M68UN8",
+      "id": "B07P23DY79"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B09255HSXQ/ref=twister_B003M68UN8",
+      "id": "B09255HSXQ"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07P3724MY/ref=twister_B003M68UN8",
+      "id": "B07P3724MY"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07NYTJ96Z/ref=twister_B003M68UN8",
+      "id": "B07NYTJ96Z"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B07HCDZJCP/ref=twister_B003M68UN8",
+      "id": "B07HCDZJCP"
+    }
+  ]
+}
