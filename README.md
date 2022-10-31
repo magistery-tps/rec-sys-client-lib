@@ -11,11 +11,12 @@
 ## Componentes
 
 * **recsys**: Web app de recomendación de items. Permite recomendar items personalizados.
-   * Login with google
-   * Api: Permote administrar itmes, interacciones y matrices de distancia via rest.
-   * Pantalla de punciacion de items.
-   * Pantalla de visializacionde recommendaciones.
-   * Cdud de items.
+   * Login with google.
+   * API: Permite administrar items, interacciones, users, matrices de distancia, etc.. via rest.
+   * Pantalla para puntuación de items.
+   * Pantalla de visialización de recommendaciones.
+   * CRUD de items.
+   * Admin site.
 
 ![RecSys Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
