@@ -28,6 +28,7 @@
             * [preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)
             * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb): Carga de datos en la base de datos de **recsys**.
     * [Administrar users, items, interacciones y matrices de distancia via api usando `RecSysApi`](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb)
+    * Proceso para generacion de matrices de distancia en Airflow (Pending)
 
 
 * **[amazon-spider-scrapper](https://github.com/adrianmarino/amazon-spider-scrapper)**
