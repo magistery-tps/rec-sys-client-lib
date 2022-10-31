@@ -1,6 +1,8 @@
 # UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación
 
 
+Implementación de un sistema de recomendación punta a punta. Desde el scrapping de datos hasta la implementación de una aplicación y los algoritmos necesarios.
+
 ## Requisitos
 
 * [anaconda](https://www.anaconda.com/products/individual) / [miniconda](https://docs.conda.io/en/latest/miniconda.html) / [mamba (Recomendado)](https://github.com/mamba-org/mamba)
