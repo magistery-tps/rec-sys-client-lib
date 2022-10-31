@@ -25,15 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    '0.0.0.0',
-    '192.168.2.187', 
-    'skynet', 
-    'localhost'
-]
-
-
 # Application definition
 
 INSTALLED_APPS = [
