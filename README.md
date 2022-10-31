@@ -84,3 +84,13 @@ $ python manage.py runserver localhost:8000
 
 **Step 7**: Ir a http://localhost:8000.
 
+**Step 8**: Levantar jupiter lab.
+
+```bash
+$ jupyter lab
+
+Jupyter Notebook 6.1.4 is running at:
+http://localhost:8888/?token=45efe99607fa6......
+```
+
+**Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
