@@ -79,8 +79,8 @@ $ python manage.py createsuperuser
 
 ```bash
 $ cd recsys
-$ python manage.py runserver
+$ python manage.py runserver localhost:8000
 ```
 
-**Step 7**: Ir a http://127.0.0.1:8000.
+**Step 7**: Ir a http://localhost:8000.
 
