@@ -148,7 +148,7 @@ LOGIN_URL = '/sign-in'
 
 SCORE_LEVELS = [1, 2, 3, 4, 5]
 
-ITEMS_PAGE_SIZE = 5
+ITEMS_PAGE_SIZE = 10
 
 
 REST_FRAMEWORK = {
@@ -199,6 +199,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 NO_IMAGE_ITEM_URL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6GzsDjtMHfNDs7RF_wyHEQ0YV_3CFtuNe6soyLFyge87HcXs1GZS-aBNH9ti6lb_PXlw&usqp=CAU"
+
 
 import django_heroku
 django_heroku.settings(locals())

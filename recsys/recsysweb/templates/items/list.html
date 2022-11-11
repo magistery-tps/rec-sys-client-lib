@@ -9,17 +9,29 @@
 {%block title%}<h3 class="display-8 fw-bold"><span class="bi-server">&ensp;Items</h1>{% endblock %}
 
 {%block content%}
+
+<script>
+  var context = {}
+
+  function onCardLoad(img) {
+      if (img.naturalWidth < 14 && img.naturalHeight < 14) {
+          img.src='{{ NO_IMAGE_ITEM_URL }}'
+      }
+      // console.log("width: " + img.naturalWidth + ', height: ' + img.naturalHeight)
+  }
+</script>
+
 <div class="card">
   <div class="card-header text-end">
     <div class="btn-group">
       {% if page.has_previous %}
-          <a 
+          <a
             class="btn btn-primary btn-lg"
             role="button"
             href="?page=1"
           ><span class="bi-chevron-double-left"></span></a>
 
-          <a 
+          <a
           class="btn btn-primary btn-lg"
           role="button"
           href="?page={{ page.previous_page_number }}"
@@ -31,8 +43,7 @@
             role="button"
             href="?page={{ page.next_page_number }}"
           ><span class="bi-chevron-right"></a>
-            
-          <a 
+          <a
           class="btn btn-primary btn-lg"
           role="button"
           href="?page={{ page.paginator.num_pages }}"
@@ -44,7 +55,7 @@
       <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
     </div>
   </div>
-    
+
   <div class="card-body">
     <span class="step-links">
       Page <strong>{{ page.number }}</strong> of <strong>{{ page.paginator.num_pages }}</strong>
@@ -61,7 +72,7 @@
       <tbody>
         {% for item in page %}
           <tr scope="row">
-            <td><img src="{{ item.image }}" style="width: 100%" /></td>
+            <td><img src="{{ item.image }}" style="width: 100%" onload="onCardLoad(this);" /></td>
             <td><strong>{{ item.name }}</strong></td>
             <td>{{ item.description }}</td>
             <td>

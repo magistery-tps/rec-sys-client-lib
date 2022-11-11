@@ -77,10 +77,10 @@
 .card-like img {
     max-height: 100%;
     background-color: #f8f9fa;
-}   
+}
 .card-like .img-wrapper {
     max-width: 100%;
-    height: 25em;   
+    height: 40em;
     display: flex;
     align-items: center;
     align-self: center;

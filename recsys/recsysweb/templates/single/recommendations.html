@@ -8,6 +8,12 @@
 {%block content%}
     <script>
         var context = {}
+
+        function onCardLoad(img) {
+            if (img.naturalWidth < 14 && img.naturalHeight < 14) {
+                img.src='{{ NO_IMAGE_ITEM_URL }}'
+            }
+        }
     </script>
 
     {% for recommendation in recommendations %}
@@ -23,16 +29,9 @@
                                     id="{{ item.id }}"
                                     src="{{ item.image }}"New Suede Shoe Cleaner Kit. Suede Brush & Suede Eraser for …
                                     alt="{{ item.name }}"
-                                    class="d-block  w-100 round-image"
+                                    class="d-block  w-100 round-image",
+                                    onload="onCardLoad(this);"
                                 >
-                                <script>
-                                    window.addEventListener("load", event => {
-                                        var img = document.getElementById('{{ item.id }}');
-                                        if (img.naturalWidth < 14 && img.naturalHeight < 14) {
-                                            img.src='{{ NO_IMAGE_ITEM_URL }}'
-                                        }
-                                    });
-                                </script>
                             </div>
                             <div class="card-body">
                                 <h7 class="card-title"><strong>{{ item.name|truncatechars:60 }}</strong></h7>
