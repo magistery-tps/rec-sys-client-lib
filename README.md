@@ -22,6 +22,10 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 ![RecSys Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
+![RecSys Likes](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png)
+
+![RecSys Items](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png)
+
 * **notebooks**
     * Pre-carga de datasets amazon sneakers o movie-lens.
         * **Amazon sneakers**: Datasets de zapatillas extraído de Amazon US.
