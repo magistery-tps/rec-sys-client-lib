@@ -24,7 +24,6 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 ![RecSys Likes](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png)
 
-![RecSys Items](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png)
 
 * **notebooks**
     * Pre-carga de datasets amazon sneakers o movie-lens.
