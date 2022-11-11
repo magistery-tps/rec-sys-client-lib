@@ -14,14 +14,14 @@ class Item(models.Model):
 
 class Interaction(models.Model):
 #    user = models.ForeignKey(
-#        'auth.User', 
-#        db_column  = 'user_id',  
+#        'auth.User',
+#        db_column  = 'user_id',
 #        on_delete  = models.DO_NOTHING,
 #        unique     = False
 #   )
     user = models.IntegerField(
-         db_column  = 'user_id',
-         unique     = False
+        db_column  = 'user_id',
+        unique     = False
     )
     item = models.ForeignKey(
         Item,
@@ -57,5 +57,5 @@ class Recommendations:
         self.name  = name
         self.id    = name.replace(' ', '-')
         self.items = list(items)
-    
+
     def is_empty(self): return len(self.items) == 0

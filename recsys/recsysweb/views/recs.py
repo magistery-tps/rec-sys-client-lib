@@ -9,7 +9,6 @@ from ..forms import LikeForm
 item_rec_service = ItemRecService()
 
 
-
 @login_required
 def likes(request):
     response = { 'score_levels': settings.SCORE_LEVELS }
@@ -36,4 +35,5 @@ def recommendations(request):
     if not recs:
         response['messages'] = ['Not found Items!']
 
+    response['NO_IMAGE_ITEM_URL'] = settings.NO_IMAGE_ITEM_URL
     return render(request, 'single/recommendations.html', response)

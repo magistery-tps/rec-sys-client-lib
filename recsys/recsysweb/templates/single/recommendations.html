@@ -20,10 +20,19 @@
                         <div class="card">
                             <div class="img-wrapper">
                                 <img
+                                    id="{{ item.id }}"
                                     src="{{ item.image }}"New Suede Shoe Cleaner Kit. Suede Brush & Suede Eraser for …
-                                    alt="{{ item.name }}" 
+                                    alt="{{ item.name }}"
                                     class="d-block  w-100 round-image"
                                 >
+                                <script>
+                                    window.addEventListener("load", event => {
+                                        var img = document.getElementById('{{ item.id }}');
+                                        if (img.naturalWidth < 14 && img.naturalHeight < 14) {
+                                            img.src='{{ NO_IMAGE_ITEM_URL }}'
+                                        }
+                                    });
+                                </script>
                             </div>
                             <div class="card-body">
                                 <h7 class="card-title"><strong>{{ item.name|truncatechars:60 }}</strong></h7>
@@ -43,33 +52,33 @@
             </button>
         </div>
 
-        <script> 
+        <script>
             context['{{recommendation.id}}'] = {
                 multipleCardCarousel: document.querySelector("#{{recommendation.id}}")
             }
-    
+
             if (window.matchMedia("(min-width: 768px)").matches) {
                 context['{{recommendation.id}}']['carousel']       =  new bootstrap.Carousel(context['{{recommendation.id}}'].multipleCardCarousel, {interval: false}),
                 context['{{recommendation.id}}']['carouselWidth']  = $("#{{recommendation.id}} .carousel-inner")[0].scrollWidth,
-                context['{{recommendation.id}}']['cardWidth']       = $("#{{recommendation.id}} .carousel-item").width(),
+                context['{{recommendation.id}}']['cardWidth']      = $("#{{recommendation.id}} .carousel-item").width(),
                 context['{{recommendation.id}}']['scrollPosition'] = 0
-    
+
                 $("#{{recommendation.id}} .carousel-control-next").on("click", function () {
                     if (context['{{recommendation.id}}'].scrollPosition < context['{{recommendation.id}}'].carouselWidth - context['{{recommendation.id}}'].cardWidth * 4) {
                         context['{{recommendation.id}}'].scrollPosition += context['{{recommendation.id}}'].cardWidth;
                         $("#{{recommendation.id}} .carousel-inner").animate(
                             { scrollLeft: context['{{recommendation.id}}'].scrollPosition },
-                            600
+                            200
                         );
                     }
                 });
-    
+
                 $("#{{recommendation.id}} .carousel-control-prev").on("click", function () {
                     if (context['{{recommendation.id}}'].scrollPosition > 0) {
                         context['{{recommendation.id}}'].scrollPosition -= context['{{recommendation.id}}'].cardWidth;
                         $("#{{recommendation.id}} .carousel-inner").animate(
                             { scrollLeft: context['{{recommendation.id}}'].scrollPosition },
-                            600
+                            200
                         );
                     }
                 });

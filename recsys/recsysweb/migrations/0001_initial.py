@@ -15,9 +15,9 @@ class Migration(migrations.Migration):
             name='Item',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=200, verbose_name='Name')),
-                ('description', models.TextField(max_length=1000, verbose_name='Description')),
-                ('image', models.CharField(max_length=255, verbose_name='Image URL')),
+                ('name', models.CharField(max_length=100, verbose_name='Name')),
+                ('description', models.TextField(max_length=5000, verbose_name='Description')),
+                ('image', models.CharField(max_length=500, verbose_name='Image URL')),
             ],
         ),
     ]
