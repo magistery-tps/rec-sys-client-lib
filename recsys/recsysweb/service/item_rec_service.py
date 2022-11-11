@@ -35,6 +35,7 @@ class ItemRecService:
                         LEFT JOIN
                         recsysweb_interaction AS i
                         ON it.id = i.item_id
+                    LIMIT 80000
                 ) as t
                 WHERE
                     t.item_id NOT IN (
