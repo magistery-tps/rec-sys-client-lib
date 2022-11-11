@@ -22,7 +22,9 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 ![RecSys Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
-![RecSys Likes](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png | width=50)
+<p align="center">
+<img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="500" />
+</p>
 
 
 * **notebooks**
