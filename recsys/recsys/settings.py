@@ -49,7 +49,9 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    
+    'django_apscheduler'
 ]
 
 MIDDLEWARE = [
@@ -199,6 +201,27 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 NO_IMAGE_ITEM_URL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6GzsDjtMHfNDs7RF_wyHEQ0YV_3CFtuNe6soyLFyge87HcXs1GZS-aBNH9ti6lb_PXlw&usqp=CAU"
+
+
+
+# Format string for displaying run time timestamps in the Django admin site. The default
+# just adds seconds to the standard Django format, which is useful for displaying the timestamps
+# for jobs that are scheduled to run on intervals of less than one minute.
+# 
+# See https://docs.djangoproject.com/en/dev/ref/settings/#datetime-format for format string
+# syntax details.
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+
+# Maximum run time allowed for jobs that are triggered manually via the Django admin site, which
+# prevents admin site HTTP requests from timing out.
+# 
+# Longer running jobs should probably be handed over to a background task processing library
+# that supports multiple background worker processes instead (e.g. Dramatiq, Celery, Django-RQ,
+# etc. See: https://djangopackages.org/grids/g/workers-queues-tasks/ for popular options).
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
+
+SCHEDULER_AUTOSTART = True
 
 
 import django_heroku

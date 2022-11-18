@@ -28,3 +28,4 @@ dependencies:
         - pytorch-common==0.0.19
         - torchmetrics
         - simple-rest-client
+        - django-apscheduler

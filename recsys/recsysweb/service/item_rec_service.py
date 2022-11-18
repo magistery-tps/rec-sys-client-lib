@@ -2,6 +2,7 @@ from ..models import Item, Interaction, Recommendations
 from django.db import connection
 import random
 
+
 class ItemRecService:
     def rate_item_for(self, item_id, user, rating):
         item = Item.objects.get(id=item_id)
@@ -58,33 +59,61 @@ class ItemRecService:
         )
 
 
-    def find_populars(self, limit=10):
+    def refresh_popularity(self):
         items = Item.objects.raw(
             """
                 SELECT
                     t.item_id as id,
                     t.name,
                     t.description,
-                    sum(t.rating) / count(t.rating) as rating
+					t.image,
+                    (count(t.rating)/ (SELECT COUNT(*) FROM recsysweb_interaction)) * avg(t.rating) * 10000 as popularity
                 FROM
                 (
                     SELECT
-                        it.id     as item_id,
-                        i.user_id as user_id,
-                        IF(i.rating IS NULL, 0, i.rating) as rating,
-                        it.name   as name,
+                        it.id          as item_id,
+                        inter.user_id  as user_id,
+                        IF(inter.rating IS NULL, 0, inter.rating) as rating,
+                        it.name        as name,
                         it.description as description,
-                        it.image  as image
+                        it.image       as image
                     FROM
-                        recsysweb_item AS it  LEFT JOIN
-                        recsysweb_interaction AS i
-                        ON it.id = i.item_id
-                    LIMIT 80000
+						recsysweb_item AS it INNER JOIN recsysweb_interaction AS inter
+                        ON it.id = inter.item_id
                 ) as t
-                GROUP BY t.item_id
-                ORDER BY rating DESC
-                LIMIT 1000
-            """.replace('\n', ' ')
+                GROUP BY
+					t.item_id
+            """
+        )
+        for item in items:
+            item.save()
+
+
+    def find_populars(self, user, limit=10, shuffle_limit=100):
+        items = Item.objects.raw(
+            """
+                SELECT
+                    *
+                FROM
+                    recsysweb_item
+                WHERE
+                    id NOT IN (
+                        SELECT
+                            DISTINCT i.item_id
+                        FROM
+                            recsysweb_interaction AS i
+                        WHERE
+                            i.user_id = :USER_ID
+                    )
+                GROUP BY
+                    id
+                ORDER BY
+                    popularity DESC
+                LIMIT :LIMIT
+            """ \
+                .replace('\n', ' ') \
+                .replace(':USER_ID', str(user.id)) \
+                .replace(':LIMIT', str(shuffle_limit))
         )
 
         return Recommendations(
@@ -102,7 +131,7 @@ class ItemRecService:
 
     def find_all(self, user, limit=20):
         recs = [
-            self.find_populars(limit),
-            self.find_recommended_for( user, limit)
+            self.find_populars(user, limit),
+            self.find_recommended_for(user, limit)
         ]
         return [ r for r in recs if not r.is_empty()]
