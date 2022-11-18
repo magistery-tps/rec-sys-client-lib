@@ -15,7 +15,7 @@ class ItemRecService:
 
 
     def find_items_non_scored_by(self, user):
-        return self.find_populars(user, limit=1, shuffle_limit=1)
+        return self.find_populars(user, limit=1, shuffle_limit=50)
 
 
     def refresh_popularity(self):
@@ -48,11 +48,16 @@ class ItemRecService:
             item.save()
 
 
-    def find_populars(self, user, limit=10, shuffle_limit=100):
+    def find_populars(self, user, limit=10, shuffle_limit=500):
         items = Item.objects.raw(
             """
                 SELECT
-                    *
+                    DISTINCT 
+                    id,
+                    name,
+                    description,
+					image,
+                    popularity
                 FROM
                     recsysweb_item
                 WHERE
@@ -75,10 +80,10 @@ class ItemRecService:
                 .replace(':LIMIT', str(shuffle_limit))
         )
 
-        return Recommendations(
-            name = 'populars',
-            items = random.choices(items, k=limit)
-        )
+        selected_items = random.choices(items, k=limit)
+        selected_items = sorted(selected_items, key=lambda item: item.popularity, reverse=True)
+         
+        return Recommendations('populars', selected_items)
 
 
     def find_recommended_for(self, user, limit=10):

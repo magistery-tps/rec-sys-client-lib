@@ -25,6 +25,7 @@ def likes(request):
     else:
         response['item'] = recommendations.items[0]
 
+    response['NO_IMAGE_ITEM_URL'] = settings.NO_IMAGE_ITEM_URL
     return render(request, 'single/likes.html', response)
 
 
