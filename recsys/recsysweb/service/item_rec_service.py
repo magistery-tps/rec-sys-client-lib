@@ -15,7 +15,7 @@ class ItemRecService:
 
 
     def find_items_non_scored_by(self, user):
-        return self.find_populars(user, limit=1, shuffle_limit=50)
+        return self.find_populars(user, limit=1, shuffle_limit=100)
 
 
     def refresh_popularity(self):

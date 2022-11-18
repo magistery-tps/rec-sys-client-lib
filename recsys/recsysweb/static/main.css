@@ -128,3 +128,9 @@ label[for="id_email"] {
 }
 
 #id_email { display: none;}  
+
+
+.card-text {
+    padding-top: 10px;
+    font-size: 14px;
+}
