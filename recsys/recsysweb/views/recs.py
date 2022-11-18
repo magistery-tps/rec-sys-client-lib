@@ -18,12 +18,13 @@ def likes(request):
         item_rec_service.rate_item_for(form.item_id, request.user, form.rating)
         print(form)
 
-    items = item_rec_service.find_items_non_scored_by(request.user)
+    recommendations = item_rec_service.find_items_non_scored_by(request.user)
 
-    if items:
-        response['item'] = random.choice(items)
-    else:
+    if recommendations.is_empty():
         response['messages'] = ['Not found Items!']
+    else:
+        response['item'] = recommendations.items[0]
+
     return render(request, 'single/likes.html', response)
 
 

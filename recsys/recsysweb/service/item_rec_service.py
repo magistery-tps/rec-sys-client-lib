@@ -14,49 +14,8 @@ class ItemRecService:
         interaction.save()
 
 
-    def find_items_non_scored_by(self, user, limit = 100):
-        return Item.objects.raw(
-            """
-                SELECT
-                    t.item_id as id,
-                    t.name,
-                    t.description,
-                    sum(t.rating) / count(t.rating) as rating
-                FROM
-                (
-                    SELECT
-                        it.id     as item_id,
-                        i.user_id as user_id,
-                        IF(i.rating IS NULL, 0, i.rating) as rating,
-                        it.name   as name,
-                        it.description as description,
-                        it.image  as image
-                    FROM
-                        recsysweb_item AS it
-                        LEFT JOIN
-                        recsysweb_interaction AS i
-                        ON it.id = i.item_id
-                    LIMIT 80000
-                ) as t
-                WHERE
-                    t.item_id NOT IN (
-                        SELECT
-                            DISTINCT i.item_id
-                        FROM
-                            recsysweb_interaction AS i
-                        WHERE
-                            i.user_id = :USER_ID
-                    )
-                GROUP BY
-                    t.item_id
-                ORDER BY
-                    rating DESC
-                LIMIT :LIMIT
-            """ \
-                .replace('\n', ' ') \
-                .replace(':USER_ID', str(user.id)) \
-                .replace(':LIMIT', str(limit))
-        )
+    def find_items_non_scored_by(self, user):
+        return self.find_populars(user, limit=1, shuffle_limit=1)
 
 
     def refresh_popularity(self):
