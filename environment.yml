@@ -29,3 +29,4 @@ dependencies:
         - torchmetrics
         - simple-rest-client
         - django-apscheduler
+        - surprise

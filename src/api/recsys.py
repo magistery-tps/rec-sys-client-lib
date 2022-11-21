@@ -28,14 +28,17 @@ class DistanceMatrixResource(Resource):
 class DistanceMatrixCellResource(Resource):
     actions = ActionsFactory.create('distances-matrix-cells')
 
-
+"""
+https://python-simple-rest-client.readthedocs.io/en/latest/quickstart.html
+"""
 class RecSysApi:
-    def __init__(self, token, host='http://localhost:8000'):
+    def __init__(self, token, host='http://localhost:8000', timeout=30):
         headers = {'Authorization': f'Token {token}'}
         api = API(
             api_root_url     = host,
             headers          = headers,
-            json_encode_body = True
+            json_encode_body = True,
+            timeout          = timeout
         )
         api.add_resource(resource_name='users', resource_class=UserResource)
         api.add_resource(resource_name='items', resource_class=ItemResource)

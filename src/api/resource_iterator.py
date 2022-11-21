@@ -11,6 +11,7 @@ class ResourceIterator:
         self.page_size      = page_size
         self.next_offset    = 0
         self.current_offset = 0
+        self.total          = 0
 
     @property
     def page(self): return int(self.current_offset / self.page_size) + 1
@@ -28,6 +29,9 @@ class ResourceIterator:
         page = self.call(self.next_offset,  self.page_size).body
         
         params = url_params(page['next'])
+
+        self.total = int(page['count'])
+
         if page['next']:
             self.next_offset    = int(params['offset'][0])
             self.current_offset = self.next_offset - self.page_size
@@ -38,9 +42,9 @@ class ResourceIterator:
         return page['results']
 
     
-def to_dataframe(resource_iterator, to_row):
+def to_dataframe(res_iter, to_row):
     rows = []
-    for page in resource_iterator:
+    for page in res_iter:
         rows.extend([to_row(e) for e in page])
-        print(f'Page..{resource_iterator.page}')
+        print(f'Page {res_iter.page} downloaded. Items: {int(res_iter.page*res_iter.page_size)}/{res_iter.total}.')
     return pd.DataFrame.from_records(rows)
