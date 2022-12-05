@@ -48,11 +48,11 @@ class ItemRecService:
             item.save()
 
 
-    def find_populars(self, user, limit=10, shuffle_limit=500):
+    def find_populars(self, user, limit=10, shuffle_limit=80):
         items = Item.objects.raw(
             """
                 SELECT
-                    DISTINCT 
+                    DISTINCT
                     id,
                     name,
                     description,
@@ -82,7 +82,7 @@ class ItemRecService:
 
         selected_items = random.choices(items, k=limit)
         selected_items = sorted(selected_items, key=lambda item: item.popularity, reverse=True)
-         
+
         return Recommendations('populars', selected_items)
 
 

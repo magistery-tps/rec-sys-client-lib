@@ -1,5 +1,6 @@
 from urllib.parse import urlsplit, parse_qs
 import pandas as pd
+import math
 
 
 def url_params(url): return parse_qs(urlsplit(url).query)
@@ -13,14 +14,26 @@ class ResourceIterator:
         self.current_offset = 0
         self.total          = 0
 
+
     @property
     def page(self): return int(self.current_offset / self.page_size) + 1
 
+    @property
+    def total_pages(self): return math.ceil(self.total/self.page_size)
+
+    @property
+    def count(self):
+        count = int(self.page * self.page_size)
+        return self.total if count > self.total else count
+
+    
     def reset(self): self.next_offset = 0
+    
 
     def __iter__(self):
         self.reset()
         return self
+
 
     def __next__(self):
         if self.next_offset is None:
@@ -32,6 +45,7 @@ class ResourceIterator:
 
         self.total = int(page['count'])
 
+
         if page['next']:
             self.next_offset    = int(params['offset'][0])
             self.current_offset = self.next_offset - self.page_size
@@ -40,11 +54,3 @@ class ResourceIterator:
             self.current_offset += self.page_size
         
         return page['results']
-
-    
-def to_dataframe(res_iter, to_row):
-    rows = []
-    for page in res_iter:
-        rows.extend([to_row(e) for e in page])
-        print(f'Page {res_iter.page} downloaded. Items: {int(res_iter.page*res_iter.page_size)}/{res_iter.total}.')
-    return pd.DataFrame.from_records(rows)

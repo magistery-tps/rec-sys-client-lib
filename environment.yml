@@ -30,3 +30,4 @@ dependencies:
         - simple-rest-client
         - django-apscheduler
         - surprise
+        - persist-queue
