@@ -29,9 +29,14 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 * **notebooks**
     * Pre-carga de datasets amazon sneakers o movie-lens.
-        * **Amazon sneakers**: Datasets de zapatillas extraído de Amazon US.
-            * [build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/build-datasets.ipynb): Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
-            * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
+    
+       * **Amazon Books**: Datasets de zapatillas extraído de Amazon US.
+            * [build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb): Construcción de un datasets de items e interacciones de usuarios.
+            * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
+            * [distance-matrix-job](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job): Notebook que consulta via rest api interacciones, genera una matrix de distancia y hace push de la matrix via rest. Basicamente calcula matrices de distancias user-user item-item.        
+        * **Amazon Sneakers**: Datasets de zapatillas extraído de Amazon US.
+            * [build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb): Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
+            * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
         * **Movie Lens**: Datasets de películas con scoring personalizado.
             * [preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)
             * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb): Carga de datos en la base de datos de **recsys**.
