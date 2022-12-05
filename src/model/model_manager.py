@@ -33,3 +33,7 @@ class ModelManager:
                 percent = (len(ratings)/user_item_df.shape[0])*100
                 logging.info(f'Prediction progress: {percent:.0f}%')
         return ratings
+
+    def predict_inplase(self, user_item_df, progress_each = 100000):
+        user_item_df['rating'] = self.predict(user_item_df)
+        return user_item_df

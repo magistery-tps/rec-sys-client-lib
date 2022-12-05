@@ -1,6 +1,7 @@
 from scipy.sparse import  dok_matrix, csr_matrix
 import logging
 from IPython.display import clear_output
+import pandas as pd
 
 
 norm = lambda df: (df - df.mean()) / df.std()
@@ -22,3 +23,12 @@ def df_to_matrix(df, x_col='user_id', y_col='item_id', value_col='rating', progr
             logging.info(f'Processing: {percent:.0f}%')
 
     return csr_matrix(matrix)
+
+
+def concat(df_a, df_b): return pd.concat([df_a, df_b], axis=0)
+
+
+def save(df, path, header=True): df.to_csv(path, encoding='utf-8', index=False, header=header)
+
+
+def load(path): return pd.read_csv(path)
