@@ -18,18 +18,15 @@ class DomainContext(metaclass=ut.SingletonMeta):
         self.__user_repository        = UserRepository(client, user_mapper)
         self.__item_repository        = ItemRepository(client, item_mapper)
         self.__interaction_repository = InteractionRepository(client, interaction_mapper)
-
+        
         # Services
         self.__interaction_service    = InteractionService(self.__interaction_repository)
+        self.__rating_matrix_service  = RatingMatrixService(self.__interaction_service)
 
-    @property
-    def user_repository(self): return self.__user_repository
-
-    @property
-    def item_repository(self): return self.__item_repository
-
-    @property
-    def interaction_repository(self): return self.__interaction_repository
 
     @property
     def interaction_service(self): return self.__interaction_service
+
+
+    @property
+    def rating_matrix_service(self): return self.__rating_matrix_service

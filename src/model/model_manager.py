@@ -1,27 +1,34 @@
+import numpy as np
 from surprise import Dataset, Reader
 from surprise import SVD
 from IPython.display import clear_output
 import logging
 
 
+
+class DatasetFactory:
+    @classmethod
+    def create(clz, df):
+        rating_scale  = clz.__rating_scale(df)
+        reader        = Reader(rating_scale=rating_scale)
+        return Dataset.load_from_df(df, reader)
+
+    @staticmethod
+    def __rating_scale(df):
+        ratings = np.unique(df['rating'])
+        scale = (int(ratings.min()), int(ratings.max()))
+        logging.info(f'Rating Scale: {scale}')
+        return scale
+
+
+
 class ModelManager:
-    def __init__(
-        self, 
-        file_path,
-        file_line_format = "user item rating",
-        file_sep         = ",",
-        model            = SVD()
-    ):
-        reader     = Reader(
-            line_format = file_line_format, 
-            sep         = file_sep
-        )
-        self.data  = Dataset.load_from_file(file_path, reader=reader)
-        self.model = model
+    def __init__(self, model = SVD()): self.model = model
 
-
-    def train(self):
-        self.model.fit(self.data.build_full_trainset())
+    
+    def train(self, train_dataset):
+        self.model.fit(train_dataset.build_full_trainset())
+        return self
 
 
     def predict(self, user_item_df, progress_each = 100000):
@@ -31,8 +38,9 @@ class ModelManager:
             if idx % progress_each == 0:
                 clear_output(wait=True)
                 percent = (len(ratings)/user_item_df.shape[0])*100
-                logging.info(f'Prediction progress: {percent:.0f}%')
+                logging.info(f'Prediction: {percent:.0f}%')
         return ratings
+
 
     def predict_inplase(self, user_item_df, progress_each = 100000):
         user_item_df['rating'] = self.predict(user_item_df)

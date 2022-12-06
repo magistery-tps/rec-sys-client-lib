@@ -17,10 +17,10 @@ class InteractionService:
     def __init__(self, repository: InteractionRepository):
         self.repository = repository
 
-
-    def find_all(self, page_size):
-        return self.repository.find_all(page_size)
-
+        
+    def find_all(self, page_size = 50000):
+        return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
+    
     
     def rated_items_by_user(self, df, min_rating=0):
         result = {}

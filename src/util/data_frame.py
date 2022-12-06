@@ -20,7 +20,7 @@ def df_to_matrix(df, x_col='user_id', y_col='item_id', value_col='rating', progr
         if count % progress_each == 0:
             clear_output(wait=True)
             percent = (count / df.shape[0]) * 100
-            logging.info(f'Processing: {percent:.0f}%')
+            logging.info(f'Compute matrix: {percent:.0f}%')
 
     return csr_matrix(matrix)
 
