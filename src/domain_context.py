@@ -3,10 +3,15 @@ from   repository import *
 from   service    import *
 import util       as ut
 import api
+from logger import LoggerBuilder
+import warnings
 
 
 class DomainContext(metaclass=ut.SingletonMeta):
     def __init__(self, token, host):
+        LoggerBuilder.build()
+        warnings.filterwarnings('ignore')
+
         client  = api.RecSysApi(token, host)
 
         # Mappers
