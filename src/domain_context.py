@@ -27,6 +27,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
         # Services
         self.__interaction_service    = InteractionService(self.__interaction_repository)
         self.__rating_matrix_service  = RatingMatrixService(self.__interaction_service)
+        self.__similarity_service      = SimilarityService()
 
 
     @property
@@ -35,3 +36,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
 
     @property
     def rating_matrix_service(self): return self.__rating_matrix_service
+
+
+    @property
+    def similarity_service(self): return self.__similarity_service
