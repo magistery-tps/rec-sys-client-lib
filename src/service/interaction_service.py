@@ -5,40 +5,79 @@ import util as ut
 import seaborn as sns
 import multiprocessing as mp
 import pandas as pd
-
-
-def user_items_to_df(params):
-    user  = params[0]
-    items = params[1]
-    return pd.DataFrame([{'user_id': user, 'item_id': item} for item in items])
+import logging
 
 
 class InteractionService:
     def __init__(self, repository: InteractionRepository):
         self.repository = repository
 
-        
+    def n_interactions_by_user(self, df, min_n_interactions=20):
+        return df  \
+            .groupby('user_id', as_index=False)['item_id'] \
+            .count() \
+            .rename(columns={'item_id': 'n_interactions'}) \
+            .query('n_interactions >= 20')
+
+
+    def filter_by_rating_scale(self, df, rating_scale):
+        logging.info(f'Filter by ratings scale: {rating_scale}')
+
+        df_filtered = df.pipe(lambda df: df[df['rating'].isin(rating_scale)])
+
+        logging.info(f'Filtered: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        return df_filtered
+
+
+    def filter_users_by_min_interactions(self, df, min_n_interactions=20):
+        logging.info(f'Filter by user_n_interactions >= {min_n_interactions}')
+
+        user_ids = self.n_interactions_by_user(df, min_n_interactions).user_id.unique()
+        df_filtered = df[df['user_id'].isin(user_ids)]
+
+        logging.info(f'Filtered: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        return df_filtered
+
+
     def find_all(self, page_size = 50000):
         return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
-    
-    
-    def rated_items_by_user(self, df, min_rating=0):
-        result = {}
-        for _, row in df.iterrows():
-            if row['rating'] != None and row['rating'] > min_rating:
-                if row['user_id'] in result:
-                    result[row['user_id']].add(row['item_id'])
-                else:
-                    result[row['user_id']] = set([row['item_id']])
-        return result
 
-    def to_matrix(self, df):
-        return ut.df_to_matrix(
-            df,
-            x_col     = 'user_id',
-            y_col     = 'item_id',
-            value_col = 'rating'
-        )
+
+    def unrated_user_item(self, df, min_rating=1):
+        items_by_user = self.items_by_user(df, min_rating)
+
+        all_item_ids = set(df['item_id'].astype(int).unique())
+
+        data = []
+        for user_id, rated_item_ids in items_by_user.items():
+            for unrated_item_id in (all_item_ids - rated_item_ids):
+                data.append({'user_id': user_id, 'item_id': unrated_item_id})
+
+        unrated_interactions = pd.DataFrame(data)
+
+        total = df.user_id.unique().shape[0] * df.item_id.unique().shape[0]
+        percent = (unrated_interactions.shape[0] / total) * 100
+        logging.info(f'Unrated interactions: {percent:.1f}%')
+
+        return unrated_interactions
+
+
+    def items_by_user(self, df, min_rating=1):
+        items_by_user = {}
+
+        for _, row in df.iterrows():
+            if row['rating'] == None or row['rating'] < min_rating:
+                continue
+
+            user_id, item_id = row['user_id'].astype(int), row['item_id'].astype(int)
+
+            if user_id not in items_by_user:
+                items_by_user[user_id] = set()
+
+            items_by_user[user_id].add(item_id)
+
+        return items_by_user
+
 
     def plot_n_users_by_item(self, df):
         item_users = df \
@@ -54,29 +93,7 @@ class InteractionService:
 
         sns.set_theme(style="ticks")
         sns.lineplot(
-            x     = 'Items', 
+            x     = 'Items',
             y     = 'n_users',
             data  = item_users
         )
-
-    def unrated_distinct_user_item(self, df):
-        unrated_items_by_user = self.__unrated_items_by_users(df)
-        return self.__distinct_user_item(unrated_items_by_user)
-
-    def __distinct_user_item(self, user_items, processes=20):
-        inputs = [(user, items) for user, items in user_items.items()]
-
-        with mp.Pool(processes=processes) as pool:
-            results = pool.map(user_items_to_df, inputs)
-
-        return pd.concat(results)
-
-    def __unrated_items_by_users(self, df, min_rating=0):
-        all_items           = set(np.unique(df['item_id'].values))
-        rated_items_by_user = self.rated_items_by_user(df, min_rating)
-        result              = {user: list(all_items-user_rated_items) for user, user_rated_items in rated_items_by_user.items()}
-
-        del rated_items_by_user
-        del all_items
-
-        return result
