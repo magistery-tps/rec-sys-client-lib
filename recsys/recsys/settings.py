@@ -34,24 +34,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.sites',
-
     'recsysweb',
-
     'rest_framework',
-
-     # Add the following django-allauth apps
-    'allauth',
+    'allauth', # Add the following django-allauth apps
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', # for Google OAuth 2.0,
-
     'corsheaders',
-
     'rest_framework.authtoken',
-    
-    'django_apscheduler'
+    'django_apscheduler',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -164,8 +157,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
 
 
 ALLOWED_HOSTS = ['*']
@@ -226,3 +221,42 @@ SCHEDULER_AUTOSTART = True
 
 import django_heroku
 django_heroku.settings(locals())
+
+
+# Django Logging Information
+LOGGING = {
+    # Define the logging version
+    'version': 1,
+
+    'disable_existing_loggers': False,
+
+	'formatters': {
+		'colored': {
+			'()': 'colorlog.ColoredFormatter',
+			'format': "%(log_color)s%(levelname)-8s%(reset)s %(blue)s%(message)s"
+		}
+	},
+
+    # Define the handlers
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'recsys.log'
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'colored',
+            'level': 'INFO'
+        },
+    },
+
+    # Define the loggers
+    'loggers': {
+        '': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+    },
+}

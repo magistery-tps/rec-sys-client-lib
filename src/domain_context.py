@@ -12,7 +12,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
         LoggerBuilder.build()
         warnings.filterwarnings('ignore')
 
-        client  = api.RecSysApi(token, host)
+        self.__client = api.RecSysApi(token, host)
 
         # Mappers
         user_mapper        = UserMapper()
@@ -20,15 +20,18 @@ class DomainContext(metaclass=ut.SingletonMeta):
         interaction_mapper = InteractionMapper()
 
         # Repositories
-        self.__user_repository        = UserRepository(client, user_mapper)
-        self.__item_repository        = ItemRepository(client, item_mapper)
-        self.__interaction_repository = InteractionRepository(client, interaction_mapper)
+        self.__user_repository        = UserRepository(self.__client, user_mapper)
+        self.__item_repository        = ItemRepository(self.__client, item_mapper)
+        self.__interaction_repository = InteractionRepository(self.__client, interaction_mapper)
 
         # Services
         self.__interaction_service    = InteractionService(self.__interaction_repository)
         self.__rating_matrix_service  = RatingMatrixService(self.__interaction_service)
         self.__similarity_service      = SimilarityService()
 
+
+    @property
+    def api(self): return self.__client
 
     @property
     def interaction_service(self): return self.__interaction_service

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recsysweb', '0014_distancesmatrix_distancesmatrixcell'),
+        ('recsysweb', '0014_similarity_matrix_cell'),
     ]
 
     operations = [

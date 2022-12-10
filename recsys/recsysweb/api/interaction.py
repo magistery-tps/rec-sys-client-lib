@@ -19,3 +19,4 @@ class InteractionViewSet(viewsets.ModelViewSet):
 
     queryset = Interaction.objects.all()
     serializer_class = InteractionSerializer
+    filterset_fields = ['user', 'item', 'rating']

@@ -3,7 +3,7 @@ from django.utils import timezone
 import logging
 
 logging.basicConfig()
-logging.getLogger('apscheduler').setLevel(logging.DEBUG)
+logging.getLogger('apscheduler').setLevel(logging.INFO)
 
 
 def update_items_popularity_job():

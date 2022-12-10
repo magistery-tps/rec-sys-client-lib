@@ -36,28 +36,34 @@ class Interaction(models.Model):
         unique     = False
     )
     rating  = models.FloatField()
-    
+
     def __str__(self):
         return f'User: {self.user} | Item: {self.item} |  Rating: {self.rating}'
 
-class DistancesMatrix(models.Model):
-    id          = models.AutoField(primary_key=True)
-    name        = models.CharField(max_length=200, verbose_name='Name')
-    description = models.TextField(max_length=1000, verbose_name='Description')
+class SimilarityMatrixType(models.IntegerChoices):
+    USER_TO_USER = 1
+    ITEM_TO_ITEM = 2
 
-class DistancesMatrixCell(models.Model):
+class SimilarityMatrix(models.Model):
+    id          = models.AutoField(primary_key=True)
+    type        = models.IntegerField(choices=SimilarityMatrixType.choices, default= SimilarityMatrixType.USER_TO_USER)
+    name        = models.CharField(max_length=200, unique=True, verbose_name='Name')
+    description = models.TextField(max_length= 1000, verbose_name='Description')
+
+
+class SimilarityMatrixCell(models.Model):
     row    = models.IntegerField(db_column='row')
     column = models.IntegerField(db_column='column')
     matrix = models.ForeignKey(
-        DistancesMatrix,
-        db_column  = 'distances_matrix_id',
+        SimilarityMatrix,
+        db_column  = 'similarity_matrix_id',
         on_delete  = models.DO_NOTHING,
         unique     = False
     )
     value = models.FloatField()
-    
+
     def __str__(self):
-        return f'row: {self.row} | Column: {self.columns} | Value: {self.value}'
+        return f'row: {self.row} | Column: {self.column} | Value: {self.value}'
 
 
 class Recommendations:

@@ -31,3 +31,5 @@ dependencies:
         - django-apscheduler
         - surprise
         - persist-queue
+        - django-filter
+        - colorlog

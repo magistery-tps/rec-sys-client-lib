@@ -10,5 +10,5 @@ if run_from_ipython():
 else:
     from tqdm import tqdm
 
-def progress_bar(count, title='Processing'): 
+def progress_bar(count, title='Processing'):
     return tqdm(total=count, desc = title)

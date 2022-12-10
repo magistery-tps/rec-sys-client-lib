@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers, viewsets
 from .import views
-from .api import InteractionViewSet, ItemViewSet, DistancesMatrixViewSet, DistancesMatrixCellViewSet, UserViewSet
+from .api import InteractionViewSet, ItemViewSet, SimilarityMatrixViewSet, SimilarityMatrixCellViewSet, UserViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -10,11 +10,11 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'items', ItemViewSet)
 router.register(r'interactions', InteractionViewSet)
-router.register(r'distances-matrix', DistancesMatrixViewSet)
-router.register(r'distances-matrix-cells', DistancesMatrixCellViewSet)
+router.register(r'similarity-matrix', SimilarityMatrixViewSet)
+router.register(r'similarity-matrix-cells', SimilarityMatrixCellViewSet)
 
 
-urlpatterns = [ 
+urlpatterns = [
     path('', views.home, name='home'),
     path('sign-in',  views.sign_in,  name='sign-in' ),
     path('sign-out', views.sign_out, name='sign-out'),

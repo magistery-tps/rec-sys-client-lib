@@ -26,9 +26,9 @@ class ResourceIterator:
         count = int(self.page * self.page_size)
         return self.total if count > self.total else count
 
-    
+
     def reset(self): self.next_offset = 0
-    
+
 
     def __iter__(self):
         self.reset()
@@ -37,10 +37,10 @@ class ResourceIterator:
 
     def __next__(self):
         if self.next_offset is None:
-            raise StopIteration            
-        
+            raise StopIteration
+
         page = self.call(self.next_offset,  self.page_size).body
-        
+
         params = url_params(page['next'])
 
         self.total = int(page['count'])
@@ -52,5 +52,5 @@ class ResourceIterator:
         else:
             self.next_offset    = None
             self.current_offset += self.page_size
-        
+
         return page['results']

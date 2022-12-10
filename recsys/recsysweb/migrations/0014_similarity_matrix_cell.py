@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='DistancesMatrix',
+            name='SimilarityMatrix',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=200, verbose_name='Name')),
@@ -20,13 +20,13 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='DistancesMatrixCell',
+            name='SimilarityMatrixCell',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('row', models.IntegerField(db_column='row')),
                 ('column', models.IntegerField(db_column='column')),
                 ('value', models.FloatField()),
-                ('matrix', models.ForeignKey(db_column='distances_matrix_id', on_delete=django.db.models.deletion.DO_NOTHING, to='recsysweb.distancesmatrix')),
+                ('matrix', models.ForeignKey(db_column='similarity_matrix_id', on_delete=django.db.models.deletion.DO_NOTHING, to='recsysweb.similaritymatrix')),
             ],
         ),
     ]
