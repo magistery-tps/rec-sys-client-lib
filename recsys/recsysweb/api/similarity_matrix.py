@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 class SimilarityMatrixSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model  = SimilarityMatrix
-        fields = ['id', 'name', 'type', 'description']
+        fields = ['id', 'name', 'type', 'description', 'version']
         lookup_field = 'SimilarityMatrix'
 
 
@@ -19,4 +19,4 @@ class SimilarityMatrixViewSet(viewsets.ModelViewSet):
 
     queryset = SimilarityMatrix.objects.all()
     serializer_class = SimilarityMatrixSerializer
-    filterset_fields = ['name', 'type', 'description']
+    filterset_fields = ['name', 'type', 'description', 'version']

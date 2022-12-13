@@ -17,6 +17,7 @@ class SimilarityMatrix(models.Model):
         max_length   = 1000,
         verbose_name = 'Description'
     )
+    version = models.IntegerField(default=0)
 
     def __str__(self):
         return f'Type: {self.type} | Name: {self.name} | Desc: {self.description}'

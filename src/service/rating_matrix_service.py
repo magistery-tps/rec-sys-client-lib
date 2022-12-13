@@ -13,8 +13,7 @@ class RatingMatrixService:
     def __init__(self, interaction_service):
         self.__interaction_service = interaction_service
 
-
-    def compute(
+    def create(
         self,
         train_interactions,
         model,
@@ -44,3 +43,4 @@ class RatingMatrixService:
             return ut.df_to_matrix(df, x_col='user_id', y_col='item_id', value_col='rating')
         elif matrix_type == RatingMatrixType.ITEM_USER:
             return ut.df_to_matrix(df, x_col='item_id', y_col='user_id', value_col='rating')
+

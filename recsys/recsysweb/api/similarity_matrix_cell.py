@@ -25,7 +25,7 @@ class SimilarityMatrixCellBulkCreateUpdateSerializer(serializers.ListSerializer)
 class SimilarityMatrixCellSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model                 = SimilarityMatrixCell
-        fields                = ['id', 'row', 'column', 'value', 'matrix']
+        fields                = ['id', 'row', 'column', 'value', 'matrix', 'version']
         lookup_field          = 'SimilarityMatrixCell'
         list_serializer_class = SimilarityMatrixCellBulkCreateUpdateSerializer
 
@@ -37,7 +37,7 @@ class SimilarityMatrixCellViewSet(viewsets.ModelViewSet):
 
     queryset         = SimilarityMatrixCell.objects.all()
     serializer_class = SimilarityMatrixCellSerializer
-    filterset_fields = ['row', 'column', 'value', 'matrix']
+    filterset_fields = ['row', 'column', 'value', 'matrix', 'version']
 
 
     def create(self, request, *args, **kwargs):

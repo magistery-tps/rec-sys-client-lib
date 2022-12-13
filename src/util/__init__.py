@@ -5,3 +5,4 @@ from .data_frame                    import norm, df_to_matrix, concat, save, loa
 from .data_fram_pagination_iterator import DataFramPaginationIterator
 from .picket                        import Picket
 from .singleton                     import SingletonMeta
+from .json                          import JSON, JSON_ENUM_MAPPING

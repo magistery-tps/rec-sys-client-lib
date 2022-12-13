@@ -7,12 +7,13 @@ def url_params(url): return parse_qs(urlsplit(url).query)
 
 
 class ResourceIterator:
-    def __init__(self, api, resource, page_size=5):
+    def __init__(self, api, resource, page_size=5, query={}):
         self.call           = getattr(api, resource)
         self.page_size      = page_size
         self.next_offset    = 0
         self.current_offset = 0
         self.total          = 0
+        self.query          = query
 
 
     @property
@@ -39,7 +40,10 @@ class ResourceIterator:
         if self.next_offset is None:
             raise StopIteration
 
-        page = self.call(self.next_offset,  self.page_size).body
+        self.query['offset'] = self.next_offset
+        self.query['limit']  = self.page_size
+
+        page = self.call(**self.query).body
 
         params = url_params(page['next'])
 

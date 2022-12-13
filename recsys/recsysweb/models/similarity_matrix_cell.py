@@ -11,7 +11,13 @@ class SimilarityMatrixCell(models.Model):
         on_delete  = models.DO_NOTHING,
         unique     = False
     )
-    value = models.FloatField()
+    value   = models.FloatField()
+    version = models.IntegerField(default=0)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['version'])
+        ]
 
     def __str__(self):
-        return f'row: {self.row} | Column: {self.column} | Value: {self.value} | Matrix: {self.matrix}'
+        return f'row: {self.row} | Column: {self.column} | Value: {self.value} Version: {self.version} | Matrix: {self.matrix}'
