@@ -20,6 +20,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
         interaction_mapper            = InteractionMapper()
         similarity_matrix_mapper      = SimilarityMatrixMapper()
         similarity_matrix_cell_mapper = SimilarityMatrixCellMapper()
+        recommender_mapper            = RecommenderMapper()
 
 
         # Repositories
@@ -37,6 +38,10 @@ class DomainContext(metaclass=ut.SingletonMeta):
             self.__client,
             similarity_matrix_cell_mapper
         )
+        self.__recommender_repository = RecommenderRepository(
+            self.__client,
+            recommender_mapper
+        )
 
         # Services
         self.__interaction_service       = InteractionService(self.__interaction_repository)
@@ -46,7 +51,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
             self.__similarity_matrix_repository,
             self.__similarity_cell_repository
         )
-
+        self.__recommender_service      = RecommenderService(self.__recommender_repository)
 
     @property
     def api(self): return self.__client
@@ -66,3 +71,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
 
     @property
     def similarity_matrix_service(self): return self.__similarity_matrix_service
+
+    
+    @property
+    def recommender_service(self): return self.__recommender_service

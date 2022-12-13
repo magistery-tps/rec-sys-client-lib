@@ -14,8 +14,8 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 # ViewSets define the view behavior.
 class ItemViewSet(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes     = [IsAuthenticated]
 
-    queryset = Item.objects.all()
+    queryset         = Item.objects.all()
     serializer_class = ItemSerializer
     filterset_fields = ['id', 'name', 'description']

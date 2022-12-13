@@ -18,15 +18,9 @@ class SimilarityMatrixRepository(EntityRepository):
         return self._mapper.to_model(response.body[0])
 
 
-    def update(
-        self,
-        id          : int,
-        name        : str,
-        type        : api.SimilarityMatrixType,
-        description : str,
-        version     : int
-    ):
-        response = self._client.update_similarity_matrix(id, name, type, description, version)
+    def update(self, model):
+        dto      = self._mapper.to_dto(model, self._client.host)
+        response = self._client.update_similarity_matrix(dto)
         return self._mapper.to_model(response.body[0])
 
 

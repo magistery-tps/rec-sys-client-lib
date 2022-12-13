@@ -26,14 +26,14 @@ class SimilarityMatrixService:
         models = self.__matrix_repository.find(query={'name': name, 'type': str(type.value)})
 
         if len(models) > 0 and models[0].name == name:
-            logging.info(f'{name} of type {type} already exists!')
+            logging.info(f'Already exists {name} {type} matrix.')
             return models[0]
         else:
-            logging.info(f'Insert {name} of type {type}.')
+            logging.info(f'Insert {name} {type} matrix.')
             return self.__matrix_repository.add(name, type, desc)
 
-    def update(self, model):
-        return self.__matrix_repository.update(model.id, model.name, model.type, model.description, model.version)
+
+    def update(self, model): return self.__matrix_repository.update(model)
 
 
     def add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=10_000):
@@ -41,5 +41,5 @@ class SimilarityMatrixService:
         cells['version'] = matrix.version
 
         iterator = ut.DataFramPaginationIterator(cells, page_size=page_size)
-        [self.__cell_repository.bulk_add(page) for page in iterator]
+        [self.__cell_repository.add_many(page) for page in iterator]
 

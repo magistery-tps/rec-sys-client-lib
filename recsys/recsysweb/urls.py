@@ -1,7 +1,12 @@
 from django.urls import path, include
 from rest_framework import routers, viewsets
 from .import views
-from .api import InteractionViewSet, ItemViewSet, SimilarityMatrixViewSet, SimilarityMatrixCellViewSet, UserViewSet
+from .api import    InteractionViewSet, \
+                    ItemViewSet, \
+                    SimilarityMatrixViewSet, \
+                    SimilarityMatrixCellViewSet, \
+                    UserViewSet, \
+                    RecommenderViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -12,6 +17,7 @@ router.register(r'items', ItemViewSet)
 router.register(r'interactions', InteractionViewSet)
 router.register(r'similarity-matrix', SimilarityMatrixViewSet)
 router.register(r'similarity-matrix-cells', SimilarityMatrixCellViewSet)
+router.register(r'recommenders', RecommenderViewSet)
 
 
 urlpatterns = [
@@ -26,7 +32,6 @@ urlpatterns = [
     path('items/create',          views.create_item,  name='items.create'),
     path('items/edit/<int:id>',   views.edit_item,    name='items.edit'),
     path('items/remove/<int:id>', views.remove_item,  name='items.remove'),
-
 
     path('api/', include(router.urls))
 ]

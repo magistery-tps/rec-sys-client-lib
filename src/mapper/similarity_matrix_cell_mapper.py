@@ -13,11 +13,14 @@ class SimilarityMatrixCellMapper(Mapper):
             'version' : int(dto['version'])
         })
 
-    def to_dto(self, row):
-        return {
-            'row'     : int(row['row']),
-            'column'  : int(row['column' ]),
-            'value'   : float(row['value']),
-            'version' :  int(row['version']),
-            'matrix'  : f'http://localhost:8000/api/similarity-matrix/{int(row["matrix" ])}/'
+    def to_dto(self, model, host):
+        dto =  {
+            'row'     : int(model['row']),
+            'column'  : int(model['column' ]),
+            'value'   : float(model['value']),
+            'version' : int(model['version']),
+            'matrix'  : f'{host}/api/similarity-matrix/{model["matrix"]}/'
         }
+        if 'id' in model:
+            dto['id'] = int(model['id'])
+        return dto

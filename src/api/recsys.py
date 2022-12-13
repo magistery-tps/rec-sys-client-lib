@@ -6,7 +6,6 @@ import bunch
 import json
 import logging
 import pandas as pd
-from .mapper import SimilarityCellMapper
 
 
 class ListResponse:
@@ -70,6 +69,9 @@ class SimilarityMatrixCellResource(Resource):
         '&row={}&column={}&matrix={}'
     )
 
+class RecommenderResource(Resource):
+    actions = ActionsFactory.create('recommenders', '&name={}')
+
 
 """
 https://python-simple-rest-client.readthedocs.io/en/latest/quickstart.html
@@ -103,7 +105,12 @@ class RecSysApi:
             resource_name  = 'similarity_matrix_cell',
             resource_class = SimilarityMatrixCellResource
         )
-        self.api = api
+        api.add_resource(
+            resource_name  = 'recommenders',
+            resource_class = RecommenderResource
+        )
+        self.api  = api
+        self.host = host
 
     def _resp(self, response):
         return ItemResponse(response.status_code, response.body)
@@ -167,23 +174,8 @@ class RecSysApi:
             'version'     : version
         }))
 
-    def update_similarity_matrix(
-        self,
-        id          : int,
-        name        : str,
-        type        : SimilarityMatrixType,
-        description : str,
-        version     : int
-    ):
-        return self._resp(self.api.similarity_matrix.update(
-            id,
-            body = {
-                'name'        : name,
-                'type'        : type.value,
-                'description' : description,
-                'version'     : version
-            }
-        ))
+    def update_similarity_matrix(self, dto):
+        return self._resp(self.api.similarity_matrix.update(dto['id'], body = dto))
 
     def remove_similarity_matrix(self, id: int):
         return self._resp(self.api.similarity_matrix.remove(id))
@@ -202,6 +194,7 @@ class RecSysApi:
         column : str = '',
         matrix : str = ''
     ):
+        matrix = matrix.replace('$BASE_URL', self.host)
         return self._list_resp(
             self.api.similarity_matrix_cell.pages(
                 offset, limit, row, column, matrix
@@ -213,3 +206,26 @@ class RecSysApi:
 
     def remove_similarity_cell(self, id: int):
         return self._resp(self.api.similarity_matrix_cell.remove(id))
+    #--------------------------------------------------------------------------
+    #
+    #
+    #
+    #--------------------------------------------------------------------------
+    # Recommender
+    #--------------------------------------------------------------------------
+    def recommenders(
+        self,
+        offset : int = 0,
+        limit  : int = 1,
+        name   : str = ''
+    ):
+        return self._list_resp(self.api.recommenders.pages(offset, limit, name))
+
+    def add_recommender(self, dto):
+        return self._resp(self.api.recommenders.add(body=dto))
+
+    def update_recommender(self, dto):
+        return self._resp(self.api.recommenders.update(dto['id'], body=dto))
+
+    def remove_recommender(self, id: int):
+        return self._resp(self.api.recommenders.remove(id))

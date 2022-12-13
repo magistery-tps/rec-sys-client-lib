@@ -13,10 +13,13 @@ class SimilarityMatrixMapper(Mapper):
             'version'    : int(dto['version'])
         })
 
-    def to_dto(self, model):
-        return {
+    def to_dto(self, model, host=''):
+        dto = {
             'name'        : str(model['name']),
             'type'        : int(model['type'].value),
             'description' : str(model['description']),
             'version'     : int(model['version'])
         }
+        if 'id' in model:
+            dto['id'] = int(model['id'])
+        return dto

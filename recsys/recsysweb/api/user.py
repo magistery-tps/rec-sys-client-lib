@@ -11,8 +11,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes     = [IsAuthenticated]
 
-    queryset = User.objects.all()
+    queryset         = User.objects.all()
     serializer_class = UserSerializer
     filterset_fields = ['url', 'username', 'email']
