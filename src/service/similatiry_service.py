@@ -21,15 +21,17 @@ class EmbeddingCache:
 
 
 class SimilarityService:
-    def similarities(self, rating_matrix, row_ids, entity='', n_workers=24, chunks=100_000):
+    def similarities(self, rating_matrix, entity='', n_workers=24, chunks=10_000):
         embeddingCache = EmbeddingCache(rating_matrix)
         similarities = []
 
-        logging.info(f'Compute {entity}_id combinations...')
+        row_ids = list(range(rating_matrix.shape[0]+1))
+
+        logging.info(f'Compute {entity}_seq combinations...')
         row_id_combinations = list(combinations(row_ids, 2))
         logging.info(f'{entity}_id combinations...{len(row_id_combinations)}')
 
-        logging.info(f'Compute {entity}_id embeddings(size: {rating_matrix.shape[1]})...')
+        logging.info(f'Compute {entity}_seq embeddings(size: {rating_matrix.shape[1]})...')
         input_data = []
         for comb in row_id_combinations:
             a_id,  b_id  = comb[0], comb[1]
@@ -40,7 +42,7 @@ class SimilarityService:
         with mp.Pool(processes=n_workers) as pool:
             similarities = [r for r in tqdm.tqdm(pool.imap_unordered(compute_similatiry, input_data, chunks), total=len(input_data))]
 
-        return pd.DataFrame(similarities)
+        return pd.DataFrame(similarities).drop_duplicates()
 
     def filter_most_similars(self, df, column, n):
         element_ids = df[column].unique()

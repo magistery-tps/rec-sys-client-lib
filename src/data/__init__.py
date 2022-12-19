@@ -1,2 +1,2 @@
-from .sequencer import Sequencer, check_sequence
+from .sequencer import Sequencer
 from .progress_bar import progress_bar

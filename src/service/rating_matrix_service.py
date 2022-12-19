@@ -17,30 +17,41 @@ class RatingMatrixService:
         self,
         train_interactions,
         model,
+        columns            = ('user_seq', 'item_seq', 'rating'),
         matrix_type        = RatingMatrixType.USER_ITEM,
         min_n_interactions = 20,
-        rating_scale       = [1, 2, 3, 4, 5]
+        rating_scale       = [1, 2, 3, 4, 5],
+        progress           = 10
     ):
         train_interactions = train_interactions \
-            .pipe(self.__interaction_service.filter_by_rating_scale, rating_scale) \
-            .pipe(self.__interaction_service.filter_users_by_min_interactions, min_n_interactions=20)
+            .pipe(self.__interaction_service.filter_by_rating_scale, columns, rating_scale) \
+            .pipe(self.__interaction_service.filter_users_by_min_interactions, columns, min_n_interactions)
 
         future_interactions = train_interactions \
             .pipe(self.__interaction_service.unrated_user_item)
 
-        train_dataset = ml.DatasetFactory.create(train_interactions)
+        self.__interactions_info(train_interactions,  columns, prefix='Train')
+        self.__interactions_info(future_interactions, columns, prefix='Future')
 
-        ml.ModelManager(model).train(train_dataset).predict_inplase(future_interactions)
+        train_dataset = ml.DatasetFactory.create(train_interactions, columns)
+
+        ml.ModelManager(model) \
+            .train(train_dataset) \
+            .predict_inplase(future_interactions, columns, progress)
 
         all_interactions = ut.concat(train_interactions, future_interactions)
 
+        self.__interactions_info(all_interactions, columns, prefix='Train + Predited')
+
         logging.info(f'Compute interactions sparse {matrix_type} matrix...')
-        return self.__to_rating_matrix(all_interactions, matrix_type)
+        return self.__to_rating_matrix(all_interactions, columns, matrix_type, progress)
 
 
-    def __to_rating_matrix(self, df, matrix_type = RatingMatrixType.USER_ITEM):
+    def __to_rating_matrix(self, df, columns, matrix_type = RatingMatrixType.USER_ITEM, progress=10):
         if matrix_type == RatingMatrixType.USER_ITEM:
-            return ut.df_to_matrix(df, x_col='user_id', y_col='item_id', value_col='rating')
+            return ut.df_to_matrix(df, x_col=columns[0], y_col=columns[1], value_col=columns[2], progress=progress)
         elif matrix_type == RatingMatrixType.ITEM_USER:
-            return ut.df_to_matrix(df, x_col='item_id', y_col='user_id', value_col='rating')
+            return ut.df_to_matrix(df, x_col=columns[1], y_col=columns[0], value_col=columns[2], progress=progress)
 
+    def __interactions_info(self, df, columns, prefix=''):
+        logging.info(f'{prefix} interactions: {df.shape[0]} - Users: {df[columns[0]].unique().shape[0]}, Items: {df[columns[1]].unique().shape[0]}')

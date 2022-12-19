@@ -7,16 +7,20 @@ import logging
 
 class DatasetFactory:
     @classmethod
-    def create(clz, df):
-        rating_scale  = clz.__rating_scale(df)
+    def create(
+        clz,
+        df,
+        columns = ('user_seq', 'item_seq', 'rating')
+    ):
+        rating_scale  = clz.__rating_scale(df, columns)
         reader        = Reader(rating_scale=rating_scale)
-        return Dataset.load_from_df(df, reader)
+        return Dataset.load_from_df(df[list(columns)], reader)
 
     @staticmethod
-    def __rating_scale(df):
-        ratings = np.unique(df['rating'])
+    def __rating_scale(df, columns):
+        ratings = np.unique(df[columns[2]])
         scale = (int(ratings.min()), int(ratings.max()))
-        logging.info(f'Rating Scale: {scale}')
+        logging.info(f'{columns[2].capitalize()} Scale: {scale}')
         return scale
 
 
@@ -33,22 +37,32 @@ class ModelManager:
         return self
 
 
-    def predict(self, user_item_df, progress = 20):
+    def predict(
+        self,
+        user_item_df,
+        columns  = ('user_seq', 'item_seq', 'value'),
+        progress = 10
+    ):
         n_examples = user_item_df.shape[0]
         ratings    = []
 
         for idx, row in user_item_df.iterrows():
-            prediction = self.model.predict(str(row['user_id']), str(row['item_id']))
+            prediction = self.model.predict(str(row[columns[0]]), str(columns[1]))
             ratings.append(prediction.est)
 
             if idx % int(n_examples / progress) == 0:
                 percent = (len(ratings)/n_examples)*100
                 if percent > 1:
-                    logging.info(f'{self.model_name} Ratings Prediction... {percent:.0f}%')
+                    logging.info(f'{self.model_name} {columns[2].capitalize()} Prediction... {percent:.0f}%')
 
         return ratings
 
 
-    def predict_inplase(self, user_item_df, progress = 10):
-        user_item_df['rating'] = self.predict(user_item_df)
+    def predict_inplase(
+        self,
+        user_item_df,
+        columns  = ('user_seq', 'item_seq', 'value'),
+        progress = 10
+    ):
+        user_item_df['rating'] = self.predict(user_item_df, columns, progress)
         return user_item_df
