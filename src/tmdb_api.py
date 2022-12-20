@@ -1,11 +1,12 @@
 import requests
-import logging
+from logger import get_logger
 
 
 class TMDbData:
     def __init__(self, data):
         self.data = data
-    
+        self.logger = get_logger(self)
+
     @property
     def poster(self): return "https://image.tmdb.org/t/p/w500/" + self.data['poster_path']
 
@@ -50,5 +51,5 @@ class TMDbApi:
             data = requests.get(url)
             return TMDbData(data.json())
         except:
-            logging.error(f'Error to build poster url for {str(movie_id)} movie_id!')
+            self.logger.error(f'Error to build poster url for {str(movie_id)} movie_id!')
             return None

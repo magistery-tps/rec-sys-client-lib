@@ -4,7 +4,6 @@ from sklearn.utils import Bunch
 from enum import Enum
 import bunch
 import json
-import logging
 import pandas as pd
 
 

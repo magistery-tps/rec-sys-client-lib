@@ -5,12 +5,13 @@ import util as ut
 import seaborn as sns
 import multiprocessing as mp
 import pandas as pd
-import logging
+from logger import get_logger
 
 
 class InteractionService:
     def __init__(self, repository: InteractionRepository):
         self.repository = repository
+        self._logger    = get_logger(self)
 
 
     def seq_by_id(self, df, entity=None, column_id=None, column_seq=None):
@@ -40,11 +41,11 @@ class InteractionService:
         columns      = ('user_seq', 'item_seq', 'rating'),
         rating_scale = [1, 2, 3, 4, 5]
     ):
-        logging.info(f'Filter by {columns[2]} scale: {rating_scale}')
+        self._logger.info(f'Filter by {columns[2]} scale: {rating_scale}')
 
         df_filtered = df.pipe(lambda df: df[df[columns[2]].isin(rating_scale)])
 
-        logging.info(f'Filtered: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        self._logger.info(f'Filtered: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
         return df_filtered
 
 
@@ -54,13 +55,13 @@ class InteractionService:
         columns            = ('user_seq', 'item_seq', 'rating'),
         min_n_interactions = 20,
     ):
-        logging.info(f'Filter interactions by user_n_interactions >= {min_n_interactions}')
+        self._logger.info(f'Filter interactions by user_n_interactions >= {min_n_interactions}')
 
         user_ids = self.n_interactions_by_user(df, columns, min_n_interactions)[columns[0]].unique()
         df_filtered = df[df[columns[0]].isin(user_ids)]
 
-        logging.info(f'Filtered interactions: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
-        logging.info(f'Excluded interactions: {df.shape[0] - df_filtered.shape[0]}')
+        self._logger.info(f'Filtered interactions: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        self._logger.info(f'Excluded interactions: {df.shape[0] - df_filtered.shape[0]}')
 
         return df_filtered
 
@@ -88,7 +89,7 @@ class InteractionService:
 
         total = df[columns[0]].unique().shape[0] * df[columns[1]].unique().shape[0]
         percent = (unrated_interactions.shape[0] / total) * 100
-        logging.info(f'Unrated interactions: {percent:.1f}%')
+        self._logger.info(f'Unrated interactions: {percent:.1f}%')
 
         return unrated_interactions
 

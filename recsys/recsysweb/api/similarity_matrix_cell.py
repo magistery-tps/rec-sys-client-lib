@@ -4,15 +4,10 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError
-import logging
+from ..logger import get_logger
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-
-import logging
-
-logging.basicConfig()
-logging.getLogger('SimilarityMatrixCellRestResource').setLevel(logging.INFO)
 
 
 class SimilarityMatrixCellBulkCreateUpdateSerializer(serializers.ListSerializer):
@@ -48,7 +43,6 @@ class SimilarityMatrixCellViewSet(viewsets.ModelViewSet):
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as e:
-            print('ERROR: ', e)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

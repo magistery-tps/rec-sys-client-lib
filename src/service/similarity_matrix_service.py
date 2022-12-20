@@ -2,7 +2,7 @@ import numpy as np
 import util as ut
 import pandas as pd
 import model as ml
-import logging
+from logger import get_logger
 from enum import Enum
 import api
 import mapper
@@ -20,6 +20,7 @@ class SimilarityMatrixService:
         self.__cell_repository     = cell_repository
         self.__interaction_service = interaction_service
         self.__similarity_service  = similarity_service
+        self._logger               = get_logger(self)
 
 
     def update_user_similarity_matrix(
@@ -100,10 +101,10 @@ class SimilarityMatrixService:
         models = self.__matrix_repository.find(query={'name': name, 'type': str(type.value)})
 
         if len(models) > 0 and models[0].name == name:
-            logging.info(f'Already exists {name} {type} matrix.')
+            self._logger.info(f'Already exists {name} {type} matrix.')
             return models[0]
         else:
-            logging.info(f'Insert {name} {type} matrix.')
+            self._logger.info(f'Insert {name} {type} matrix.')
             return self.__matrix_repository.add(name, type, desc)
 
 

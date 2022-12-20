@@ -1,38 +1,43 @@
 import numpy as np
 from surprise import Dataset, Reader
 from surprise import SVD
-import logging
+from logger import get_logger
 
 
 
 class DatasetFactory:
-    @classmethod
+    def __init__(self):
+        self._logger = get_logger(self)
+
     def create(
-        clz,
+        self,
         df,
         columns = ('user_seq', 'item_seq', 'rating')
     ):
-        rating_scale  = clz.__rating_scale(df, columns)
+        rating_scale  = self.__rating_scale(df, columns)
         reader        = Reader(rating_scale=rating_scale)
         return Dataset.load_from_df(df[list(columns)], reader)
 
-    @staticmethod
-    def __rating_scale(df, columns):
+    def __rating_scale(self, df, columns):
         ratings = np.unique(df[columns[2]])
         scale = (int(ratings.min()), int(ratings.max()))
-        logging.info(f'{columns[2].capitalize()} Scale: {scale}')
+        self._logger.info(f'{columns[2].capitalize()} Scale: {scale}')
         return scale
 
 
 
 class ModelManager:
-    def __init__(self, model = SVD()): self.model = model
+    def __init__(self, model = SVD()):
+        self.model = model
+        self._logger = get_logger(self)
+
 
     @property
     def model_name(self): return self.model.__class__.__name__
 
+
     def train(self, train_dataset):
-        logging.info(f'{self.model_name} Training...')
+        self._logger.info(f'{self.model_name} Training...')
         self.model.fit(train_dataset.build_full_trainset())
         return self
 
@@ -53,7 +58,7 @@ class ModelManager:
             if idx % int(n_examples / progress) == 0:
                 percent = (len(ratings)/n_examples)*100
                 if percent > 1:
-                    logging.info(f'{self.model_name} {columns[2].capitalize()} Prediction... {percent:.0f}%')
+                    self._logger.info(f'{self.model_name} {columns[2].capitalize()} Prediction... {percent:.0f}%')
 
         return ratings
 

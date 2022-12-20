@@ -1,5 +1,5 @@
 import mysql.connector
-import logging
+from logger import get_logger
 
 
 class Database:
@@ -9,6 +9,7 @@ class Database:
           user     = config['user'],
           password = config['password']
         )
+        self._logger = get_logger(self)
 
     def execute(self, query):
         try:
@@ -16,7 +17,7 @@ class Database:
             cursor.execute(query)
             self.connection.commit()
         except Exception as error:
-            logging.error(f'Error when execute query: {query}. {error}')
+            self._logger.error(f'Error when execute query: {query}. {error}')
 
     def reset(self):
       self.execute('DELETE FROM recsys.recsysweb_interaction')

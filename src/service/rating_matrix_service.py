@@ -2,7 +2,7 @@ import numpy as np
 import util as ut
 import pandas as pd
 import model as ml
-import logging
+from logger import get_logger
 from enum import Enum
 
 
@@ -12,6 +12,7 @@ RatingMatrixType = Enum('RatingMatrixType', ['USER_ITEM', 'ITEM_USER'])
 class RatingMatrixService:
     def __init__(self, interaction_service):
         self.__interaction_service = interaction_service
+        self._logger = get_logger(self)
 
     def create(
         self,
@@ -33,7 +34,7 @@ class RatingMatrixService:
         self.__interactions_info(train_interactions,  columns, prefix='Train')
         self.__interactions_info(future_interactions, columns, prefix='Future')
 
-        train_dataset = ml.DatasetFactory.create(train_interactions, columns)
+        train_dataset = ml.DatasetFactory().create(train_interactions, columns)
 
         ml.ModelManager(model) \
             .train(train_dataset) \
@@ -43,7 +44,7 @@ class RatingMatrixService:
 
         self.__interactions_info(all_interactions, columns, prefix='Train + Predited')
 
-        logging.info(f'Compute interactions sparse {matrix_type} matrix...')
+        self._logger.info(f'Compute interactions sparse {matrix_type} matrix...')
         return self.__to_rating_matrix(all_interactions, columns, matrix_type, progress)
 
 
@@ -54,4 +55,4 @@ class RatingMatrixService:
             return ut.df_to_matrix(df, x_col=columns[1], y_col=columns[0], value_col=columns[2], progress=progress)
 
     def __interactions_info(self, df, columns, prefix=''):
-        logging.info(f'{prefix} interactions: {df.shape[0]} - Users: {df[columns[0]].unique().shape[0]}, Items: {df[columns[1]].unique().shape[0]}')
+        self._logger.info(f'{prefix} interactions: {df.shape[0]} - Users: {df[columns[0]].unique().shape[0]}, Items: {df[columns[1]].unique().shape[0]}')

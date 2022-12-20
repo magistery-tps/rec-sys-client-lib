@@ -1,10 +1,12 @@
 import util as ut
-import logging
+from logger import get_logger
 from abc import ABCMeta, abstractmethod
 
 
 class Job(metaclass=ABCMeta):
-    def __init__(self, ctx): self.ctx = ctx
+    def __init__(self, ctx):
+        self.ctx = ctx
+        self._logger = get_logger(self)
 
     @abstractmethod
     def _perform(self):
@@ -12,6 +14,6 @@ class Job(metaclass=ABCMeta):
 
     def execute(self):
         stopwach = ut.Stopwatch()
-        logging.info(f'Start {self.__class__.__name__}')
+        self._logger.info(f'Start')
         self._perform()
-        logging.info(f'Finish {self.__class__.__name__}. Elapsed time: {stopwach}')
+        self._logger.info(f'Finish. Elapsed time: {stopwach}')
