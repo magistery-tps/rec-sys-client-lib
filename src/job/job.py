@@ -14,4 +14,4 @@ class Job(metaclass=ABCMeta):
         stopwach = ut.Stopwatch()
         logging.info(f'Start {self.__class__.__name__}')
         self._perform()
-        logging.info(f'Finish {self.__class__.__name__}. Elapsec time: {stopwach}')
+        logging.info(f'Finish {self.__class__.__name__}. Elapsed time: {stopwach}')
