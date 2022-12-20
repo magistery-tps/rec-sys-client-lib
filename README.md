@@ -74,23 +74,24 @@ $ conda env create -f environment.yml
 $ conda activate rec-sys
 ```
 
-**Step 4**: Create database.
+**Step 4**: Crear base de datos.
 
 ```bash
 $ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS recsys"
 $ python manage.py migrate
 ```
 
-**Step 5**: Create admin user.
+**Step 5**: Cear usuario administrador.
 
 ```bash
 $ python manage.py createsuperuser
 ```
 
-**Step 6**: Boot web application.
+**Step 6**: Iniciar aplocacion web utilizando una clave secreta dummy.
 
 ```bash
 $ cd recsys
+$ export SECRET_KEY="^BJ>Nzq>*8[HKH/ew:]TdfgD<nul;v9R571yvxI"
 $ python manage.py runserver localhost:8000
 ```
 
@@ -106,3 +107,29 @@ http://localhost:8888/?token=45efe99607fa6......
 ```
 
 **Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
+
+
+
+## Calcular Matrices de Similitud
+
+**Step 1**: Activar environment.
+
+```bash
+$ conda activate rec-sys
+```
+
+**Step 2**: Clacular matrices de distancia utilizando SVD.
+
+```bash
+$ cd recsys
+$  python bin/nmf_distance_matrix_job.py
+```
+
+**Step 3**: Clacular matrices de distancia utilizando NMF.
+
+```bash
+$ cd recsys
+$  python bin/nmf_distance_matrix_job.py
+```
+
+Ambos jobs calcular matrices de distancia user-user/item-item en base a la matriz de rating predicha por cada model (SVD/NMF). Luego, realizan un upsert de estas matrices en la base de datos, insertando unicamente los N vecinos mas cercanos en ambos casos (user-user/item-item). Cada matrix esta versionada. Es decir, que cada ejecución de un job crear una nueva versión de la matrix. Finalmente, ambas matrices queda asociadas a una entidad en la base de datos que representa al modelo con el que fue predicha.
