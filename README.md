@@ -100,6 +100,7 @@ $ python manage.py runserver localhost:8000
 **Step 8**: Levantar jupiter lab.
 
 ```bash
+$ cd ../
 $ jupyter lab
 
 Jupyter Notebook 6.1.4 is running at:
