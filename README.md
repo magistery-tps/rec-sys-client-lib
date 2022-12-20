@@ -123,7 +123,44 @@ $ conda activate rec-sys
 
 ```bash
 $ cd recsys
-$  python bin/nmf_distance_matrix_job.py
+$  python bin/svd_distance_matrix_job.py
+
+INFO :: SurpriseDistanceMatrixJob :: Start
+INFO :: InteractionRepository :: Page 1/2 - Interactions 50000/96605
+INFO :: InteractionRepository :: Page 2/2 - Interactions 96605/96605
+INFO :: InteractionRepository :: 96605 Total Interactions
+INFO :: InteractionService :: Filter by rating scale: [1, 2, 3, 4, 5]
+INFO :: InteractionService :: Filtered: 100.0%
+INFO :: InteractionService :: Filter interactions by user_n_interactions >= 20
+INFO :: InteractionService :: Filtered interactions: 95.2%
+INFO :: InteractionService :: Excluded interactions: 4682
+INFO :: InteractionService :: Unrated interactions: 97.4%
+INFO :: RatingMatrixService :: Train interactions: 91923 - Users: 1098, Items: 3139
+INFO :: RatingMatrixService :: Future interactions: 3355886 - Users: 1098, Items: 3139
+INFO :: DatasetFactory :: Rating Scale: (1, 5)
+INFO :: ModelManager :: SVD Training...
+INFO :: ModelManager :: SVD Rating Prediction... 100%
+INFO :: RatingMatrixService :: Train + Predited interactions: 3447809 - Users: 1098, Items: 3139
+INFO :: RatingMatrixService :: Compute interactions sparse RatingMatrixType.USER_ITEM matrix...
+INFO :: root :: Buiding matrix(1572, 3138)... 100%
+INFO :: SimilarityService :: Compute user_seq combinations...
+INFO :: SimilarityService :: user_id combinations...1236378
+INFO :: SimilarityService :: Compute user_seq embeddings(size: 3138)...
+INFO :: SimilarityService :: Compute user_id similarities...
+INFO :: SimilarityService :: Compute item_seq combinations...
+INFO :: SimilarityService :: item_id combinations...4925091
+INFO :: SimilarityService :: Compute item_seq embeddings(size: 1572)...
+INFO :: SimilarityService :: Compute item_id similarities...
+INFO :: SimilarityMatrixRepository :: Page 2/1 - Similarity_matrix 2/2
+INFO :: SimilarityMatrixRepository :: 2 Total Similarity_matrix
+INFO :: SimilarityMatrixService :: Already exists SVD-user-to-user SimilarityMatrixType.USER_TO_USER matrix.
+INFO :: SimilarityService :: Filtered: 77375/1236378 (93.7%)
+INFO :: DataFramPaginationIterator :: Totals - Pages 8 - Items 77375
+INFO :: SimilarityMatrixService :: Already exists SVD-item-to-item SimilarityMatrixType.ITEM_TO_ITEM matrix.
+INFO :: SimilarityService :: Filtered: 155675/4925091 (96.8%)
+INFO :: DataFramPaginationIterator :: Totals - Pages 16 - Items 155675
+INFO :: RecommenderService :: Already exists SVD recommender.
+INFO :: SurpriseDistanceMatrixJob :: Finish. Elapsed time: 0:06:48.20
 ```
 
 **Step 3**: Clacular matrices de distancia utilizando NMF.
@@ -131,6 +168,43 @@ $  python bin/nmf_distance_matrix_job.py
 ```bash
 $ cd recsys
 $  python bin/nmf_distance_matrix_job.py
+
+INFO :: SurpriseDistanceMatrixJob :: Start
+INFO :: InteractionRepository :: Page 1/2 - Interactions 50000/96605
+INFO :: InteractionRepository :: Page 2/2 - Interactions 96605/96605
+INFO :: InteractionRepository :: 96605 Total Interactions
+INFO :: InteractionService :: Filter by rating scale: [1, 2, 3, 4, 5]
+INFO :: InteractionService :: Filtered: 100.0%
+INFO :: InteractionService :: Filter interactions by user_n_interactions >= 20
+INFO :: InteractionService :: Filtered interactions: 95.2%
+INFO :: InteractionService :: Excluded interactions: 4682
+INFO :: InteractionService :: Unrated interactions: 97.4%
+INFO :: RatingMatrixService :: Train interactions: 91923 - Users: 1098, Items: 3139
+INFO :: RatingMatrixService :: Future interactions: 3355886 - Users: 1098, Items: 3139
+INFO :: DatasetFactory :: Rating Scale: (1, 5)
+INFO :: ModelManager :: NMF Training...
+INFO :: ModelManager :: NMF Rating Prediction... 100%
+INFO :: RatingMatrixService :: Train + Predited interactions: 3447809 - Users: 1098, Items: 3139
+INFO :: RatingMatrixService :: Compute interactions sparse RatingMatrixType.USER_ITEM matrix...
+INFO :: root :: Buiding matrix(1572, 3138)... 100%
+INFO :: SimilarityService :: Compute user_seq combinations...
+INFO :: SimilarityService :: user_id combinations...1236378
+INFO :: SimilarityService :: Compute user_seq embeddings(size: 3138)...
+INFO :: SimilarityService :: Compute user_id similarities...
+INFO :: SimilarityService :: Compute item_seq combinations...
+INFO :: SimilarityService :: item_id combinations...4925091
+INFO :: SimilarityService :: Compute item_seq embeddings(size: 1572)...
+INFO :: SimilarityService :: Compute item_id similarities...
+INFO :: SimilarityMatrixRepository :: Page 2/1 - Similarity_matrix 2/2
+INFO :: SimilarityMatrixRepository :: 2 Total Similarity_matrix
+INFO :: SimilarityMatrixService :: Already exists NMF-user-to-user SimilarityMatrixType.USER_TO_USER matrix.
+INFO :: SimilarityService :: Filtered: 77375/1236378 (93.7%)
+INFO :: DataFramPaginationIterator :: Totals - Pages 8 - Items 77375
+INFO :: SimilarityMatrixService :: Already exists NMF-item-to-item SimilarityMatrixType.ITEM_TO_ITEM matrix.
+INFO :: SimilarityService :: Filtered: 155675/4925091 (96.8%)
+INFO :: DataFramPaginationIterator :: Totals - Pages 16 - Items 155675
+INFO :: RecommenderService :: Already exists NMF recommender.
+INFO :: SurpriseDistanceMatrixJob :: Finish. Elapsed time: 0:06:48.20
 ```
 
 Ambos jobs calcular matrices de distancia user-user/item-item en base a la matriz de rating predicha por cada model (SVD/NMF). Luego, realizan un upsert de estas matrices en la base de datos, insertando unicamente los N vecinos mas cercanos en ambos casos (user-user/item-item). Cada matrix esta versionada. Es decir, que cada ejecución de un job crear una nueva versión de la matrix. Finalmente, ambas matrices queda asociadas a una entidad en la base de datos que representa al modelo con el que fue predicha.

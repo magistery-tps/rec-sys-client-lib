@@ -4,7 +4,7 @@ import logging
 class LoggerBuilder:
     @staticmethod
     def build(
-        path           = '../../logger.log',
+        path           = './logger.log',
         message_format = '%(asctime)s :: %(levelname)s :: %(name)s :: %(message)s',
         level          = logging.INFO
     ):
