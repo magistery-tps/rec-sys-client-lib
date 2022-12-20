@@ -1,1 +1,1 @@
-from surpise import *
+from .surprise.model_manager import *
