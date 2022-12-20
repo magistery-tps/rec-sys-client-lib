@@ -115,25 +115,20 @@ class InteractionService:
         return items_by_user
 
 
-    def plot_n_users_by_item(
-        self,
-        df,
-        columns = ('user_seq', 'item_seq', 'rating')
-    ):
+    def plot_n_users_by_item(self, df, columns = ('user_id', 'item_id', 'rating')):
         item_users = df \
             .groupby(columns[1], as_index=False)[columns[0]]  \
             .count() \
+            .sort_values(by=columns[0], ascending=False) \
             .rename(columns={columns[0]: f'n_{columns[0]}'}) \
-            .sort_values(by=f'n_{columns[0]}', ascending=False) \
             .reset_index(drop=True)
 
         item_users.reset_index(inplace=True)
 
-        item_users = item_users.rename(columns={'index': columns[1]}) \
-
         sns.set_theme(style="ticks")
-        sns.lineplot(
-            x     = columns[1],
+        fig = sns.lineplot(
+            x     = 'index',
             y     = f'n_{columns[0]}',
             data  = item_users
         )
+        fig.set_xlabel(columns[1])

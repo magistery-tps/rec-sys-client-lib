@@ -1,16 +1,19 @@
 from   mapper     import *
 from   repository import *
 from   service    import *
+from   job        import *
 import util       as ut
 import api
 from logger import LoggerBuilder
 import warnings
+from surprise import SVD, NMF
 
 
 class DomainContext(metaclass=ut.SingletonMeta):
-    def __init__(self, token, host):
+    def __init__(self, token, host, temp_path):
         LoggerBuilder.build()
         warnings.filterwarnings('ignore')
+        ut.mkdir(temp_path)
 
         self.__client = api.RecSysApi(token, host)
 
@@ -49,9 +52,25 @@ class DomainContext(metaclass=ut.SingletonMeta):
         self.__similarity_service        = SimilarityService()
         self.__similarity_matrix_service = SimilarityMatrixService(
             self.__similarity_matrix_repository,
-            self.__similarity_cell_repository
+            self.__similarity_cell_repository,
+            self.__interaction_service,
+            self.__similarity_service
         )
-        self.__recommender_service      = RecommenderService(self.__recommender_repository)
+        self.__recommender_service  = RecommenderService(self.__recommender_repository)
+
+        # Jobs
+        self.__svd_distance_matrix_job = SurpriseDistanceMatrixJob(
+            self,
+            model            = SVD(),
+            recommender_name = 'SVD'
+        )
+        self.__nmf_distance_matrix_job = SurpriseDistanceMatrixJob(
+            self,
+            model            = NMF(),
+            recommender_name = 'NMF'
+        )
+
+
 
     @property
     def api(self): return self.__client
@@ -72,6 +91,18 @@ class DomainContext(metaclass=ut.SingletonMeta):
     @property
     def similarity_matrix_service(self): return self.__similarity_matrix_service
 
-    
+
     @property
     def recommender_service(self): return self.__recommender_service
+
+
+    @property
+    def svd_distance_matrix_job(self): return self.__svd_distance_matrix_job
+
+
+    @property
+    def nmf_distance_matrix_job(self): return self.__nmf_distance_matrix_job
+
+
+    @property
+    def pmf_distance_matrix_job(self): return self.__pmf_distance_matrix_job
