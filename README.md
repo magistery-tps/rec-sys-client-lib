@@ -119,7 +119,7 @@ http://localhost:8888/?token=45efe99607fa6......
 $ conda activate rec-sys
 ```
 
-**Step 2**: Clacular matrices de distancia utilizando SVD.
+**Step 2**: Calcular matrices de distancia utilizando SVD.
 
 ```bash
 $ cd recsys
@@ -163,7 +163,7 @@ INFO :: RecommenderService :: Already exists SVD recommender.
 INFO :: SurpriseDistanceMatrixJob :: Finish. Elapsed time: 0:06:48.20
 ```
 
-**Step 3**: Clacular matrices de distancia utilizando NMF.
+**Step 3**: Calcular matrices de distancia utilizando NMF.
 
 ```bash
 $ cd recsys
