@@ -19,7 +19,6 @@ router.register(r'similarity-matrix', SimilarityMatrixViewSet)
 router.register(r'similarity-matrix-cells', SimilarityMatrixCellViewSet)
 router.register(r'recommenders', RecommenderViewSet)
 
-
 urlpatterns = [
     path('', views.home, name='home'),
     path('sign-in',  views.sign_in,  name='sign-in' ),

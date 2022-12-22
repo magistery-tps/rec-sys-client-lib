@@ -106,3 +106,23 @@ class DomainContext(metaclass=ut.SingletonMeta):
 
     @property
     def pmf_distance_matrix_job(self): return self.__pmf_distance_matrix_job
+
+
+    @property
+    def user_repoitory(self): return self.__user_repository
+
+
+    @property
+    def item_repoitory(self): return self.__item_repository
+
+
+    @property
+    def interaction_repoitory(self): return self.__interaction_repository
+
+
+    @property
+    def similarity_matrix_repository(self): return self.__similarity_matrix_repository
+
+
+    @property
+    def similarity_cell_repository(self): return self.__similarity_cell_repository

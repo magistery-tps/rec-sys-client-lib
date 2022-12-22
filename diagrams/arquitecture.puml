@@ -1,2 +1,0 @@
-@startuml Test Diagram
-User->World : Hello World!

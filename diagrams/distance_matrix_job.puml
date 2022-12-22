@@ -1,0 +1,88 @@
+@startuml User-User / Item-Item Similarity Matrix prediction Diagram
+participant Scheduler order 1
+participant SurpriseDistanceMatrixJob order 2
+participant RatingMatrixService order 3
+participant InteractionService order 4
+participant RecommenderService order 5
+participant DatasetFactory order 6
+participant ModelManager order 7
+participant SimilarityService order 8
+participant RecommenderService order 9
+
+participant InteractionRepository order 10
+participant RecommenderRepository order 11
+
+
+participant RecSysApiClient order 20
+participant ResSysApiService order 21
+
+
+Scheduler->SurpriseDistanceMatrixJob: execute()
+SurpriseDistanceMatrixJob->InteractionService: find_all()
+InteractionService->InteractionRepository:find(page_size=5_000)
+InteractionRepository->RecSysApiClient: Get paginated interactions.
+RecSysApiClient->ResSysApiService: GET /api/interacitons?offset=0&limit=5_000 ...
+
+RecSysApiClient<--ResSysApiService: Interactions Page
+InteractionRepository<--RecSysApiClient: Interactions Page
+InteractionService<--InteractionRepository: Interactions List
+SurpriseDistanceMatrixJob<--InteractionService: interactions_df: DataFrame(user_id, item_id, rating)
+
+
+SurpriseDistanceMatrixJob->RatingMatrixService: create(interactions_df): Build ratings matrix
+
+
+RatingMatrixService->InteractionService: filter_by_rating_scale(interactions_df)
+RatingMatrixService<--InteractionService: interactions_df
+
+RatingMatrixService->InteractionService: filter_users_by_min_interactions(interactions_df)
+RatingMatrixService<--InteractionService: interactions_df
+
+RatingMatrixService->InteractionService: unrated_user_item(interactions_df)
+RatingMatrixService<--InteractionService: unrated_user_item_df
+
+RatingMatrixService->DatasetFactory: create(interactions_df)
+
+RatingMatrixService<--DatasetFactory: train_dataset
+
+RatingMatrixService-->ModelManager: train(train_dataset, model = SVD / NMF)
+
+RatingMatrixService-->ModelManager: predict(unrated_user_item_df)
+
+RatingMatrixService<--ModelManager: pred_interactions_df
+
+RatingMatrixService->RatingMatrixService: all_interactions_df = concat(train_dataset, pred_interactions_df)
+
+RatingMatrixService->RatingMatrixService: to_sparse_matrix(all_interactions_df)
+
+SurpriseDistanceMatrixJob<--RatingMatrixService: rating_matrix
+
+SurpriseDistanceMatrixJob->SimilarityService: similarities(rating_matrix): Get user similarities
+SurpriseDistanceMatrixJob<--SimilarityService: user_sim_df: Dataframe(user_a, user_b, sim)
+
+SurpriseDistanceMatrixJob->SimilarityService: similarities(rating_matrix): Get item similarities
+SurpriseDistanceMatrixJob<--SimilarityService: item_sim_df: Dataframe(item_a, item_b, sim)
+
+SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: user_sim_df.filter(n_most_similars)
+SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: item_sim_df.filter(n_most_similars)
+
+SurpriseDistanceMatrixJob->RecommenderService: upsert('rec-name', user_sim_df, item_sim_df) a recommender
+RecommenderService->RecommenderRepository: find(name='rec-name')
+RecommenderRepository->RecSysApiClient: Get recommender by name.
+RecSysApiClient->ResSysApiService: GET /api/recommenders?name=rec-name
+
+RecSysApiClient<--ResSysApiService: recommender
+RecommenderRepository<--RecSysApiClient: recommender
+RecommenderService<--RecommenderRepository: recommender
+
+alt#Gold #LightBlue if already exist a recommender
+    RecommenderService->RecommenderRepository: update('rec-name', user_sim_df, item_sim_df)
+else
+    RecommenderService->RecommenderRepository: add('rec-name', user_sim_df, item_sim_df)
+end
+RecommenderService->RecommenderRepository: add/update('rec-name', user_sim_df, item_sim_df)
+RecommenderRepository->RecSysApiClient: add/update recommender
+RecSysApiClient->ResSysApiService: POST or PUT /api/recommenders {'rec-name', user_sim_df, item_sim_df}
+SurpriseDistanceMatrixJob<--RecommenderService
+
+SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: Finish Job

@@ -14,7 +14,10 @@ class ListResponse:
         if 'results' in body:
             self.body.results = [bunch.Bunch(item) for item in self.body.results]
 
+
     def __repr__(self): return self.__str__()
+
+
     def __str__(self):  return json.dumps({'status': self.status, 'body': self.body}, indent=4)
 
 
@@ -26,19 +29,23 @@ class ItemResponse:
         else:
             self.body = [body]
 
+
     def __repr__(self): return self.__str__()
+
+
     def __str__(self):  return json.dumps({'status': self.status, 'body': self.body}, indent=4)
 
 
 class ActionsFactory:
     @staticmethod
-    def create(name, filters=''):
-        return {
-            'pages':  { 'method': 'GET',    'url': "/api/"+ name + "/?offset={}&limit={}" + filters },
-            'add':    { 'method': 'POST',   'url': "/api/"+ name + "/" },
-            'update': { 'method': 'PUT',    'url': "/api/"+ name + "/{}/" },
-            'remove': { 'method': 'DELETE', 'url': "/api/"+ name + "/{}/" }
+    def create(name, filters='', extra_actions={}):
+        actions = {
+            'pages':  { 'method': 'GET',    'url': "/api/" + name + "/?offset={}&limit={}" + filters },
+            'add':    { 'method': 'POST',   'url': "/api/" + name + "/" },
+            'update': { 'method': 'PUT',    'url': "/api/" + name + "/{}/" },
+            'remove': { 'method': 'DELETE', 'url': "/api/" + name + "/{}/" }
         }
+        return actions | extra_actions
 
 
 class SimilarityMatrixType(Enum):
@@ -47,26 +54,43 @@ class SimilarityMatrixType(Enum):
 
 
 class UserResource(Resource):
-    actions = ActionsFactory.create('users', '&username={}&email={}')
+    actions = ActionsFactory.create(
+        name    = 'users',
+        filters = '&username={}&email={}'
+    )
+
 
 class ItemResource(Resource):
-    actions = ActionsFactory.create('items', '&name={}&description={}' )
+    actions = ActionsFactory.create(
+        name    = 'items',
+        filters = '&name={}&description={}'
+    )
+
 
 class InteractionResource(Resource):
-    actions = ActionsFactory.create('interactions', '&user={}&item={}')
+    actions = ActionsFactory.create(
+        name     = 'interactions',
+        filters  = '&user={}&item={}'
+    )
+
 
 class SimilarityMatrixResource(Resource):
     actions = ActionsFactory.create(
-        'similarity-matrix',
-        'name={}&type={}&description={}&version={}'
+        name    = 'similarity-matrix',
+        filters = '&name={}&type={}&description={}&version={}'
     )
 
 
 class SimilarityMatrixCellResource(Resource):
     actions = ActionsFactory.create(
-        'similarity-matrix-cells',
-        '&row={}&column={}&matrix={}'
+        name          = 'similarity-matrix-cells',
+        filters       = '&row={}&column={}&matrix={}',
+        extra_actions = {
+            'versions'          : { 'method': 'GET',    'url': '/api/similarity-matrix-cells/versions/' },
+            'remove_by_version' : { 'method': 'DELETE', 'url': '/api/similarity-matrix-cells/versions/{}/' }
+        }
     )
+
 
 class RecommenderResource(Resource):
     actions = ActionsFactory.create('recommenders', '&name={}')
@@ -111,8 +135,10 @@ class RecSysApi:
         self.api  = api
         self.host = host
 
+
     def _resp(self, response):
         return ItemResponse(response.status_code, response.body)
+
 
     def _list_resp(self, response):
         return ListResponse(response.status_code, response.body)
@@ -159,6 +185,7 @@ class RecSysApi:
             )
         )
 
+
     def add_similarity_matrix(
         self,
         name        : str,
@@ -173,8 +200,10 @@ class RecSysApi:
             'version'     : version
         }))
 
+
     def update_similarity_matrix(self, dto):
         return self._resp(self.api.similarity_matrix.update(dto['id'], body = dto))
+
 
     def remove_similarity_matrix(self, id: int):
         return self._resp(self.api.similarity_matrix.remove(id))
@@ -200,11 +229,21 @@ class RecSysApi:
             )
         )
 
+
     def bulk_add_similarity_cells(self, body):
         return self._resp(self.api.similarity_matrix_cell.add(body=body))
 
+
     def remove_similarity_cell(self, id: int):
         return self._resp(self.api.similarity_matrix_cell.remove(id))
+
+
+    def similarity_cells_versions(self):
+        return self._resp(self.api.similarity_matrix_cell.versions())
+
+
+    def remove_similarity_cells_by_version(self, version: int):
+        return self._resp(self.api.similarity_matrix_cell.remove_by_version(version))
     #--------------------------------------------------------------------------
     #
     #
@@ -220,11 +259,14 @@ class RecSysApi:
     ):
         return self._list_resp(self.api.recommenders.pages(offset, limit, name))
 
+
     def add_recommender(self, dto):
         return self._resp(self.api.recommenders.add(body=dto))
 
+
     def update_recommender(self, dto):
         return self._resp(self.api.recommenders.update(dto['id'], body=dto))
+
 
     def remove_recommender(self, id: int):
         return self._resp(self.api.recommenders.remove(id))

@@ -32,4 +32,5 @@ dependencies:
         - surprise
         - persist-queue
         - django-filter
+        - django-extensions
         - colorlog

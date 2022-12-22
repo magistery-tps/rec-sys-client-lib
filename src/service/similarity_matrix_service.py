@@ -98,7 +98,13 @@ class SimilarityMatrixService:
         if desc is None:
             desc = name
 
-        models = self.__matrix_repository.find(query={'name': name, 'type': str(type.value)})
+        query={'name': name, 'type': str(type.value)}
+
+        self._logger.info('Query: {query}')
+
+        models = self.__matrix_repository.find()
+
+        self._logger.info('Results: {models}')
 
         if len(models) > 0 and models[0].name == name:
             self._logger.info(f'Already exists {name} {type} matrix.')

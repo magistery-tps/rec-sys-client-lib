@@ -29,4 +29,4 @@ API_TOKEN = 'e3ff025094fe0ee474501bbeda0a2a44e80230c1'
 #------------------------------------------------------------------------------
 if __name__ == '__main__':
     ctx = DomainContext(API_TOKEN, HOST, TEMP_PATH)
-    ctx.svd_distance_matrix_job.execute()
+    ctx.nmf_distance_matrix_job.execute()
