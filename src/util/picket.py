@@ -8,6 +8,6 @@ class Picket:
             pickle.dump(obj, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     @staticmethod
-    def load(path):            
+    def load(path):
         with open(f'{path}.pickle', 'rb') as handle:
             return pickle.load(handle)
