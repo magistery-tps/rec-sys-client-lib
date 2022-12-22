@@ -9,8 +9,9 @@ participant ModelManager order 7
 participant SimilarityService order 8
 participant RecommenderService order 9
 
-participant InteractionRepository order 10
-participant RecommenderRepository order 11
+participant RecommenderRepository order 10
+participant InteractionRepository order 11
+
 
 
 participant RecSysApiClient order 20
