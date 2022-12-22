@@ -26,22 +26,25 @@ class SimilarityMatrixViewSet(viewsets.ModelViewSet):
     filterset_fields = ['name', 'type', 'description', 'version']
 
 
-    @action(detail=False, methods=['GET'], url_path='versions')
-    def get_versions(self, request, pk=None):
+    @action(detail=False, methods=['GET'], url_path='(?P<matrix>[0-9]+)/versions')
+    def get_versions(self, request, matrix=None):
+        logger = get_logger(self)
+        logger.info(f'matrix: {matrix}')
         versions = SimilarityMatrixCell \
             .objects \
-            .filter(matrix__id=pk) \
+            .filter(matrix__id=matrix) \
             .values('version')  \
             .distinct()
+        logger.info(f'versions: {versions}')
         return Response(data=versions, status=status.HTTP_200_OK)
 
 
-    @action(detail=False, methods=['DELETE'], url_path='versions/(?P<version>[0-9]+)')
-    def delete_version(self, request, pk=None, version=None):
-        models = SimilarityMatrixCell.objects.filter(matrix__id=pk, version=version)
+    @action(detail=False, methods=['DELETE'], url_path='(?P<matrix>[0-9]+)/versions/(?P<version>[0-9]+)')
+    def delete_version(self, request, matrix=None, version=None):
+        models = SimilarityMatrixCell.objects.filter(matrix__id=matrix, version=version)
         if models:
             response_body = {
-                'matrix' : pk,
+                'matrix' : matrix,
                 'version': version,
                 'deleted': len(models)
             }

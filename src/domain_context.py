@@ -10,7 +10,12 @@ from surprise import SVD, NMF
 
 
 class DomainContext(metaclass=ut.SingletonMeta):
-    def __init__(self, token, host, temp_path):
+    def __init__(
+        self,
+        host,
+        token     = 'e3ff025094fe0ee474501bbeda0a2a44e80230c1',
+        temp_path = '../../temp'
+    ):
         LoggerBuilder.build()
         warnings.filterwarnings('ignore')
         ut.mkdir(temp_path)

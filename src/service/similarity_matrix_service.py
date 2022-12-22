@@ -49,6 +49,9 @@ class SimilarityMatrixService:
 
         self.add_cells_and_update(similarity_matrix, cells)
 
+        # Remove previous matrix version after add new version cells...
+        self.__matrix_repository.remove_previous_versions(similarity_matrix.id)
+
         return similarity_matrix
 
     def update_item_similarity_matrix(
@@ -79,6 +82,9 @@ class SimilarityMatrixService:
 
         self.add_cells_and_update(similarity_matrix, cells)
 
+        # Remove previous matrix version after add new version cells...
+        self.__matrix_repository.remove_previous_versions(similarity_matrix.id)
+
         return similarity_matrix
 
     def add_cells_and_update(self, similarity_matrix, cells):
@@ -100,11 +106,7 @@ class SimilarityMatrixService:
 
         query={'name': name, 'type': str(type.value)}
 
-        self._logger.info('Query: {query}')
-
-        models = self.__matrix_repository.find()
-
-        self._logger.info('Results: {models}')
+        models = self.__matrix_repository.find(query)
 
         if len(models) > 0 and models[0].name == name:
             self._logger.info(f'Already exists {name} {type} matrix.')

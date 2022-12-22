@@ -77,18 +77,18 @@ class InteractionResource(Resource):
 class SimilarityMatrixResource(Resource):
     actions = ActionsFactory.create(
         name    = 'similarity-matrix',
-        filters = '&name={}&type={}&description={}&version={}'
+        filters = '&name={}&type={}&description={}&version={}',
+        extra_actions = {
+            'versions'       : { 'method': 'GET',    'url': '/api/similarity-matrix/{}/versions/' },
+            'remove_version' : { 'method': 'DELETE', 'url': '/api/similarity-matrix/{}/versions/{}/' }
+        }
     )
 
 
 class SimilarityMatrixCellResource(Resource):
     actions = ActionsFactory.create(
         name          = 'similarity-matrix-cells',
-        filters       = '&row={}&column={}&matrix={}',
-        extra_actions = {
-            'versions'          : { 'method': 'GET',    'url': '/api/similarity-matrix-cells/versions/' },
-            'remove_by_version' : { 'method': 'DELETE', 'url': '/api/similarity-matrix-cells/versions/{}/' }
-        }
+        filters       = '&row={}&column={}&matrix={}'
     )
 
 
@@ -207,6 +207,14 @@ class RecSysApi:
 
     def remove_similarity_matrix(self, id: int):
         return self._resp(self.api.similarity_matrix.remove(id))
+
+
+    def similarity_matrix_versions(self, id: int):
+        return self._resp(self.api.similarity_matrix.versions(id))
+
+
+    def remove_similarity_version(self, id: int, version: int):
+        return self._resp(self.api.similarity_matrix.remove_version(id, version))
     #--------------------------------------------------------------------------
     #
     #
@@ -236,14 +244,6 @@ class RecSysApi:
 
     def remove_similarity_cell(self, id: int):
         return self._resp(self.api.similarity_matrix_cell.remove(id))
-
-
-    def similarity_cells_versions(self):
-        return self._resp(self.api.similarity_matrix_cell.versions())
-
-
-    def remove_similarity_cells_by_version(self, version: int):
-        return self._resp(self.api.similarity_matrix_cell.remove_by_version(version))
     #--------------------------------------------------------------------------
     #
     #
