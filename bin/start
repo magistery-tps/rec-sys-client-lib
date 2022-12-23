@@ -1,0 +1,21 @@
+#!/bin/zsh
+# -----------------------------------------------------------------------------
+# Main
+# -----------------------------------------------------------------------------
+ABSPATH=$(readlink -f $0)
+ABSDIR=$(dirname $ABSPATH)
+
+echo $ABSDIR
+
+source "$ABSDIR/../service.conf"
+source "$CONDA_PATH/etc/profile.d/conda.sh"
+
+echo "ENV: $ENV"
+echo "SECRET_KEY: $SECRET_KEY"
+conda activate $ENV
+
+echo "Start Recsys application"
+
+cd "$ABSDIR/../recsys"
+/usr/bin/nohup python manage.py runserver 0.0.0.0:$PORT &
+# ----------------------------------------------------------------------------

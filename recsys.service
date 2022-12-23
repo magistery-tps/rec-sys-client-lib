@@ -1,0 +1,15 @@
+[Unit]
+Description=RecSys server for user %u
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=%h/recsys
+ExecStart=%h/recsys/bin/start
+ExecStop=%h/recsys/bin/stop
+TimeoutStartSec=0
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
