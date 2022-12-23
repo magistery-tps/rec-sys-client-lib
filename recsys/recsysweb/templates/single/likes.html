@@ -18,16 +18,21 @@
                 img.src='{{ NO_IMAGE_ITEM_URL }}'
             }
         }
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip({html:true});
+        })
     </script>
     <div class="card-like">
-        <div class="img-wrapper">
+        <div class="img-wrapper" data-toggle="tooltip" data-html="true" title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}">
             <img
             src="{{ item.image }}"
-            alt="{{ item.name }}" 
+            alt="{{ item.name }}"
             class="d-block  w-100 round-image"
             onload="onCardLoad(this);"
             >
-        </div>
+        </div
+        >
         <div class="card-body">
             <form method="post" action="{% url 'likes' %}">
                 {% csrf_token %}
@@ -49,13 +54,6 @@
             </form>
             <hr style="height:1px; width:99%; border-width:0; margin-top: 11px; margin-bottom: 10px; color:#ced4da; background-color:red">
             <h6 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h6>
-            <p class="card-text" style="overflow-wrap: anywhere;">
-                {% if item.description == None or item.description == 'None' %}
-                    No Description
-                {% else %}
-                    {{ item.description|truncatechars:500 }}
-                {% endif %}
-            </p>
         </div>
         <div class="card-footer">
             Popularity: <strong>{{ item.popularity|floatformat:1 }}</strong>
