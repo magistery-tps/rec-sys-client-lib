@@ -1,9 +1,47 @@
 from scipy.sparse import  dok_matrix, csr_matrix
 import logging
 import pandas as pd
+import logging
 
 
-norm = lambda df: (df - df.mean()) / df.std()
+# DF Ppeline functions...
+
+def normalize_column(df, source, target=None):
+    if target is None:
+        target = source
+    df[target] = (df[source] - df[source].mean()) / df[source].std()
+    return df
+
+
+def min_max_scale_column(df, source, target=None):
+    if target is None:
+        target = source
+    df[target] = (df[source]-df[source].min())/(df[source].max()-df[source].min())
+    return df
+
+def apply_fn_to_column(df, target, fn):
+    df[target] = fn(df)
+    return df
+
+def clean_html_format(df, column):
+    import re
+
+    # as per recommendation from @freylis, compile once only
+    CLEANR = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+
+    def clean_html(raw_html):  return re.sub(CLEANR, '', raw_html) if raw_html else '' 
+
+    df[column] = df[column].apply(clean_html)
+    return df
+
+
+def distinct_by(df, columns=[]):
+    n_before = df.shape[0]
+    df = df.drop_duplicates(subset=columns)
+    n_after = df.shape[0]
+    logging.info(f'Repeated rows by {columns} -> Count: {n_before - n_after}, Percent: {((n_before - n_after)/n_before)*100:.2f}%')
+    return df
+
 
 
 def df_to_matrix(

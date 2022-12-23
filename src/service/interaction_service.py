@@ -45,7 +45,7 @@ class InteractionService:
 
         df_filtered = df.pipe(lambda df: df[df[columns[2]].isin(rating_scale)])
 
-        self._logger.info(f'Filtered: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        self._logger.info(f'Filtered: {(1- (df_filtered.shape[0] / df.shape[0])) * 100:.1f}%')
         return df_filtered
 
 
@@ -60,7 +60,7 @@ class InteractionService:
         user_ids = self.n_interactions_by_user(df, columns, min_n_interactions)[columns[0]].unique()
         df_filtered = df[df[columns[0]].isin(user_ids)]
 
-        self._logger.info(f'Filtered interactions: {(df_filtered.shape[0] / df.shape[0]) * 100:.1f}%')
+        self._logger.info(f'Filtered interactions: {(1 - (df_filtered.shape[0] / df.shape[0])) * 100:.1f}%')
         self._logger.info(f'Excluded interactions: {df.shape[0] - df_filtered.shape[0]}')
 
         return df_filtered
