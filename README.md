@@ -50,7 +50,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 
 **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Dataset de libros extraído de Amazon US.
   * **Raw pre-processing**
-    * Se realizo un pre-procesamiento inicial en MongoDB dada la cantidad masiva a de datos.
+    * Se realizo un pre-procesamiento inicial en [MongoDB](https://www.mongodb.com/home) dada la cantidad masiva a de datos.
       * [Queries](https://github.com/magistery-tps/rec-sys/blob/main/database/amazon-books.js)
       * [Commands](https://github.com/magistery-tps/rec-sys/blob/main/database/commands.sh)
   * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
