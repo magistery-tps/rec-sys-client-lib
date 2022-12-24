@@ -43,12 +43,18 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="350" />
 </p>
 
 ## Notebooks
 
 **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Dataset de libros extraído de Amazon US.
+
+
+ <p align="center">
+   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/amazon-books-dataset.png">
+ </p>
+ 
   * **Raw pre-processing**
     * Se realizo un pre-procesamiento inicial en [MongoDB](https://www.mongodb.com/home) dada la cantidad masiva a de datos.
       * [Queries](https://github.com/magistery-tps/rec-sys/blob/main/database/amazon-books.js)
