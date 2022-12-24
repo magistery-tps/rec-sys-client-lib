@@ -139,7 +139,7 @@ Jupyter Notebook 6.1.4 is running at:
 http://localhost:8888/?token=45efe99607fa6......
 ```
 
-**Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
+**Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de [RecSys](http://nonosoft.ddns.net:8000/) Abstraccion `Repository`.
 
 
 
