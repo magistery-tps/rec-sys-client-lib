@@ -1,6 +1,6 @@
 @startuml User-User / Item-Item Similarity Matrix prediction Diagram
 participant Scheduler order 1
-participant SurpriseDistanceMatrixJob order 2
+participant SurpriseSimilarityMatrixJob order 2
 participant RatingMatrixService order 3
 participant InteractionService order 4
 participant RecommenderService order 5
@@ -18,8 +18,8 @@ participant RecSysApiClient order 20
 participant ResSysApiService order 21
 
 
-Scheduler->SurpriseDistanceMatrixJob: execute()
-SurpriseDistanceMatrixJob->InteractionService: find_all()
+Scheduler->SurpriseSimilarityMatrixJob: execute()
+SurpriseSimilarityMatrixJob->InteractionService: find_all()
 InteractionService->InteractionRepository:find(page_size=5_000)
 InteractionRepository->RecSysApiClient: Get paginated interactions.
 RecSysApiClient->ResSysApiService: GET /api/interacitons?offset=0&limit=5_000 ...
@@ -27,10 +27,10 @@ RecSysApiClient->ResSysApiService: GET /api/interacitons?offset=0&limit=5_000 ..
 RecSysApiClient<--ResSysApiService: Interactions Page
 InteractionRepository<--RecSysApiClient: Interactions Page
 InteractionService<--InteractionRepository: Interactions List
-SurpriseDistanceMatrixJob<--InteractionService: interactions_df: DataFrame(user_id, item_id, rating)
+SurpriseSimilarityMatrixJob<--InteractionService: interactions_df: DataFrame(user_id, item_id, rating)
 
 
-SurpriseDistanceMatrixJob->RatingMatrixService: create(interactions_df): Build ratings matrix
+SurpriseSimilarityMatrixJob->RatingMatrixService: create(interactions_df): Build ratings matrix
 
 
 RatingMatrixService->InteractionService: filter_by_rating_scale(interactions_df)
@@ -56,18 +56,18 @@ RatingMatrixService->RatingMatrixService: all_interactions_df = concat(train_dat
 
 RatingMatrixService->RatingMatrixService: to_sparse_matrix(all_interactions_df)
 
-SurpriseDistanceMatrixJob<--RatingMatrixService: rating_matrix
+SurpriseSimilarityMatrixJob<--RatingMatrixService: rating_matrix
 
-SurpriseDistanceMatrixJob->SimilarityService: similarities(rating_matrix): Get user similarities
-SurpriseDistanceMatrixJob<--SimilarityService: user_sim_df: Dataframe(user_a, user_b, sim)
+SurpriseSimilarityMatrixJob->SimilarityService: similarities(rating_matrix): Get user similarities
+SurpriseSimilarityMatrixJob<--SimilarityService: user_sim_df: Dataframe(user_a, user_b, sim)
 
-SurpriseDistanceMatrixJob->SimilarityService: similarities(rating_matrix): Get item similarities
-SurpriseDistanceMatrixJob<--SimilarityService: item_sim_df: Dataframe(item_a, item_b, sim)
+SurpriseSimilarityMatrixJob->SimilarityService: similarities(rating_matrix): Get item similarities
+SurpriseSimilarityMatrixJob<--SimilarityService: item_sim_df: Dataframe(item_a, item_b, sim)
 
-SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: user_sim_df.filter(n_most_similars)
-SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: item_sim_df.filter(n_most_similars)
+SurpriseSimilarityMatrixJob->SurpriseSimilarityMatrixJob: user_sim_df.filter(n_most_similars)
+SurpriseSimilarityMatrixJob->SurpriseSimilarityMatrixJob: item_sim_df.filter(n_most_similars)
 
-SurpriseDistanceMatrixJob->RecommenderService: upsert('rec-name', user_sim_df, item_sim_df) a recommender
+SurpriseSimilarityMatrixJob->RecommenderService: upsert('rec-name', user_sim_df, item_sim_df) a recommender
 RecommenderService->RecommenderRepository: find(name='rec-name')
 RecommenderRepository->RecSysApiClient: Get recommender by name.
 RecSysApiClient->ResSysApiService: GET /api/recommenders?name=rec-name
@@ -77,13 +77,14 @@ RecommenderRepository<--RecSysApiClient: recommender
 RecommenderService<--RecommenderRepository: recommender
 
 alt#Gold #LightBlue if already exist a recommender
-    RecommenderService->RecommenderRepository: update('rec-name', user_sim_df, item_sim_df)
+    RecommenderService->RecommenderRepository: update('rec-name', user_sim_df, item_sim_df, version)
 else
     RecommenderService->RecommenderRepository: add('rec-name', user_sim_df, item_sim_df)
 end
-RecommenderService->RecommenderRepository: add/update('rec-name', user_sim_df, item_sim_df)
+RecommenderService->RecommenderRepository: add/update('rec-name', user_sim_df, item_sim_df, version)
 RecommenderRepository->RecSysApiClient: add/update recommender
-RecSysApiClient->ResSysApiService: POST or PUT /api/recommenders {'rec-name', user_sim_df, item_sim_df}
-SurpriseDistanceMatrixJob<--RecommenderService
+RecSysApiClient->ResSysApiService: POST or PUT /api/recommenders {'rec-name', user_sim_df, item_sim_df, version}
+SurpriseSimilarityMatrixJob<--RecommenderService
 
-SurpriseDistanceMatrixJob->SurpriseDistanceMatrixJob: Finish Job
+SurpriseSimilarityMatrixJob->SurpriseSimilarityMatrixJob: Finish Job
+@enduml

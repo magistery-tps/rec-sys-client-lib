@@ -1,0 +1,28 @@
+@startuml
+title Deployment
+
+actor User
+
+cloud "Hosting Cloud" #palegreen {
+    node RecSys <<Web App & REST API>>
+    database RecSysDB <<MySQL>>
+}
+
+cloud "Computing Cloud" #palegreen {
+    node Airflow <<Job Scheduler>> {
+        artifact [SVDSimJob]
+        artifact [NFMSimJob]
+    }
+    database AirflowDB <<MySQL>>
+}
+
+
+User -r-> RecSys: See & Make Recs
+RecSys -[#blue,dotted,thickness=2]-> SVDSimJob: Interactions
+RecSys <-[#green,dotted,thickness=2]- SVDSimJob: Update Similarity
+RecSys -[#blue,dotted,thickness=2]-> NFMSimJob: Interactions
+RecSys <-[#green,dotted,thickness=2]- NFMSimJob: Update Similarity
+
+RecSys <-[dotted,thickness=1]-> RecSysDB
+Airflow <-[dotted,thickness=1]-> AirflowDB
+@enduml
