@@ -52,8 +52,9 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 
 1. Selecionar scoring o rating para el item actual.
 2. Presione **Vote** para aplicar el score selecionado en el punto 1 al item actual.
-3. Presione **Next** para saltear la votation del el item actuar.
-4. Es positle ver una descriptión del item. 
+3. El valor de popularidad del item actual.
+4. Presione **Next** para saltear la votation del el item actuar.
+5. Es positle ver una descriptión del item. 
 
 ## Notebooks
 
