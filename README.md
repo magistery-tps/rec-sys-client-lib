@@ -34,9 +34,12 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
    
             * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
               * Preprocesamiento.
-              * Seleccion de features
+              * Seleccion de features.
               * Construcción de un datasets de items e interacciones de usuarios.
-            * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb):** Preprosesamiento filtro de item e interaciones segun un minimo de popilaridad y carga de datos en **RecSysApp**.
+            * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb)**
+              *  Preprosesamiento final.
+              *  Filtro de item e interaciones segun un minimo de popilaridad
+              *  Carga de datos via SQL en **RecSysApp**.
             * **[distance-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
               * Prueba de escritorio de los siguientes jobs:
                 * _svd_distance_matrix_job_
