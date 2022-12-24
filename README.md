@@ -167,6 +167,10 @@ $  python bin/nmf_distance_matrix_job.py
 Ambos jobs calcular matrices de distancia user-user/item-item en base a la matriz de rating predicha por cada model (SVD/NMF). Luego, realizan un upsert de estas matrices en la base de datos, insertando unicamente los N vecinos mas cercanos en ambos casos (user-user/item-item). Cada matrix esta versionada. Es decir, que cada ejecución de un job crear una nueva versión de la matrix. Finalmente, ambas matrices queda asociadas a una entidad en la base de datos que representa al modelo con el que fue predicha.
 
 
+## SurpriceSimilarityMatrixJob : Diagrama de interación
+
+
+<img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/similarity_matrix_job.svg">
 
 ## Correr aplicación como un servicio/demonio systemd
 
