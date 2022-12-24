@@ -43,7 +43,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="350" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="60%" />
 </p>
 
 ## Notebooks
