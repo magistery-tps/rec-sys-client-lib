@@ -89,7 +89,7 @@ class ItemRecService:
                 .replace(':LIMIT', str(shuffle_limit))
         )
 
-        selected_items = random.choices(items, k=limit)
+        selected_items = random.sample(list(items), limit)
         selected_items = sorted(selected_items, key=lambda item: item.popularity, reverse=True)
 
         return Recommendations('populars', selected_items)
