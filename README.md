@@ -46,6 +46,11 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
 </p>
 
+1. Selecionar scoring o rating para el item actual.
+2. Presione **Vote** para aplicar el score selecionado en el punto 1 al item actual.
+3. Presione **Next** para saltear la votation del el item actuar.
+4. Es positle ver una descriptión del item. 
+
 ## Notebooks
 
 **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Dataset de libros extraído de Amazon US.
