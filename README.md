@@ -81,17 +81,14 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
     * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
 
 **[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
-    * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
-    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/) Abstraccion `Repository`.
+ * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
+ * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/) Abstraccion `Repository`.
 
 **[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
-    * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
-    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/).
+ * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
+ * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/).
 
 **[RecSys REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://nonosoft.ddns.net:8000/) REST API.
-* Llevar Jobs a [Airflow](https://airflow.apache.org/) (Pending).
-
-
 
 
 
