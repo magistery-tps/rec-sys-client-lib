@@ -48,7 +48,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 
 ## Notebooks
 
-**[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Datasets de lobros extraído de Amazon US.
+**[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Dataset de libros extraído de Amazon US.
   * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
     * Pre-procesamiento.
     * Selección de features.
