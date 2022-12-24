@@ -13,73 +13,74 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/deployment.svg">
 
-Como se puede apreciar, la aplicacion esta compuesta en dos grandes partes. Una de estas es `RecSys`. `RecSys` expone un interfaz web para que los usuarios finales puedean realizar y consultar recomemdaciones de items. Por otro lado `RecSys` exponen una intarface API REST. Esta permite a servicios externos consutlar y modificar el modelo de datos de `RecSys`. por otro lado exisnte Procesos o Jos que corren en una isntancia de Airflow. Estos Jobs se encargan de consultar las interacciones delos usuarios a `RecSys` y transformaslas en matrices de similudi user-user/item-item. Finamente adtualizan estra similutudes en `RecSys` para poder realizar recomendaciones al usuario final en base a estas.
+Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [RecSys](http://nonosoft.ddns.net:8000/) expone un interfaz web para los usuarios finales. Estos puedean realizar y consultar recomemdaciones de items. Por otro lado, [RecSys](http://nonosoft.ddns.net:8000/) exponen una intarface REST. Esta permite a servicios externos consultar y modificar el modelo de datos de [RecSys](http://nonosoft.ddns.net:8000/). tambien existent procesos o Jobs que corren en una instancia de `Airflow`. Estos Jobs se encargan de consultar las interacciones de los usuarios a [RecSys](http://nonosoft.ddns.net:8000/) y transformarlas en matrices de similitud user-user/item-item. Finamente actualizan estas similitudes en [RecSys](http://nonosoft.ddns.net:8000/), para poder realizar recomendaciones al usuario final.
 
 
 
 ## Componentes
 
-* `RecSys`
-   * Expone una intefaz para de recomendación de items. Permite recomendar items personalizados al usaurio final.
-     * Login with google.
-     * API: Permite administrar items, interacciones, users, matrices de distancia, etc.. via rest.
-     * Pantalla para puntuación de items.
-     * Pantalla de visialización de recommendaciones.
-     * CRUD de items.
-     * Admin site.
-   * Expone una API REST para administar los distintos recommendadores y sis matrices de similitud.
-
-![RecSys Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
-
-<p align="center">
-<img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
-</p>
-
- * `SurpriseSimilatiyMatrixJob`
-   * _svd_similarity_matrix_job_
-   * _nmf_similarity_matrix_job_
-
-## Notebooks
-
-* **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Datasets de zapatillas extraído de Amazon US.
-  * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
-    * Preprocesamiento.
-    * Seleccion de features.
-    * Construcción de un datasets de items e interacciones de usuarios.
-  * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb)**
-    *  Preprosesamiento final.
-    *  Filtro de item e interaciones segun un minimo de popilaridad
-    *  Carga de datos via SQL en  `RecSysApi`.
-  * **[similarity-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
-    * Prueba de escritorio de los siguientes jobs:
-      * _svd_distance_matrix_job_
-      * _nmf_distance_matrix_job_
-    * Ambos jobs son instancias de _SurpriseDistanceMatrixJob_.
-    * _SurpriseDistanceMatrixJob_ consulta las interacciones via REST a  `RecSysApi`.
-    * Predice los ratings de las interacciones faltantes.
-    * Cosntruye una matrix de ratings completa. Es decir, esta contien las interacciones actuales y las predichas.
-    * Calcula las similitudes user-user/item-item, solo para un numero N de usuarios e items vecinos. Esto disminuir los tiempo de ejecución y evita tener en tienta usuario e item muy lejanos.
-    * Finalmente, crear o actualiza via REST (En  `RecSysApi`) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
-    * Las entidades _SimilarityMatrix_ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
-    * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
-
-* **[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
-    * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
-    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
-
-* **[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
-    * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
-    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de **recsys**.
-
-* **[`RecSysApi` client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via api usando `RecSysApi`.
-    * Proceso para generacion de matrices de distancia en Airflow (Pending)
-
-
-* **[amazon-spider-scrapper](https://github.com/adrianmarino/amazon-spider-scrapper)**
+* [RecSys](http://nonosoft.ddns.net:8000/)
+  * Expone una intefaz web para de recomendación de items
+    * Permite recomendar items personalizados al usuario final.
+    * Login with google.
+    * Pantalla para puntuación de items.
+    * Pantalla de visialización de recommendaciones.
+    * CRUD de items.
+    * Admin site.
+  * Expone una API REST para administar los distintos recommendadores y sus matrices de similitud asociadas.
+* `SurpriseSimilatiyMatrixJob`
+  * _svd_similarity_matrix_job_
+  * _nmf_similarity_matrix_job_
+* [amazon-spider-scrapper](https://github.com/adrianmarino/amazon-spider-scrapper)
     * Es un fork del proyecto amazon-scrapper.
     * Dada una búsqueda en Amazon, permite realizar scrapping del detalle de todos los resultados (Productos) y sus variaciones, junto con sus reviews.
     * Utiliza headers fake, proxies random y delays variables para minimizar el banning de Amazon.
     * Permite, reanudar el proceso de scrapping desde el ultimo productos scrappeado.
+
+
+## Screenshots
+
+![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
+</p>
+
+## Notebooks
+
+**[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Datasets de lobros extraído de Amazon US.
+  * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
+    * Pre-procesamiento.
+    * Selección de features.
+    * Construcción de un datasets de items e interacciones de usuarios.
+  * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb)**
+    *  Preprosesamiento final.
+    *  Filtro de item e interaciones según un mínimo de popularidad.
+    *  Carga de datos via SQL en la base de datos de [RecSys](http://nonosoft.ddns.net:8000/).
+  * **[similarity-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
+    * Testing de jobs:
+      * _svd_distance_matrix_job_
+      * _nmf_distance_matrix_job_
+    * Ambos jobs son instancias de _SurpriseSimilarityMatrixJob_.
+    * _SurpriseSimilarityMatrixJob_ consulta las interacciones via REST a [RecSys](http://nonosoft.ddns.net:8000/).
+    * Predice los ratings de las interacciones faltantes.
+    * Cosntruye una matrix de ratings completa. Es decir, esta contien las interacciones actuales y las predichas.
+    * Calcula las similitudes user-user/item-item, solo para un numero N de usuarios e items vecinos. Esto disminuir los tiempo de ejecución y evita tener en tienta usuario e item muy lejanos.
+    * Finalmente, crear o actualiza via REST (En[RecSys](http://nonosoft.ddns.net:8000/)) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
+    * Las entidades _SimilarityMatrix_ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
+    * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
+
+**[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
+    * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
+    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
+
+**[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
+    * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
+    * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de **recsys**.
+
+**[[RecSys](http://nonosoft.ddns.net:8000/) REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://nonosoft.ddns.net:8000/) REST API.
+* Llevar Jobs a `Airflow` (Pending).
+
 
 
 
@@ -172,7 +173,7 @@ Ambos jobs calcular matrices de distancia user-user/item-item en base a la matri
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/similarity_matrix_job.svg">
 
-## Correr `RecSys` como servicio `Systemd`
+## Correr [RecSys](http://nonosoft.ddns.net:8000/) como servicio `Systemd`
 
 
 **Step 1**: Clonar repo.
