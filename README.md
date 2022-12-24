@@ -173,7 +173,7 @@ Ambos jobs calcular matrices de distancia user-user/item-item en base a la matri
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/similarity_matrix_job.svg">
 
-## Correr [RecSys](http://nonosoft.ddns.net:8000/) como servicio `Systemd`
+## Correr [RecSys](http://nonosoft.ddns.net:8000/) como servicio [systemd](https://systemd.io/)
 
 
 **Step 1**: Clonar repo.
