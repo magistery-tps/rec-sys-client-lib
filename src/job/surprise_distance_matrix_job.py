@@ -13,7 +13,7 @@ class SurpriseDistanceMatrixJob(Job):
         recommender_name      = 'SVD',
         n_most_similars_users = 50,
         n_most_similars_items = 50,
-        n_interactions_delta  = 50
+        n_interactions_delta  = 100
     ):
         super().__init__(ctx)
         self._n_most_similars_users = n_most_similars_users
@@ -50,7 +50,6 @@ class SurpriseDistanceMatrixJob(Job):
         # Build similarity matrix from rating matrix...
         user_similarities, item_similarities = self._build_similatrity_matrix(rating_matrix)
 
-
         # Update user/item similarity matrix into RecSys API...
         self._upsert_recommender(user_similarities, item_similarities, interactions)
 
@@ -80,6 +79,9 @@ class SurpriseDistanceMatrixJob(Job):
             rating_matrix.transpose(),
             entity = 'item'
         )
+
+        user_similarities = user_similarities[user_similarities['value'] > 0.0]
+        item_similarities = item_similarities[item_similarities['value'] > 0.0]
         return user_similarities, item_similarities
 
 
