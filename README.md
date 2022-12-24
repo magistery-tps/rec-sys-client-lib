@@ -52,7 +52,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 
 
  <p align="center">
-   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/amazon-books-dataset.png" height="50%" >
+   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/amazon-books-dataset.png"  height="350" >
  </p>
  
   * **Raw pre-processing**
