@@ -133,5 +133,9 @@ label[for="id_email"] {
 
 .card-text {
     padding-top: 10px;
-    font-size: 14px;
+    font-size: 13px;
+}
+
+.card-footer {
+    font-size: 12px;
 }
