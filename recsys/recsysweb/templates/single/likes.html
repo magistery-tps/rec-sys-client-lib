@@ -18,10 +18,6 @@
                 img.src='{{ NO_IMAGE_ITEM_URL }}'
             }
         }
-
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip({html:true});
-        })
     </script>
     <div class="card-like">
         <div class="img-wrapper" data-toggle="tooltip" data-html="true" title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}">
