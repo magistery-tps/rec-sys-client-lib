@@ -40,7 +40,7 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
               *  Preprosesamiento final.
               *  Filtro de item e interaciones segun un minimo de popilaridad
               *  Carga de datos via SQL en **RecSysApp**.
-            * **[distance-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
+            * **[similarity-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
               * Prueba de escritorio de los siguientes jobs:
                 * _svd_distance_matrix_job_
                 * _nmf_distance_matrix_job_
