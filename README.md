@@ -30,7 +30,7 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 * **notebooks**
     * Pre-carga de datasets amazon sneakers o movie-lens.
 
-       * **[Amazon Books](https://jmcauley.ucsd.edu/data/amazon/)**: Datasets de zapatillas extraído de Amazon US.
+       * **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Datasets de zapatillas extraído de Amazon US.
             * [build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb): Construcción de un datasets de items e interacciones de usuarios.
             * [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb): Carga de datos en la base de datos de **recsys** Abstraccion `Repository`.
             * [distance-matrix-job](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb): Notebook que consulta via rest api interacciones, genera una matrix de distancia y hace push de la matrix via rest. Basicamente calcula matrices de distancias user-user item-item.
