@@ -78,7 +78,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
     * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
     * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de **recsys**.
 
-**[[RecSys](http://nonosoft.ddns.net:8000/) REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://nonosoft.ddns.net:8000/) REST API.
+**[RecSys REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://nonosoft.ddns.net:8000/) REST API.
 * Llevar Jobs a `Airflow` (Pending).
 
 
