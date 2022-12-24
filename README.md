@@ -31,12 +31,12 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
     * Pre-carga de datasets amazon sneakers o movie-lens.
 
        * **[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Datasets de zapatillas extraído de Amazon US.
-            1. **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
+            * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
               * Preprocesamiento.
               * Seleccion de features
               * Construcción de un datasets de items e interacciones de usuarios.
-            2. **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb):** Preprosesamiento filtro de item e interaciones segun un minimo de popilaridad y carga de datos en **RecSysApp**.
-            3. **[distance-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
+            * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb):** Preprosesamiento filtro de item e interaciones segun un minimo de popilaridad y carga de datos en **RecSysApp**.
+            * **[distance-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
               * Prueba de escritorio de los siguientes jobs:
                 * _svd_distance_matrix_job_
                 * _nmf_distance_matrix_job_
