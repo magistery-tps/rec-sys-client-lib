@@ -57,7 +57,7 @@ class ItemRecService:
             item.save()
 
 
-    def find_populars(self, user, limit=10, shuffle_limit=80):
+    def find_populars(self, user, limit=10, shuffle_limit=200):
         items = Item.objects.raw(
             """
                 SELECT
