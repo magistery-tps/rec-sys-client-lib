@@ -40,7 +40,11 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 
 ## Screenshots
 
+
+#### Recomendations
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
+
+#### Scorring
 
 <p align="center">
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
