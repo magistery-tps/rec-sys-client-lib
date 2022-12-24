@@ -49,8 +49,8 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
               * Predice los ratings de las interacciones faltantes.
               * Cosntruye una matrix de ratings completa. Es decir, esta contien las interacciones actuales y las predichas.
               * Calcula las similitudes user-user/item-item, solo para un numero N de usuarios e items vecinos. Esto disminuir los tiempo de ejecución y evita tener en tienta usuario e item muy lejanos.
-              * Finalmente, crear o actualiza via REST (En **RecSysApp**) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (__SimilarityMatrix__, entidades asociada a __Recommender__).
-              * Las entidades __SimilarityMatrix__ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
+              * Finalmente, crear o actualiza via REST (En **RecSysApp**) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
+              * Las entidades _SimilarityMatrix_ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
               * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
        
        * **[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
