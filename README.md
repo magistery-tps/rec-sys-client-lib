@@ -60,7 +60,7 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
        * **[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
             * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
             * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de **recsys**.
-    * **[RecSysApi client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via api usando `RecSysApi`.
+    * **[`RecSysApi` client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via api usando `RecSysApi`.
     * Proceso para generacion de matrices de distancia en Airflow (Pending)
 
 
