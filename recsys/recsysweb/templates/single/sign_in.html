@@ -19,16 +19,14 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" name="username" autofocus>
+                                <input type="text" class="form-control" name="username" placeholder="Username" autofocus>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <button type="submit" class="btn btn-primary" style="width: 100%"><span class="bi-person-fill">&ensp;<b>Sign in</b></button>
                         </form>
-                        <hr style="height:1px; width:100%; border-width:0; color:#ced4da; background-color:red">
+                        <hr style="height:2px; width:100%; border-width:1; color:#ced4da; background-color:red">
                         <script>
                             function sanitize_url(form) {
                                 form.action = '{% provider_login_url 'google' %}?next=/';
