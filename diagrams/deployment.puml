@@ -9,7 +9,7 @@ cloud "Hosting Cloud" #palegreen {
 }
 
 cloud "Computing Cloud" #palegreen {
-    node Airflow <<Job Scheduler>> {
+    node Airflow <<Job Scheduler>> #FEFECE {
         artifact [SVDSimJob]
         artifact [NFMSimJob]
     }
