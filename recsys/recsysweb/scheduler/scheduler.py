@@ -14,8 +14,14 @@ def start():
     scheduler.add_jobstore(DjangoJobStore(), "default")
 
 
-    scheduler.add_job(update_items_popularity_job, 'interval', minutes=1, max_instances=1, id='update_items_popularity_job', replace_existing=True)
+    scheduler.add_job(
+        update_items_popularity_job,
+        'interval',
+        minutes          = 1,
+        max_instances    = 1,
+        id               = 'update_items_popularity_job',
+        replace_existing = True
+    )
 
     register_events(scheduler)
     scheduler.start()
-    logging.info("Scheduler started...")

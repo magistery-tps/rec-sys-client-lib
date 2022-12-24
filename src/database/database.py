@@ -11,13 +11,19 @@ class Database:
         )
         self._logger = get_logger(self)
 
-    def execute(self, query):
+    def execute(self, query, buffered=True, select=False):
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection.cursor(buffered=buffered)
             cursor.execute(query)
-            self.connection.commit()
+            if select:
+                return cursor.fetchall()
+            else:
+                self.connection.commit()
+            return None
         except Exception as error:
             self._logger.error(f'Error when execute query: {query}. {error}')
+            return None
+
 
     def reset(self):
       self.execute('DELETE FROM recsys.recsysweb_interaction')

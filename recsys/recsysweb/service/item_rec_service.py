@@ -3,6 +3,11 @@ from django.db import connection
 import random
 
 
+class MinMaxScaler:
+    def __init__(self, values): self.min_value, self.max_value = min(values), max(values)
+    def __call__(self, value): return  (value - self.min_value) / (self.max_value - self.min_value)
+
+
 class ItemRecService:
     def rate_item_for(self, item_id, user, rating):
         item = Item.objects.get(id=item_id)
@@ -17,34 +22,38 @@ class ItemRecService:
     def find_items_non_scored_by(self, user):
         return self.find_populars(user, limit=1, shuffle_limit=100)
 
-
     def refresh_popularity(self):
         items = Item.objects.raw(
             """
                 SELECT
-                    t.item_id as id,
+                    t.id,
                     t.name,
                     t.description,
-					t.image,
-                    (count(t.rating)/ (SELECT COUNT(*) FROM recsysweb_interaction)) * avg(t.rating) * 10000 as popularity
+                    t.image,
+                    ( avg(t.rating) * (COUNT(*)/(SELECT COUNT(*) FROM recsys.recsysweb_interaction)) ) as popularity
                 FROM
-                (
-                    SELECT
-                        it.id          as item_id,
-                        inter.user_id  as user_id,
-                        IF(inter.rating IS NULL, 0, inter.rating) as rating,
-                        it.name        as name,
-                        it.description as description,
-                        it.image       as image
-                    FROM
-						recsysweb_item AS it INNER JOIN recsysweb_interaction AS inter
-                        ON it.id = inter.item_id
-                ) as t
+                    (
+                        SELECT
+                            it.id,
+                            it.name,
+                            it.description,
+                            it.image,
+                            inter.rating
+                        FROM
+                                recsys.recsysweb_item AS it
+                            INNER JOIN
+                                recsys.recsysweb_interaction AS inter
+                            ON
+                                it.id = inter.item_id
+                    ) as t
                 GROUP BY
-					t.item_id
+                    t.id
             """
         )
+        pop_norm = MinMaxScaler([item.popularity for item  in items])
+
         for item in items:
+            item.popularity = pop_norm(item.popularity)
             item.save()
 
 
