@@ -6,7 +6,7 @@ logging.basicConfig()
 logging.getLogger('scheduler').setLevel(logging.INFO)
 
 
-def update_items_popularity_job():
-    logging.info('Start to refresh items popularity from user interactions...')
+def update_items_stats_job():
+    logging.info('Start to refresh items stats...')
     ItemService().refresh_popularity()
-    logging.info('Finish to refresh items popularity from user interactions...')
+    logging.info('Finish to refresh items stats...')
