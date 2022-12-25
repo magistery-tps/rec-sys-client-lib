@@ -54,7 +54,7 @@ class NonScoredPopularityRecommender(Recommender):
                 <br>
                 Formula:
                 <br>
-                <strong>popularity = norm(mean(ratings) * norm(count(ratings)))</strong>
+                <strong>popularity = norm(mean(ratings) x norm(count(ratings)))</strong>
             """,
             items = selected_items
         )
