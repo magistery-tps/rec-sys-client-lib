@@ -1,1 +1,2 @@
-from .item_rec_service import ItemRecService
+from .item_service          import ItemService
+from .recommender_service   import RecommenderService

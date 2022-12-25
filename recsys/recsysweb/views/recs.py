@@ -1,12 +1,17 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
+# django
+from django.shortcuts               import render, redirect
+from django.contrib                 import messages
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
-import random
-from ..service import ItemRecService
-from ..forms import LikeForm
+from django.conf                    import settings
 
-item_rec_service = ItemRecService()
+# Domain
+from ..forms                        import LikeForm
+from ..service                      import ItemService, RecommenderService
+from ..recommender                  import RecommenderContext
+
+
+item_service        = ItemService()
+recommender_service = RecommenderService()
 
 
 @login_required
@@ -15,10 +20,9 @@ def likes(request):
 
     if request.method == "POST":
         form = LikeForm(request)
-        item_rec_service.rate_item_for(form.item_id, request.user, form.rating)
-        print(form)
+        item_service.score_item_by(form.item_id, request.user, form.rating)
 
-    recommendations = item_rec_service.find_items_non_scored_by(request.user)
+    recommendations = item_service.find_items_non_scored_by(request.user)
 
     if recommendations.is_empty():
         response['messages'] = ['Not found Items!']
@@ -31,10 +35,10 @@ def likes(request):
 
 @login_required
 def recommendations(request):
-    recs = item_rec_service.find_all(request.user)
+    recommendations_list = recommender_service.find_recommendations(request.user)
 
-    response = { 'recommendations': recs }
-    if not recs:
+    response = { 'recommendations': recommendations_list }
+    if not recommendations_list:
         response['messages'] = ['Not found Items!']
 
     response['NO_IMAGE_ITEM_URL'] = settings.NO_IMAGE_ITEM_URL
