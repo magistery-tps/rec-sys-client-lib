@@ -48,12 +48,13 @@ class NonScoredPopularityRecommender(Recommender):
             id   = 'new_populars',
             name = 'New Populars for you',
             description = """
-                Shuffle of most popular items non seen for session user.
-                The idea is recommend new popular item, non seen for user in session.
+                <strong>Shuffle of user unrated popular items.</strong>
+                The idea is recommend new popular items for you.
+                <br>
                 <br>
                 Formula:
                 <br>
-                <strong>item_popularity = min_max_norm(mean(item_ratings) * min_max_norm(count(item_interactions)))</strong>
+                <strong>popularity = norm(mean(ratings) * norm(count(ratings)))</strong>
             """,
             items = selected_items
         )

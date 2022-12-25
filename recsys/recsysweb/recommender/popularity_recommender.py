@@ -19,11 +19,12 @@ class PopularityRecommender(Recommender):
             id          = 'most_populars',
             name        = 'Most Populars',
             description = """
-                Shuffle of most popular items.
+                <strong>Shuffle of most popular items.</strong>
+                <br>
                 <br>
                 Formula:
                 <br>
-                <strong>item_popularity = min_max_norm(mean(item_ratings) * min_max_norm(count(item_interactions)))</strong>
+                <strong>popularity = norm(mean(ratings) * norm(count(ratings)))</strong>
             """,
             items = selected_items
         )
