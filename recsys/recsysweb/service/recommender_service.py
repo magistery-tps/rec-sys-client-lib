@@ -36,6 +36,4 @@ class RecommenderService:
 
         ctx = RecommenderContext(user=user)
 
-        recommendations_list = [r.recommend(ctx) for r in recommenders]
-
-        return [r for r in recommendations_list if not r.empty]
+        return [r.recommend(ctx) for r in recommenders]

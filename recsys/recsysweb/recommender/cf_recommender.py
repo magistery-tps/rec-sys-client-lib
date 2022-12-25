@@ -41,11 +41,16 @@ class CollaborativeFilteringRecommender(Recommender):
             reverse = True
         )
 
+        not_found = 'Not found recommendations!'
+        if len(similar_user_ids) == 0:
+            not_found += ' Not found similar users.'
+        if len(item_ids) == 0:
+            not_found += ' Not found similar user items.'
+
         return Recommendations(
             id          = self.__recommender_data.name,
             name        = f'{self.__recommender_data.name}: Other users are also reading',
-            description = f"""
-                <strong>{self.__recommender_data.name}</strong> collaborative filtering recommender.
-            """,
-            items       = items
+            description = f'<strong>{self.__recommender_data.name}</strong> collaborative filtering recommender.',
+            items       = items,
+            not_found   = not_found
         )
