@@ -7,11 +7,20 @@ from ..recommender import   NonScoredPopularityRecommender, \
 
 class RecommenderService:
     def __init__(self):
-        self.__default_recommneders = [PopularityRecommender(), NonScoredPopularityRecommender()]
+        self.__non_scored_popularity_recommender = NonScoredPopularityRecommender()
+        self.__default_recommneders = [
+            PopularityRecommender(),
+            self.__non_scored_popularity_recommender
+        ]
 
 
     def __n_interactions_by(self, user):
         return Interaction.objects.filter(user=user.id).count()
+
+
+    def find_items_non_scored_by(self, user):
+        ctx = RecommenderContext(user=user)
+        return self.__non_scored_popularity_recommender.recommend(ctx)
 
 
     def find_by(self, user, min_interactions=20):

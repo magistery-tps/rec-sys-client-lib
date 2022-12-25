@@ -7,6 +7,8 @@ class Item(models.Model):
     description = models.TextField(max_length = 1000, verbose_name = 'Description')
     image       = models.TextField(max_length = 500,  verbose_name = 'Image URL')
     popularity  = models.FloatField(default   = 0,    verbose_name = 'Popularity')
+    rating      = models.FloatField(default   = 0,    verbose_name = 'Rating')
+    votes       = models.FloatField(default   = 0,    verbose_name = 'Votes')
 
     class Meta:
         indexes = [

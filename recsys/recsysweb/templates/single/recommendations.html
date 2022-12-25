@@ -49,8 +49,10 @@
                                     {% endif %}
                                 </p>
                             </div>
-                            <div class="card-footer">
-                            Popularity: <strong>{{ item.popularity|floatformat:3 }}</strong>
+                            <div class="card-footer text-center">
+                                Popularity: <strong>{{ item.popularity|floatformat:3 }} | </strong>
+                                Rating: <strong>{{ item.rating|floatformat:1 }} | </strong>
+                                Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
                             </div>
                         </div>
                     </div>

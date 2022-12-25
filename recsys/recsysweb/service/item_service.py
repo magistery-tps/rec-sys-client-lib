@@ -19,7 +19,7 @@ class ItemService:
         interaction.save()
 
 
-    def refresh_popularity(self):
+    def refresh_stats(self):
         items = Item.objects.raw(
             """
                 SELECT
@@ -27,6 +27,8 @@ class ItemService:
                     t.name,
                     t.description,
                     t.image,
+                    avg(t.rating)   as rating,
+                    count(*)        as votes,
                     ( avg(t.rating) * (COUNT(*)/(SELECT COUNT(*) FROM recsys.recsysweb_interaction)) ) as popularity
                 FROM
                     (
@@ -52,7 +54,6 @@ class ItemService:
         for item in items:
             item.popularity = popularity_normalizer(item.popularity)
             item.save()
-
 
 
     def find_all(self, user, limit=20):

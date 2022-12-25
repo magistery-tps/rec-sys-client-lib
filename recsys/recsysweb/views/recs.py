@@ -22,9 +22,9 @@ def likes(request):
         form = LikeForm(request)
         item_service.score_item_by(form.item_id, request.user, form.rating)
 
-    recommendations = item_service.find_items_non_scored_by(request.user)
+    recommendations = recommender_service.find_items_non_scored_by(request.user)
 
-    if recommendations.is_empty():
+    if recommendations.empty:
         response['messages'] = ['Not found Items!']
     else:
         response['item'] = recommendations.items[0]
