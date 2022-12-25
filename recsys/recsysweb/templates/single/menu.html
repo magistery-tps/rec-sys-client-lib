@@ -10,7 +10,9 @@
     {% if user.is_authenticated %}
         <div class="container-fluid nav navbar-nav  justify-content-end">
             <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Current user session">
-                <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}&ensp;</strong>
+                <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}&ensp;
+                {% if user_n_interactions != None %}(Scores: {{user_n_interactions}}){% endif %}
+                </strong>
             </a>
             <span class="bi-three-dots-vertical"></span>
             <a class="nav-item nav-link active" href="{% url 'recommendations' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>See Recommendations</strong><br>This view show a list of recommendations swimlanes. Each recommendation swimlane is the product of a specific recommender model. These recommenders can be configured via <strong><span class='bi-plug-fill'> REST API</Strong> menu option.">

@@ -3,7 +3,7 @@ from logger import get_logger
 import math
 
 
-class DataFramPaginationIterator:
+class DataFramePaginationIterator:
     def __init__(self, df: pd.DataFrame, page_size: int=10):
         self.df        = df
         self.page_size = page_size

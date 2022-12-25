@@ -14,7 +14,7 @@ class RecommenderService:
         ]
 
 
-    def __n_interactions_by(self, user):
+    def n_interactions_by(self, user):
         return Interaction.objects.filter(user=user.id).count()
 
 
@@ -24,7 +24,7 @@ class RecommenderService:
 
 
     def find_by(self, user, min_interactions=20):
-        if self.__n_interactions_by(user) < min_interactions:
+        if self.n_interactions_by(user) < min_interactions:
             return self.__default_recommneders
         else:
             return self.__default_recommneders + \

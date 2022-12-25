@@ -123,6 +123,6 @@ class SimilarityMatrixService:
         cells['matrix']  = matrix.id
         cells['version'] = matrix.version
 
-        iterator = ut.DataFramPaginationIterator(cells, page_size=page_size)
+        iterator = ut.DataFramePaginationIterator(cells, page_size=page_size)
         [self.__cell_repository.add_many(page) for page in iterator]
 
