@@ -1,7 +1,7 @@
 from ..models import Item, Interaction, SimilarityMatrix, SimilarityMatrixCell, Recommendations
 from .recommender import Recommender, RecommenderContext
 import random
-
+from django.db.models import Q
 
 class CollaborativeFilteringRecommender(Recommender):
     def __init__(self, recommender_data):
@@ -16,27 +16,41 @@ class CollaborativeFilteringRecommender(Recommender):
             matrix  = user_sim_matrix.id,
             version = user_sim_matrix.version
         ).order_by('-value')
+        if len(sim_cells) > 0:
+            return [c.column for c in sim_cells]
 
-        return [c.column for c in sim_cells]
+        sim_cells = SimilarityMatrixCell.objects.filter(
+            column  = user.id,
+            matrix  = user_sim_matrix.id,
+            version = user_sim_matrix.version
+        ).order_by('-value')
+
+        return [c.row for c in sim_cells]
+
+
+    def __get_user_items(self, user):
+        items = Interaction.objects.filter(user=user.id)
+        return [i.item_id for i in items]
 
 
     def recommend(self, ctx: RecommenderContext):
         similar_user_ids = self.__similar_user_ids(ctx.user)
 
+        own_item_ids = self.__get_user_items(ctx.user)
+
         similar_users_interactions = Interaction \
             .objects \
             .filter(user__in=similar_user_ids)
+        similar_users_item_ids = [i.item_id for i in similar_users_interactions if i.item_id not in own_item_ids]
 
-        item_ids = [interaction.item_id for interaction in similar_users_interactions]
 
-        items = Item.objects.filter(pk__in=item_ids).order_by('-popularity')[:ctx.shuffle_limit]
-
+        items = Item.objects.filter(pk__in=similar_users_item_ids).order_by('-popularity')[:ctx.shuffle_limit]
         if len(items) > 0:
             items = random.sample(list(items), ctx.limit)
 
         info = 'Not found recommendations!' if len(items) == 0 else ''
         info += f' Found {len(similar_user_ids)} similar users.'
-        info += f' Found {len(item_ids)} similar user items.'
+        info += f' Found {len(similar_users_item_ids)} similar user items.'
 
         return Recommendations(
             id          = self.__recommender_data.name,

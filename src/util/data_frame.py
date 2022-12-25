@@ -46,21 +46,30 @@ def distinct_by(df, columns=[]):
 
 def df_to_matrix(
     df,
-    x_col       = 'user_id',
-    y_col       = 'item_id',
+    x_col,
+    y_col,
     value_col   = 'rating',
     progress    = 10
 ):
-    matrix = dok_matrix((int(df[x_col].max()), int(df[y_col].max())))
+    logging.info(f'Building matrix({x_col}, {y_col})')
+
+    matrix = dok_matrix((
+        len(df[x_col].unique()),
+        len(df[y_col].unique())
+    ))
 
     n_examples = df.shape[0]
     count      = 0
     for _, row in df.iterrows():
-        matrix[int(row[x_col])-1, int(row[y_col])-1] = float(row[value_col])
+        try:
+            matrix[ int(row[x_col]), int(row[y_col]) ] = float(row[value_col])
+        except IndexError as e:
+            logging.error(f'Not found index matrix[{int(row[x_col])}, {int(row[y_col])}]')
+            raise e
 
         count += 1
         if count % int(n_examples / progress) == 0:
-            logging.info(f'Buiding matrix{matrix.shape}... {(count / n_examples) * 100:.0f}%')
+            logging.info(f'Building matrix{matrix.shape}... {(count / n_examples) * 100:.0f}%')
 
     return csr_matrix(matrix)
 

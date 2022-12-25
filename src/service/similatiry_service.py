@@ -15,7 +15,7 @@ class EmbeddingCache:
 
     def __getitem__(self, row_id):
         if row_id not in self.embeddings:
-            self.embeddings[row_id] = self.rating_matrix[row_id-1].toarray()
+            self.embeddings[row_id] = self.rating_matrix[row_id].toarray()
 
         return self.embeddings[row_id]
 
@@ -28,11 +28,12 @@ class SimilarityService:
         embeddingCache = EmbeddingCache(rating_matrix)
         similarities = []
 
-        row_ids = list(range(rating_matrix.shape[0]+1))
+        row_ids = list(range(rating_matrix.shape[0]))
 
+        # self._logger.info(f'Compute {row_ids}')
         self._logger.info(f'Compute {entity}_seq combinations...')
         row_id_combinations = list(combinations(row_ids, 2))
-        self._logger.info(f'{entity}_id combinations...{len(row_id_combinations)}')
+        self._logger.info(f'{entity}_id combinations...{len(row_id_combinations)} ({len(row_ids)})')
 
         self._logger.info(f'Compute {entity}_seq embeddings(size: {rating_matrix.shape[1]})...')
         input_data = []

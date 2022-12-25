@@ -4,10 +4,13 @@ import pandas as pd
 import model as ml
 from logger import get_logger
 from enum import Enum
+import data as dt
 
 
 RatingMatrixType = Enum('RatingMatrixType', ['USER_ITEM', 'ITEM_USER'])
 
+def checkConsecutive(l):
+    return sorted(l) == list(range(min(l), max(l)+1))
 
 class RatingMatrixService:
     def __init__(self, interaction_service):
@@ -28,8 +31,16 @@ class RatingMatrixService:
             .pipe(self.__interaction_service.filter_by_rating_scale, columns, rating_scale) \
             .pipe(self.__interaction_service.filter_users_by_min_interactions, columns, min_n_interactions)
 
+        # Add user/item numeric sequences...
+        train_interactions = dt.Sequencer(column='user_id', seq_col_name='user_seq').perform(train_interactions)
+        train_interactions = dt.Sequencer(column='item_id', seq_col_name='item_seq').perform(train_interactions)
+
+        self._logger.info(f'Check user_seq: {checkConsecutive(train_interactions["user_seq"].unique())}')
+        self._logger.info(f'Check item_seq: {checkConsecutive(train_interactions["item_seq"].unique())}')
+
         future_interactions = train_interactions \
             .pipe(self.__interaction_service.unrated_user_item)
+
 
         self.__interactions_info(train_interactions,  columns, prefix='Train')
         self.__interactions_info(future_interactions, columns, prefix='Future')
@@ -45,7 +56,7 @@ class RatingMatrixService:
         self.__interactions_info(all_interactions, columns, prefix='Train + Predited')
 
         self._logger.info(f'Compute interactions sparse {matrix_type} matrix...')
-        return self.__to_rating_matrix(all_interactions, columns, matrix_type, progress)
+        return self.__to_rating_matrix(all_interactions, columns, matrix_type, progress), train_interactions
 
 
     def __to_rating_matrix(self, df, columns, matrix_type = RatingMatrixType.USER_ITEM, progress=10):
