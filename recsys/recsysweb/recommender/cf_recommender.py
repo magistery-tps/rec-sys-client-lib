@@ -20,6 +20,7 @@ class CollaborativeFilteringRecommender(Recommender):
         )
 
         return Recommendations(
+            id          = self.__recommender_data.name,
             name        = f'{self.__recommender_data.name}: Other users are also reading',
             description = f"""
                 <strong>{self.__recommender_data.name}</strong> collaborative filtering recommender.

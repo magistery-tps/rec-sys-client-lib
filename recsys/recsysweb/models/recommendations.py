@@ -1,6 +1,6 @@
 class Recommendations:
-    def __init__(self, name, description, items):
-        self.id          = name.replace(' ', '-')
+    def __init__(self, id, name, description, items):
+        self.id          = id
         self.name        = name
         self.description = description
         self.items       = list(items)

@@ -45,6 +45,7 @@ class NonScoredPopularityRecommender(Recommender):
         )
 
         return Recommendations(
+            id   = 'new_populars',
             name = 'New Populars for you',
             description = """
                 Shuffle of most popular items non seen for session user.

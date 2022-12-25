@@ -16,6 +16,7 @@ class PopularityRecommender(Recommender):
         )
 
         return Recommendations(
+            id          = 'most_populars',
             name        = 'Most Populars',
             description = """
                 Shuffle of most popular items.
