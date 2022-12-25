@@ -50,7 +50,7 @@ class CollaborativeFilteringRecommender(Recommender):
         return Recommendations(
             id          = self.__recommender_data.name,
             name        = f'{self.__recommender_data.name}: Other users are also reading',
-            description = f'<strong>{self.__recommender_data.name}</strong> collaborative filtering recommender.',
+            description = f'<strong>{self.__recommender_data.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
             items       = items,
             not_found   = not_found
         )
