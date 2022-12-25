@@ -26,5 +26,6 @@ class PopularityRecommender(Recommender):
                 <br>
                 <strong>popularity = norm(mean(ratings) x norm(count(ratings)))</strong>
             """,
-            items = selected_items
+            items = selected_items,
+            info = 'Not found recommendations!' if len(items) == 0 else ''
         )

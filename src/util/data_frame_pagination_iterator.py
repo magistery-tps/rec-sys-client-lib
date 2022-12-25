@@ -27,7 +27,7 @@ class DataFramePaginationIterator:
 
 
         if (offset + self.page_size) > self.df.shape[0]:
-            n_items = self.df.shape[0] - offset
+            n_items = offset + (self.df.shape[0] - offset)
             page    = self.df[offset:offset + n_items]
 
             self._logger.info(f'Page {self.page_num+1}/{self.total_pages} - Items {n_items}/{self.df.shape[0]}')

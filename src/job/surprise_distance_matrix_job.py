@@ -21,7 +21,7 @@ class SurpriseDistanceMatrixJob(Job):
         self._model                 = model
         self._recommender_name      = recommender_name
         self._n_interactions_delta  = n_interactions_delta
-        self._job_data_path          = f'{self.ctx.temp_path}/{self._recommender_name.lower()}_job_data'
+        self._job_data_path         = f'{self.ctx.temp_path}/{self._recommender_name.lower()}_job_data'
 
     def _perform(self):
         # Get user-item interacitons from RecSys API...

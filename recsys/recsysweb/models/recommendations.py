@@ -1,10 +1,10 @@
 class Recommendations:
-    def __init__(self, id, name, description, items, not_found='Not found recommendations!'):
+    def __init__(self, id, name, description, items, info=''):
         self.id          = id
         self.name        = name
         self.description = description
         self.items       = list(items)
-        self.not_found   = not_found
+        self.info        = info
 
     @property
     def empty(self): return len(self.items) == 0
