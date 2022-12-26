@@ -9,13 +9,13 @@
     </div>
     {% if user.is_authenticated %}
         <div class="container-fluid nav navbar-nav  justify-content-end">
-            <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Current user session">
+            <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="User in session">
                 <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
             </a>
 
             {% if user_n_interactions != None %}
                 <span class="bi-three-dots-vertical"></span>
-                <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="count of rated items by user.">
+                <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
                     <span class="bi-star-fill"></span>&ensp;{{user_n_interactions}}
                 </a>
             {% endif %}
