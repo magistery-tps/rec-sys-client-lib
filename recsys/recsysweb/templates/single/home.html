@@ -8,10 +8,17 @@
 
 {% block content %}
     <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5 col-md-8">
+        <div class="container-fluid py-5 col-md-12">
             <h1 class="display-5 fw-bold" onclick="return false">Welcome to <span class="bi-gem"> <strong>RecSys</strong> recommendation testing application</h1>
-            <p class="col-md-8 fs-4" onclick="return false">This application allows you to score items and see personalized recommendations according to your tastes.</p>
-            <a class="btn btn-primary btn-lg" role="button"  href="{% url 'likes' %}"><span class="bi-star-half">&ensp;</span>Let's start score your tastes</a>
+            <p class="col-md-12 fs-4" onclick="return false">This application allows you to score items and see personalized recommendations according to your tastes.
+            To start you can see default top recommendations into <a class="bi-bar-chart-line-fill" href="{% url 'recommendations' %}"></a> menu options. This inicial recommendations does not have any type of personalization. All recommentations are base on popularity.
+            To access personalized recommendations is required that you rate at least 50 items. Go to <a class="bi-star-half" href="{% url 'likes' %}"></a> menu option to rate items.
+            </p>
+        </div>
+        <div class="container-fluid col-md-12 text-right">
+            <a class="btn btn-primary btn-lg" role="button"  href="{% url 'likes' %}">
+                <span class="bi-star-half">&ensp;</span>Let's start score your tastes
+            </a>
         </div>
     </div>
 {% endblock %}
