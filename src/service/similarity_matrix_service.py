@@ -39,13 +39,13 @@ class SimilarityMatrixService:
         user_seq_by_id = self.__interaction_service.seq_by_id(interactions, entity='user')
 
         # Prepare cells...
-        # cells = self.__similarity_service.filter_most_similars(
-        #    user_similarities,
-        #    column = 'user_a',
-        #    n      = n_most_similars
-        #)
-        #
-        cells = user_similarities.rename(columns={'user_a': 'row', 'user_b': 'column'})
+        cells = self.__similarity_service.filter_most_similars(
+            user_similarities,
+            columns = ['user_a', 'user_b'],
+            n      = n_most_similars
+        )
+
+        cells           = cells.rename(columns={'user_a': 'row', 'user_b': 'column'})
         cells['row']    = cells['row'].apply(lambda seq: user_seq_by_id[seq])
         cells['column'] = cells['column'].apply(lambda seq: user_seq_by_id[seq])
 
@@ -72,14 +72,14 @@ class SimilarityMatrixService:
         item_seq_by_id = self.__interaction_service.seq_by_id(interactions, entity='item')
 
         # Prepare most similar cells...
-        # cells = self.__similarity_service.filter_most_similars(
-        #     item_similarities,
-        #     column = 'item_a',
-        #     n      = n_most_similars
-        # ).rename(
-        #     columns={'item_a': 'row', 'item_b': 'column'}
-        # )
-        cells = item_similarities.rename(columns={'item_a': 'row', 'item_b': 'column'})
+        cells = self.__similarity_service.filter_most_similars(
+            item_similarities,
+            columns = ['item_a', 'item_b'],
+            n       = n_most_similars
+        ).rename(
+            columns={'item_a': 'row', 'item_b': 'column'}
+        )
+        cells           = cells.rename(columns={'item_a': 'row', 'item_b': 'column'})
         cells['row']    = cells['row'].apply(lambda seq: item_seq_by_id[seq])
         cells['column'] = cells['column'].apply(lambda seq: item_seq_by_id[seq])
 

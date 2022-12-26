@@ -24,6 +24,7 @@ class SimilarityService:
     def __init__(self):
         self._logger = get_logger(self)
 
+
     def similarities(self, rating_matrix, entity='', n_workers=24, chunks=10_000):
         embeddingCache = EmbeddingCache(rating_matrix)
         similarities = []
@@ -48,14 +49,23 @@ class SimilarityService:
 
         return pd.DataFrame(similarities).drop_duplicates()
 
-    def filter_most_similars(self, df, column, n):
-        element_ids = df[column].unique()
+
+    def filter_most_similars(self, df, columns, n):
+        self._logger.info(f'Filter {n} most similars')
+
+        ids = []
+        for column in columns:
+            ids.extend(df[column].unique())
+        element_ids = np.unique(np.array(ids))
 
         results = []
         for element_id in element_ids:
-            most_similares = df[df[column] == element_id] \
-                .sort_values([], ascending=False) \
-                .head(n)
+            for column in columns:
+                most_similares = df[df[column] == element_id] \
+                    .sort_values(['value'], ascending=False) \
+                    .head(n)
+                if most_similares.shape[0] > 0:
+                    break
 
             results.append(most_similares)
 

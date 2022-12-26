@@ -9,8 +9,8 @@ import data as dt
 
 RatingMatrixType = Enum('RatingMatrixType', ['USER_ITEM', 'ITEM_USER'])
 
-def checkConsecutive(l):
-    return sorted(l) == list(range(min(l), max(l)+1))
+# def checkConsecutive(l):
+#    return sorted(l) == list(range(min(l), max(l)+1))
 
 class RatingMatrixService:
     def __init__(self, interaction_service):
@@ -35,8 +35,8 @@ class RatingMatrixService:
         train_interactions = dt.Sequencer(column='user_id', seq_col_name='user_seq').perform(train_interactions)
         train_interactions = dt.Sequencer(column='item_id', seq_col_name='item_seq').perform(train_interactions)
 
-        self._logger.info(f'Check user_seq: {checkConsecutive(train_interactions["user_seq"].unique())}')
-        self._logger.info(f'Check item_seq: {checkConsecutive(train_interactions["item_seq"].unique())}')
+        # self._logger.info(f'Check user_seq: {checkConsecutive(train_interactions["user_seq"].unique())}')
+        # self._logger.info(f'Check item_seq: {checkConsecutive(train_interactions["item_seq"].unique())}')
 
         future_interactions = train_interactions \
             .pipe(self.__interaction_service.unrated_user_item)

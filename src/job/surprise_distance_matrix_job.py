@@ -9,10 +9,10 @@ class SurpriseDistanceMatrixJob(Job):
     def __init__(
         self,
         ctx,
-        model                 = SVD(),
-        recommender_name      = 'SVD',
-        n_most_similars_users = 500,
-        n_most_similars_items = 500,
+        model,
+        recommender_name,
+        n_most_similars_users = 50,
+        n_most_similars_items = 50,
         n_interactions_delta  = 50
     ):
         super().__init__(ctx)
