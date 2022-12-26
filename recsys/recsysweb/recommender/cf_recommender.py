@@ -12,9 +12,10 @@ class CollaborativeFilteringRecommender(Recommender):
         user_sim_matrix = self.__recommender_data.user_similarity_matrix
 
         sim_cells = SimilarityMatrixCell.objects.filter(
-            row     = user.id,
-            matrix  = user_sim_matrix.id,
-            version = user_sim_matrix.version
+            row       = user.id,
+            matrix    = user_sim_matrix.id,
+            version   = user_sim_matrix.version,
+            value__gt = 0
         ).order_by('-value')
         if len(sim_cells) > 0:
             return [c.column for c in sim_cells]
@@ -22,7 +23,8 @@ class CollaborativeFilteringRecommender(Recommender):
         sim_cells = SimilarityMatrixCell.objects.filter(
             column  = user.id,
             matrix  = user_sim_matrix.id,
-            version = user_sim_matrix.version
+            version = user_sim_matrix.version,
+            value__gt = 0
         ).order_by('-value')
 
         return [c.row for c in sim_cells]
@@ -43,10 +45,7 @@ class CollaborativeFilteringRecommender(Recommender):
             .filter(user__in=similar_user_ids)
         similar_users_item_ids = [i.item_id for i in similar_users_interactions if i.item_id not in own_item_ids]
 
-
-        items = Item.objects.filter(pk__in=similar_users_item_ids).order_by('-popularity')[:ctx.shuffle_limit]
-        if len(items) > 0:
-            items = random.sample(list(items), ctx.limit)
+        items = Item.objects.filter(pk__in=similar_users_item_ids).order_by('-popularity')[:ctx.limit]
 
         info = 'Not found recommendations!' if len(items) == 0 else ''
         info += f' Found {len(similar_user_ids)} similar users.'
