@@ -15,7 +15,8 @@ class RecommenderSerializer(serializers.HyperlinkedModelSerializer):
             'item_similarity_matrix',
             'max_similar_users',
             'max_items_by_similar_user',
-            'position'
+            'position',
+            'enable'
         ]
 
 
@@ -35,5 +36,6 @@ class RecommenderViewSet(viewsets.ModelViewSet):
             'item_similarity_matrix',
             'max_similar_users',
             'max_items_by_similar_user',
-            'position'
+            'position',
+            'enable'
         ]
