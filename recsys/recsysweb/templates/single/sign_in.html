@@ -30,7 +30,7 @@
                         <div class="mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%"><b><span class="bi-gem"></span> Sign in</b></button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in</b></button>
                     </form>
 
 
@@ -39,8 +39,8 @@
                     <h5 class="form-label"><span class="bi-person-fill"> </span> Alternative Sign In</h5>
                     <form onsubmit="sanitize_url(this)" method="POST">
                         {% csrf_token %}
-                        <button type="submit"  class="btn btn-primary" style="width: 100%">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>&ensp;<b>Sign in with Google</b>
+                        <button type="submit"  class="btn btn-primary align-middle" style="width: 100%">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="margin-top: -5px; height: 20px"/>&ensp;<b>Sign in with Google</b>
                         </button>
                     </form>
                 </div>
