@@ -36,14 +36,14 @@ class CollaborativeFilteringRecommender(Recommender):
 
 
     def recommend(self, ctx: RecommenderContext):
-        similar_user_ids = self.__similar_user_ids(ctx.user)
+        similar_user_ids = set(self.__similar_user_ids(ctx.user))
 
         own_item_ids = self.__get_user_items(ctx.user)
 
         similar_users_interactions = Interaction \
             .objects \
             .filter(user__in=similar_user_ids)
-        similar_users_item_ids = [i.item_id for i in similar_users_interactions if i.item_id not in own_item_ids]
+        similar_users_item_ids = set([i.item_id for i in similar_users_interactions if i.item_id not in own_item_ids])
 
         items = Item.objects.filter(pk__in=similar_users_item_ids).order_by('-popularity')[:ctx.limit]
 
