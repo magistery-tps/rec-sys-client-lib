@@ -40,6 +40,12 @@
             <a class="nav-item nav-link active" href="/api" data-toggle="tooltip" data-hmlt=true title="<strong>REST API</strong><br> A web interface to interact with RecSys REST API. An Authentication Token Header ir required. See <strong><span class='bi-wrench'></span> Configuration</strong>  menu option to generate an <strong>User Authentication Token</strong>.">
                 <span class="bi-plug-fill"></span>
             </a>
+
+            <span class="bi-three-dots-vertical"></span>
+            <a class="nav-item nav-link active" href="http://nonosoft.ddns.net:8686/" data-toggle="tooltip" data-hmlt=true title="<strong>Airflow</strong><br>Used to schedule background jobs that compute user-user & item-item similarity matrix with diferent models like SVD or NFM. Used for collaborative filtering recommendations.">
+                <span class="bi-calendar-week-fill"></span>
+            </a>
+
             <span class="bi-three-dots-vertical"></span>
             <a class="nav-item nav-link active" href="{% url 'sign-out' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Sign Out</strong><br> Close current RecSys user session.">
                 <span class="bi-door-open-fill"></span>
