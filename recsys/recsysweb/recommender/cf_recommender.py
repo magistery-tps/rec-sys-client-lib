@@ -2,63 +2,88 @@ from ..models import Item, Interaction, SimilarityMatrix, SimilarityMatrixCell, 
 from .recommender import Recommender, RecommenderContext
 import random
 from django.db.models import Q
+from ..logger import get_logger
 
 class CollaborativeFilteringRecommender(Recommender):
-    def __init__(self, recommender_data):
-        self.__recommender_data = recommender_data
+    def __init__(self, config):
+        self.__config = config
+        self.logger = get_logger(self)
 
 
     def __similar_user_ids(self, user):
-        user_sim_matrix = self.__recommender_data.user_similarity_matrix
+        user_sim_matrix = self.__config.user_similarity_matrix
 
-        similar_user_ids = []
 
-        sim_cells = SimilarityMatrixCell.objects.filter(
+        similar_col_cells = SimilarityMatrixCell.objects.filter(
             row       = user.id,
             matrix    = user_sim_matrix.id,
             version   = user_sim_matrix.version,
             value__gt = 0
         ).order_by('-value')
-        if len(sim_cells) > 0:
-            similar_user_ids.extend([c.column for c in sim_cells])
 
-        sim_cells = SimilarityMatrixCell.objects.filter(
+        sim_by_id = { cell.column: cell.value for cell in similar_col_cells }
+
+
+        similar_row_cels = SimilarityMatrixCell.objects.filter(
             column  = user.id,
             matrix  = user_sim_matrix.id,
             version = user_sim_matrix.version,
             value__gt = 0
         ).order_by('-value')
 
-        similar_user_ids.extend([c.row for c in sim_cells])
 
-        return set(similar_user_ids)
+        for cell in similar_row_cels:
+            if cell.row in sim_by_id and cell.value < sim_by_id[cell.row]:
+                sim_by_id[cell.row] = cell.value
+            else:
+                sim_by_id[cell.row] = cell.value
 
 
-    def __get_user_items(self, user):
-        items = Interaction.objects.filter(user=user.id)
-        return [i.item_id for i in items]
+        id_sim_list =  list(sim_by_id.items())
+        id_sim_list.sort(key=lambda id_sim: id_sim[1], reverse=True)
+
+
+        return [id_sim[0] for id_sim in id_sim_list]
+
+
+    def __non_seen_similar_user_item_ids(self, user, similar_user_ids):
+        user_item_ids = [item.item_id for item in Interaction.objects.filter(user=user.id)]
+
+        similar_user_interactions = []
+        for similar_user_id in similar_user_ids:
+            similar_user_interactions.extend(Interaction.objects.filter(user=similar_user_id)[:self.__config.max_items_by_similar_user])
+
+        return set([item.item_id for item in similar_user_interactions if item.item_id not in user_item_ids])
 
 
     def recommend(self, ctx: RecommenderContext):
-        similar_user_ids = self.__similar_user_ids(ctx.user)
+        most_similar_user_ids = self.__similar_user_ids(ctx.user)[:self.__config.max_similar_users]
 
-        own_item_ids = self.__get_user_items(ctx.user)
+        non_seen_similar_user_item_ids = self.__non_seen_similar_user_item_ids(ctx.user, most_similar_user_ids)
 
-        similar_users_interactions = Interaction \
-            .objects \
-            .filter(user__in=similar_user_ids)
-        similar_users_item_ids = set([i.item_id for i in similar_users_interactions if i.item_id not in own_item_ids])
+        recommended_items = Item.objects.filter(pk__in=non_seen_similar_user_item_ids).order_by('-popularity')[:ctx.limit]
 
-        items = Item.objects.filter(pk__in=similar_users_item_ids).order_by('-popularity')[:ctx.limit]
+        for i in recommended_items:
+            self.logger.info(i)
 
-        info = 'Not found recommendations!' if len(items) == 0 else ''
-        info += f' Found {len(similar_user_ids)} similar users.'
-        info += f' Found {len(similar_users_item_ids)} similar user items.'
+        return self.__build_result(most_similar_user_ids, non_seen_similar_user_item_ids, recommended_items)
+
+
+    def __build_result(
+        self,
+        most_similar_user_ids,
+        non_seen_similar_user_item_ids,
+        recommended_items
+    ):
+        info = 'Not found recommendations!' if len(recommended_items) == 0 else ''
+        info += f' Found {len(most_similar_user_ids)} most similar users.'
+        info += f' Found {len(non_seen_similar_user_item_ids)} non seen similar user items.'
 
         return Recommendations(
-            id          = self.__recommender_data.name,
-            name        = f'{self.__recommender_data.name}: Other users are also reading',
-            description = f'<strong>{self.__recommender_data.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
-            items       = items,
-            info        = info
+            id          = str(self.__config.id),
+            name        = f'{self.__config.name}: Other users are also reading',
+            description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
+            items       = recommended_items,
+            info        = info,
+            position    = self.__config.position
         )

@@ -28,7 +28,7 @@ class RecommenderService:
             return self.__default_recommneders
         else:
             return self.__default_recommneders + \
-                    [CollaborativeFilteringRecommender(r)  for r in Recommender.objects.all()]
+                    [CollaborativeFilteringRecommender(r)  for r in Recommender.objects.all() if r.enable]
 
 
     def find_recommendations(self, user):
@@ -36,4 +36,8 @@ class RecommenderService:
 
         ctx = RecommenderContext(user=user)
 
-        return [r.recommend(ctx) for r in recommenders]
+        recommendations_list = [r.recommend(ctx) for r in recommenders]
+
+        recommendations_list.sort(key=lambda r: r.position)
+
+        return recommendations_list

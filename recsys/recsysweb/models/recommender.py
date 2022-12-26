@@ -25,6 +25,10 @@ class Recommender(models.Model):
         unique       = False,
         verbose_name = 'Item Similarity Matrix'
     )
+    max_similar_users = models.IntegerField(default = 10, verbose_name = 'Max Similar Users')
+    max_items_by_similar_user = models.IntegerField(default = 10, verbose_name = 'Max Items by Similar Users')
+    position = models.IntegerField(default = 1, verbose_name = 'Position in Recommendations View')
+    enable = models.BooleanField(default = True, verbose_name = 'Enable/Disable Recommender')
 
 
     def __str__(self):

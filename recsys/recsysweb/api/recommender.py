@@ -8,7 +8,17 @@ from rest_framework.permissions import IsAuthenticated
 class RecommenderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model        = Recommender
-        fields       = ['id', 'name', 'user_similarity_matrix', 'item_similarity_matrix']
+        fields       = [
+            'id',
+            'name',
+            'user_similarity_matrix',
+            'item_similarity_matrix',
+            'max_similar_users',
+            'max_items_by_similar_user',
+            'position'
+        ]
+
+
         lookup_field = 'Recommender'
 
 
@@ -19,4 +29,11 @@ class RecommenderViewSet(viewsets.ModelViewSet):
 
     queryset         = Recommender.objects.all()
     serializer_class = RecommenderSerializer
-    filterset_fields = ['name', 'user_similarity_matrix', 'item_similarity_matrix']
+    filterset_fields = [
+            'name',
+            'user_similarity_matrix',
+            'item_similarity_matrix',
+            'max_similar_users',
+            'max_items_by_similar_user',
+            'position'
+        ]
