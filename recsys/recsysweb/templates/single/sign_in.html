@@ -40,7 +40,9 @@
                     <form onsubmit="sanitize_url(this)" method="POST">
                         {% csrf_token %}
                         <button type="submit"  class="btn btn-primary align-middle" style="width: 100%">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="margin-top: -5px; height: 20px"/>&ensp;<b>Sign in with Google</b>
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                                class="google-sign-in-icon"/>&ensp;<b>Sign in with Google</b>
                         </button>
                     </form>
                 </div>

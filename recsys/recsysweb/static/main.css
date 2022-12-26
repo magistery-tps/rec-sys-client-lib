@@ -147,3 +147,8 @@ label[for="id_email"] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.google-sign-in-icon {
+    margin-top: -5px;
+    height: 20px
+}
