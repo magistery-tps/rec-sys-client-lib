@@ -11,6 +11,8 @@ class CollaborativeFilteringRecommender(Recommender):
     def __similar_user_ids(self, user):
         user_sim_matrix = self.__recommender_data.user_similarity_matrix
 
+        similar_user_ids = []
+
         sim_cells = SimilarityMatrixCell.objects.filter(
             row       = user.id,
             matrix    = user_sim_matrix.id,
@@ -18,7 +20,7 @@ class CollaborativeFilteringRecommender(Recommender):
             value__gt = 0
         ).order_by('-value')
         if len(sim_cells) > 0:
-            return [c.column for c in sim_cells]
+            similar_user_ids.extend([c.column for c in sim_cells])
 
         sim_cells = SimilarityMatrixCell.objects.filter(
             column  = user.id,
@@ -27,7 +29,9 @@ class CollaborativeFilteringRecommender(Recommender):
             value__gt = 0
         ).order_by('-value')
 
-        return [c.row for c in sim_cells]
+        similar_user_ids.extend([c.row for c in sim_cells])
+
+        return set(similar_user_ids)
 
 
     def __get_user_items(self, user):
@@ -36,7 +40,7 @@ class CollaborativeFilteringRecommender(Recommender):
 
 
     def recommend(self, ctx: RecommenderContext):
-        similar_user_ids = set(self.__similar_user_ids(ctx.user))
+        similar_user_ids = self.__similar_user_ids(ctx.user)
 
         own_item_ids = self.__get_user_items(ctx.user)
 
