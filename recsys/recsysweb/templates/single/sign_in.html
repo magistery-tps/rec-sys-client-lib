@@ -16,12 +16,22 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card px-5 py-5" id="form1">
+                    <h5 class="form-label"><span class="bi-person-fill"> </span>Sign In</h5>
+                    <form onsubmit="sanitize_url(this)" method="POST">
+                        {% csrf_token %}
+                        <button type="submit"  class="btn btn-primary align-middle" style="width: 100%">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                                class="google-sign-in-icon"/>&ensp;<b>Sign in with <strong>Google</strong></b>
+                        </button>
+                    </form>
+                    <hr style="height:1px; width:100%; border-width:2; color:#ced4da; background-color:red">
                     {% for message in messages %}
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>{{ message }}</strong>
                     </div>
                     {% endfor %}
-                    <h5 class="form-label"><span class="bi-person-fill"> </span>Sign In</h5>
+                    <h5 class="form-label"><span class="bi-person-fill"> </span> Alternative Sign In</h5>
                     <form action="" method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
@@ -30,20 +40,7 @@
                         <div class="mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in</b></button>
-                    </form>
-
-
-
-                    <hr style="height:1px; width:100%; border-width:2; color:#ced4da; background-color:red">
-                    <h5 class="form-label"><span class="bi-person-fill"> </span> Alternative Sign In</h5>
-                    <form onsubmit="sanitize_url(this)" method="POST">
-                        {% csrf_token %}
-                        <button type="submit"  class="btn btn-primary align-middle" style="width: 100%">
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                                class="google-sign-in-icon"/>&ensp;<b>Sign in with Google</b>
-                        </button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in with <strong>RecSys</strong</b></button>
                     </form>
                 </div>
             </div>
