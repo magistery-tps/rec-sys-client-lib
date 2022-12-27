@@ -29,7 +29,8 @@ urlpatterns = [
 
     path('items',                 views.list_items,   name='items'),
     path('items/create',          views.create_item,  name='items.create'),
-    path('items/edit/<int:id>',   views.edit_item,    name='items.edit'),
+    path('items/edit/<int:id>/items',   views.edit_item,    name='items.edit'),
+    path('items/edit/<int:id>/<str:origin>/',   views.edit_item,    name='items.edit'),
     path('items/remove/<int:id>', views.remove_item,  name='items.remove'),
 
     path('api/', include(router.urls))

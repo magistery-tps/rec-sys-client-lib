@@ -17,15 +17,16 @@ def create_item(request):
         return render(request, 'items/create.html', {'form': form})
 
 @login_required
-def edit_item(request, id):
+def edit_item(request, id, origin):
     item = Item.objects.get(id=id)
     form = ItemForm(request.POST or None, instance=item)
 
     if form.is_valid():
         form.save()
-        return redirect('items')
+        return redirect(origin)
     else:
-        return render(request, 'items/edit.html', {'form': form, 'id': id})
+        return render(request, 'items/edit.html', {'form': form, 'id': id, 'origin': origin})
+
 
 @login_required
 def list_items(request):

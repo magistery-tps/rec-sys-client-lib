@@ -83,8 +83,12 @@
             </td>
             <td>
               <div class="btn-group">
-                <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' item.id  %}"><span class="bi-pencil-square"></a>
-                <a class="btn btn-danger btn-lg" role="button"  href="{% url 'items.remove' item.id %}"><span class="bi-trash"></a>
+                {% if perms.recsysweb.change_item %}
+                  <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' id=item.id origin='items' %}"><span class="bi-pencil-square"></a>
+                {% endif %}
+                {% if perms.recsysweb.delete_item %}
+                  <a class="btn btn-danger btn-lg" role="button"  href="{% url 'items.remove' item.id %}"><span class="bi-trash"></a>
+                {% endif %}
               </div>
             </td>
           </tr>
@@ -117,8 +121,8 @@
             role="button"
             href="?page={{ page.next_page_number }}"
           ><span class="bi-chevron-right"></a>
-            
-          <a 
+
+          <a
           class="btn btn-primary btn-lg"
           role="button"
           href="?page={{ page.paginator.num_pages }}"

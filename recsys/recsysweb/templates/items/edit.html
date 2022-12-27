@@ -9,7 +9,7 @@
 {%block title%}<h3 class="display-8 fw-bold">Edit Item</h1>{% endblock %}
 
 {%block content%}
-<form method="post" action="{% url 'items.edit' id %}">
+<form method="post" action="{% url 'items.edit' id=id origin=origin %}">
     {% include "items/form.html" %}
 </form>
 {% endblock %}

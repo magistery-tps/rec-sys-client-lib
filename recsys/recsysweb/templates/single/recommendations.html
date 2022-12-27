@@ -44,9 +44,9 @@
                             class="card"
                             data-toggle="tooltip"
                             data-html="true"
-                            title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}"
-                            onclick="location.href = '/items/edit/{{item.id}}'"
 
+                            title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}"
+                            onclick="{% if perms.recsysweb.change_item %}location.href = '/items/edit/{{item.id}}/recommendations' {% endif %}"
 
                             style="cursor: pointer;"
                         >
