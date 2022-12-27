@@ -19,7 +19,7 @@
                     <h5 class="form-label"><span class="bi-person-fill"> </span>Sign In</h5>
                     <form onsubmit="sanitize_url(this)" method="POST">
                         {% csrf_token %}
-                        <button type="submit"  class="btn btn-primary align-middle" style="width: 100%">
+                        <button type="submit"  class="btn btn-dark align-middle" style="width: 100%">
                             <img
                                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                                 class="google-sign-in-icon"/>&ensp;<b>Sign in with <strong>Google</strong></b>
@@ -40,7 +40,7 @@
                         <div class="mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in with <strong>RecSys</strong</b></button>
+                        <button type="submit" class="btn btn-dark" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in with <strong>RecSys</strong</b></button>
                     </form>
                 </div>
             </div>
