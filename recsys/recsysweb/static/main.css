@@ -188,6 +188,7 @@ label[for="id_email"] {
     font-size: 13px;
     padding: 0px;
     margin: 0px;
+    padding-bottom: 3px;
     padding-left: 2px;
     padding-right: 2px;
 }
