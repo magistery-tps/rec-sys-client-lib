@@ -29,8 +29,8 @@
         <div class="{%block container_class%} {% endblock %}">
             {% if user.is_authenticated %}
                 {% for message in messages %}
-                    <div class="alert alert-warning custom-alert-warning alert-dismissible fade show" role="alert">
-                        <strong>{{ message }}</strong>
+                    <div class="alert alert-info custom-info-warning alert-dismissible fade show" role="alert">
+                        <span class="bi-info-circle-fill"></span>&ensp;{{ message }}
                     </div>
                 {% endfor %}
             {% endif %}
