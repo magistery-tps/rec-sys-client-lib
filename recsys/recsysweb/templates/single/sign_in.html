@@ -26,19 +26,19 @@
                         </button>
                     </form>
                     <hr style="height:1px; width:100%; border-width:2; color: #212529e8; background-color:#212529e8">
+                    <h5 class="form-label"><span class="bi-person-fill"> </span> Alternative Sign In</h5>
                     {% for message in messages %}
                     <div class="alert alert-warning custom-alert-warning" role="alert">
                         <span class="bi-exclamation-triangle-fill"></span>&ensp;{{ message }}
                     </div>
                     {% endfor %}
-                    <h5 class="form-label"><span class="bi-person-fill"> </span> Alternative Sign In</h5>
                     <form action="" method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="username" placeholder="Username" autofocus>
+                            <input type="text" class="form-control custom-form-control" name="username" placeholder="Username" autofocus>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <input type="password" class="form-control custom-form-control" name="password" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-dark custom-btn-dark" style="width: 100%"><b><span class="bi-gem">&ensp;</span>Sign in with <strong>RecSys</strong</b></button>
                     </form>
