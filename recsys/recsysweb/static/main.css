@@ -157,3 +157,17 @@ label[for="id_email"] {
 #body {
   background-color:  #21252908
 }
+
+.custom-alert-info {
+    background-color: #cff4fca1;
+}
+
+.custom-alert-warning {
+    background-color: #fff3cda1;
+}
+
+
+.custom-btn-dark {
+    background-color: #212529d9;
+}
+
