@@ -175,3 +175,8 @@ label[for="id_email"] {
     background-color: #212529e8
 }
 
+.custom-card-body {
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+}
+

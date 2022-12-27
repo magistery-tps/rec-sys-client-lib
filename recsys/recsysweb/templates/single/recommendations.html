@@ -50,13 +50,13 @@
                                     onload="onCardLoad(this);"
                                 >
                             </div>
-                            <div class="card-body">
+                            <div class="card-body custom-card-body">
                                 <h7 class="card-title"><strong>{{ item.name|truncatechars:60 }}</strong></h7>
                                 <p class="card-text" style="overflow-wrap: anywhere;">
                                     {% if item.description == None or item.description == 'None' %}
                                         No Description
                                     {% else %}
-                                        {{ item.description|truncatechars:100 }}
+                                        {{ item.description|truncatechars:200 }}
                                     {% endif %}
                                 </p>
                             </div>
