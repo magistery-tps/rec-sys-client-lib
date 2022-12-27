@@ -20,5 +20,5 @@ class SimilarityMatrix(models.Model):
     version = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'Type: {self.type} | Name: {self.name} | Desc: {self.description}'
+        return f'Type: {self.type} | Name: {self.name} | Desc: {self.description} | Version: {self.version}'
 
