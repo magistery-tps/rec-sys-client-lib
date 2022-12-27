@@ -40,7 +40,7 @@
             <div class="carousel-inner">
                 {% for item in recommendation.items %}
                     <div class="carousel-item active">
-                        <div class="card">
+                        <div class="card" data-toggle="tooltip" data-html="true" title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}">
                             <div class="img-wrapper">
                                 <img
                                     id="{{ item.id }}"
@@ -50,18 +50,12 @@
                                     onload="onCardLoad(this);"
                                 >
                             </div>
+                            <hr class="separator" style="height:1px; width:100%;">
                             <div class="card-body custom-card-body">
-                                <h7 class="card-title"><strong>{{ item.name|truncatechars:60 }}</strong></h7>
-                                <p class="card-text" style="overflow-wrap: anywhere;">
-                                    {% if item.description == None or item.description == 'None' %}
-                                        No Description
-                                    {% else %}
-                                        {{ item.description|truncatechars:200 }}
-                                    {% endif %}
-                                </p>
+                                <h7 class="card-title"><strong>{{ item.name|truncatechars:100 }}</strong></h7>
                             </div>
                             <div class="card-footer text-center">
-                                Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
+                                Pop: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
                                 Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
                                 Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
                             </div>
