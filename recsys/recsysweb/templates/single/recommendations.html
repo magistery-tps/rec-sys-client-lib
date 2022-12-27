@@ -40,7 +40,16 @@
             <div class="carousel-inner">
                 {% for item in recommendation.items %}
                     <div class="carousel-item active">
-                        <div class="card" data-toggle="tooltip" data-html="true" title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}">
+                        <div
+                            class="card"
+                            data-toggle="tooltip"
+                            data-html="true"
+                            title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}"
+                            onclick="location.href = '/items/edit/{{item.id}}'"
+
+
+                            style="cursor: pointer;"
+                        >
                             <div class="img-wrapper">
                                 <img
                                     id="{{ item.id }}"

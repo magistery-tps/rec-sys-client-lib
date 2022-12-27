@@ -13,13 +13,13 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/deployment.svg">
 
-Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [RecSys](http://nonosoft.ddns.net:8000/) expone un interfaz web para los usuarios finales. Estos puedean realizar y consultar recomemdaciones de items. Por otro lado, [RecSys](http://nonosoft.ddns.net:8000/) exponen una intarface REST. Esta permite a servicios externos consultar y modificar el modelo de datos de [RecSys](http://nonosoft.ddns.net:8000/). tambien existent procesos o Jobs que corren en una instancia de [Airflow](https://airflow.apache.org/). Estos Jobs se encargan de consultar las interacciones de los usuarios a [RecSys](http://nonosoft.ddns.net:8000/) y transformarlas en matrices de similitud user-user/item-item. Finamente actualizan estas similitudes en [RecSys](http://nonosoft.ddns.net:8000/), para poder realizar recomendaciones al usuario final.
+Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [RecSys](http://recsys.ddns.net:8000/) expone un interfaz web para los usuarios finales. Estos puedean realizar y consultar recomemdaciones de items. Por otro lado, [RecSys](http://recsys.ddns.net:8000/) exponen una intarface REST. Esta permite a servicios externos consultar y modificar el modelo de datos de [RecSys](http://recsys.ddns.net:8000/). tambien existent procesos o Jobs que corren en una instancia de [Airflow](https://airflow.apache.org/). Estos Jobs se encargan de consultar las interacciones de los usuarios a [RecSys](http://recsys.ddns.net:8000/) y transformarlas en matrices de similitud user-user/item-item. Finamente actualizan estas similitudes en [RecSys](http://recsys.ddns.net:8000/), para poder realizar recomendaciones al usuario final.
 
 
 
 ## Componentes
 
-* [RecSys](http://nonosoft.ddns.net:8000/)
+* [RecSys](http://recsys.ddns.net:8000/)
   * Expone una intefaz web para de recomendación de items
     * Permite recomendar items personalizados al usuario final.
     * Login with google.
@@ -75,29 +75,29 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
   * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb)**
     *  Preprosesamiento final.
     *  Filtro de item e interaciones según un mínimo de popularidad.
-    *  Carga de datos via SQL en la base de datos de [RecSys](http://nonosoft.ddns.net:8000/).
+    *  Carga de datos via SQL en la base de datos de [RecSys](http://recsys.ddns.net:8000/).
   * **[similarity-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
     * Testing de jobs:
       * _svd_distance_matrix_job_
       * _nmf_distance_matrix_job_
     * Ambos jobs son instancias de _SurpriseSimilarityMatrixJob_.
-    * _SurpriseSimilarityMatrixJob_ consulta las interacciones via REST a [RecSys](http://nonosoft.ddns.net:8000/).
+    * _SurpriseSimilarityMatrixJob_ consulta las interacciones via REST a [RecSys](http://recsys.ddns.net:8000/).
     * Predice los ratings de las interacciones faltantes.
     * Cosntruye una matrix de ratings completa. Es decir, esta contien las interacciones actuales y las predichas.
     * Calcula las similitudes user-user/item-item, solo para un numero N de usuarios e items vecinos. Esto disminuir los tiempo de ejecución y evita tener en tienta usuario e item muy lejanos.
-    * Finalmente, crear o actualiza via REST (En [RecSys](http://nonosoft.ddns.net:8000/)) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
+    * Finalmente, crear o actualiza via REST (En [RecSys](http://recsys.ddns.net:8000/)) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
     * Las entidades _SimilarityMatrix_ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
     * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
 
 **[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
  * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
- * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/) Abstraccion `Repository`.
+ * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://recsys.ddns.net:8000/) Abstraccion `Repository`.
 
 **[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
  * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
- * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://nonosoft.ddns.net:8000/).
+ * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://recsys.ddns.net:8000/).
 
-**[RecSys REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://nonosoft.ddns.net:8000/) REST API.
+**[RecSys REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://recsys.ddns.net:8000/) REST API.
 
 
 
@@ -155,7 +155,7 @@ Jupyter Notebook 6.1.4 is running at:
 http://localhost:8888/?token=45efe99607fa6......
 ```
 
-**Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de [RecSys](http://nonosoft.ddns.net:8000/) Abstraccion `Repository`.
+**Step 9**: Ejecutar notebook [data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon/data-loader.ipynb): Carga de datos en la base de datos de [RecSys](http://recsys.ddns.net:8000/) Abstraccion `Repository`.
 
 
 
@@ -189,7 +189,7 @@ Ambos jobs calcular matrices de distancia user-user/item-item en base a la matri
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/similarity_matrix_job.svg">
 
-## Correr [RecSys](http://nonosoft.ddns.net:8000/) como servicio [systemd](https://systemd.io/)
+## Correr [RecSys](http://recsys.ddns.net:8000/) como servicio [systemd](https://systemd.io/)
 
 
 **Step 1**: Clonar repo.
