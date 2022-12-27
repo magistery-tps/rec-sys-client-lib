@@ -168,6 +168,8 @@ label[for="id_email"] {
 
 .custom-alert-info {
     background-color: #cff4fca1;
+    padding: 2px;
+    font-size: 14px;
 }
 
 .custom-alert-warning {
