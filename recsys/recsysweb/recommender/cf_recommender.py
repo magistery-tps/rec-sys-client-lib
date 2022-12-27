@@ -81,7 +81,7 @@ class CollaborativeFilteringRecommender(Recommender):
 
         return Recommendations(
             id          = str(self.__config.id),
-            name        = f'{self.__config.name}: Other users are also seen',
+            name        = f'{self.__config.max_similar_users} Most Similar Users Are Also Reading ({self.__config.name} Recommender)',
             description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
             items       = recommended_items,
             info        = info,

@@ -46,7 +46,7 @@ class NonScoredPopularityRecommender(Recommender):
 
         return Recommendations(
             id   = 'new_populars',
-            name = 'New Populars for you',
+            name = 'New Populars For You',
             description = """
                 <strong>Shuffle of user unrated popular items.</strong>
                 The idea is recommend new popular items for you.
