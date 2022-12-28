@@ -5,6 +5,13 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+import logging
+
+
+class ItemDetail:
+    def __init__(self, item, similar_items):
+        self.item = item
+        self.similar_items = similar_items
 
 
 @login_required
@@ -15,6 +22,7 @@ def create_item(request):
         return redirect('items')
     else:
         return render(request, 'items/create.html', {'form': form})
+
 
 @login_required
 def edit_item(request, id, origin):
@@ -29,17 +37,31 @@ def edit_item(request, id, origin):
 
 
 @login_required
+def detail_item(request, id):
+    item = Item.objects.get(id=id)
+
+    similar_items = []
+    for i in range(10):
+        similar_items.append(item)
+
+    detail = ItemDetail(item, similar_items)
+
+    return render(request, 'items/detail.html', {'detail': detail})
+
+
+@login_required
 def list_items(request):
     items       = Item.objects.all()
     paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_obj    = paginator.get_page(page_number)
 
     response = {
         'page'             : page_obj,
         'NO_IMAGE_ITEM_URL': settings.NO_IMAGE_ITEM_URL
     }
     return render(request, 'items/list.html', response)
+
 
 @login_required
 def remove_item(request, id):

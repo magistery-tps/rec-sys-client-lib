@@ -141,7 +141,7 @@ label[for="id_email"] {
     font-size: 13px;
 }
 
-.card-footer {
+.regular-card-footer {
     font-size: 11px;
     padding-left: 0.5px;
     padding-right: 0.5px;
@@ -208,4 +208,78 @@ label[for="id_email"] {
 
 .custom-form-control {
     line-height: 0.5;
+}
+
+
+.card-detail {
+    box-shadow:  2px 3px 14px 0 rgb(22 22 26 / 83);
+    border: solid 3px;
+    border-color: #212529d9;
+
+    padding: 8px;
+    height: 100%;
+    border-radius: 0.6%;
+}
+.card-detail img {
+    max-height: 100%;
+    max-width: 100%;
+    background-color: #f8f9fa;
+}
+.card-detail .img-wrapper {
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+.card-detail-footer {
+    font-size: 13px;
+
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
+.card-detail-similars-title {
+    margin-top: 15px;
+}
+
+
+.card-detail .carousel-inner {
+    padding-top: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.card-detail .carousel-control-prev,
+.card-detail .carousel-control-next {
+    background-color: #e4e4e4cf;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.card-detail .carousel-control-prev {
+    left: -3%;
+}
+.card-detail .carousel-control-next {
+    left: 95%;
+}
+.card-detail .carousel-control-next-icon
+.card-detail .carousel-control-prev-icon {
+    width: 5rem;
+    height: 5rem;
+}
+@media (min-width: 768px) {
+    .card-detail .carousel-item {
+        margin-right: 0;
+        flex: 0 0 250px;
+        display: block;
+    }
+    .card-detail .carousel-inner {
+        display: flex;
+    }
 }

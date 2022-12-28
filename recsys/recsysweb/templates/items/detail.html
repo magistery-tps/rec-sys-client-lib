@@ -1,0 +1,136 @@
+{% extends "content.html" %}
+{%block container_class %}container{% endblock %}
+
+{%block menu%}{% include "single/menu.html" %}{% endblock %}
+
+{%block head%}Detail{% endblock %}
+
+{%block title%}{% endblock %}
+
+{%block content%}
+<script>
+    var context = {}
+
+    function onCardLoad(img) {
+        if (img.naturalWidth < 14 && img.naturalHeight < 14) {
+            img.src='{{ NO_IMAGE_ITEM_URL }}'
+        }
+    }
+</script>
+
+
+<div class="card-detail">
+    <div class="row">
+        <div class="col">
+            <h5 class="display-12"><strong>{{ detail.item.name|truncatechars:200 }}</strong></h6>
+            <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 img-wrapper">
+            <img
+                src="{{ detail.item.image }}"
+                alt="{{ detail.item.name }}"
+                class="d-block round-image"
+            >
+        </div>
+        <div class="col-10">
+            {{ detail.item.description }}
+        </div>
+    </div>
+    <div class="row card-detail-similars-title">
+        <div class="col">
+            <h6 class="display-12"><strong>Similars</strong></h6>
+            <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div id="similar-items" class="carousel carousel-dark" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for item in detail.similar_items %}
+                        <div class="carousel-item active">
+                            <div
+                                class="card"
+                                data-toggle="tooltip"
+                                data-html="true"
+                                title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}"
+                            >
+                                <div class="img-wrapper">
+                                    <img
+                                        id="{{ item.id }}"
+                                        src="{{ item.image }}"New Suede Shoe Cleaner Kit. Suede Brush & Suede Eraser for …
+                                        alt="{{ item.name }}"
+                                        class="d-block  w-100 round-image"
+                                        onclick="window.open('/items/detail/{{item.id}}', '_blank');"
+                                        style="cursor: pointer;"
+                                    >
+                                </div>
+                                <hr class="separator" style="height:1px; width:100%;">
+                                <div class="card-body custom-card-body">
+                                    <h7 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h7>
+                                </div>
+                                <div class="card-footer regular-card-footer text-center">
+                                    Pop: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
+                                    Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
+                                    Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#similar-items" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#similar-items" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer card-detail-footer text-center">
+        Popularity: <strong>{{ detail.item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
+        Rating: <strong>{{ detail.item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
+        Votes: <strong>{{ detail.item.votes|floatformat:0 }}</strong>
+    </div>
+</div>
+
+
+
+<script>
+    context['similar-items'] = {
+        multipleCardCarousel: document.querySelector("#similar-items")
+    }
+
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        context['similar-items']['carousel']       =  new bootstrap.Carousel(context['similar-items'].multipleCardCarousel, {interval: false}),
+        context['similar-items']['carouselWidth']  = $("#similar-items .carousel-inner")[0].scrollWidth,
+        context['similar-items']['cardWidth']      = $("#similar-items .carousel-item").width(),
+        context['similar-items']['scrollPosition'] = 0
+
+        $("#similar-items .carousel-control-next").on("click", function () {
+            if (context['similar-items'].scrollPosition < context['similar-items'].carouselWidth - context['similar-items'].cardWidth * 4) {
+                context['similar-items'].scrollPosition += context['similar-items'].cardWidth;
+                $("#similar-items .carousel-inner").animate(
+                    { scrollLeft: context['similar-items'].scrollPosition },
+                    200
+                );
+            }
+        });
+
+        $("#similar-items .carousel-control-prev").on("click", function () {
+            if (context['similar-items'].scrollPosition > 0) {
+                context['similar-items'].scrollPosition -= context['similar-items'].cardWidth;
+                $("#similar-items .carousel-inner").animate(
+                    { scrollLeft: context['similar-items'].scrollPosition },
+                    200
+                );
+            }
+        });
+    } else {
+        $(context['similar-items'].multipleCardCarousel).addClass("slide");
+    }
+</script>
+{% endblock %}
