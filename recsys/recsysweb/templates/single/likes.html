@@ -38,13 +38,21 @@
                 <div class="d-flex">
                     <div class="p1 btn-group align-content-xl-start">
                         {% for score_level  in score_levels %}
-                            <input type="radio" class="btn-check" name="rating" id="rating_{{score_level}}" value="{{score_level}}" autocomplete="off">
+                            <input
+                                type="radio"
+                                class="btn-check"
+                                name="rating"
+                                id="rating_{{score_level}}"
+                                value="{{score_level}}"
+                                autocomplete="off"
+                                onchange="document.getElementById('vote').disabled = false"
+                            >
                             <label class="btn btn-primary" for="rating_{{score_level}}"><strong>{{score_level}}</strong></label>
                         {% endfor %}
                     </div>
                     <pre>      </pre>
                     <div class="btn-group align-content-xl-end">
-                        <button type="submit" class="btn btn-success"><span class="bi-award">&ensp;<strong>Vote</strong></button>
+                        <button id="vote" type="submit" class="btn btn-success" disabled><span class="bi-award">&ensp;<strong>Vote</strong></button>
                         <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                     </div>
                 </div>
