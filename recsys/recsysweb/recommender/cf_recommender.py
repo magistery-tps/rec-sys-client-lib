@@ -27,9 +27,10 @@ class CollaborativeFilteringRecommender(Recommender):
     def recommend(self, ctx: RecommenderContext):
         most_similar_user_ids = self.simialrity_matrix_service \
             .find_similar_element_ids(
-                matrix    = self.__config.user_similarity_matrix,
-                element_id = ctx.user.id
-            )[:self.__config.max_similar_users]
+                matrix     = self.__config.user_similarity_matrix,
+                element_id = ctx.user.id,
+                limit      = self.__config.max_similar_users
+            )
 
         mean_rating_by_non_seen_item_id = self.__non_seen_similar_user_items_mean_rating(ctx.user, most_similar_user_ids)
 
@@ -53,17 +54,23 @@ class CollaborativeFilteringRecommender(Recommender):
     def find_similars(self, ctx: RecommenderContext):
         most_similar_item_ids = self.simialrity_matrix_service \
             .find_similar_element_ids(
-                matrix    = self.__config.item_similarity_matrix,
-                element_id = ctx.item.id
-            )[:self.__config.max_similar_items]
-
-        self.logger.info(most_similar_item_ids)
+                matrix     = self.__config.item_similarity_matrix,
+                element_id = ctx.item.id,
+                limit      = self.__config.max_similar_items
+            )
 
 
         recommended_items = Item.objects.filter(pk__in=most_similar_item_ids)
 
+        recommended_items= sorted(
+            recommended_items,
+            key=lambda x: most_similar_item_ids.index(x.id)
+        )
+
+        self.logger.info([i.id for i in recommended_items])
 
         return recommended_items
+
 
 
     def __non_seen_similar_user_items_mean_rating(self, user, similar_user_ids):
