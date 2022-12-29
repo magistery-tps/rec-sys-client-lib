@@ -32,7 +32,11 @@ def edit_item(request, id, origin):
 
     if form.is_valid():
         form.save()
-        return redirect(origin)
+
+        if origin != 'detail':
+            return redirect(origin)
+        else:
+            return render(request, 'items/edit.html', {'form': form, 'id': id, 'origin': origin})
     else:
         return render(request, 'items/edit.html', {'form': form, 'id': id, 'origin': origin})
 
