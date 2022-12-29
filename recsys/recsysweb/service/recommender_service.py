@@ -60,6 +60,9 @@ class RecommenderService:
     def find_item_detail(self, recommenders, item):
         ctx = RecommenderContext(item=item)
         results = []
+
+        recommenders = sorted(recommenders, key=lambda x: x.metadata.position)
+
         for rec in recommenders:
             similar_items = rec.find_similars(ctx)
             if len(similar_items) > 0:
