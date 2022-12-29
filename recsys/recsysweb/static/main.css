@@ -219,6 +219,7 @@ label[for="id_email"] {
     padding: 8px;
     height: 100%;
     border-radius: 6px;
+    margin-bottom: 25px;
 }
 .card-detail img {
     max-height: 100%;
