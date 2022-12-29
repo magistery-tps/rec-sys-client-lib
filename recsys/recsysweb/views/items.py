@@ -41,13 +41,11 @@ def edit_item(request, id, origin):
 def detail_item(request, id, recommender_id):
     item = Item.objects.get(id=id)
 
-    recommender = recommender_service.find_recommender(recommender_id)
+    recommender = recommender_service.find_by_id(recommender_id)
 
-    detail = recommender_service.find_item_detail(
-        recommender,
-        request.user,
-        item
-    )
+    recommenders = [recommender] if recommender else recommender_service.find_by_user(request.user)
+
+    detail = recommender_service.find_item_detail(recommenders, item)
 
     return render(request, 'items/detail.html', {'detail': detail})
 

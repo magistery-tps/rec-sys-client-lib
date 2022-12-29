@@ -14,7 +14,7 @@ class SimilarityMatrixService:
             matrix    = matrix.id,
             version   = matrix.version,
             value__gt = 0
-        ).order_by('-value')
+        )
 
         sim_by_id = { cell.column: cell.value for cell in similar_col_cells }
 
@@ -23,8 +23,7 @@ class SimilarityMatrixService:
             matrix  = matrix.id,
             version = matrix.version,
             value__gt = 0
-        ).order_by('-value')
-
+        )
 
         for cell in similar_row_cels:
             if cell.row in sim_by_id:

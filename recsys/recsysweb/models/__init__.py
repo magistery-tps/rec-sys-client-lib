@@ -6,3 +6,4 @@ from .similarity_matrix_cell import SimilarityMatrixCell
 from .recommendations        import Recommendations
 from .recommender            import Recommender
 from .item_detail            import ItemDetail
+from .similar_items_result   import SimilarItemsResult
