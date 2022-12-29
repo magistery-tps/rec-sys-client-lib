@@ -59,6 +59,8 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 **Notas**
 * Al hacer click sobre los simialres se abre su detalle junto con sus simialres.
 * Los item similares dependen del recomendador seleccionado en la vista de recommendaciones.
+* Ademas de las estadisticas asociadas a cada item es posible ver las similitud coseno de cada item similar al item detallado.
+* Los items similares estan ordenados por similitud coseno decreciente.
 
 ### Scoring
 
