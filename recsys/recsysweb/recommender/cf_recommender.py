@@ -5,8 +5,11 @@ import numpy as np
 
 
 # Domain
-from ..models       import Item, Interaction, SimilarityMatrixCell, Recommendations
-from .recommender   import Recommender, RecommenderContext, RecommenderMetadata
+from ..models               import Item, Interaction, SimilarityMatrixCell, Recommendations
+from .recommender           import Recommender
+from .recommender_context   import RecommenderContext
+from .recommender_metadata  import RecommenderMetadata
+from .similar_item          import SimilarItem
 
 
 class CollaborativeFilteringRecommender(Recommender):
@@ -25,14 +28,16 @@ class CollaborativeFilteringRecommender(Recommender):
         )
 
     def recommend(self, ctx: RecommenderContext):
-        most_similar_user_ids = self.simialrity_matrix_service \
+        most_similar_users = self.simialrity_matrix_service \
             .find_similar_element_ids(
                 matrix     = self.__config.user_similarity_matrix,
                 element_id = ctx.user.id,
                 limit      = self.__config.max_similar_users
             )
 
-        mean_rating_by_non_seen_item_id = self.__non_seen_similar_user_items_mean_rating(ctx.user, most_similar_user_ids)
+        most_similar_user_ids = most_similar_users.keys()
+
+        mean_rating_by_non_seen_item_id = self.__non_seen_similar_user_items_mean_rating(ctx.user,most_similar_user_ids)
 
         recommended_items = Item.objects.filter(pk__in=mean_rating_by_non_seen_item_id.keys())
 
@@ -52,22 +57,20 @@ class CollaborativeFilteringRecommender(Recommender):
 
 
     def find_similars(self, ctx: RecommenderContext):
-        most_similar_item_ids = self.simialrity_matrix_service \
+        most_similar_items = self.simialrity_matrix_service \
             .find_similar_element_ids(
                 matrix     = self.__config.item_similarity_matrix,
                 element_id = ctx.item.id,
                 limit      = self.__config.max_similar_items
             )
 
+        recommended_items = Item.objects.filter(pk__in=most_similar_items.keys())
 
-        recommended_items = Item.objects.filter(pk__in=most_similar_item_ids)
+        recommended_items = [SimilarItem(item, most_similar_items[item.id]) for item in recommended_items]
 
-        recommended_items= sorted(
-            recommended_items,
-            key=lambda x: most_similar_item_ids.index(x.id)
-        )
+        recommended_items = sorted(recommended_items, key=lambda x: x.similarity, reverse=True)
 
-        self.logger.info([i.id for i in recommended_items])
+        self.logger.info([(i.id, i.similarity) for i in recommended_items])
 
         return recommended_items
 

@@ -1,5 +1,7 @@
-from ..models import Item, Recommendations
-from .recommender import Recommender, RecommenderContext, RecommenderMetadata
+from ..models               import Item, Recommendations
+from .recommender           import Recommender
+from .recommender_context   import RecommenderContext
+from .recommender_metadata  import RecommenderMetadata
 import random
 
 

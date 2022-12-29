@@ -1,6 +1,8 @@
 # Domain
 from ..models  import SimilarityMatrixCell
 from ..logger  import get_logger
+from collections import OrderedDict
+
 
 class SimilarityMatrixService:
     def __init__(self):
@@ -32,16 +34,13 @@ class SimilarityMatrixService:
                 sim_by_id[cell.row] = cell.value
 
 
-        id_sim_list =  list(sim_by_id.items())
+        id_sim_list = list(sim_by_id.items())
         id_sim_list.sort(key=lambda id_sim: id_sim[1], reverse=True)
         id_sim_list = id_sim_list[:limit]
 
-        self.__show(id_sim_list)
+        orderd_dict = OrderedDict()
+        for id_sim in id_sim_list:
+            if id_sim[0] != element_id:
+                orderd_dict[id_sim[0]] = id_sim[1]
 
-        return [id_sim[0] for id_sim in id_sim_list if id_sim[0] != element_id]
-
-
-    def __show(self, similars):
-        self.logger.info(f'Similars:')
-        for entry in similars:
-            self.logger.info(f'- {entry}')
+        return orderd_dict

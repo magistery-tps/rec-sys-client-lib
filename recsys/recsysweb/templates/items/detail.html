@@ -75,7 +75,8 @@
                                     <div class="card-footer regular-card-footer text-center">
                                         Pop: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
                                         Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
-                                        Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+                                        Votes: <strong>{{ item.votes|floatformat:0 }}</strong><br>
+                                        Sim: <strong>{{ item.similarity|floatformat:6 }}</strong>
                                     </div>
                                 </div>
                             </div>
