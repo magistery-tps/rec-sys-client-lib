@@ -12,8 +12,8 @@ class SurpriseDistanceMatrixJob(Job):
         model,
         recommender_name,
         n_most_similars_users = 50,
-        n_most_similars_items = 50,
-        n_interactions_delta  = 50
+        n_most_similars_items = 10,
+        n_interactions_delta  = 20
     ):
         super().__init__(ctx)
         self._n_most_similars_users = n_most_similars_users
