@@ -36,9 +36,23 @@ def edit_item(request, id, origin):
         if origin != 'detail':
             return redirect(origin)
         else:
-            return render(request, 'items/edit.html', {'form': form, 'id': id, 'origin': origin})
+            user_n_interactions = recommender_service.n_interactions_by(request.user)
+            response = {
+                'form': form,
+                'id': id,
+                'origin': origin,
+                'user_n_interactions': user_n_interactions
+            }
+            return render(request, 'items/edit.html', response)
     else:
-        return render(request, 'items/edit.html', {'form': form, 'id': id, 'origin': origin})
+        user_n_interactions = recommender_service.n_interactions_by(request.user)
+        response = {
+            'form': form,
+            'id': id,
+            'origin': origin,
+            'user_n_interactions': user_n_interactions
+        }
+        return render(request, 'items/edit.html', response)
 
 
 @login_required
@@ -50,8 +64,14 @@ def detail_item(request, id, recommender_id):
     recommenders = [recommender] if recommender else recommender_service.find_by_user(request.user)
 
     detail = recommender_service.find_item_detail(recommenders, item)
+    user_n_interactions = recommender_service.n_interactions_by(request.user)
 
-    return render(request, 'items/detail.html', {'detail': detail})
+    response = {
+        'detail': detail,
+        'user_n_interactions': user_n_interactions
+    }
+
+    return render(request, 'items/detail.html', response)
 
 
 @login_required
