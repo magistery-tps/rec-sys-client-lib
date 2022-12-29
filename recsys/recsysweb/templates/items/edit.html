@@ -10,6 +10,6 @@
 
 {%block content%}
 <form method="post" action="{% url 'items.edit' id=id origin=origin %}">
-    {% include "items/form.html" with readonly=false %}
+    {% include "items/form.html" %}
 </form>
 {% endblock %}
