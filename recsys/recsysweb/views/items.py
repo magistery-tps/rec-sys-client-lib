@@ -80,10 +80,12 @@ def list_items(request):
     paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj    = paginator.get_page(page_number)
+    user_n_interactions = recommender_service.n_interactions_by(request.user)
 
     response = {
         'page'             : page_obj,
-        'NO_IMAGE_ITEM_URL': settings.NO_IMAGE_ITEM_URL
+        'NO_IMAGE_ITEM_URL': settings.NO_IMAGE_ITEM_URL,
+        'user_n_interactions': user_n_interactions
     }
     return render(request, 'items/list.html', response)
 
