@@ -41,11 +41,11 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 ## Screenshots
 
 
-#### Recomendaciones
+### Recomendaciones
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
 
-#### Item Detail & Similars
+### Item Detail & Similars
 
 <p align="center">
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="550" />
@@ -55,7 +55,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 * Al hacer click sobre los simialres se abre su detalle junto con sus simialres.
 * Los item similares dependen del recomendador seleccionado en la vista de recommendaciones.
 
-#### Scoring
+### Scoring
 
 <p align="center">
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
