@@ -9,6 +9,9 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
+
+
+
 ## Diagramas de despliegue
 
 <img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/deployment.svg">
@@ -44,6 +47,8 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 ### Recomendaciones
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
+**Notas**
+* Al hacer click sobre un item, se puede visualizar el detalle del mismo junto con sus items similares.
 
 ### Item Detail & Similars
 
