@@ -34,3 +34,11 @@ class Recommender(models.Model):
 
     def __str__(self):
         return f'Name: {self.name}'
+
+    class Meta:
+        permissions = (
+            (
+                "info",
+                "Show recommender debug information"
+            ),
+        )

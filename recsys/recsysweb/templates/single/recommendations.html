@@ -26,10 +26,13 @@
                 title="<p class='text-left'>{{ recommendation.description }}</p>"
             >&ensp;{{ recommendation.name }}
         </h5>
-        {% if recommendation.info %}
-            <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
-                <span class="bi-info-circle-fill"></span>&ensp;{{ recommendation.info }}
-            </div>
+
+        {% if perms.recsysweb.info   %}
+            {% if recommendation.info %}
+                <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
+                    <span class="bi-info-circle-fill"></span>&ensp;{{ recommendation.info }}
+                </div>
+            {% endif %}
         {% endif %}
 
         {% if recommendation.empty %}
