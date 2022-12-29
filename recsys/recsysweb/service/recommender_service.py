@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from ..models import Recommender, Interaction, ItemDetail, SimilarItemsResult
+from ..models import Recommender, Interaction, ItemDetail
 from ..recommender import   NonScoredPopularityRecommender, \
                             PopularityRecommender, \
                             CollaborativeFilteringRecommender, \
@@ -44,29 +44,12 @@ class RecommenderService:
             return None
 
 
-
     def find_recommendations(self, user):
-        recommenders = self.find_by_user(user)
-
         ctx = RecommenderContext(user=user)
-
-        recommendations_list = [r.recommend(ctx) for r in recommenders]
-
-        recommendations_list.sort(key=lambda r: r.position)
-
-        return recommendations_list
+        return sorted([r.recommend(ctx) for r in self.find_by_user(user)], key=lambda r: r.position)
 
 
     def find_item_detail(self, recommenders, item):
         ctx = RecommenderContext(item=item)
-        results = []
-
         recommenders = sorted(recommenders, key=lambda x: x.metadata.position)
-
-        for rec in recommenders:
-            similar_items = rec.find_similars(ctx)
-            if len(similar_items) > 0:
-                logging.info(rec.metadata.name)
-                results.append(SimilarItemsResult(rec.metadata, similar_items))
-
-        return ItemDetail(item, results)
+        return ItemDetail(item, [rec.find_similars(ctx) for rec in recommenders])

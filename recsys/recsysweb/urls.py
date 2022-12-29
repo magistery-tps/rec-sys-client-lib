@@ -27,12 +27,13 @@ urlpatterns = [
     path('recommendations', views.recommendations, name='recommendations'),
     path('likes',           views.likes,           name='likes'),
 
-    path('items',                               views.list_items,   name='items'),
-    path('items/create',                        views.create_item,  name='items.create'),
-    path('items/edit/<int:id>/items',           views.edit_item,    name='items.edit'),
-    path('items/edit/<int:id>/<str:origin>/',   views.edit_item,    name='items.edit'),
-    path('items/detail/<int:id>/<int:recommender_id>', views.detail_item,  name='items.detail'),
-    path('items/remove/<int:id>',               views.remove_item,  name='items.remove'),
+    path('items',                                       views.list_items,   name='items'),
+    path('items/create',                                views.create_item,  name='items.create'),
+    path('items/edit/<int:id>/items',                   views.edit_item,    name='items.edit'),
+    path('items/edit/<int:id>/<str:origin>/',           views.edit_item,    name='items.edit'),
+    path('items/detail/<int:id>/<int:recommender_id>',  views.detail_item,  name='items.detail'),
+    path('items/remove/<int:id>',                       views.remove_item,  name='items.remove'),
+    path('interactions/remove-all/',                    views.remove_all,   name='interactions.remove_all'),
 
     path('api/', include(router.urls))
 ]

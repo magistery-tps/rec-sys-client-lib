@@ -5,7 +5,7 @@ import numpy as np
 
 
 # Domain
-from ..models               import Item, Interaction, SimilarityMatrixCell, Recommendations
+from ..models               import Item, Interaction, SimilarityMatrixCell, Recommendations, SimilarItemsResult
 from .recommender           import Recommender
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
@@ -41,19 +41,17 @@ class CollaborativeFilteringRecommender(Recommender):
 
         recommended_items = Item.objects.filter(pk__in=mean_rating_by_non_seen_item_id.keys())
 
-
         recommended_items = sorted(
             recommended_items,
             key=lambda x: mean_rating_by_non_seen_item_id[x.id],
             reverse=True
+        )[:ctx.limit]
+
+        return self.__build_result(
+            most_similar_user_ids,
+            mean_rating_by_non_seen_item_id.keys(),
+            recommended_items
         )
-        recommended_items = recommended_items[:ctx.limit]
-
-        # self.logger.info('\n\nRESULT:\n')
-        # for i in recommended_items:
-        #   self.logger.info(f'{i.name}: {mean_rating_by_non_seen_item_id[i.id]}')
-
-        return self.__build_result(most_similar_user_ids, mean_rating_by_non_seen_item_id.keys(), recommended_items)
 
 
     def find_similars(self, ctx: RecommenderContext):
@@ -72,7 +70,7 @@ class CollaborativeFilteringRecommender(Recommender):
 
         self.logger.info([(i.id, i.similarity) for i in recommended_items])
 
-        return recommended_items
+        return SimilarItemsResult(self.metadata, recommended_items)
 
 
 

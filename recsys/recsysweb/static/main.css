@@ -284,3 +284,7 @@ label[for="id_email"] {
         display: flex;
     }
 }
+
+.menu-item-separator {
+    color: #e4e4e4cf;
+}

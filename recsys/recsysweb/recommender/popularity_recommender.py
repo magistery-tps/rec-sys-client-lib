@@ -1,4 +1,4 @@
-from ..models               import Item, Recommendations
+from ..models               import Item, Recommendations, SimilarItemsResult
 from .recommender           import Recommender
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
@@ -40,4 +40,4 @@ class PopularityRecommender(Recommender):
 
 
     def find_similars(self, ctx: RecommenderContext):
-        return []
+        return SimilarItemsResult(self.metadata)

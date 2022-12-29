@@ -12,15 +12,13 @@ class SurpriseDistanceMatrixJob(Job):
         model,
         recommender_name,
         n_most_similars_users = 50,
-        n_most_similars_items = 10,
-        n_interactions_delta  = 20
+        n_most_similars_items = 10
     ):
         super().__init__(ctx)
         self._n_most_similars_users = n_most_similars_users
         self._n_most_similars_items = n_most_similars_items
         self._model                 = model
         self._recommender_name      = recommender_name
-        self._n_interactions_delta  = n_interactions_delta
         self._job_data_path         = f'{self.ctx.temp_path}/{self._recommender_name.lower()}_job_data'
 
     def _perform(self):
@@ -36,13 +34,14 @@ class SurpriseDistanceMatrixJob(Job):
         # self._logger.info(f'5000 USER_ID INTERACTIONS: {interactions[interactions["user_id"] == 5000].shape}')
 
 
-        # Only run when found more than n_interactions_delta new interactions...
+        # Only run when found an interactions size change...
         if exists(f'{self._job_data_path}.pickle'):
             data = ut.Picket.load(self._job_data_path)
-            if (data['n_interactions'] + self._n_interactions_delta) >= n_interactions:
-                self._logger.info(f'Unreached minimum new interactions threshold({self._n_interactions_delta}).')
+            if n_interactions == data['n_interactions']:
+                self._logger.info(f'Not found interacion size change.')
                 return
-            self._logger.info(f'Reached minimum new interactions threshold({self._n_interactions_delta}).')
+
+            self._logger.info(f'Fount interactions size change.')
             self._logger.info(f'Start Computing...')
 
 

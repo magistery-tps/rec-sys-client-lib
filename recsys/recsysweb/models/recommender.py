@@ -37,8 +37,6 @@ class Recommender(models.Model):
 
     class Meta:
         permissions = (
-            (
-                "info",
-                "Show recommender debug information"
-            ),
+            ("info", "Show recommender debug information"),
+            ("reset_interactions", "Reset User Interactions"),
         )
