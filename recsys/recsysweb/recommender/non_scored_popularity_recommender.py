@@ -1,9 +1,25 @@
 from ..models import Item, Recommendations
-from .recommender import Recommender, RecommenderContext
+from .recommender import Recommender, RecommenderContext, RecommenderMetadata
 import random
 
 
 class NonScoredPopularityRecommender(Recommender):
+    @property
+    def metadata(self):
+        return RecommenderMetadata(
+            id   = 1_000_000,
+            name = 'New Populars For You',
+            description = """
+                <strong>Shuffle of user unrated popular items.</strong>
+                The idea is recommend new popular items for you.
+                <br>
+                <br>
+                Formula:
+                <br>
+                <strong>popularity = norm(mean(ratings) x norm(count(ratings)))</strong>
+            """
+        )
+
     def recommend(self, ctx: RecommenderContext):
         items = Item.objects.raw(
             """
@@ -45,18 +61,10 @@ class NonScoredPopularityRecommender(Recommender):
         )
 
         return Recommendations(
-            id   = 'new_populars',
-            name = 'New Populars For You',
-            description = """
-                <strong>Shuffle of user unrated popular items.</strong>
-                The idea is recommend new popular items for you.
-                <br>
-                <br>
-                Formula:
-                <br>
-                <strong>popularity = norm(mean(ratings) x norm(count(ratings)))</strong>
-            """,
-            items = selected_items,
-            info = 'Not found recommendations!' if len(items) == 0 else ''
+            metadata = self.metadata,
+            items    = selected_items,
+            info     = 'Not found recommendations!' if len(items) == 0 else ''
         )
 
+    def find_similars(self, ctx: RecommenderContext):
+        return []

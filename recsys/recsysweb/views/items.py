@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
-from ..models import Item
-from ..forms import ItemForm, InteractionForm
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import logging
 
+# Domain
+from ..models       import Item
+from ..forms        import ItemForm, InteractionForm
+from ..service      import RecommenderService
+from ..recommender  import RecommenderContext
 
-class ItemDetail:
-    def __init__(self, item, similar_items):
-        self.item = item
-        self.similar_items = similar_items
+
+recommender_service = RecommenderService()
 
 
 @login_required
@@ -37,14 +38,16 @@ def edit_item(request, id, origin):
 
 
 @login_required
-def detail_item(request, id):
+def detail_item(request, id, recommender_id):
     item = Item.objects.get(id=id)
 
-    similar_items = []
-    for i in range(10):
-        similar_items.append(item)
+    recommender = recommender_service.find_recommender(recommender_id)
 
-    detail = ItemDetail(item, similar_items)
+    detail = recommender_service.find_item_detail(
+        recommender,
+        request.user,
+        item
+    )
 
     return render(request, 'items/detail.html', {'detail': detail})
 

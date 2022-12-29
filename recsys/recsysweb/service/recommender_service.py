@@ -1,8 +1,10 @@
-from ..models import Recommender, Interaction
+from django.core.exceptions import ObjectDoesNotExist
+from ..models import Recommender, Interaction, ItemDetail
 from ..recommender import   NonScoredPopularityRecommender, \
                             PopularityRecommender, \
                             CollaborativeFilteringRecommender, \
                             RecommenderContext
+from .similarity_matrix_service import   SimilarityMatrixService
 
 
 class RecommenderService:
@@ -12,6 +14,7 @@ class RecommenderService:
             PopularityRecommender(),
             self.__non_scored_popularity_recommender
         ]
+        self.similarity_matrix_service = SimilarityMatrixService()
 
 
     def n_interactions_by(self, user):
@@ -28,7 +31,7 @@ class RecommenderService:
             return self.__default_recommneders
         else:
             return self.__default_recommneders + \
-                    [CollaborativeFilteringRecommender(r)  for r in Recommender.objects.all() if r.enable]
+                    [CollaborativeFilteringRecommender(r, self.similarity_matrix_service)  for r in Recommender.objects.all() if r.enable]
 
 
     def find_recommendations(self, user):
@@ -41,3 +44,19 @@ class RecommenderService:
         recommendations_list.sort(key=lambda r: r.position)
 
         return recommendations_list
+
+
+    def find_recommender(self, recommender_id):
+        try:
+            return CollaborativeFilteringRecommender(
+                Recommender.objects.get(id=recommender_id),
+                self.similarity_matrix_service
+            )
+        except ObjectDoesNotExist as error:
+            return self.__non_scored_popularity_recommender
+
+
+    def find_item_detail(self, recommender, user, item):
+        ctx = RecommenderContext(user=user, item=item)
+        similar_items = recommender.find_similars(ctx)
+        return ItemDetail(item, similar_items, recommender)

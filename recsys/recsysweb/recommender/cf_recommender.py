@@ -1,50 +1,69 @@
-from ..models import Item, Interaction, SimilarityMatrix, SimilarityMatrixCell, Recommendations
-from .recommender import Recommender, RecommenderContext
 import random
 from django.db.models import Q
 from ..logger import get_logger
 import numpy as np
 
+
+# Domain
+from ..models       import Item, Interaction, SimilarityMatrixCell, Recommendations
+from .recommender   import Recommender, RecommenderContext, RecommenderMetadata
+
+
 class CollaborativeFilteringRecommender(Recommender):
-    def __init__(self, config):
+    def __init__(self, config, simialrity_matrix_service=None):
         self.__config = config
         self.logger = get_logger(self)
+        self.simialrity_matrix_service = simialrity_matrix_service
+
+    @property
+    def metadata(self):
+        return RecommenderMetadata(
+            id         = self.__config.id,
+            name       = self.__config.name,
+            description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
+            position    = self.__config.position
+        )
+
+    def recommend(self, ctx: RecommenderContext):
+        most_similar_user_ids = self.simialrity_matrix_service \
+            .find_similar_element_ids(
+                matrix    = self.__config.user_similarity_matrix,
+                element_id = ctx.user.id
+            )[:self.__config.max_similar_users]
+
+        mean_rating_by_non_seen_item_id = self.__non_seen_similar_user_items_mean_rating(ctx.user, most_similar_user_ids)
+
+        recommended_items = Item.objects.filter(pk__in=mean_rating_by_non_seen_item_id.keys())
 
 
-    def __similar_user_ids(self, user):
-        user_sim_matrix = self.__config.user_similarity_matrix
+        recommended_items = sorted(
+            recommended_items,
+            key=lambda x: mean_rating_by_non_seen_item_id[x.id],
+            reverse=True
+        )
+        recommended_items = recommended_items[:ctx.limit]
+
+        # self.logger.info('\n\nRESULT:\n')
+        # for i in recommended_items:
+        #   self.logger.info(f'{i.name}: {mean_rating_by_non_seen_item_id[i.id]}')
+
+        return self.__build_result(most_similar_user_ids, mean_rating_by_non_seen_item_id.keys(), recommended_items)
 
 
-        similar_col_cells = SimilarityMatrixCell.objects.filter(
-            row       = user.id,
-            matrix    = user_sim_matrix.id,
-            version   = user_sim_matrix.version,
-            value__gt = 0
-        ).order_by('-value')
+    def find_similars(self, ctx: RecommenderContext):
+        most_similar_item_ids = self.simialrity_matrix_service \
+            .find_similar_element_ids(
+                matrix    = self.__config.item_similarity_matrix,
+                element_id = ctx.item.id
+            )[:self.__config.max_similar_items]
 
-        sim_by_id = { cell.column: cell.value for cell in similar_col_cells }
-
-
-        similar_row_cels = SimilarityMatrixCell.objects.filter(
-            column  = user.id,
-            matrix  = user_sim_matrix.id,
-            version = user_sim_matrix.version,
-            value__gt = 0
-        ).order_by('-value')
+        self.logger.info(most_similar_item_ids)
 
 
-        for cell in similar_row_cels:
-            if cell.row in sim_by_id and cell.value < sim_by_id[cell.row]:
-                sim_by_id[cell.row] = cell.value
-            else:
-                sim_by_id[cell.row] = cell.value
+        recommended_items = Item.objects.filter(pk__in=most_similar_item_ids)
 
 
-        id_sim_list =  list(sim_by_id.items())
-        id_sim_list.sort(key=lambda id_sim: id_sim[1], reverse=True)
-
-
-        return [id_sim[0] for id_sim in id_sim_list]
+        return recommended_items
 
 
     def __non_seen_similar_user_items_mean_rating(self, user, similar_user_ids):
@@ -68,28 +87,6 @@ class CollaborativeFilteringRecommender(Recommender):
         return mean_rating_by_item_id
 
 
-    def recommend(self, ctx: RecommenderContext):
-        most_similar_user_ids = self.__similar_user_ids(ctx.user)[:self.__config.max_similar_users]
-
-        mean_rating_by_non_seen_item_id = self.__non_seen_similar_user_items_mean_rating(ctx.user, most_similar_user_ids)
-
-        recommended_items = Item.objects.filter(pk__in=mean_rating_by_non_seen_item_id.keys())
-
-
-        recommended_items = sorted(
-            recommended_items,
-            key=lambda x: mean_rating_by_non_seen_item_id[x.id],
-            reverse=True
-        )
-        recommended_items = recommended_items[:ctx.limit]
-
-        # self.logger.info('\n\nRESULT:\n')
-        # for i in recommended_items:
-        #   self.logger.info(f'{i.name}: {mean_rating_by_non_seen_item_id[i.id]}')
-
-        return self.__build_result(most_similar_user_ids, mean_rating_by_non_seen_item_id.keys(), recommended_items)
-
-
     def __build_result(
         self,
         most_similar_user_ids,
@@ -101,10 +98,7 @@ class CollaborativeFilteringRecommender(Recommender):
         info += f' Found {len(non_seen_similar_user_item_ids)} non seen similar user items.'
 
         return Recommendations(
-            id          = str(self.__config.id),
-            name        = f'{self.__config.max_similar_users} Most Similar Users Are Also Reading ({self.__config.name} Recommender)',
-            description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
-            items       = recommended_items,
-            info        = info,
-            position    = self.__config.position
+            metadata = self.metadata,
+            items    = recommended_items,
+            info     = info
         )

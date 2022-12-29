@@ -46,7 +46,7 @@
                             data-html="true"
 
                             title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}"
-                            onclick="window.open('/items/detail/{{item.id}}', '_blank');"
+                            onclick="window.open('/items/detail/{{item.id}}/{{recommendation.metadata.id}}', '_blank');"
                             style="cursor: pointer;"
                         >
                             <div class="img-wrapper">

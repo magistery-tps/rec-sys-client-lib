@@ -31,7 +31,7 @@ urlpatterns = [
     path('items/create',                        views.create_item,  name='items.create'),
     path('items/edit/<int:id>/items',           views.edit_item,    name='items.edit'),
     path('items/edit/<int:id>/<str:origin>/',   views.edit_item,    name='items.edit'),
-    path('items/detail/<int:id>/',              views.detail_item,  name='items.detail'),
+    path('items/detail/<int:id>/<int:recommender_id>', views.detail_item,  name='items.detail'),
     path('items/remove/<int:id>',               views.remove_item,  name='items.remove'),
 
     path('api/', include(router.urls))
