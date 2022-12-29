@@ -44,6 +44,13 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 #### Recomendaciones
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
+
+#### Item Detail & Similars
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="550" />
+</p>
+
 #### Scoring
 
 <p align="center">
