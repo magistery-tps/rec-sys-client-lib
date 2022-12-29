@@ -32,6 +32,8 @@
                 src="{{ detail.item.image }}"
                 alt="{{ detail.item.name }}"
                 class="d-block round-image"
+                onclick="{% if perms.recsysweb.change_item %}window.open('/items/edit/{{detail.item.id}}/recommendations', '_blank'); {% endif %}"
+                style="cursor: pointer;"
             >
         </div>
         <div class="col-10">
