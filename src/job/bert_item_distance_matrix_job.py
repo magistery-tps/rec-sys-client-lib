@@ -40,10 +40,12 @@ class BertItemDistanceMatrixJob(Job):
             self._logger.info(f'Fount items size change.')
             self._logger.info(f'Start Computing...')
 
+        # Use item name and description to cumpute embeddings...
+        items['description'] = items['name'] + ' ' + items['description']
 
         data = items[['item_id', 'description']].to_dict()
         data['embedding'] = self.model.encode(data['description'])
-        embedding_matrix = sparse.csr_matrix(np.vstack(data['embedding']))
+        embedding_matrix  = sparse.csr_matrix(np.vstack(data['embedding']))
 
 
         item_similarities = self.ctx.similarity_service.similarities(
