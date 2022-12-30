@@ -9,12 +9,7 @@
     </div>
     {% if user.is_authenticated %}
         <div class="container-fluid nav navbar-nav  justify-content-end">
-            <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="User in session">
-                <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
-            </a>
-
             {% if user_n_interactions != None %}
-                <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
                     {{user_n_interactions}}&ensp;<span class="bi-star-fill"></span>
                 </a>
@@ -89,6 +84,11 @@
             </a>
 
             <span class="bi-three-dots-vertical menu-item-separator"></span>
+
+            <a class="nav-item nav-link active" data-toggle="tooltip" data-hmlt=true title="User in session">
+                <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
+            </a>
+
             <a class="nav-item nav-link active" href="{% url 'sign-out' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Sign Out</strong><br> Close current RecSys user session.">
                 <span class="bi-door-open-fill"></span>
             </a>
