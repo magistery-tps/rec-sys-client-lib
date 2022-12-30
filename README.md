@@ -74,6 +74,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 3. Presione **Next** para saltear la votation del item actuar.
 4. El valor de estadisticas como popularidad, rating y cantidad de votaciones del item actual.
 5. Es posible visualizar una descriptión del item actual.
+6. Al hacer click sobre la imagen, es posible ver el detalle del item.
 
 ## Notebooks
 
