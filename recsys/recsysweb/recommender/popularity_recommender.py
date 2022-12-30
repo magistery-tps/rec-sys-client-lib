@@ -10,7 +10,8 @@ class PopularityRecommender(Recommender):
     def metadata(self):
         return RecommenderMetadata(
             id   = 2_000_000,
-            name = 'Most Populars',
+            name = 'populars',
+            title = 'Most Populars',
             description = """
                 <strong>Shuffle of most popular items.</strong>
                 <br>

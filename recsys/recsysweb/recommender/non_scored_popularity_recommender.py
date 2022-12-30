@@ -11,7 +11,8 @@ class NonScoredPopularityRecommender(Recommender):
     def metadata(self):
         return RecommenderMetadata(
             id   = 1_000_000,
-            name = 'New Populars For You',
+            name = 'new-populars',
+            title = 'New Populars For You',
             description = """
                 <strong>Shuffle of user unrated popular items.</strong>
                 The idea is recommend new popular items for you.

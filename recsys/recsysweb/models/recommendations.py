@@ -1,7 +1,7 @@
 class Recommendations:
     def __init__(self, metadata, items, info=''):
         self.id          = f'id_{metadata.id}'
-        self.name        = metadata.name
+        self.title       = metadata.title
         self.description = metadata.description
         self.items       = list(items)
         self.info        = info

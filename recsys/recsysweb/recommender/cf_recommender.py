@@ -21,8 +21,9 @@ class CollaborativeFilteringRecommender(Recommender):
     @property
     def metadata(self):
         return RecommenderMetadata(
-            id         = self.__config.id,
-            name       = self.__config.name,
+            id          = self.__config.id,
+            name        = self.__config.name,
+            title       = f'Other users also are reading ({self.__config.name} Recommender)',
             description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
             position    = self.__config.position
         )
