@@ -9,7 +9,8 @@ from .data_frame                     import normalize_column, \
                                             df_to_matrix, \
                                             concat, \
                                             save, \
-                                            load
+                                            load, \
+                                            seq_by_id
 from .data_frame_pagination_iterator import DataFramePaginationIterator
 from .picket                         import Picket
 from .singleton                      import SingletonMeta

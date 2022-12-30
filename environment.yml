@@ -34,3 +34,4 @@ dependencies:
         - django-filter
         - django-extensions
         - colorlog
+        - sentence-transformers

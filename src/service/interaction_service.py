@@ -14,14 +14,6 @@ class InteractionService:
         self._logger    = get_logger(self)
 
 
-    def seq_by_id(self, df, entity=None, column_id=None, column_seq=None):
-        if entity:
-            column_id  = f'{entity}_id'
-            column_seq = f'{entity}_seq'
-
-        return pd.Series(df[column_id].values, index=df[column_seq]).to_dict()
-
-
     def n_interactions_by_user(
         self,
         df,

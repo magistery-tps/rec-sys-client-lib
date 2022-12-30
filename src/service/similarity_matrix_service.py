@@ -36,7 +36,7 @@ class SimilarityMatrixService:
         similarity_matrix.version += 1
 
         # Map sequences to ids
-        user_seq_by_id = self.__interaction_service.seq_by_id(interactions, entity='user')
+        user_seq_by_id = ut.seq_by_id(interactions, entity='user')
 
         # Prepare cells...
         cells = self.__similarity_service.filter_most_similars(
@@ -69,7 +69,7 @@ class SimilarityMatrixService:
         similarity_matrix.version += 1
 
         # Map sequences to ids...
-        item_seq_by_id = self.__interaction_service.seq_by_id(interactions, entity='item')
+        item_seq_by_id = ut.seq_by_id(interactions, entity='item')
 
         # Prepare most similar cells...
         cells = self.__similarity_service.filter_most_similars(

@@ -9,13 +9,13 @@ from itertools import combinations
 import tqdm
 
 class EmbeddingCache:
-    def __init__(self, rating_matrix):
+    def __init__(self, embedding_matrix):
         self.embeddings = {}
-        self.rating_matrix = rating_matrix
+        self.embedding_matrix = embedding_matrix
 
     def __getitem__(self, row_id):
         if row_id not in self.embeddings:
-            self.embeddings[row_id] = self.rating_matrix[row_id].toarray()
+            self.embeddings[row_id] = self.embedding_matrix[row_id].toarray()
 
         return self.embeddings[row_id]
 
@@ -25,18 +25,18 @@ class SimilarityService:
         self._logger = get_logger(self)
 
 
-    def similarities(self, rating_matrix, entity='', n_workers=24, chunks=10_000):
-        embeddingCache = EmbeddingCache(rating_matrix)
+    def similarities(self, embedding_matrix, entity='', n_workers=24, chunks=10_000):
+        embeddingCache = EmbeddingCache(embedding_matrix)
         similarities = []
 
-        row_ids = list(range(rating_matrix.shape[0]))
+        row_ids = list(range(embedding_matrix.shape[0]))
 
         # self._logger.info(f'Compute {row_ids}')
         self._logger.info(f'Compute {entity}_seq combinations...')
         row_id_combinations = list(combinations(row_ids, 2))
         self._logger.info(f'{entity}_id combinations...{len(row_id_combinations)} ({len(row_ids)})')
 
-        self._logger.info(f'Compute {entity}_seq embeddings(size: {rating_matrix.shape[1]})...')
+        self._logger.info(f'Compute {entity}_seq embeddings(size: {embedding_matrix.shape[1]})...')
         input_data = []
         for comb in row_id_combinations:
             a_id,  b_id  = comb[0], comb[1]

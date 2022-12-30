@@ -4,7 +4,16 @@ import pandas as pd
 import logging
 
 
-# DF Ppeline functions...
+
+def seq_by_id(df, entity=None, column_id=None, column_seq=None):
+    if entity:
+        column_id  = f'{entity}_id'
+        column_seq = f'{entity}_seq'
+
+    return pd.Series(df[column_id].values, index=df[column_seq]).to_dict()
+
+
+# DF Pipeline functions...
 
 def normalize_column(df, source, target=None):
     if target is None:

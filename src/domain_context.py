@@ -56,6 +56,7 @@ class DomainContext(metaclass=ut.SingletonMeta):
 
         # Services
         self.__interaction_service       = InteractionService(self.__interaction_repository)
+        self.__item_service              = ItemService(self.__item_repository)
         self.__rating_matrix_service     = RatingMatrixService(self.__interaction_service)
         self.__similarity_service        = SimilarityService()
         self.__similarity_matrix_service = SimilarityMatrixService(
@@ -79,6 +80,18 @@ class DomainContext(metaclass=ut.SingletonMeta):
         )
 
 
+        models = [
+            'all-MiniLM-L6-v2',
+            'all-MiniLM-L12-v2',
+            'multi-qa-mpnet-base-dot-v1',
+            'all-mpnet-base-v2'
+        ]
+
+        self.__bert_item_distance_matrix_job = {
+            model: BertItemDistanceMatrixJob(self, model) for model in models
+        }
+
+
 
     @property
     def api(self): return self.__client
@@ -86,6 +99,10 @@ class DomainContext(metaclass=ut.SingletonMeta):
 
     @property
     def interaction_service(self): return self.__interaction_service
+
+
+    @property
+    def item_service(self): return self.__item_service
 
 
     @property
@@ -112,20 +129,20 @@ class DomainContext(metaclass=ut.SingletonMeta):
     def nmf_distance_matrix_job(self): return self.__nmf_distance_matrix_job
 
 
-    @property
-    def pmf_distance_matrix_job(self): return self.__pmf_distance_matrix_job
+    def bert_item_distance_matrix_job(self, model):
+        return self.__bert_item_distance_matrix_job[model]
 
 
     @property
-    def user_repoitory(self): return self.__user_repository
+    def user_repository(self): return self.__user_repository
 
 
     @property
-    def item_repoitory(self): return self.__item_repository
+    def item_repository(self): return self.__item_repository
 
 
     @property
-    def interaction_repoitory(self): return self.__interaction_repository
+    def interaction_repository(self): return self.__interaction_repository
 
 
     @property

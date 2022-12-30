@@ -12,3 +12,5 @@ class InteractionMapper(Mapper):
             'item_id': int(substring_after(dto['item'], 'items/').replace('/', '')),
             'rating' : float(dto['rating'])
         })
+
+
