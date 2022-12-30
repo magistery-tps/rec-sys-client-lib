@@ -32,8 +32,14 @@
                 src="{{ detail.item.image }}"
                 alt="{{ detail.item.name }}"
                 class="d-block round-image"
-                onclick="{% if perms.recsysweb.change_item %}window.open('/items/edit/{{detail.item.id}}/detail', '_blank'); {% endif %}"
-                style="cursor: pointer;"
+                {% if perms.recsysweb.change_item %}
+                    onclick="window.open('/items/edit/{{detail.item.id}}/detail', '_blank');"
+                    style="cursor: pointer;"
+                    data-toggle="tooltip"
+                    data-hmlt=true
+                    data-placement="right"
+                    title="Click to edit item"
+                {% endif %}
             >
         </div>
         <div class="col-10">
