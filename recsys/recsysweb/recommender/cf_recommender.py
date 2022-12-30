@@ -23,7 +23,8 @@ class CollaborativeFilteringRecommender(Recommender):
         return RecommenderMetadata(
             id          = self.__config.id,
             name        = self.__config.name,
-            title       = f'Other users also are reading ({self.__config.name} Recommender)',
+            features    = f'Recommender: {self.__config.name} | Simularity Matrix: {self.__config.user_similarity_matrix.name}, {self.__config.item_similarity_matrix.name}',
+            title       = 'Other users also are reading',
             description = f'<strong>{self.__config.name}</strong> collaborative filtering recommender. This recommender find items rated for similar users. Is required count with a minimum number of items rated for use these recommenders.',
             position    = self.__config.position
         )
