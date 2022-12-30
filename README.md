@@ -65,7 +65,7 @@ Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [R
 ### Scoring
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="290" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="295" />
 </p>
 
 **Notas**
