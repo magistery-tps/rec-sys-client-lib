@@ -5,11 +5,10 @@
 
 {%block head%}Score your tastes{% endblock %}
 
-{%block title%}<h3 class="display-8 fw-bold text-center"><span class="bi-star-half">&ensp;Scoring your tastes</h1>{% endblock %}
+{%block title%}<h4 class="display-8 fw-bold text-center"><span class="bi-star-half">&ensp;Scoring your tastes</h1>{% endblock %}
 
 {%block content%}
 {% if item %}
-<div class="mx-auto likes">
     <script>
         var context = {}
 
@@ -19,26 +18,36 @@
             }
         }
     </script>
-    <div class="card-like">
-        <div class="img-wrapper" data-toggle="tooltip" data-html="true" title="{% if item.description == None or item.description == 'None' %}No Description{% else %}{{ item.description|truncatechars:500 }}{% endif %}">
-            <img
-            src="{{ item.image }}"
-            alt="{{ item.name }}"
-            class="d-block  w-100 round-image"
-            onload="onCardLoad(this);"
-            onclick="window.open('/items/detail/{{item.id}}/1000000000000', '_blank');"
-            style="cursor: pointer;"
-            >
-        </div
-        >
-        <div class="card-body">
-            <h6 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h6>
-            <form method="post" action="{% url 'likes' %}">
-                {% csrf_token %}
-                <input  type="hidden" name="item_id" value="{{ item.id }}">
-                <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
-                <div class="d-flex">
-                    <div class="p1 btn-group align-content-xl-start">
+    <div class="card-detail likes">
+        <div class="row">
+            <div class="col">
+                <h5 class="display-12"><strong>{{ item.name|truncatechars:200 }}</strong></h6>
+                <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+            </div>
+        </div>
+        <div class="row card-detail-data">
+            <div class="col-2 img-wrapper">
+                <img
+                    src="{{ item.image }}"
+                    alt="{{ item.name }}"
+                    class="d-block round-image"
+                    onclick="window.open('/items/detail/{{item.id}}/1000000000000', '_blank');"
+                    style="cursor: pointer;"
+                >
+            </div>
+            <div class="col-10">{{ item.description }}</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+            </div>
+        </div>
+        <form method="post" action="{% url 'likes' %}">
+        {% csrf_token %}
+        <input  type="hidden" name="item_id" value="{{ item.id }}">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="btn-group">
                         {% for score_level  in score_levels %}
                             <input
                                 type="radio"
@@ -52,22 +61,24 @@
                             <label class="btn btn-primary" for="rating_{{score_level}}"><strong>{{score_level}}</strong></label>
                         {% endfor %}
                     </div>
-                    <pre>      </pre>
-                    <div class="btn-group align-content-xl-end">
+                    <div class="btn-group">
                         <button id="vote" type="submit" class="btn btn-success" disabled><span class="bi-award">&ensp;<strong>Vote</strong></button>
                         <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                     </div>
                 </div>
-            </form>
-
-        </div>
-        <div class="card-footer regular-card-footer text-center">
-            Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
-            Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
-            Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col">
+                <div class="card-footer card-like-footer text-center">
+                    Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
+                    Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
+                    Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
 {% endif %}
 {% endblock %}
 

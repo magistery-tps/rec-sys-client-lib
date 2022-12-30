@@ -67,32 +67,6 @@
     }
 }
 
-.card-like {
-    box-shadow:  2px 3px 14px 0 rgb(22 22 26 / 83);
-    border: solid 3px;
-    border-color: #212529d9;
-
-    height: 100%;
-    padding-top: 11px;
-    padding-left: 11px;
-    padding-right: 11px;
-    padding-bottom: 11px;
-    max-width: 100%;
-    border-radius: 0.6%;
-}
-.card-like img {
-    max-height: 100%;
-    background-color: #f8f9fa;
-}
-.card-like .img-wrapper {
-    max-width: 100%;
-    height: 42em;
-    display: flex;
-    align-items: center;
-    align-self: center;
-}
-
-
 .recommendations-container {
     padding-top: 5px;
     padding-bottom: 25px;
@@ -104,25 +78,6 @@
 .container {
     margin-top: 25px;
 }
-
-
-.likes {
-    width: 425px;
-    padding-top: 10px;
-}
-
-.likes .card-body {
-    padding-top: 10px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.likes .card-title {
-    padding-top: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
-}
-
 
 .google-cont {
    background-color: #fff;
@@ -244,6 +199,18 @@ label[for="id_email"] {
 }
 
 
+.card-like-footer {
+    font-size: 13px;
+
+    margin-top: 10px;
+    margin-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+
 .card-detail-data {
     margin-bottom: 15px;
 }
@@ -288,3 +255,8 @@ label[for="id_email"] {
 .menu-item-separator {
     color: #e4e4e4cf;
 }
+
+.likes {
+    margin-top: 26px;
+}
+
