@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', # for Google OAuth 2.0,
-    'corsheaders',
     'rest_framework.authtoken',
     'django_apscheduler',
-    'django_filters'
+    'django_filters',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'recsys.urls'
@@ -260,3 +259,6 @@ LOGGING = {
         }
     },
 }
+
+
+SECURE_SSL_REDIRECT=True

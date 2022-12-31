@@ -17,5 +17,5 @@ conda activate $ENV
 echo "Start Recsys application"
 
 cd "$ABSDIR/../recsys"
-/usr/bin/nohup python manage.py runserver 0.0.0.0:$PORT &
+/usr/bin/nohup python manage.py runserver_plus --cert-file ~/cert.pem --key-file ~/key.pem 0.0.0.0:$PORT &
 # ----------------------------------------------------------------------------
