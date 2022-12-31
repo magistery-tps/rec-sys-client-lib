@@ -7,17 +7,12 @@
 {%block head%}Sign in{% endblock %}
 
 {%block content%}
-    <script>
-        function sanitize_url(form) {
-            form.action = '{% provider_login_url 'google' %}?next=/';
-        }
-    </script>
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card px-5 py-5" id="form1">
                     <h5 class="form-label"><span class="bi-person-fill"> </span>Sign In</h5>
-                    <form onsubmit="sanitize_url(this)" method="POST">
+                    <form action="{% provider_login_url 'google' %}?next=/" method="POST">
                         {% csrf_token %}
                         <button type="submit"  class="btn btn-dark custom-btn-dark align-middle" style="width: 100%">
                             <img

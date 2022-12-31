@@ -1,97 +1,97 @@
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip({html:true});
-    })
-</script>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}"><span class="bi-gem"></span>&ensp;<strong>RecSys</strong></a>
-    </div>
-    {% if user.is_authenticated %}
-        <div class="container-fluid nav navbar-nav  justify-content-end">
-            {% if user_n_interactions != None %}
-                <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
-                    {{user_n_interactions}}&ensp;<span class="bi-star-fill"></span>
-                </a>
-
-                {% if perms.recsysweb.reset_interactions %}
-                    <a class="btn btn-dark custom-btn-dark btn-lg" role="button" id="btn-reset-interactions" data-toggle="tooltip" data-hmlt=true title="Remove User Ratings.">
-                        <span class="bi-trash-fill"></span>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="bi-gem"></span>&ensp;<strong>RecSys</strong></a>
+        </div>
+        {% if user.is_authenticated %}
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip({html:true});
+                })
+            </script>
+            <div class="container-fluid nav navbar-nav  justify-content-end">
+                {% if user_n_interactions != None %}
+                    <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
+                        {{user_n_interactions}}&ensp;<span class="bi-star-fill"></span>
                     </a>
-                    <div class="modal fade" id="resetInteractionsModel" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header"><h5 class="modal-title">Remove User Ratings</h5></div>
-                                <div class="modal-body">Do you really want to remove all your rating?</div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark custom-btn-dark" id="modal-btn-no"><strong>No</strong></button>
-                                    <button type="button" class="btn btn-danger" id="modal-btn-yes"><strong>Yes</strong></button>
+
+                    {% if perms.recsysweb.reset_interactions %}
+                        <a class="btn btn-dark custom-btn-dark btn-lg" role="button" id="btn-reset-interactions" data-toggle="tooltip" data-hmlt=true title="Remove User Ratings.">
+                            <span class="bi-trash-fill"></span>
+                        </a>
+                        <div class="modal fade" id="resetInteractionsModel" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header"><h5 class="modal-title">Remove User Ratings</h5></div>
+                                    <div class="modal-body">Do you really want to remove all your rating?</div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark custom-btn-dark" id="modal-btn-no"><strong>No</strong></button>
+                                        <button type="button" class="btn btn-danger" id="modal-btn-yes"><strong>Yes</strong></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <script>
-                        $("#btn-reset-interactions").on("click", function(){
-                            $("#resetInteractionsModel").modal('show');
-                        });
+                        <script>
+                            $("#btn-reset-interactions").on("click", function(){
+                                $("#resetInteractionsModel").modal('show');
+                            });
 
-                        $("#modal-btn-no").on("click", function(){
-                            $("#resetInteractionsModel").modal('hide');
-                        });
+                            $("#modal-btn-no").on("click", function(){
+                                $("#resetInteractionsModel").modal('hide');
+                            });
 
-                        $("#modal-btn-yes").on("click", function(){
-                            $("#resetInteractionsModel").modal('hide');
-                            location.href = "{% url 'interactions.remove_all' %}";
-                        });
-                    </script>
+                            $("#modal-btn-yes").on("click", function(){
+                                $("#resetInteractionsModel").modal('hide');
+                                location.href = "{% url 'interactions.remove_all' %}";
+                            });
+                        </script>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
 
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="{% url 'recommendations' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>See Recommendations</strong><br>This view show a list of recommendations swimlanes. Each recommendation swimlane is the product of a specific recommender model. These recommenders can be configured via <strong><span class='bi-plug-fill'> REST API</Strong> menu option.">
-                <span class="bi-bar-chart-line-fill"></span>
-            </a>
-
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="{% url 'likes' %}" data-toggle="tooltip" data-hmlt=true title="<strong>Scoring</strong>: This view show you popular items. You can score these. It scoring data is used to train recommendation models. Recommendation model resulta cant be sen in <strong><span class='bi-bar-chart-line-fill'></span> See Recommendations</strong> menu option.">
-                <span class="bi-star-half"></span>
-            </a>
-
-            {% if perms.recsysweb.view_item %}
-                <span class="bi-three-dots-vertical menu-item-separator""></span>
-                <a class="nav-item nav-link active" href="{% url 'items' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment.">
-                    <span class="bi-server"></span>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="{% url 'recommendations' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>See Recommendations</strong><br>This view show a list of recommendations swimlanes. Each recommendation swimlane is the product of a specific recommender model. These recommenders can be configured via <strong><span class='bi-plug-fill'> REST API</Strong> menu option.">
+                    <span class="bi-bar-chart-line-fill"></span>
                 </a>
-            {% endif %}
 
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="/admin" target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Configuration</strong><br> RecSys application configuration. Only for admin users.">
-                <span class="bi-wrench"></span>
-            </a>
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="/api"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>REST API</strong><br> A web interface to interact with RecSys REST API. An Authentication Token Header ir required. See <strong><span class='bi-wrench'></span> Configuration</strong>  menu option to generate an <strong>User Authentication Token</strong>.">
-                <span class="bi-plug-fill"></span>
-            </a>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="{% url 'likes' %}" data-toggle="tooltip" data-hmlt=true title="<strong>Scoring</strong>: This view show you popular items. You can score these. It scoring data is used to train recommendation models. Recommendation model resulta cant be sen in <strong><span class='bi-bar-chart-line-fill'></span> See Recommendations</strong> menu option.">
+                    <span class="bi-star-half"></span>
+                </a>
 
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="http://nonosoft.ddns.net:8686/"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Airflow</strong><br>Used to schedule background jobs that compute user-user & item-item similarity matrix with diferent models like SVD or NFM. Used for collaborative filtering recommendations.">
-                <span class="bi-calendar-week-fill"></span>
-            </a>
+                {% if perms.recsysweb.view_item %}
+                    <span class="bi-three-dots-vertical menu-item-separator""></span>
+                    <a class="nav-item nav-link active" href="{% url 'items' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment.">
+                        <span class="bi-server"></span>
+                    </a>
+                {% endif %}
 
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
-            <a class="nav-item nav-link active" href="https://github.com/magistery-tps/rec-sys" target="_blank" data-toggle="tooltip" data-hmlt=true title="Go to <strong>Github</strong> project repostory.">
-                <span class="bi bi-github"></span>
-            </a>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="/admin" target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Configuration</strong><br> RecSys application configuration. Only for admin users.">
+                    <span class="bi-wrench"></span>
+                </a>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="/api"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>REST API</strong><br> A web interface to interact with RecSys REST API. An Authentication Token Header ir required. See <strong><span class='bi-wrench'></span> Configuration</strong>  menu option to generate an <strong>User Authentication Token</strong>.">
+                    <span class="bi-plug-fill"></span>
+                </a>
 
-            <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="http://nonosoft.ddns.net:8686/"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Airflow</strong><br>Used to schedule background jobs that compute user-user & item-item similarity matrix with diferent models like SVD or NFM. Used for collaborative filtering recommendations.">
+                    <span class="bi-calendar-week-fill"></span>
+                </a>
 
-            <a class="nav-item nav-link active" data-toggle="tooltip" data-hmlt=true title="User in session">
-                <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
-            </a>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+                <a class="nav-item nav-link active" href="https://github.com/magistery-tps/rec-sys" target="_blank" data-toggle="tooltip" data-hmlt=true title="Go to <strong>Github</strong> project repostory.">
+                    <span class="bi bi-github"></span>
+                </a>
 
-            <a class="nav-item nav-link active" href="{% url 'sign-out' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Sign Out</strong><br> Close current RecSys user session.">
-                <span class="bi-door-open-fill"></span>
-            </a>
-        </div>
-    {% endif %}
-</nav>
+                <span class="bi-three-dots-vertical menu-item-separator"></span>
+
+                <a class="nav-item nav-link active" data-toggle="tooltip" data-hmlt=true title="User in session">
+                    <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
+                </a>
+
+                <a class="nav-item nav-link active" href="{% url 'sign-out' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Sign Out</strong><br> Close current RecSys user session.">
+                    <span class="bi-door-open-fill"></span>
+                </a>
+            </div>
+        {% endif %}
+    </nav>
