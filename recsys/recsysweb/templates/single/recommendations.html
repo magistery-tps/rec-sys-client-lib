@@ -36,7 +36,9 @@
         {% endif %}
 
         {% if recommendation.empty %}
-
+                <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
+                    <span class="bi-info-circle-fill"></span>&ensp;At the moment there are no recommendations.
+                </div>
         {% else %}
 
         <div id="{{recommendation.id}}" class="carousel carousel-dark" data-bs-ride="carousel">
