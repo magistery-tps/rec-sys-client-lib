@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 
 class Item(models.Model):
@@ -9,6 +10,7 @@ class Item(models.Model):
     popularity  = models.FloatField(default   = 0,    verbose_name = 'Popularity')
     rating      = models.FloatField(default   = 0,    verbose_name = 'Rating')
     votes       = models.FloatField(default   = 0,    verbose_name = 'Votes')
+    tags        = TaggableManager()
 
     class Meta:
         indexes = [

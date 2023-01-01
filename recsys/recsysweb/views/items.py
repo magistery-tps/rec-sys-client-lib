@@ -15,6 +15,7 @@ from ..recommender  import RecommenderContext
 recommender_service = RecommenderService()
 
 
+
 @login_required
 def create_item(request):
     form = ItemForm(request.POST or None)
@@ -29,6 +30,9 @@ def create_item(request):
 def edit_item(request, id, origin):
     item = Item.objects.get(id=id)
     form = ItemForm(request.POST or None, instance=item)
+
+    logging.info(form)
+
 
     if form.is_valid():
         form.save()

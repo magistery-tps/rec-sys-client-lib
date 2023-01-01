@@ -33,5 +33,6 @@ dependencies:
         - persist-queue
         - django-filter
         - django-extensions
+        - django-taggit
         - colorlog
         - sentence-transformers

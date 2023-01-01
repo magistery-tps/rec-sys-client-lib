@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'django_apscheduler',
-    'django_filters'
+    'django_filters',
+    'taggit'
 ]
 
 MIDDLEWARE = [
@@ -260,3 +261,5 @@ LOGGING = {
         }
     },
 }
+
+TAGGIT_CASE_INSENSITIVE = False

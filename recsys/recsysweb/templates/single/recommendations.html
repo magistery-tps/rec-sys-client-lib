@@ -66,6 +66,9 @@
                             <hr class="separator" style="height:1px; width:100%;">
                             <div class="card-body custom-card-body">
                                 <h7 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h7>
+                                {% if item.tags.all %}
+                                    <br>{% for tag in item.tags.all %}<span class="badge alert-dark">{{ tag }}</span>&ensp;{% endfor %}
+                                {% endif %}
                             </div>
                             <div class="card-footer regular-card-footer text-center">
                                 Pop: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>

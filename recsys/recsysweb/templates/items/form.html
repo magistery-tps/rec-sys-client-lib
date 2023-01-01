@@ -1,10 +1,11 @@
 {% csrf_token %}
 {% load filter_tags %}
+{% load tag_tags %}
 {% for field in form %}
     <div class="mb-3">
         <label for="{{ field.name }}" class="form-label">{{ field.label }}</label>
-
         {% with input_type=field|field_type %}
+            {{ input_type }}
             {% if input_type == 'NumberInput' %}
                 <input
                 type="{{ field.field.widget.input_type }}"
@@ -13,6 +14,16 @@
                 name="{{ field.name }}"
                 value="{{ field.value | default:'' }}"
                 autofocus>
+
+            {% elif input_type == 'TagWidget' %}
+                <input
+                    type="{{ field.field.widget.input_type }}"
+                    class="form-control"
+                    id="{{ field.id }}"
+                    name="{{ field.name }}"
+                    value="{{ field.value | sanitize_tags | default:'' }}"
+                    autofocus>
+
             {% else %}
                 <textarea
                     class="form-control"
@@ -22,10 +33,8 @@
                     autofocus
                 >{{ field.value | default:''  }}</textarea>
             {% endif %}
-
         {% endwith %}
     </div>
-    <div class="col-12 help-text">{{ field.errors}}</div>
 {% endfor %}
 
 <div class="col-12">
