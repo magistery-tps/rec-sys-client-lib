@@ -10,6 +10,9 @@ class SimilarItem:
     def name(self): return self.item.name
 
     @property
+    def tags(self): return self.item.tags
+
+    @property
     def description(self): return self.item.description
 
     @property

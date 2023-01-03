@@ -66,8 +66,8 @@
                             <hr class="separator" style="height:1px; width:100%;">
                             <div class="card-body custom-card-body">
                                 <h7 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h7>
-                                <hr class="separator-tags" style="height:1px; width:100%;">
                                 {% if item.tags.all %}
+                                    <hr class="separator-tags" style="height:1px; width:100%;">
                                     {% for tag in item.tags.all %}<span class="badge alert-dark">{{ tag }}</span>&ensp;{% endfor %}
                                 {% endif %}
                             </div>
