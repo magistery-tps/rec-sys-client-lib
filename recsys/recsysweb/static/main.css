@@ -146,7 +146,7 @@ label[for="id_email"] {
     background-color: #212529e8
 }
 
-.custom-card-body {
+.custom-title-card-body {
     font-size: 13px;
     padding: 0px;
     margin: 0px;
@@ -155,7 +155,18 @@ label[for="id_email"] {
     padding-right: 2px;
 }
 
+.custom-tags-card-body {
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 .separator {
+    height:0.5px;
+    width:100%;
     padding: 0px;
     margin-top: 9px;
     margin-bottom: 3px;
@@ -164,6 +175,8 @@ label[for="id_email"] {
 }
 
 .separator-tags {
+    height:0.5px;
+    width:100%;
     padding: 0px;
     margin-top: 2px;
     margin-bottom: 2px;

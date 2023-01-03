@@ -63,14 +63,16 @@
                                     onload="onCardLoad(this);"
                                 >
                             </div>
-                            <hr class="separator" style="height:1px; width:100%;">
-                            <div class="card-body custom-card-body">
-                                <h7 class="card-title"><strong>{{ item.name|truncatechars:200 }}</strong></h7>
-                                {% if item.tags.all %}
-                                    <hr class="separator-tags" style="height:1px; width:100%;">
-                                    {% for tag in item.tags.all %}<span class="badge alert-dark">{{ tag }}</span>&ensp;{% endfor %}
-                                {% endif %}
+                            <hr class="separator">
+                            <div class="card-body custom-title-card-body text-center align-self-center">
+                                <h7 class="card-title align-self-center"><strong>{{ item.name|truncatechars:200 }}</strong></h7>
                             </div>
+                            {% if item.tags.all %}
+                                <hr class="separator-tags">
+                                <div class="card-body custom-tags-card-body">
+                                    {% for tag in item.tags.all %}<span class="badge alert-dark">{{ tag }}</span>&ensp;{% endfor %}
+                                </div>
+                            {% endif %}
                             <div class="card-footer regular-card-footer text-center">
                                 Pop: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
                                 Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
