@@ -10,5 +10,6 @@ class ItemMapper(Mapper):
             'description': str(dto['description']),
             'popularity' : float(dto['popularity']),
             'rating'     : float(dto['rating']),
-            'votes'      : int(dto['votes'])
+            'votes'      : int(dto['votes']),
+            'tags'       : dto['tags']
         })

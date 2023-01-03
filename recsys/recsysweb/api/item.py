@@ -14,16 +14,7 @@ class ItemSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model  = Item
-        fields = ['id', 'name', 'description', 'popularity', 'rating', 'votes']
-        exclude = ['tags']
-        filter_overrides = {
-            TaggableManager: {
-                'filter_class': django_filters.CharFilter,
-                'extra': lambda f: {
-                    'lookup_expr': 'icontains',
-                },
-            },
-        }
+        fields = ['id', 'name', 'description', 'popularity', 'rating', 'votes', 'tags']
 
 # ViewSets define the view behavior.
 class ItemViewSet(viewsets.ModelViewSet):
