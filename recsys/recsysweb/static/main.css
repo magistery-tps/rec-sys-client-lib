@@ -153,6 +153,7 @@ label[for="id_email"] {
     padding-bottom: 0px;
     padding-left: 2px;
     padding-right: 2px;
+    flex: 0.5 0.5 auto;
 }
 
 .custom-tags-card-body {
@@ -162,6 +163,7 @@ label[for="id_email"] {
     padding-bottom: 5px;
     padding-left: 2px;
     padding-right: 2px;
+    flex: 0.5 0.5 auto;
 }
 
 .separator {
@@ -292,4 +294,9 @@ label[for="id_email"] {
 
 .general-background {
     background-color: #f4f1eae6;
+}
+
+
+.tag {
+    margin-bottom: 4px;
 }
