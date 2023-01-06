@@ -27,9 +27,9 @@ class CollaborativeFilteringRecommender(Recommender):
             title       = 'Other users also are reading',
             description = f"""<strong>Recommender Strategy</strong><br>
                 Use a collaborative filtering recommendation strategy based on <strong>{self.__config.name}</strong> model. 
-                This recommender find items rated for similar users. Is required a minimum number of items rated by session user to use these recommender. 
-                This recommender have both user-to-user and item-to-item similarity matrix. user-to-user matrix is used to find a similar users window descendent ordered by simiarity. 
-                When recommend search all items rated by users into this windows but unrated for current session user.
+                This recommender find items rated for similar users. To use these recommenders it's important to have a minimum number of rated items by user. 
+                This recommenders have both user-to-user and item-to-item similarity matrix. user-to-user matrix is used to find a similar users list ordered by similarity. 
+                Finally recommender looks for items rated by the users in it's list but not rated by current user in session.
                 <br>
                 <br>
                 <strong>Similars Strategy</strong><br>
