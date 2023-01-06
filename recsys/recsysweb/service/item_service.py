@@ -69,3 +69,40 @@ class ItemService:
                     popularity__gt = min_popularity
                 )
         )
+
+
+    def most_populars(self, limit):
+        return Item.objects.all().order_by('popularity')[:limit]
+
+
+    def unrated_by(self, user, limit):
+        return Item.objects.raw(
+            """
+                SELECT
+                    DISTINCT
+                    id,
+                    name,
+                    description,
+					image,
+                    popularity
+                FROM
+                    recsysweb_item
+                WHERE
+                    id NOT IN (
+                        SELECT
+                            DISTINCT i.item_id
+                        FROM
+                            recsysweb_interaction AS i
+                        WHERE
+                            i.user_id = :USER_ID
+                    )
+                GROUP BY
+                    id
+                ORDER BY
+                    popularity DESC
+                LIMIT :LIMIT
+            """ \
+                .replace('\n', ' ') \
+                .replace(':USER_ID', str(user.id)) \
+                .replace(':LIMIT', str(limit))
+        )

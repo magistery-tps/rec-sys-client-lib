@@ -13,10 +13,10 @@ from .similar_item          import SimilarItem
 
 
 class CollaborativeFilteringRecommender(Recommender):
-    def __init__(self, config, simialrity_matrix_service=None):
+    def __init__(self, config, similarity_matrix_service=None):
         self.__config = config
         self.logger = get_logger(self)
-        self.simialrity_matrix_service = simialrity_matrix_service
+        self.similarity_matrix_service = similarity_matrix_service
 
     @property
     def metadata(self):
@@ -30,7 +30,7 @@ class CollaborativeFilteringRecommender(Recommender):
         )
 
     def recommend(self, ctx: RecommenderContext):
-        most_similar_users = self.simialrity_matrix_service \
+        most_similar_users = self.similarity_matrix_service \
             .find_similar_element_ids(
                 matrix     = self.__config.user_similarity_matrix,
                 element_id = ctx.user.id,
@@ -57,7 +57,7 @@ class CollaborativeFilteringRecommender(Recommender):
 
 
     def find_similars(self, ctx: RecommenderContext):
-        most_similar_items = self.simialrity_matrix_service \
+        most_similar_items = self.similarity_matrix_service \
             .find_similar_element_ids(
                 matrix     = self.__config.item_similarity_matrix,
                 element_id = ctx.item.id,

@@ -1,4 +1,4 @@
-from ..models               import Item, Recommendations, SimilarItemsResult
+from ..models               import Recommendations, SimilarItemsResult
 from .recommender           import Recommender
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
@@ -6,6 +6,10 @@ import random
 
 
 class PopularityRecommender(Recommender):
+    def __init__(self, item_service):
+        self.__item_service = item_service
+
+
     @property
     def metadata(self):
         return RecommenderMetadata(
@@ -22,8 +26,9 @@ class PopularityRecommender(Recommender):
             """
         )
 
+
     def recommend(self, ctx: RecommenderContext):
-        items = Item.objects.all().order_by('popularity')[ctx.shuffle_limit:]
+        items = self.__item_service.most_populars(ctx.shuffle_limit)
 
         selected_items = random.sample(list(items), ctx.limit)
 
@@ -36,7 +41,7 @@ class PopularityRecommender(Recommender):
         return Recommendations(
             metadata = self.metadata,
             items    = selected_items,
-            info     = 'Not found recommendations!' if len(items) == 0 else ''
+            info     = 'At the moment there are no recommendations.' if len(items) == 0 else ''
         )
 
 

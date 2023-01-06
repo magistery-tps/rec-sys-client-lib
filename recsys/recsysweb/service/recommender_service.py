@@ -20,8 +20,8 @@ class RecommenderService:
         self.similarity_matrix_service  = SimilarityMatrixService()
 
         profile_recommender                      = ProfileRecommender(tag_service, item_service)
-        popularity_recommender                   = PopularityRecommender()
-        self.__non_scored_popularity_recommender = NonScoredPopularityRecommender()
+        popularity_recommender                   = PopularityRecommender(item_service)
+        self.__non_scored_popularity_recommender = NonScoredPopularityRecommender(item_service)
 
         self.__default_recommneders = [
             popularity_recommender,

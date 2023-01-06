@@ -1,10 +1,8 @@
-from ..models               import Item, Interaction, Recommendations, SimilarItemsResult
+from ..models               import Recommendations, SimilarItemsResult
 from .recommender           import Recommender
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
-import random
 import numpy as np
-from django.db.models import Q
 
 
 class ProfileRecommender(Recommender):
