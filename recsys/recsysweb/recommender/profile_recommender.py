@@ -25,7 +25,7 @@ class ProfileRecommender(Recommender):
                 This recommender suffer of tunnel effect. Users only see items with similar tags,
                 but can't discover more relevant item with other tags.
                 <br>
-                <strong>Similars Startegy</strong><br>
+                <strong>Similars Strategy</strong><br>
                 Returns other items tagged similarly to current/detaled item, ordered with most similar first.
                 The more tags items have in common, the more similar they are.
             """
