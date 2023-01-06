@@ -17,7 +17,7 @@ class NonScoredPopularityRecommender(Recommender):
             id   = 1_000_000,
             name = 'new-populars',
             title = 'Populars you could read',
-            description = """<strong>Recommender Strategy</strong><br>
+            description = """<strong>Recommendation Strategy</strong><br>
                 Shuffle of user unrated popular items. The idea is recommend popular items that user has not seen yet.
                 <br>
                 <br>
@@ -26,7 +26,7 @@ class NonScoredPopularityRecommender(Recommender):
                 popularity = norm(mean(ratings) x norm(count(ratings)))
                 <br>
                 <br>
-                <strong>Similars Strategy</strong><br>
+                <strong>Item Similarity Strategy</strong><br>
                 It recommender has not an item-to-item similarity strategy."""
         )
 

@@ -25,14 +25,14 @@ class CollaborativeFilteringRecommender(Recommender):
             name        = self.__config.name,
             features    = f'{self.__config.name} | Similarity Matrix: {self.__config.user_similarity_matrix.name}, {self.__config.item_similarity_matrix.name}',
             title       = 'Other users also are reading',
-            description = f"""<strong>Recommender Strategy</strong><br>
+            description = f"""<strong>Recommendation Strategy</strong><br>
                 Use a collaborative filtering recommendation strategy based on <strong>{self.__config.name}</strong> model. 
                 This recommender find items rated for similar users. To use these recommenders it's important to have a minimum number of rated items by user. 
                 This recommenders have both user-to-user and item-to-item similarity matrix. user-to-user matrix is used to find a similar users list ordered by similarity. 
                 Finally recommender looks for items rated by the users in it's list but not rated by current user in session.
                 <br>
                 <br>
-                <strong>Similars Strategy</strong><br>
+                <strong>Item Similarity Strategy</strong><br>
                 Use item-to-item similarity matrix to find item most similat to item into detail view. This similarity is influenced by user ratings. 
                 On the other hand, also is possible assign external similarity matrix like matrix based into items content or any  similarity type.""",
             position    = self.__config.position

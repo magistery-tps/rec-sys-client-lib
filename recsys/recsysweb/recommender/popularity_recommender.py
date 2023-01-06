@@ -16,7 +16,7 @@ class PopularityRecommender(Recommender):
             id   = 2_000_000,
             name = 'populars',
             title = 'Most Populars',
-            description = """<strong>Recommender Strategy</strong><br>
+            description = """<strong>Recommendation Strategy</strong><br>
                 Shuffle of most popular items.
                 <br>
                 <br>
@@ -25,7 +25,7 @@ class PopularityRecommender(Recommender):
                 popularity = norm(mean(ratings) x norm(count(ratings)))
                 <br>
                 <br>
-                <strong>Similars Strategy</strong><br>
+                <strong>Item Similarity Strategy</strong><br>
                 It recommender has not an item-to-item similarity strategy."""
         )
 

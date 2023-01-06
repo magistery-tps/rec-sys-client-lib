@@ -17,7 +17,7 @@ class ProfileRecommender(Recommender):
             name = 'tags_profile',
             features = 'User Tags Profile | Similarity: Tags based',
             title = 'New Similars by Rated Tags',
-            description = """<strong>Recommender Strategy</strong><br>
+            description = """<strong>Recommendation Strategy</strong><br>
                 Build a tags probability distribution only for items rated by current user.
                 When order items descendent by this score. It recommend items based on rated tags frequency.
                 This recommender suffer of tunnel effect. Users only see items with similar tags,
@@ -25,7 +25,7 @@ class ProfileRecommender(Recommender):
                 the recommendations are less assertive, becoming random recommendations in the most extreme case.
                 <br>
                 <br>
-                <strong>Similars Strategy</strong><br>
+                <strong>Item Similarity Strategy</strong><br>
                 Returns other items tagged similarly to detailed item, ordered with most similar first.
                 The more tags items have in common, the more similar they are but it eventually."""
         )
