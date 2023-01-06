@@ -27,17 +27,9 @@
             >&ensp;{{ recommendation.title }}
         </h5>
 
-        {% if perms.recsysweb.info   %}
-            {% if recommendation.info %}
-                <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
-                    <span class="bi-info-circle-fill"></span>&ensp;{{ recommendation.info }}
-                </div>
-            {% endif %}
-        {% endif %}
-
         {% if recommendation.empty %}
                 <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
-                    <span class="bi-info-circle-fill"></span>&ensp;At the moment there are no recommendations.
+                    <span class="bi-info-circle-fill"></span>&ensp;{{recommendation.info}}.
                 </div>
         {% else %}
 

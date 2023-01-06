@@ -49,7 +49,7 @@ class ProfileRecommender(Recommender):
         return Recommendations(
             metadata = self.metadata,
             items    = [item[0] for item in scored_items[:ctx.limit]],
-            info     = 'Not found recommendations!' if len(items) == 0 else ''
+            info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!' if len(items) == 0 else ''
         )
 
     def find_similars(self, ctx: RecommenderContext):
