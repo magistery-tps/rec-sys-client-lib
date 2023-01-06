@@ -4,6 +4,7 @@ from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
 import random
 import numpy as np
+from django.db.models import Q
 
 
 class ProfileRecommender(Recommender):
@@ -16,7 +17,7 @@ class ProfileRecommender(Recommender):
             id   = 3_000_000,
             name = 'tags_profile',
             features = 'Recommender: User Tags Profile, Similars: Rank By Shared Tags',
-            title = 'Similars by Rated Tags',
+            title = 'New Similars by Rated Tags',
             description = """
                 <strong>Recommender Startegy</strong><br>
                 Build a tags probability distribution only for items rated by current user.
@@ -31,16 +32,17 @@ class ProfileRecommender(Recommender):
         )
 
     def recommend(self, ctx: RecommenderContext):
-        user_profile = self.__tag_service.find_user_profile_by(ctx.user)
+        user_profile, user_item_ids = self.__tag_service.find_user_profile_by(ctx.user)
 
         score_by_id = { profile.id: profile.score  for profile in user_profile }
 
-        items = set(Item.objects.filter(tags__id__in = score_by_id.keys(), popularity__gt = 0.2))
+        items = set(Item.objects \
+            .filter(~Q(pk__in=user_item_ids)) \
+            .filter(tags__id__in = score_by_id.keys(), popularity__gt = 0.2))
 
-        scored_items = []
-        for item in items:
-            mean_score = np.mean([score_by_id.get(tag['id'], 0) for tag in item.tags.values()])
-            scored_items.append((item, mean_score))
+        mean_score = lambda item: np.mean([score_by_id.get(tag['id'], 0) for tag in item.tags.values()])
+
+        scored_items = [(item, mean_score(item)) for item in items]
 
         scored_items = sorted(scored_items, key=lambda item: item[1], reverse=True)
 

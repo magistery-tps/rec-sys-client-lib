@@ -18,4 +18,4 @@ class TagService:
         )
 
         total = sum([row[2] for row in result])
-        return [Bunch(id=int(row[0]), name=str(row[1]), score=float(row[2])/total) for row in result]
+        return [Bunch(id=int(row[0]), name=str(row[1]), score=float(row[2])/total) for row in result], item_ids
