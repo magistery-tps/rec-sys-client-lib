@@ -1,6 +1,6 @@
 from ..models import Item, Interaction
 from django.db import connection
-import random
+from django.db.models import Q
 
 
 class MinMaxScaler:
@@ -56,9 +56,16 @@ class ItemService:
             item.save()
 
 
-    def find_all(self, user, limit=20):
-        recs = [
-            self.find_non_seen_populars(user, limit),
-            self.find_recommended_for(user, limit)
-        ]
-        return [ r for r in recs if not r.is_empty()]
+    def find_ids_by_user(self, user):
+        return [str(e['item__id']) for e in Interaction.objects.filter(user=user.id).values('item__id')]
+
+
+    def find_complement_by_tags(self, item_ids, tag_ids, min_popularity = 0):
+        return set(
+            Item.objects \
+                .filter(~Q(pk__in=item_ids)) \
+                .filter(
+                    tags__id__in   = tag_ids,
+                    popularity__gt = min_popularity
+                )
+        )

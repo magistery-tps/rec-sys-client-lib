@@ -103,7 +103,7 @@ class CollaborativeFilteringRecommender(Recommender):
         non_seen_similar_user_item_ids,
         recommended_items
     ):
-        info = 'Not found recommendations!' if len(recommended_items) == 0 else ''
+        info = 'At the moment there are no recommendations.' if len(recommended_items) == 0 else ''
         info += f' Found {len(most_similar_user_ids)} most similar users.'
         info += f' Found {len(non_seen_similar_user_item_ids)} non seen similar user items.'
 

@@ -9,18 +9,25 @@ from ..recommender import (
 )
 from .similarity_matrix_service import  SimilarityMatrixService
 from .tag_service               import  TagService
+from .item_service              import  ItemService
 import logging
 
 
 class RecommenderService:
     def __init__(self):
+        tag_service                     = TagService()
+        item_service                    = ItemService()
+        self.similarity_matrix_service  = SimilarityMatrixService()
+
+        profile_recommender                      = ProfileRecommender(tag_service, item_service)
+        popularity_recommender                   = PopularityRecommender()
         self.__non_scored_popularity_recommender = NonScoredPopularityRecommender()
+
         self.__default_recommneders = [
-            PopularityRecommender(),
+            popularity_recommender,
             self.__non_scored_popularity_recommender,
-            ProfileRecommender(TagService())
+            profile_recommender
         ]
-        self.similarity_matrix_service = SimilarityMatrixService()
 
 
     def n_interactions_by(self, user):

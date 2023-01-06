@@ -1,4 +1,4 @@
-from ..models               import Item, Recommendations, SimilarItemsResult
+from ..models               import Item, Interaction, Recommendations, SimilarItemsResult
 from .recommender           import Recommender
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
@@ -8,8 +8,9 @@ from django.db.models import Q
 
 
 class ProfileRecommender(Recommender):
-    def __init__(self, tag_service):
-        self.__tag_service = tag_service
+    def __init__(self, tag_service, item_service):
+        self.__tag_service  = tag_service
+        self.__item_service = item_service
 
     @property
     def metadata(self):
@@ -32,24 +33,28 @@ class ProfileRecommender(Recommender):
         )
 
     def recommend(self, ctx: RecommenderContext):
-        user_profile, user_item_ids = self.__tag_service.find_user_profile_by(ctx.user)
+        user_item_ids = self.__item_service.find_ids_by_user(ctx.user)
+
+        user_profile  = self.__tag_service.find_user_profile_by(user_item_ids)
 
         score_by_id = { profile.id: profile.score  for profile in user_profile }
 
-        items = set(Item.objects \
-            .filter(~Q(pk__in=user_item_ids)) \
-            .filter(tags__id__in = score_by_id.keys(), popularity__gt = 0.2))
+        user_unrated_items = self.__item_service.find_complement_by_tags(
+            item_ids        = user_item_ids,
+            tag_ids         = score_by_id.keys(),
+            min_popularity  = 0.2
+        )
 
         mean_score = lambda item: np.mean([score_by_id.get(tag['id'], 0) for tag in item.tags.values()])
 
-        scored_items = [(item, mean_score(item)) for item in items]
+        scored_user_unrated_items = [(item, mean_score(item)) for item in user_unrated_items]
 
-        scored_items = sorted(scored_items, key=lambda item: item[1], reverse=True)
+        scored_user_unrated_items = sorted(scored_user_unrated_items, key=lambda item: item[1], reverse=True)
 
         return Recommendations(
             metadata = self.metadata,
-            items    = [item[0] for item in scored_items[:ctx.limit]],
-            info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!' if len(items) == 0 else ''
+            items    = [item[0] for item in scored_user_unrated_items[:ctx.limit]],
+            info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!' if len(scored_user_unrated_items) == 0 else ''
         )
 
     def find_similars(self, ctx: RecommenderContext):
