@@ -16,7 +16,7 @@ class NonScoredPopularityRecommender(Recommender):
         return RecommenderMetadata(
             id   = 1_000_000,
             name = 'new-populars',
-            title = 'New Populars For You',
+            title = 'Populars you could read',
             description = """
                 <strong>Shuffle of user unrated popular items.</strong>
                 The idea is recommend new popular items for you.
