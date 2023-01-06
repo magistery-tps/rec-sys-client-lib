@@ -17,17 +17,17 @@ class ProfileRecommender(Recommender):
             name = 'tags_profile',
             features = 'User Tags Profile | Similarity: Tags based',
             title = 'New Similars by Rated Tags',
-            description = """
-                <strong>Recommender Startegy</strong><br>
+            description = """<strong>Recommender Strategy</strong><br>
                 Build a tags probability distribution only for items rated by current user.
                 When order items descendent by this score. It recommend items based on rated tags frequency.
                 This recommender suffer of tunnel effect. Users only see items with similar tags,
-                but can't discover more relevant item with other tags.
+                but can't discover more relevant items with other tags. As the number of items increases, 
+                the recommendations are less assertive, becoming random recommendations in the most extreme case.
+                <br>
                 <br>
                 <strong>Similars Strategy</strong><br>
-                Returns other items tagged similarly to current/detaled item, ordered with most similar first.
-                The more tags items have in common, the more similar they are.
-            """
+                Returns other items tagged similarly to detailed item, ordered with most similar first.
+                The more tags items have in common, the more similar they are but it eventually."""
         )
 
     def recommend(self, ctx: RecommenderContext):
