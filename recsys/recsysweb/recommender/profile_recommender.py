@@ -16,7 +16,7 @@ class ProfileRecommender(Recommender):
         return RecommenderMetadata(
             id   = 3_000_000,
             name = 'tags_profile',
-            features = 'Recommender: User Tags Profile, Similars: Rank By Shared Tags',
+            features = 'User Tags Profile | Simularity: Tags based',
             title = 'New Similars by Rated Tags',
             description = """
                 <strong>Recommender Startegy</strong><br>
