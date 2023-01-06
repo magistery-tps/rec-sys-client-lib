@@ -254,12 +254,17 @@ LOGGING = {
 
     # Define the loggers
     'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+            'handlers': ['file', 'console'],
+        },
         '': {
             'handlers': ['file', 'console'],
             'level': 'INFO',
-            'propagate': True,
+            'propagate,': True,
         }
     },
 }
+
 
 TAGGIT_CASE_INSENSITIVE = False

@@ -1,18 +1,24 @@
 from django.core.exceptions import ObjectDoesNotExist
 from ..models import Recommender, Interaction, ItemDetail
-from ..recommender import   NonScoredPopularityRecommender, \
-                            PopularityRecommender, \
-                            CollaborativeFilteringRecommender, \
-                            RecommenderContext
-from .similarity_matrix_service import   SimilarityMatrixService
+from ..recommender import (
+    NonScoredPopularityRecommender,
+    PopularityRecommender,
+    CollaborativeFilteringRecommender,
+    RecommenderContext,
+    ProfileRecommender
+)
+from .similarity_matrix_service import  SimilarityMatrixService
+from .tag_service               import  TagService
 import logging
+
 
 class RecommenderService:
     def __init__(self):
         self.__non_scored_popularity_recommender = NonScoredPopularityRecommender()
         self.__default_recommneders = [
             PopularityRecommender(),
-            self.__non_scored_popularity_recommender
+            self.__non_scored_popularity_recommender,
+            ProfileRecommender(TagService())
         ]
         self.similarity_matrix_service = SimilarityMatrixService()
 
