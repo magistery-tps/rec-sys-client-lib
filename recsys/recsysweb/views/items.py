@@ -8,12 +8,12 @@ import logging
 # Domain
 from ..models       import Item
 from ..forms        import ItemForm, InteractionForm
-from ..service      import RecommenderService
-from ..recommender  import RecommenderContext
+from ..service      import RecommenderService, InteractionService
+from ..recommender  import RecommenderContext, RecommenderCapability
 
 
+interaction_service = InteractionService()
 recommender_service = RecommenderService()
-
 
 
 @login_required
@@ -40,7 +40,7 @@ def edit_item(request, id, origin):
         if origin != 'detail':
             return redirect(origin)
         else:
-            user_n_interactions = recommender_service.n_interactions_by(request.user)
+            user_n_interactions = interaction_service.count_by_user(request.user)
             response = {
                 'form': form,
                 'id': id,
@@ -49,7 +49,7 @@ def edit_item(request, id, origin):
             }
             return render(request, 'items/edit.html', response)
     else:
-        user_n_interactions = recommender_service.n_interactions_by(request.user)
+        user_n_interactions = interaction_service.count_by_user(request.user)
         response = {
             'form': form,
             'id': id,
@@ -63,12 +63,15 @@ def edit_item(request, id, origin):
 def detail_item(request, id, recommender_id):
     item = Item.objects.get(id=id)
 
-    recommender = recommender_service.find_by_id(recommender_id)
+    recommenders = recommender_service \
+        .find_by_user_recommender_id_and_capability(
+            request.user,
+            recommender_id,
+            RecommenderCapability.SIMILARS
+        )
 
-    recommenders = [recommender] if recommender else recommender_service.find_by_user(request.user)
-
-    detail = recommender_service.find_item_detail(recommenders, item)
-    user_n_interactions = recommender_service.n_interactions_by(request.user)
+    detail = recommender_service.find_item_detail(recommenders, item, request.user)
+    user_n_interactions = interaction_service.count_by_user(request.user)
 
     response = {
         'detail': detail,

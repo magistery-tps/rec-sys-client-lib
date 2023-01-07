@@ -1,6 +1,7 @@
 from ..models import Interaction
 from django.db import connection
 from bunch import Bunch
+from singleton_decorator import singleton
 
 
 def exec(query):
@@ -9,6 +10,7 @@ def exec(query):
         return cursor.fetchall()
 
 
+@singleton
 class TagService:
     def find_user_profile_by(self, item_ids):
         if len(item_ids) == 0:

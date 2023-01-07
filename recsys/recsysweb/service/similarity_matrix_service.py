@@ -2,11 +2,15 @@
 from ..models  import SimilarityMatrixCell
 from ..logger  import get_logger
 from collections import OrderedDict
+from singleton_decorator import singleton
 
+
+@singleton
 
 class SimilarityMatrixService:
     def __init__(self):
         self.logger = get_logger(self)
+
 
     def find_similar_element_ids(self, matrix, element_id, limit):
         similar_col_cells = SimilarityMatrixCell.objects.filter(

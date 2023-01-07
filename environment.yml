@@ -37,3 +37,4 @@ dependencies:
         - selectorlib
         - colorlog
         - sentence-transformers
+        - singleton-decorator

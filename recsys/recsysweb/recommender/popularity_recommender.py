@@ -6,29 +6,21 @@ import random
 
 
 class PopularityRecommender(Recommender):
-    def __init__(self, item_service):
+    def __init__(self, config, item_service):
+        super().__init__(config)
         self.__item_service = item_service
 
 
     @property
     def metadata(self):
         return RecommenderMetadata(
-            id   = 2_000_000,
-            name = 'populars',
-            title = 'Most Populars',
-            description = """<strong>Recommendation Strategy</strong><br>
-                Shuffle of most popular items.
-                <br>
-                <br>
-                Popularity Formula:
-                <br>
-                popularity = norm(mean(ratings) x norm(count(ratings)))
-                <br>
-                <br>
-                <strong>Item Similarity Strategy</strong><br>
-                It recommender has not an item-to-item similarity strategy."""
+            id          = self.config.id,
+            features    = 'Top Populars',
+            name        = f'recommender-{self.config.id}',
+            title       = self.config.name,
+            description = self.config.description,
+            position    = self.config.position
         )
-
 
     def recommend(self, ctx: RecommenderContext):
         items = self.__item_service.most_populars(ctx.shuffle_limit)
@@ -46,7 +38,3 @@ class PopularityRecommender(Recommender):
             items    = selected_items,
             info     = 'At the moment there are no recommendations.' if len(items) == 0 else ''
         )
-
-
-    def find_similars(self, ctx: RecommenderContext):
-        return SimilarItemsResult(self.metadata)

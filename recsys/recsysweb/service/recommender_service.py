@@ -1,60 +1,76 @@
-from django.core.exceptions import ObjectDoesNotExist
-from ..models import Recommender, Interaction, ItemDetail
-from ..recommender import (
-    NonScoredPopularityRecommender,
-    PopularityRecommender,
-    CollaborativeFilteringRecommender,
-    RecommenderContext,
-    ProfileRecommender
-)
+from django.core.exceptions     import  ObjectDoesNotExist
+from ..models                   import  Recommender, RecommenderEnsemble, RecommenderType, ItemDetail
+from ..recommender              import  RecommenderContext, RecommenderFactory, RecommenderCapability
+from .interaction_service       import  InteractionService
 from .similarity_matrix_service import  SimilarityMatrixService
 from .tag_service               import  TagService
 from .item_service              import  ItemService
 import logging
+from singleton_decorator import singleton
 
 
+@singleton
 class RecommenderService:
     def __init__(self):
-        tag_service                     = TagService()
-        item_service                    = ItemService()
-        self.similarity_matrix_service  = SimilarityMatrixService()
-
-        profile_recommender                      = ProfileRecommender(tag_service, item_service)
-        popularity_recommender                   = PopularityRecommender(item_service)
-        self.__non_scored_popularity_recommender = NonScoredPopularityRecommender(item_service)
-
-        self.__default_recommneders = [
-            popularity_recommender,
-            self.__non_scored_popularity_recommender,
-            profile_recommender
-        ]
-
-
-    def n_interactions_by(self, user):
-        return Interaction.objects.filter(user=user.id).count()
-
+        item_service                = ItemService()
+        tag_service                 = TagService()
+        self.__interaction_service  = InteractionService()
+        similarity_matrix_service   = SimilarityMatrixService()
+        self.__recommender_factory  = RecommenderFactory(
+            self.__interaction_service,
+            item_service,
+            tag_service,
+            similarity_matrix_service
+        )
 
     def find_items_non_scored_by(self, user):
-        ctx = RecommenderContext(user=user)
-        return self.__non_scored_popularity_recommender.recommend(ctx)
+        config = Recommender.objects.get(type=RecommenderType.NEW_POPULARS)
+        recommender = self.__recommender_factory.create(config)
+        return recommender.recommend(ctx = RecommenderContext(user=user))
 
 
     def find_by_user(self, user, min_interactions=20):
-        if self.n_interactions_by(user) < min_interactions:
-            return self.__default_recommneders
+        if self.__interaction_service.count_by_user(user) < min_interactions:
+            configs = Recommender.objects.filter(
+                type_in=[
+                    RecommenderType.POPULARS,
+                    RecommenderType.NEW_POPULARS,
+                    RecommenderType.USER_PROFILE
+                ],
+                enable=True
+            )
+            recommenders = [self.__recommender_factory.create(c) for c in configs]
         else:
-            return self.__default_recommneders + \
-                    [CollaborativeFilteringRecommender(r, self.similarity_matrix_service)  for r in Recommender.objects.all() if r.enable]
+            configs = RecommenderEnsemble.objects.all()
+            recommenders = [self.__recommender_factory.create(c) for c in configs]
+
+            configs = Recommender.objects.filter(enable=True)
+            recommenders.extend([self.__recommender_factory.create(c) for c in configs])
+            return recommenders
 
 
-    def find_by_id(self, recommender_id):
+    def find_by_id(self, id):
         try:
-            return CollaborativeFilteringRecommender(
-                Recommender.objects.get(id=recommender_id),
-                self.similarity_matrix_service
+            return self.__recommender_factory.create(
+                config = Recommender.objects.get(id=id)
             )
         except ObjectDoesNotExist as error:
-            return None
+            try:
+                return self.__recommender_factory.create(
+                    config = RecommenderEnsemble.objects.get(id=id)
+                )
+            except ObjectDoesNotExist as error:
+                return None
+
+
+    def find_by_user_recommender_id_and_capability(self, user, id, capability):
+        recommender = self.find_by_id(id)
+
+        if RecommenderCapability.SIMILARS in recommender.capabilities:
+            return [recommender]
+        else:
+            recommenders = self.find_by_user(user)
+            return [r for r in recommenders if RecommenderCapability.SIMILARS in r.capabilities]
 
 
     def find_recommendations(self, user):
@@ -62,7 +78,7 @@ class RecommenderService:
         return sorted([r.recommend(ctx) for r in self.find_by_user(user)], key=lambda r: r.position)
 
 
-    def find_item_detail(self, recommenders, item):
-        ctx = RecommenderContext(item=item)
+    def find_item_detail(self, recommenders, item, user):
+        ctx = RecommenderContext(item=item, user=user)
         recommenders = sorted(recommenders, key=lambda x: x.metadata.position)
         return ItemDetail(item, [rec.find_similars(ctx) for rec in recommenders])

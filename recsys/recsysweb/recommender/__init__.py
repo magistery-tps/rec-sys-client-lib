@@ -6,3 +6,5 @@ from .cf_recommender                    import CollaborativeFilteringRecommender
 from .similar_item                      import SimilarItem
 from .recommender_metadata              import RecommenderMetadata
 from .recommender_context               import RecommenderContext
+from .recommender_factory               import RecommenderFactory
+from .recommender_capability            import RecommenderCapability

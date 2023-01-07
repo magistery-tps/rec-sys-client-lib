@@ -5,28 +5,29 @@ import numpy as np
 
 
 # Domain
-from ..models               import Item, Interaction, SimilarityMatrixCell, Recommendations, SimilarItemsResult
-from .recommender           import Recommender
-from .recommender_context   import RecommenderContext
-from .recommender_metadata  import RecommenderMetadata
-from .similar_item          import SimilarItem
+from ..models                   import Item, Interaction, SimilarityMatrixCell, Recommendations, SimilarItemsResult
+from .recommender               import Recommender
+from .recommender_capability    import RecommenderCapability
+from .recommender_context       import RecommenderContext
+from .recommender_metadata      import RecommenderMetadata
+from .similar_item              import SimilarItem
 
 
 class CollaborativeFilteringRecommender(Recommender):
-    def __init__(self, config, similarity_matrix_service=None):
-        self.__config = config
+    def __init__(self, config, similarity_matrix_service):
+        super().__init__(config)
         self.logger = get_logger(self)
-        self.similarity_matrix_service = similarity_matrix_service
+        self.__similarity_matrix_service = similarity_matrix_service
 
     @property
     def metadata(self):
         return RecommenderMetadata(
-            id          = self.__config.id,
-            name        = self.__config.name,
-            features    = f'{self.__config.name} | Similarity Matrix: {self.__config.user_similarity_matrix.name}, {self.__config.item_similarity_matrix.name}',
+            id          = self.config.id,
+            name        = f'recommender-{self.config.id}',
+            features    = f'{self.config.name} | Similarity Matrix: {self.config.user_similarity_matrix.name}, {self.config.item_similarity_matrix.name}',
             title       = 'Other users also are reading',
             description = f"""<strong>Recommendation Strategy</strong><br>
-                Use a collaborative filtering recommendation strategy based on <strong>{self.__config.name}</strong> model. 
+                Use a collaborative filtering recommendation strategy based on <strong>{self.config.name}</strong> model. 
                 This recommender find items rated for similar users. To use these recommenders it's important to have a minimum number of rated items by user. 
                 This recommenders have both user-to-user and item-to-item similarity matrix. user-to-user matrix is used to find a similar users list ordered by similarity. 
                 Finally recommender looks for items rated by the users in it's list but not rated by current user in session.
@@ -35,15 +36,15 @@ class CollaborativeFilteringRecommender(Recommender):
                 <strong>Item Similarity Strategy</strong><br>
                 Use item-to-item similarity matrix to find item most similat to item into detail view. This similarity is influenced by user ratings. 
                 On the other hand, also is possible assign external similarity matrix like matrix based into items content or any  similarity type.""",
-            position    = self.__config.position
+            position    = self.config.position
         )
 
     def recommend(self, ctx: RecommenderContext):
-        most_similar_users = self.similarity_matrix_service \
+        most_similar_users = self.__similarity_matrix_service \
             .find_similar_element_ids(
-                matrix     = self.__config.user_similarity_matrix,
+                matrix     = self.config.user_similarity_matrix,
                 element_id = ctx.user.id,
-                limit      = self.__config.max_similar_users
+                limit      = self.config.max_similar_users
             )
 
         most_similar_user_ids = most_similar_users.keys()
@@ -66,11 +67,11 @@ class CollaborativeFilteringRecommender(Recommender):
 
 
     def find_similars(self, ctx: RecommenderContext):
-        most_similar_items = self.similarity_matrix_service \
+        most_similar_items = self.__similarity_matrix_service \
             .find_similar_element_ids(
-                matrix     = self.__config.item_similarity_matrix,
+                matrix     = self.config.item_similarity_matrix,
                 element_id = ctx.item.id,
-                limit      = self.__config.max_similar_items
+                limit      = self.config.max_similar_items
             )
 
         recommended_items = Item.objects.filter(pk__in=most_similar_items.keys())
@@ -91,7 +92,7 @@ class CollaborativeFilteringRecommender(Recommender):
 
         similar_user_interactions = []
         for similar_user_id in similar_user_ids:
-            similar_user_interactions.extend(Interaction.objects.filter(user=similar_user_id)[:self.__config.max_items_by_similar_user])
+            similar_user_interactions.extend(Interaction.objects.filter(user=similar_user_id)[:self.config.max_items_by_similar_user])
 
         rating_by_item_id = {}
         for i in similar_user_interactions:
@@ -121,3 +122,7 @@ class CollaborativeFilteringRecommender(Recommender):
             items    = recommended_items,
             info     = info
         )
+
+    @property
+    def capabilities(self):
+        return [RecommenderCapability.RECOMMEND, RecommenderCapability.SIMILARS]

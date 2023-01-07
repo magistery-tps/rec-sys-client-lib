@@ -29,4 +29,4 @@ class Interaction(models.Model):
     rating  = models.FloatField()
 
     def __str__(self):
-        return f'User: {self.user} | Item: {self.item} |  Rating: {self.rating}'
+        return f'User: {self.user} | Item: {self.item.name} |  Rating: {self.rating}'

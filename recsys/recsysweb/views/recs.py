@@ -6,11 +6,12 @@ from django.conf                    import settings
 
 # Domain
 from ..forms                        import LikeForm
-from ..service                      import ItemService, RecommenderService
+from ..service                      import ItemService, InteractionService, RecommenderService
 from ..recommender                  import RecommenderContext
 
 
 item_service        = ItemService()
+interaction_service = InteractionService()
 recommender_service = RecommenderService()
 
 
@@ -23,7 +24,7 @@ def likes(request):
         item_service.score_item_by(form.item_id, request.user, form.rating)
 
     recommendations     = recommender_service.find_items_non_scored_by(request.user)
-    user_n_interactions = recommender_service.n_interactions_by(request.user)
+    user_n_interactions = interaction_service.count_by_user(request.user)
 
     if recommendations.empty:
         response['messages'] = ['Not found Items!']
@@ -38,7 +39,7 @@ def likes(request):
 @login_required
 def recommendations(request):
     recommendations_list = recommender_service.find_recommendations(request.user)
-    user_n_interactions  = recommender_service.n_interactions_by(request.user)
+    user_n_interactions = interaction_service.count_by_user(request.user)
 
     response = {
         'recommendations'     : recommendations_list,

@@ -1,0 +1,68 @@
+@startuml
+class Recommender {
+    - id: int
+    - name: str
+    - description: str
+    - position: int
+    - enable: bool
+    - max_similar_users: int
+    - max_similar_items: int
+    - user_similarity_matrix: SimilarityMatrix
+    - item_similarity_matrix: SimilarityMatrix
+}
+
+enum RecommenderType {
+    COLLAVORATIVE_FILTERING
+    TOP_POPULARS
+    NEW_POPULARS
+    USER_PROFILE
+}
+
+Recommender ..|> RecommenderType
+
+class SimilarityMatrix {
+    - id: int
+    - name: str
+    - type: SimilarityMatrixType
+    - description: str
+    - version: int (Last version)
+    - cells: List<SimilarityMatrixCell>
+}
+
+
+SimilarityMatrix ..|> SimilarityMatrixType
+
+enum SimilarityMatrixType {
+    ITEM_TO_ITEM
+    USER_TO_USER
+}
+
+class SimilarityMatrixCell {
+    - id: int
+    - row: int
+    - column: int
+    - value: float
+    - version: int
+}
+
+class RecommenderEnsemble {
+    - id: str
+    - name: str
+    - description: str
+    - recommenderConfigs: List<RecommenderEnsembleConfig>
+}
+
+class RecommenderEnsembleConfig {
+    - recommender: Recommender
+    - max_user_interactions: int
+}
+
+RecommenderEnsemble "1" *-- "n" RecommenderEnsembleConfig
+RecommenderEnsembleConfig "1" *-- "1" Recommender
+
+
+SimilarityMatrix "1" o-- "n" SimilarityMatrixCell
+
+Recommender "1" o-- "1" SimilarityMatrix: user_similarity_matrix
+Recommender "1" o-- "1" SimilarityMatrix: item_similarity_matrix
+@enduml

@@ -18,5 +18,5 @@ class Item(models.Model):
         ]
 
     def __str__(self):
-        return f'Name: {self.name} | Popularity: {self.popularity} | Image: {self.image} | Desc: {self.description}'
+        return self.name
 

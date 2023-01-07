@@ -1,34 +1,29 @@
-from ..models               import Recommendations, SimilarItemsResult
-from .recommender           import Recommender
-from .recommender_context   import RecommenderContext
-from .recommender_metadata  import RecommenderMetadata
+from ..models                   import Recommendations, SimilarItemsResult
+from .recommender               import Recommender
+from .recommender_context       import RecommenderContext
+from .recommender_metadata      import RecommenderMetadata
+from .recommender_capability    import RecommenderCapability
 import numpy as np
 
 
 class ProfileRecommender(Recommender):
-    def __init__(self, tag_service, item_service):
+    def __init__(self, config, tag_service, item_service):
+        super().__init__(config)
         self.__tag_service  = tag_service
         self.__item_service = item_service
+
 
     @property
     def metadata(self):
         return RecommenderMetadata(
-            id   = 3_000_000,
-            name = 'tags_profile',
-            features = 'User Tags Profile | Similarity: Tags based',
-            title = 'New Similars by Rated Tags',
-            description = """<strong>Recommendation Strategy</strong><br>
-                Build a tags probability distribution only for items rated by current user.
-                When order items descendent by this score. It recommend items based on rated tags frequency.
-                This recommender suffer of tunnel effect. Users only see items with similar tags,
-                but can't discover more relevant items with other tags. As the number of items increases, 
-                the recommendations are less assertive, becoming random recommendations in the most extreme case.
-                <br>
-                <br>
-                <strong>Item Similarity Strategy</strong><br>
-                Returns other items tagged similarly to detailed item, ordered with most similar first.
-                The more tags items have in common, the more similar they are but it eventually."""
+            id          = self.config.id,
+            name        = f'recommender-{self.config.id}',
+            features    = 'User Tags Profile',
+            title       = self.config.name,
+            description = self.config.description,
+            position    = self.config.position
         )
+
 
     def recommend(self, ctx: RecommenderContext):
         user_item_ids = self.__item_service.find_ids_by_user(ctx.user)
@@ -55,6 +50,12 @@ class ProfileRecommender(Recommender):
             info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!' if len(scored_user_unrated_items) == 0 else ''
         )
 
+
     def find_similars(self, ctx: RecommenderContext):
         similar_items = ctx.item.tags.similar_objects()[:10]
         return SimilarItemsResult(self.metadata, similar_items)
+
+
+    @property
+    def capabilities(self):
+        return [RecommenderCapability.RECOMMEND, RecommenderCapability.SIMILARS]

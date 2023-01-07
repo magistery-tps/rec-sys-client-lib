@@ -1,8 +1,13 @@
-from abc import ABC, abstractmethod
-from .recommender_context import RecommenderContext
+from abc                        import ABC, abstractmethod
+from .recommender_context       import RecommenderContext
+from .recommender_capability    import RecommenderCapability
+from ..models                   import SimilarItemsResult
 
 
 class Recommender:
+    def __init__(self, config):
+        self.config = config
+
     @property
     @abstractmethod
     def metadata(self):
@@ -13,6 +18,10 @@ class Recommender:
         pass
 
 
-    @abstractmethod
     def find_similars(self, ctx: RecommenderContext):
-        pass
+        return SimilarItemsResult(self.metadata)
+
+
+    @property
+    def capabilities(self):
+        return [RecommenderCapability.RECOMMEND]

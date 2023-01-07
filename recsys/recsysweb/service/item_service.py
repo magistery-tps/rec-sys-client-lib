@@ -1,13 +1,14 @@
 from ..models import Item, Interaction
 from django.db import connection
 from django.db.models import Q
-
+from singleton_decorator import singleton
 
 class MinMaxScaler:
     def __init__(self, values): self.min_value, self.max_value = min(values), max(values)
     def __call__(self, value): return  (value - self.min_value) / (self.max_value - self.min_value)
 
 
+@singleton
 class ItemService:
     def score_item_by(self, item_id, user, rating):
         item        = Item.objects.get(id=item_id)

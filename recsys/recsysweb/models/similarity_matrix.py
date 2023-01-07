@@ -14,11 +14,10 @@ class SimilarityMatrix(models.Model):
         unique       = True
     )
     description = models.TextField(
-        max_length   = 1000,
+        max_length   = 5000,
         verbose_name = 'Description'
     )
     version = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'Type: {self.type} | Name: {self.name} | Desc: {self.description} | Version: {self.version}'
-
+        return self.name

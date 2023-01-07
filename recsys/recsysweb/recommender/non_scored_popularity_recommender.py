@@ -7,27 +7,19 @@ import random
 
 
 class NonScoredPopularityRecommender(Recommender):
-    def __init__(self, item_service):
+    def __init__(self, config, item_service):
+        super().__init__(config)
         self.__item_service = item_service
 
 
     @property
     def metadata(self):
         return RecommenderMetadata(
-            id   = 1_000_000,
-            name = 'new-populars',
-            title = 'Populars you could read',
-            description = """<strong>Recommendation Strategy</strong><br>
-                Shuffle of user unrated popular items. The idea is recommend popular items that user has not seen yet.
-                <br>
-                <br>
-                Popularity Formula:
-                <br>
-                popularity = norm(mean(ratings) x norm(count(ratings)))
-                <br>
-                <br>
-                <strong>Item Similarity Strategy</strong><br>
-                It recommender has not an item-to-item similarity strategy."""
+            id          = self.config.id,
+            name        = f'recommender-{self.config.id}',
+            title       = self.config.name,
+            description = self.config.description,
+            position    = self.config.position
         )
 
 
@@ -47,7 +39,3 @@ class NonScoredPopularityRecommender(Recommender):
             items    = selected_items,
             info     = 'At the moment there are no recommendations.' if len(user_unrated_items) == 0 else ''
         )
-
-
-    def find_similars(self, ctx: RecommenderContext):
-        return SimilarItemsResult(self.metadata)

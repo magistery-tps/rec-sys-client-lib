@@ -1,11 +1,56 @@
 from django.contrib import admin
-from .models import Item, Interaction, Recommender, SimilarityMatrixCell, SimilarityMatrix
+from .models import (
+    Item,
+    Interaction,
+    Recommender,
+    SimilarityMatrixCell,
+    SimilarityMatrix,
+    RecommenderEnsemble,
+    RecommenderEnsembleConfig
+)
 
 # Register your models here.
-admin.site.register(Interaction)
-admin.site.register(Recommender)
-admin.site.register(SimilarityMatrix)
-admin.site.register(SimilarityMatrixCell)
+
+
+@admin.register(RecommenderEnsemble)
+class RecommenderEnsembleAdmin(admin.ModelAdmin):
+    list_display = ['name', 'enable', 'position']
+
+
+@admin.register(RecommenderEnsembleConfig)
+class RecommenderEnsembleConfigAdmin(admin.ModelAdmin):
+    list_display = [
+        'recommender',
+        'active_from_n_user_iterations',
+        'active_to_n_user_iterations'
+    ]
+
+
+@admin.register(SimilarityMatrix)
+class SimilarityMatrixAdmin(admin.ModelAdmin):
+    list_display = ['name', 'type', 'version']
+
+
+@admin.register(SimilarityMatrixCell)
+class SimilarityMatrixCellAdmin(admin.ModelAdmin):
+    list_display = ['row', 'column', 'value', 'version']
+
+
+@admin.register(Recommender)
+class RecommenderAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'type',
+        'enable',
+        'position',
+        'user_similarity_matrix',
+        'item_similarity_matrix'
+    ]
+
+
+@admin.register(Interaction)
+class InteractionAdmin(admin.ModelAdmin):
+    list_display = ['user', 'item', 'rating']
 
 
 @admin.register(Item)
