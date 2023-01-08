@@ -48,7 +48,7 @@ class Recommender(models.Model):
 
 
     def __str__(self):
-        return f'Name: {self.name} | Enable: {self.enable}'
+        return self.name
 
     class Meta:
         permissions = (

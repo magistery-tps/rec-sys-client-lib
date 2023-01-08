@@ -6,10 +6,30 @@ from .models import (
     SimilarityMatrixCell,
     SimilarityMatrix,
     RecommenderEnsemble,
-    RecommenderEnsembleConfig
+    RecommenderEnsembleConfig,
+    RecommenderEnsempleEvaluation,
+    RecommenderEnsempleEvaluationMetric
 )
 
 # Register your models here.
+
+
+@admin.register(RecommenderEnsempleEvaluation)
+class RecommenderEnsempleEvaluationAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'ensemble',
+        'enable'
+    ]
+
+
+@admin.register(RecommenderEnsempleEvaluationMetric)
+class RecommenderEnsempleEvaluationMetricAdmin(admin.ModelAdmin):
+    list_display = [
+        'evaluation',
+        'user',
+        'value'
+    ]
 
 
 @admin.register(RecommenderEnsemble)

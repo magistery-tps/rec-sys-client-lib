@@ -1,4 +1,21 @@
-@startuml
+@startuml Persistece Model
+class RecommenderEnsempleEvaluation {
+    - id: int
+    - enable: bool
+    - ensemble: RecommenderEnsemble
+}
+
+class RecommenderEnsempleEvaluationMetric {
+    - evaluation: RecommenderEnsempleEvaluation
+    - user: User
+    - value: float
+}
+
+
+RecommenderEnsemble "1" *-- "n" RecommenderEnsempleEvaluation
+
+RecommenderEnsempleEvaluation "1" *-- "n" RecommenderEnsempleEvaluationMetric
+
 class Recommender {
     - id: int
     - name: str
@@ -53,15 +70,18 @@ class RecommenderEnsemble {
 }
 
 class RecommenderEnsembleConfig {
+    - id: int
     - recommender: Recommender
-    - max_user_interactions: int
+    - ensemble: RecommenderEnsemble
+    - active_from_n_user_iterations: int
+    - active_to_n_user_iterations: int
 }
 
 RecommenderEnsemble "1" *-- "n" RecommenderEnsembleConfig
-RecommenderEnsembleConfig "1" *-- "1" Recommender
+RecommenderEnsembleConfig "1" o-- "1" Recommender
 
 
-SimilarityMatrix "1" o-- "n" SimilarityMatrixCell
+SimilarityMatrix "1" *-- "n" SimilarityMatrixCell
 
 Recommender "1" o-- "1" SimilarityMatrix: user_similarity_matrix
 Recommender "1" o-- "1" SimilarityMatrix: item_similarity_matrix
