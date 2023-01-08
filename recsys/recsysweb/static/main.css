@@ -306,6 +306,10 @@ label[for="id_email"] {
     text-align: left !important;
 }
 
-.features {
-    font-size: 13px;
+.logo-bar {
+    max-width: 0px !important;
+}
+
+.menu-bar {
+    min-width: 800px !important;
 }

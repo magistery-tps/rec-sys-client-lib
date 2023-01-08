@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container-fluid">
+        <div class="container-fluid logo-bar">
             <a class="navbar-brand" href="{% url 'home' %}"><span class="bi-gem"></span>&ensp;<strong>RecSys</strong></a>
         </div>
         {% if user.is_authenticated %}
@@ -8,7 +8,7 @@
                     $('[data-toggle="tooltip"]').tooltip({html:true});
                 })
             </script>
-            <div class="container-fluid nav navbar-nav  justify-content-end">
+            <div class="container-fluid nav navbar-nav justify-content-end menu-bar">
                 {% if user_n_interactions != None %}
                     <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
                         {{user_n_interactions}}&ensp;<span class="bi-star-fill"></span>
