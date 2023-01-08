@@ -75,7 +75,9 @@
                     </div>
                     <div class="btn-group">
                         <button id="vote" type="submit" class="btn btn-success" disabled><span class="bi-award">&ensp;<strong>Vote</strong></button>
-                        <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
+                        {% if metadata.active_nested_metadata.shuffle %}
+                            <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -85,7 +87,9 @@
                 <div class="card-footer card-like-footer text-center">
                     Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
                     Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
-                    Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+                    Votes: <strong>{{ item.votes|floatformat:0 }} <span class="bi-three-dots-vertical"></span> </strong>
+                    Ensemble: <strong>{{ metadata.title }} <span class="bi-three-dots-vertical"></span> </strong>
+                    Step: <strong>{{ metadata.active_nested_metadata.title }}</strong>
                 </div>
             </div>
         </div>

@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 
 
 # Domain
-from ..models import Interaction
+from ..domain import DomainContext
+
+ctx = DomainContext()
 
 
 @login_required
 def remove_all(request):
-    Interaction.objects.filter(user=request.user.id).delete()
+    ctx.interaction_service.remove_by_user(request.user)
     return redirect('recommendations')

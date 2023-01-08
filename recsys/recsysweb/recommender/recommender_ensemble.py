@@ -11,18 +11,19 @@ class RecommenderEnsemble(Recommender):
         self.__interaction_service = interaction_service
         self.__ensemble_configs    = ensemble_configs
         self.__recommenders        = recommenders
-
-
-    @property
-    def metadata(self):
-        return RecommenderMetadata(
+        self.__metadata            = RecommenderMetadata(
             id          = self.config.id,
             name        = f'recommender-{self.config.id}',
-            features    = ' | '.join([r.metadata.features for r in self.__recommenders]),
+            features    = 'Ensemble | ' + ' | '.join([r.metadata.features for r in self.__recommenders]),
             title       = 'Recommendations for you',
             description = self.config.description,
             position    = self.config.position
         )
+
+
+    @property
+    def metadata(self): return self.__metadata
+
 
     def __select_recommender(self, user):
         n_user_interactions = self.__interaction_service.count_by_user(user)
@@ -32,7 +33,9 @@ class RecommenderEnsemble(Recommender):
 
             if cfg.active_from_n_user_iterations <= n_user_interactions and \
                 to_n_interactions >= n_user_interactions:
-                return self.__recommenders[idx]
+                recommender = self.__recommenders[idx]
+                self.metadata.active_nested_metadata = recommender.metadata
+                return recommender
 
 
     def recommend(self, ctx: RecommenderContext):

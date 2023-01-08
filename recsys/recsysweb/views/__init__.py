@@ -1,4 +1,4 @@
-from .views             import home
+from .home              import home
 from .auth              import sign_in, sign_out
 from .items             import (
     create_item,
@@ -7,5 +7,6 @@ from .items             import (
     remove_item,
     detail_item
 )
-from .recs              import likes, recommendations
+from .likes             import likes
+from .recs              import recommendations
 from .interactions      import remove_all

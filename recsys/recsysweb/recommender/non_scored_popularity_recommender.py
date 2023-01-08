@@ -1,5 +1,5 @@
 from ..models               import Recommendations, SimilarItemsResult
-from .recommender           import Recommender
+from .recommender           import Recommender, RecommenderCapability
 from .recommender_context   import RecommenderContext
 from .recommender_metadata  import RecommenderMetadata
 
@@ -19,7 +19,8 @@ class NonScoredPopularityRecommender(Recommender):
             name        = f'recommender-{self.config.id}',
             title       = self.config.name,
             description = self.config.description,
-            position    = self.config.position
+            position    = self.config.position,
+            shuffle     = True
         )
 
 
@@ -39,3 +40,8 @@ class NonScoredPopularityRecommender(Recommender):
             items    = selected_items,
             info     = 'At the moment there are no recommendations.' if len(user_unrated_items) == 0 else ''
         )
+
+
+    @property
+    def capabilities(self):
+        return [RecommenderCapability.SHUFFLE_RECOMMEND]

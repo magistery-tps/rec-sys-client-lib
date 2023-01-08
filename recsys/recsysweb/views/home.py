@@ -4,17 +4,15 @@ from django.contrib.auth.decorators import login_required
 
 
 # Domain
-from ..service      import RecommenderService, InteractionService
+from ..domain import DomainContext
 
 
-interaction_service = InteractionService()
-recommender_service = RecommenderService()
-
+ctx = DomainContext()
 
 
 @login_required
 def home(request):
-    user_n_interactions = interaction_service.count_by_user(request.user)
+    user_n_interactions = ctx.interaction_service.count_by_user(request.user)
     response = {
         'user_n_interactions': user_n_interactions
     }

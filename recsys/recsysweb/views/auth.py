@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 def sign_in(request):
     if request.method != "POST":
         return render(request, 'single/sign_in.html')
@@ -18,6 +19,7 @@ def sign_in(request):
     else:
         messages.success(request, 'There was an sign in error. Try again! ')
         return render(request, 'single/sign_in.html')
+
 
 @login_required
 def sign_out(request):

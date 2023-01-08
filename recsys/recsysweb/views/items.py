@@ -8,12 +8,11 @@ import logging
 # Domain
 from ..models       import Item
 from ..forms        import ItemForm, InteractionForm
-from ..service      import RecommenderService, InteractionService
+from ..domain       import DomainContext
 from ..recommender  import RecommenderContext, RecommenderCapability
 
 
-interaction_service = InteractionService()
-recommender_service = RecommenderService()
+ctx = DomainContext()
 
 
 @login_required
@@ -40,7 +39,7 @@ def edit_item(request, id, origin):
         if origin != 'detail':
             return redirect(origin)
         else:
-            user_n_interactions = interaction_service.count_by_user(request.user)
+            user_n_interactions = ctx.interaction_service.count_by_user(request.user)
             response = {
                 'form': form,
                 'id': id,
@@ -49,7 +48,7 @@ def edit_item(request, id, origin):
             }
             return render(request, 'items/edit.html', response)
     else:
-        user_n_interactions = interaction_service.count_by_user(request.user)
+        user_n_interactions = ctx.interaction_service.count_by_user(request.user)
         response = {
             'form': form,
             'id': id,
@@ -63,15 +62,15 @@ def edit_item(request, id, origin):
 def detail_item(request, id, recommender_id):
     item = Item.objects.get(id=id)
 
-    recommenders = recommender_service \
+    recommenders = ctx.recommender_service \
         .find_by_user_recommender_id_and_capability(
             request.user,
             recommender_id,
             RecommenderCapability.SIMILARS
         )
 
-    detail = recommender_service.find_item_detail(recommenders, item, request.user)
-    user_n_interactions = interaction_service.count_by_user(request.user)
+    detail = ctx.recommender_service.find_item_detail(recommenders, item, request.user)
+    user_n_interactions = ctx.interaction_service.count_by_user(request.user)
 
     response = {
         'detail': detail,
@@ -87,7 +86,7 @@ def list_items(request):
     paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj    = paginator.get_page(page_number)
-    user_n_interactions = interaction_service.count_by_user(request.user)
+    user_n_interactions = ctx.interaction_service.count_by_user(request.user)
 
     response = {
         'page'             : page_obj,

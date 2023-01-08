@@ -27,6 +27,12 @@ class ProfileRecommender(Recommender):
 
     def recommend(self, ctx: RecommenderContext):
         user_item_ids = self.__item_service.find_ids_by_user(ctx.user)
+        if len(user_item_ids) == 0:
+            return Recommendations(
+                metadata = self.metadata,
+                items    = [],
+                info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!'
+            )
 
         user_profile  = self.__tag_service.find_user_profile_by(user_item_ids)
 
@@ -47,7 +53,7 @@ class ProfileRecommender(Recommender):
         return Recommendations(
             metadata = self.metadata,
             items    = [item[0] for item in scored_user_unrated_items[:ctx.limit]],
-            info     = 'At the moment there are no recommendations. Must rate at least 3 items to see good recommendations!' if len(scored_user_unrated_items) == 0 else ''
+            info     = ''
         )
 
 
