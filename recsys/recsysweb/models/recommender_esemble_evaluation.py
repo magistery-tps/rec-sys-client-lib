@@ -10,12 +10,13 @@ class RecommenderEnsempleEvaluation(models.Model):
         db_column    = 'ensemble_id',
         related_name ='%(class)s_ensemble_id',
         on_delete    = models.DO_NOTHING,
-        unique       = False,
+        unique       = True,
         verbose_name = 'Recommender Ensemble'
     )
 
     class Meta:
         indexes = [
+            models.Index(fields=['enable']),
             models.Index(fields=['enable', 'ensemble'])
         ]
 
