@@ -87,7 +87,7 @@ def list_items(request):
     paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj    = paginator.get_page(page_number)
-    user_n_interactions = recommender_service.n_interactions_by(request.user)
+    user_n_interactions = interaction_service.count_by_user(request.user)
 
     response = {
         'page'             : page_obj,
