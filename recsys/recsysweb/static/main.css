@@ -305,3 +305,7 @@ label[for="id_email"] {
     max-width: 500px !important;
     text-align: left !important;
 }
+
+.features {
+    font-size: 13px;
+}

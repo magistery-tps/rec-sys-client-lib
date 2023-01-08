@@ -24,7 +24,7 @@
                 data-hmlt=true
                 data-placement="right"
                 title="<p class='text-left'>{{ recommendation.description }}</p>"
-            >&ensp;{{ recommendation.title }}
+            >&ensp;{{ recommendation.title }}{% if recommendation.metadata.features %}&ensp;<h8 style="font-size: 13px;">({{ recommendation.metadata.features }})</h8>{% endif %}
         </h5>
 
         {% if recommendation.empty %}
