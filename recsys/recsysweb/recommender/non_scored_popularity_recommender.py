@@ -16,6 +16,7 @@ class NonScoredPopularityRecommender(Recommender):
     def metadata(self):
         return RecommenderMetadata(
             id          = self.config.id,
+            features    = 'New Top Populars',
             name        = f'recommender-{self.config.id}',
             title       = self.config.name,
             description = self.config.description,
