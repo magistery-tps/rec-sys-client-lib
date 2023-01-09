@@ -7,18 +7,18 @@ from dag_utils import BashTaskBuilder
 
 with DAG(
         'all-MiniLM-L6-v2-Bert-item-distance-matrix',
-        default_args={
-                'owner': 'adrian',
-                'depends_on_past': False,
-                'retries': 5,
-                'retry_delay': timedelta(seconds=10),
-                'max_active_runs': 1
+        default_args      = {
+                'owner'           : 'adrian',
+                'depends_on_past' : False,
+                'retries'         : 3,
+                'retry_delay'     : timedelta(seconds=60),
         },
-        description='all-MiniLM-L6-v2-Bert-item-distance-matrix',
-        schedule_interval='*/10 * * * *',
-        start_date=days_ago(0),
-        catchup=False,
-        tags=['rec-sys']
+        description       = 'all-MiniLM-L6-v2-Bert-item-distance-matrix',
+        schedule_interval = '*/10 * * * *',
+        start_date        = days_ago(0),
+        catchup           = False,
+        tags              = ['rec-sys'],
+        max_active_runs   = 1
 ) as dag:
         # Create all tasks...
         job_task = BashTaskBuilder('all-MiniLM-L6-v2-bert-item-distance-matrix-task') \

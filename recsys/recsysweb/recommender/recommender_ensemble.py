@@ -35,6 +35,7 @@ class RecommenderEnsemble(Recommender):
                 to_n_interactions >= n_user_interactions:
                 recommender = self.__recommenders[idx]
                 self.metadata.active_nested_metadata = recommender.metadata
+                self.metadata.n_items_by_session = cfg.n_items_by_session
                 return recommender
 
 

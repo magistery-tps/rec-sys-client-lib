@@ -62,7 +62,20 @@
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <div class="btn-group">
+                            <div class="btn-group">
+                                <input
+                                type            = "radio"
+                                class           = "btn-check"
+                                name            = "{{ item.id}}"
+                                id              = "{{ item.id}}_0"
+                                value           = "0"
+                                autocomplete    = "off"
+                                onchange        = "document.getElementById('vote').disabled = false"
+                                checked
+                            >
+                            <label class="btn btn-primary" for="{{ item.id}}_0">
+                                <strong>0</strong>
+                            </label>
                             {% for score_level in score_levels %}
                                 <input
                                     type            = "radio"
@@ -98,7 +111,7 @@
             <div class="row">
                 <div class="col">
                     <div class="btn-group">
-                        <button id="vote" type="submit" class="btn btn-success" disabled><span class="bi-award">&ensp;<strong>Vote</strong></button>
+                        <button id="vote" type="submit" class="btn btn-success"><span class="bi-award">&ensp;<strong>Vote</strong></button>
                         {% if recommendations.metadata.active_nested_metadata.shuffle %}
                             <a class="btn btn-warning" href="{% url 'likes' %}"><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                         {% endif %}
@@ -108,17 +121,15 @@
             <div class="row">
                 <div class="col">
                     <div class="card-footer card-like-footer text-center">
-                        Ensemble: <strong>{{ recommendations.metadata.title }} <span class="bi-three-dots-vertical"></span> </strong>
-                        Step Recommender: <strong>{{ recommendations.metadata.active_nested_metadata.title }}</strong>
+                        <strong>Ensemble:</strong> {{ recommendations.metadata.title }} <span class="bi-three-dots-vertical"></span> 
+                        <strong>Step Recommender:</strong> {{ recommendations.metadata.active_nested_metadata.title }} {% if metric %}<span class="bi-three-dots-vertical"></span> 
+                        <strong>Discount Cumulative Gain ({{ recommendations.items|length }}):</strong> {{ metric|floatformat:3  }}
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </form>
-{% else %}
-    <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
-        <span class="bi-info-circle-fill"></span>&ensp;At the moment there are no recommendations. Wait 5 minutes to comtute them.
-    </div>
 {% endif %}
 
 {% endblock %}

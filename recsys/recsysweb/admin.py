@@ -42,7 +42,8 @@ class RecommenderEnsembleConfigAdmin(admin.ModelAdmin):
     list_display = [
         'recommender',
         'active_from_n_user_iterations',
-        'active_to_n_user_iterations'
+        'active_to_n_user_iterations',
+        'n_items_by_session'
     ]
 
 

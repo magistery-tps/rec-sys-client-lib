@@ -23,3 +23,4 @@ class RecommenderEnsembleConfig(models.Model):
     )
     active_from_n_user_iterations = models.IntegerField(default = 0, verbose_name = 'Active from n user interactions')
     active_to_n_user_iterations   = models.IntegerField(default = 0, verbose_name = 'Active to n user interactions')
+    n_items_by_session            = models.IntegerField(default = 5, verbose_name = 'Number of items to evaluate by session')
