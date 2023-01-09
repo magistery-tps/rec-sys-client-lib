@@ -1,5 +1,5 @@
 # Domain
-from ..models  import SimilarityMatrixCell
+from ..models  import SimilarityMatrix, SimilarityMatrixType, SimilarityMatrixCell
 from ..logger  import get_logger
 from collections import OrderedDict
 from singleton_decorator import singleton
@@ -47,3 +47,8 @@ class SimilarityMatrixService:
                 orderd_dict[id_sim[0]] = id_sim[1]
 
         return orderd_dict
+
+
+    def remove_cells_by_user(selg, user):
+        matrixs = SimilarityMatrix.objects.filter(type=SimilarityMatrixType.USER_TO_USER)
+        [SimilarityMatrixCell.objects.filter(matrix=matrix, row=user.id).delete() for matrix in matrixs]
