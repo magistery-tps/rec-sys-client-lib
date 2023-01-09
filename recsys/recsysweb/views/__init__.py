@@ -7,6 +7,6 @@ from .items             import (
     remove_item,
     detail_item
 )
-from .likes             import likes
+from .evaluation        import likes
 from .recs              import recommendations
 from .interactions      import remove_all

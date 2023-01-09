@@ -8,94 +8,119 @@
 {%block title%}<h4 class="display-8 fw-bold text-center"><span class="bi-star-half">&ensp;Scoring your tastes</h1>{% endblock %}
 
 {%block content%}
-{% if item %}
-    <script>
-        var context = {}
-
-        function onCardLoad(img) {
-            if (img.naturalWidth < 14 && img.naturalHeight < 14) {
-                img.src='{{ NO_IMAGE_ITEM_URL }}'
-            }
+<script>
+    function onCardLoad(img) {
+        if (img.naturalWidth < 14 && img.naturalHeight < 14) {
+            img.src='{{ no_image_url }}'
         }
-    </script>
-    <div class="card-detail likes">
-        <div class="row">
-            <div class="col">
-                <h5 class="display-12"><strong>{{ item.name|truncatechars:200 }}</strong></h6>
-                <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
-            </div>
-        </div>
-        {% if item.tags.all %}
-        <div class="row">
-            <div class="col">
-                <h5 class="display-12">
-                    {% for tag in item.tags.all %}
-                        <span class="badge alert-dark">{{ tag }}</span>
-                    {% endfor %}
-                </h5>
-                <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
-            </div>
-        </div>
-        {% endif %}
-        <div class="row card-detail-data">
-            <div class="col-2 img-wrapper">
-                <img
-                    src="{{ item.image }}"
-                    alt="{{ item.name }}"
-                    class="d-block round-image"
-                    onclick="window.open('/items/detail/{{item.id}}/1000000000000', '_blank');"
-                    style="cursor: pointer;"
-                >
-            </div>
-            <div class="col-10">{{ item.description }}</div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
-            </div>
-        </div>
-        <form method="post" action="{% url 'likes' %}">
+    }
+</script>
+{% if recommendations %}
+    <form method="post" action="{% url 'likes' %}">
         {% csrf_token %}
-        <input  type="hidden" name="item_id" value="{{ item.id }}">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="btn-group">
-                        {% for score_level  in score_levels %}
-                            <input
-                                type="radio"
-                                class="btn-check"
-                                name="rating"
-                                id="rating_{{score_level}}"
-                                value="{{score_level}}"
-                                autocomplete="off"
-                                onchange="document.getElementById('vote').disabled = false"
-                            >
-                            <label class="btn btn-primary" for="rating_{{score_level}}"><strong>{{score_level}}</strong></label>
-                        {% endfor %}
+        {% for item in recommendations.items %}
+            <div class="card-detail likes">
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="display-12"><strong>{{ item.name|truncatechars:200 }}</strong></h6>
+                        <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
                     </div>
+                </div>
+
+                {% if item.tags.all %}
+                <div class="row">
+                    <div class="col">
+                        <h5 class="display-12">
+                            {% for tag in item.tags.all %}
+                                <span class="badge alert-dark">{{ tag }}</span>
+                            {% endfor %}
+                        </h5>
+                        <hr style="height:1px; width:99%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="row card-detail-data">
+                    <div class="col-2 img-wrapper">
+                        <img
+                            src="{{ item.image }}"
+                            alt="{{ item.name }}"
+                            class="d-block round-image"
+                            onclick="window.open('/items/detail/{{item.id}}/{{ recommendations.metadata.id }}', '_blank');"
+                            style="cursor: pointer;"
+                        >
+                    </div>
+                    <div class="col-10">{{ item.description|truncatechars:1000 }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <hr style="height:1px; width:100%; border-width:0; margin-top: 0px; margin-bottom: 10px; color:#ced4da; background-color:red">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="btn-group">
+                            {% for score_level in score_levels %}
+                                <input
+                                    type            = "radio"
+                                    class           = "btn-check"
+                                    name            = "{{ item.id}}"
+                                    id              = "{{ item.id}}_{{score_level}}"
+                                    value           = "{{score_level}}"
+                                    autocomplete    = "off"
+                                    onchange        = "document.getElementById('vote').disabled = false"
+                                >
+                                <label class="btn btn-primary" for="{{ item.id}}_{{score_level}}">
+                                    <strong>{{score_level}}</strong>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card-footer card-like-footer text-center">
+                            Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
+                            Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
+                            Votes: <strong>{{ item.votes|floatformat:0 }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+
+        <div class="card-detail likes">
+            <div class="row">
+                <div class="col">
                     <div class="btn-group">
                         <button id="vote" type="submit" class="btn btn-success" disabled><span class="bi-award">&ensp;<strong>Vote</strong></button>
-                        {% if metadata.active_nested_metadata.shuffle %}
-                            <a class="btn btn-warning" href="{% url 'likes' %}" autofocus><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
+                        {% if recommendations.metadata.active_nested_metadata.shuffle %}
+                            <a class="btn btn-warning" href="{% url 'likes' %}"><span class="bi-arrow-right-square">&ensp;<strong>Next</strong></a>
                         {% endif %}
                     </div>
                 </div>
             </div>
-        </form>
-        <div class="row">
-            <div class="col">
-                <div class="card-footer card-like-footer text-center">
-                    Popularity: <strong>{{ item.popularity|floatformat:3 }} <span class="bi-three-dots-vertical"></span> </strong>
-                    Rating: <strong>{{ item.rating|floatformat:1 }} <span class="bi-three-dots-vertical"></span> </strong>
-                    Votes: <strong>{{ item.votes|floatformat:0 }} <span class="bi-three-dots-vertical"></span> </strong>
-                    Ensemble: <strong>{{ metadata.title }} <span class="bi-three-dots-vertical"></span> </strong>
-                    Step: <strong>{{ metadata.active_nested_metadata.title }}</strong>
+            <div class="row">
+                <div class="col">
+                    <div class="card-footer card-like-footer text-center">
+                        Ensemble: <strong>{{ recommendations.metadata.title }} <span class="bi-three-dots-vertical"></span> </strong>
+                        Step Recommender: <strong>{{ recommendations.metadata.active_nested_metadata.title }}</strong>
+                    </div>
                 </div>
             </div>
         </div>
+    </form>
+{% else %}
+    <div class="alert alert-info custom-alert-info" role="alert" style="margin-left: 23px;">
+        <span class="bi-info-circle-fill"></span>&ensp;At the moment there are no recommendations. Wait 5 minutes to comtute them.
     </div>
-
 {% endif %}
+
 {% endblock %}
 
 

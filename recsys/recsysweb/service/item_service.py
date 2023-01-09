@@ -10,14 +10,14 @@ class MinMaxScaler:
 
 @singleton
 class ItemService:
-    def score_item_by(self, item_id, user, rating):
-        item        = Item.objects.get(id=item_id)
-        interaction = Interaction.objects.create(
-            user   = user.id,
-            item   = item,
-            rating = rating
-        )
-        interaction.save()
+    def score_items_by(self, user, items_rating):
+        for item in Item.objects.filter(id__in=list(items_rating.keys())):
+            interaction = Interaction.objects.create(
+                user   = user.id,
+                item   = item,
+                rating = items_rating[item.id]
+            )
+            interaction.save()
 
 
     def refresh_stats(self):
