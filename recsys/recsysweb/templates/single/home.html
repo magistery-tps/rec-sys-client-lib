@@ -18,8 +18,14 @@
             </p>
         </div>
         <div class="container-fluid col-md-12 text-right">
-            <a class="btn btn-dark custom-btn-dark btn-lg" role="button"  href="{% url 'likes' %}">
-                <span class="bi-star-half">&ensp;</span>Let's start score your tastes
+            <a
+                class="btn btn-dark custom-btn-dark btn-lg"
+                role="button"
+                href="{% url 'likes' %}"
+                onclick="showLoading('scoring-button')"
+            >
+                <span id="scoring-button" class="bi-star-half">&ensp;Let's start score your tastes</span>
+                <span id="scoring-button-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
             </a>
         </div>
     </div>

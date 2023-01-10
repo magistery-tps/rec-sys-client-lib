@@ -3,11 +3,6 @@
             <a class="navbar-brand" href="{% url 'home' %}"><span class="bi-gem"></span>&ensp;<strong>RecSys</strong></a>
         </div>
         {% if user.is_authenticated %}
-            <script>
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip({html:true});
-                })
-            </script>
             <div class="container-fluid nav navbar-nav justify-content-end menu-bar">
                 {% if user_n_interactions != None %}
                     <a class="nav-item nav-link active"  data-toggle="tooltip" data-hmlt=true title="Rated items count">
@@ -48,19 +43,43 @@
                 {% endif %}
 
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
-                <a class="nav-item nav-link active" href="{% url 'recommendations' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>See Recommendations</strong><br>This view show a list of recommendations swimlanes. Each recommendation swimlane is the product of a specific recommender model. These recommenders can be configured via <strong><span class='bi-plug-fill'> REST API</Strong> menu option.">
-                    <span class="bi-bar-chart-line-fill"></span>
+                <a
+                    class="nav-item nav-link active"
+                    href="{% url 'recommendations' %}"
+                    data-toggle="tooltip"
+                    data-hmlt=true
+                    title="<strong>See Recommendations</strong><br>This view show a list of recommendations swimlanes. Each recommendation swimlane is the product of a specific recommender model. These recommenders can be configured via <strong><span class='bi-plug-fill'> REST API</Strong> menu option."
+                    onclick="showLoading('see-recomemndations')"
+                >
+                    <span id="see-recomemndations" class="bi-bar-chart-line-fill"></span>
+                    <span id="see-recomemndations-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
                 </a>
 
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
-                <a class="nav-item nav-link active" href="{% url 'likes' %}" data-toggle="tooltip" data-hmlt=true title="<strong>Scoring</strong>: This view show you popular items. You can score these. It scoring data is used to train recommendation models. Recommendation model resulta cant be sen in <strong><span class='bi-bar-chart-line-fill'></span> See Recommendations</strong> menu option.">
-                    <span class="bi-star-half"></span>
+                <a
+                    class="nav-item nav-link active"
+                    href="{% url 'likes' %}"
+                    data-toggle="tooltip"
+                    data-hmlt=true
+                    title="<strong>Scoring</strong>: This view show you popular items. You can score these. It scoring data is used to train recommendation models. Recommendation model resulta cant be sen in <strong><span class='bi-bar-chart-line-fill'></span> See Recommendations</strong> menu option."
+                    onclick="showLoading('scoring')"
+                >
+                    <span id="scoring" class="bi-star-half"></span>
+                    <span id="scoring-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
                 </a>
 
                 {% if perms.recsysweb.view_item %}
                     <span class="bi-three-dots-vertical menu-item-separator""></span>
-                    <a class="nav-item nav-link active" href="{% url 'items' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment.">
-                        <span class="bi-server"></span>
+                    <a
+                        class="nav-item nav-link active"
+                        href="{% url 'items' %}"
+                        data-toggle="tooltip"
+                        data-hmlt=true
+                        title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment."
+                        onclick="showLoading('items')"
+                    >
+                        <span id="items" class="bi-server"></span>
+                        <span id="items-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
                     </a>
                 {% endif %}
 
@@ -68,6 +87,7 @@
                 <a class="nav-item nav-link active" href="/admin" target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Configuration</strong><br> RecSys application configuration. Only for admin users.">
                     <span class="bi-wrench"></span>
                 </a>
+
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active" href="/api"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>REST API</strong><br> A web interface to interact with RecSys REST API. An Authentication Token Header ir required. See <strong><span class='bi-wrench'></span> Configuration</strong>  menu option to generate an <strong>User Authentication Token</strong>.">
                     <span class="bi-plug-fill"></span>
@@ -89,8 +109,16 @@
                     <strong><span class="bi-person-fill"></span>&ensp;{{ request.user}}</strong>
                 </a>
 
-                <a class="nav-item nav-link active" href="{% url 'sign-out' %}"  data-toggle="tooltip" data-hmlt=true title="<strong>Sign Out</strong><br> Close current RecSys user session.">
-                    <span class="bi-door-open-fill"></span>
+                <a
+                    class="nav-item nav-link active"
+                    href="{% url 'sign-out' %}"
+                    data-toggle="tooltip"
+                    data-hmlt=true
+                    title="<strong>Sign Out</strong><br> Close current RecSys user session."
+                    onclick="showLoading('sign-out')"
+                >
+                    <span id="sign-out" class="bi-door-open-fill"></span>
+                    <span id="sign-out-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
                 </a>
             </div>
         {% endif %}
