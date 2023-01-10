@@ -36,6 +36,7 @@
 
                             $("#modal-btn-yes").on("click", function(){
                                 $("#resetInteractionsModel").modal('hide');
+                                showLoading('see-recomemndations')
                                 location.href = "{% url 'interactions.remove_all' %}";
                             });
                         </script>
