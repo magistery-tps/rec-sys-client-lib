@@ -2,6 +2,10 @@ from ..models import Item, Interaction
 from django.db import connection
 from django.db.models import Q
 from singleton_decorator import singleton
+from django.core.paginator import Paginator
+from django.conf import settings
+from ..logger import get_logger
+
 
 class MinMaxScaler:
     def __init__(self, values): self.min_value, self.max_value = min(values), max(values)
@@ -10,6 +14,32 @@ class MinMaxScaler:
 
 @singleton
 class ItemService:
+    def __init__(self):
+        self.logger = get_logger(self)
+
+    def find_paginated(self, tags=[], page_number=0, page_size=settings.ITEMS_PAGE_SIZE):
+        positive_tags = [t for t in tags if '-' not in t]
+        negative_tags = [t.replace('-', '') for t in tags if '-' in t]
+
+        self.logger.info(f'Tags -  Positive: {positive_tags}, Negative: {negative_tags}')
+
+        if tags:
+            items = Item.objects.filter(tags__name__in=positive_tags)
+
+            if negative_tags:
+                items = items.exclude(tags__name__in=negative_tags)
+
+        else:
+            items = Item.objects.all()
+
+        paginator = Paginator(items, page_size)
+        return paginator.get_page(page_number)
+
+
+    def find_by_id(self, id):
+        return Item.objects.get(id=id)
+
+
     def score_items_by(self, user, items_rating):
         for item in Item.objects.filter(id__in=list(items_rating.keys())):
             interaction = Interaction.objects.create(

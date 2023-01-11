@@ -14,7 +14,7 @@ with DAG(
                 'retry_delay'     : timedelta(seconds=60),
         },
         description       = 'SVD-Distance-Matrix-Computing-Job',
-        schedule_interval = '*/5 * * * *',
+        schedule_interval = '*/3 * * * *',
         start_date        = days_ago(0),
         catchup           = False,
         tags              = ['rec-sys'],

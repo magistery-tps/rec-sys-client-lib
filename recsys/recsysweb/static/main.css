@@ -313,3 +313,50 @@ label[for="id_email"] {
 .menu-bar {
     min-width: 800px !important;
 }
+
+
+
+
+
+.form{
+    position: relative;
+}
+
+.form .bi-search{
+    position: absolute;
+    top:  17px;
+    left: 20px;
+    color: #212529c2;
+}
+
+.form span{
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+
+    border: 2px solid #212529c2;
+}
+
+.left-pan{
+    padding-left: 7px;
+}
+
+.left-pan i{
+    padding-left: 10px;
+}
+
+.form .form-input{
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 6px;
+    border: 3px solid #212529c2;
+}
+
+.form .bi-search{
+    color: #212529;
+}
+
+.form-input:focus{
+    border: 3px solid #212529;
+}

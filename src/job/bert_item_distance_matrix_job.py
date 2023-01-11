@@ -16,7 +16,7 @@ class BertItemDistanceMatrixJob(Job):
         self,
         ctx,
         model_name,
-        n_most_similars = 10
+        n_most_similars = 50
     ):
         super().__init__(ctx)
         self.n_most_similars = n_most_similars

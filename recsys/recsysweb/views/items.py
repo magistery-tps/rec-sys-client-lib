@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -27,7 +26,7 @@ def create_item(request):
 
 @login_required
 def edit_item(request, id, origin):
-    item = Item.objects.get(id=id)
+    item = ctx.item_service.find_by_id(id)
     form = ItemForm(request.POST or None, instance=item)
 
     logging.info(form)
@@ -60,7 +59,7 @@ def edit_item(request, id, origin):
 
 @login_required
 def detail_item(request, id, recommender_id):
-    item = Item.objects.get(id=id)
+    item = ctx.item_service.find_by_id(id)
 
     recommenders = ctx.recommender_service \
         .find_by_user_recommender_id_and_capability(
@@ -82,17 +81,22 @@ def detail_item(request, id, recommender_id):
 
 @login_required
 def list_items(request):
-    items       = Item.objects.all()
-    paginator   = Paginator(items, settings.ITEMS_PAGE_SIZE)
-    page_number = request.GET.get('page')
-    page_obj    = paginator.get_page(page_number)
-    user_n_interactions = ctx.interaction_service.count_by_user(request.user)
+    tags = [t.replace('"', '') for t in request.GET.getlist('tag') if t]
+
+    items_page = ctx.item_service.find_paginated(
+        tags        = tags,
+        page_number = request.GET.get('page'),
+        page_size   = settings.ITEMS_PAGE_SIZE
+    )
 
     response = {
-        'page'             : page_obj,
-        'NO_IMAGE_ITEM_URL': settings.NO_IMAGE_ITEM_URL,
-        'user_n_interactions': user_n_interactions
+        'page'                : items_page,
+        'NO_IMAGE_ITEM_URL'   : settings.NO_IMAGE_ITEM_URL,
+        'user_n_interactions' : ctx.interaction_service.count_by_user(request.user),
+        'tags_uri'            : '&' + '&'.join([f'tag={t}' for t in tags]) if tags else '',
+        'tags'                : ', '.join(tags)
     }
+
     return render(request, 'items/list.html', response)
 
 
