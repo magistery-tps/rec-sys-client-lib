@@ -21,16 +21,20 @@ class ItemService:
         positive_tags = [t for t in tags if '-' not in t]
         negative_tags = [t.replace('-', '') for t in tags if '-' in t]
 
-        self.logger.info(f'Tags -  Positive: {positive_tags}, Negative: {negative_tags}')
+        items = Item.objects
 
         if tags:
-            items = Item.objects.filter(tags__name__in=positive_tags)
+            if positive_tags:
+                self.logger.info(f'Tags - Positive: {positive_tags}')
+                for pos_tag in positive_tags:
+                    items = items.filter(tags__name__in=[pos_tag])
 
             if negative_tags:
-                items = items.exclude(tags__name__in=negative_tags)
-
+                self.logger.info(f'Tags - Negative: {negative_tags}')
+                for neg_tag in negative_tags:
+                    items = items.exclude(tags__name__in=[neg_tag])
         else:
-            items = Item.objects.all()
+            items = items.all()
 
         paginator = Paginator(items, page_size)
         return paginator.get_page(page_number)
