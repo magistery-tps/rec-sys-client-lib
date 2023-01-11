@@ -50,9 +50,11 @@
       {% endif %}
     </div>
 
-    <div class="btn-group">
-      <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
-    </div>
+    {% if perms.recsysweb.add_item %}
+      <div class="btn-group">
+        <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
+      </div>
+    {% endif %}
   </div>
 
     <div class="card-body">
@@ -102,6 +104,7 @@
             </td>
             <td>
               <div class="btn-group">
+                <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.detail' id=item.id recommender_id=1000000000000 %}"><span class="bi-search"></a>
                 {% if perms.recsysweb.change_item %}
                   <a class="btn btn-primary btn-lg" role="button"  href="{% url 'items.edit' id=item.id origin='items' %}"><span class="bi-pencil-square"></a>
                 {% endif %}
@@ -149,9 +152,11 @@
       {% endif %}
     </div>
 
-    <div class="btn-group">
-      <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
-    </div>
+    {% if perms.recsysweb.add_item %}
+      <div class="btn-group">
+        <a class="btn btn-success btn-lg" role="button"  href="{% url 'items.create' %}"><span class="bi-plus-square"></a>
+      </div>
+    {% endif %}
   </div>
 </div>
 

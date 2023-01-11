@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import logging
+from django.contrib.auth.decorators import permission_required
+
 
 # Domain
 from ..models       import Item
@@ -15,6 +17,7 @@ ctx = DomainContext()
 
 
 @login_required
+@permission_required('recsysweb.add_item')
 def create_item(request):
     form = ItemForm(request.POST or None)
     if form.is_valid():
@@ -25,6 +28,7 @@ def create_item(request):
 
 
 @login_required
+@permission_required('recsysweb.change_item')
 def edit_item(request, id, origin):
     item = ctx.item_service.find_by_id(id)
     form = ItemForm(request.POST or None, instance=item)
@@ -101,6 +105,7 @@ def list_items(request):
 
 
 @login_required
+@permission_required('recsysweb.delete_item')
 def remove_item(request, id):
     item = Item.objects.get(id=id)
     item.delete()

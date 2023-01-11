@@ -50,7 +50,10 @@ class RecommenderService:
 
 
     def find_by_user_recommender_id_and_capability(self, user, id, capability):
-        recommender = self.find_by_id(id)
+        try:
+            recommender = self.find_by_id(id)
+        except:
+            recommender = None
 
         if recommender and RecommenderCapability.SIMILARS in recommender.capabilities:
             return [recommender]

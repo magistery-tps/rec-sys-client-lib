@@ -69,20 +69,18 @@
                     <span id="scoring-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
                 </a>
 
-                {% if perms.recsysweb.view_item %}
-                    <span class="bi-three-dots-vertical menu-item-separator""></span>
-                    <a
-                        class="nav-item nav-link active"
-                        href="{% url 'items' %}"
-                        data-toggle="tooltip"
-                        data-hmlt=true
-                        title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment."
-                        onclick="showLoading('items')"
-                    >
-                        <span id="items" class="bi-server"></span>
-                        <span id="items-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
-                    </a>
-                {% endif %}
+                <span class="bi-three-dots-vertical menu-item-separator""></span>
+                <a
+                    class="nav-item nav-link active"
+                    href="{% url 'items' %}"
+                    data-toggle="tooltip"
+                    data-hmlt=true
+                    title="<strong>Items</strong><br>This option allows us to administrate items data changes, like, name, description, image, etc... Usefull to make tiny adjustment."
+                    onclick="showLoading('items')"
+                >
+                    <span id="items" class="bi-server"></span>
+                    <span id="items-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
+                </a>
 
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active" href="/admin" target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Configuration</strong><br> RecSys application configuration. Only for admin users.">
