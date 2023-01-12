@@ -17,7 +17,14 @@ class ItemService:
     def __init__(self):
         self.logger = get_logger(self)
 
+
     def find_paginated(self, tags=[], page_number=0, page_size=settings.ITEMS_PAGE_SIZE):
+        items     = self.find_by_tags(tags)
+        paginator = Paginator(items, page_size)
+        return paginator.get_page(page_number)
+
+
+    def find_by_tags(self, tags=[]):
         positive_tags = [t for t in tags if '-' not in t]
         negative_tags = [t.replace('-', '') for t in tags if '-' in t]
 
@@ -36,9 +43,7 @@ class ItemService:
         else:
             items = items.all()
 
-        paginator = Paginator(items, page_size)
-        return paginator.get_page(page_number)
-
+        return items
 
     def find_by_id(self, id):
         return Item.objects.get(id=id)

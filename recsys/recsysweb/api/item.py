@@ -3,10 +3,16 @@ from ..models import Item
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from taggit.managers import TaggableManager
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from ..domain import DomainContext
+import django_filters
+import logging
 from taggit.serializers import  (TagListSerializerField,
                                 TaggitSerializer)
 
-import django_filters
+
+ctx = DomainContext()
 
 # Serializers define the API representation.
 class ItemSerializer(TaggitSerializer, serializers.HyperlinkedModelSerializer):
@@ -24,3 +30,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset         = Item.objects.all()
     serializer_class = ItemSerializer
     filterset_fields = ['id', 'name', 'description', 'popularity', 'rating', 'votes']
+
+    def get_queryset(self,*args,**kwargs):
+        return ctx.item_service.find_by_tags(tags = self.request.query_params.getlist("tag"))
+

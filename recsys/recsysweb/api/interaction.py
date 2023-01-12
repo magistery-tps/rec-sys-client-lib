@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 class InteractionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model        = Interaction
-        fields       = ['user', 'item', 'rating']
+        fields       = ['user', 'item', 'suitable_to_train', 'rating']
         lookup_field = 'interaction'
 
 
@@ -19,4 +19,4 @@ class InteractionViewSet(viewsets.ModelViewSet):
 
     queryset         = Interaction.objects.all()
     serializer_class = InteractionSerializer
-    filterset_fields = ['user', 'item', 'rating']
+    filterset_fields = ['user', 'item', 'suitable_to_train', 'rating']

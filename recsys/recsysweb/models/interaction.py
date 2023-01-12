@@ -26,7 +26,8 @@ class Interaction(models.Model):
         on_delete  = models.DO_NOTHING,
         unique     = False
     )
-    rating  = models.FloatField()
+    rating             = models.FloatField()
+    suitable_to_train  = models.BooleanField(default = True, verbose_name = 'Suitable to train')
 
     def __str__(self):
         return f'User: {self.user} | Item: {self.item.name} |  Rating: {self.rating}'
