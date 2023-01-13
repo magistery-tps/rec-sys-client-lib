@@ -13,5 +13,10 @@ class ItemService:
         self.repository = repository
         self._logger    = get_logger(self)
 
+
     def find_all(self, page_size = 500):
         return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
+
+
+    def find_by(self, query={}):
+        return pd.DataFrame.from_records(self.repository.find(query=query))

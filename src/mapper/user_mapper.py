@@ -3,5 +3,9 @@ from .model  import Model
 
 
 class UserMapper(Mapper):
-    pass
-
+    def to_model(self, dto):
+        return Model({
+            'id': int(dto['id']),
+            'username' : dto['username'],
+            'email' : dto['email']
+        })

@@ -63,7 +63,7 @@ class UserResource(Resource):
 class ItemResource(Resource):
     actions = ActionsFactory.create(
         name    = 'items',
-        filters = '&name={}&description={}'
+        filters = '&name={}&description={}{}'
     )
 
 
@@ -152,13 +152,23 @@ class RecSysApi:
 
 
     # Items
-    def items(self, offset=0, limit=10, name='', description=''):
+    def items(self, offset=0, limit=10, name='', description='', tags=[]):
+        tags_uri = '&' + '&'.join([f'tag={tag}'for tag in tags]) if tags else ''
+
         return self._list_resp(self.api.items.pages(
-            offset, limit, name, description
+            offset, limit, name, description, tags_uri
         ))
+    #--------------------------------------------------------------------------
+    #
+    #
+    #
+    #--------------------------------------------------------------------------
+    # Interacitons
+    #--------------------------------------------------------------------------
+    def bulk_add_interactions(self, body):
+        return self._resp(self.api.interations.add(body=body))
 
 
-    # Interactions
     def interactions(self, offset=0, limit=10, user='', item=''):
         return self._list_resp(self.api.interations.pages(
             offset, limit, user, item

@@ -8,9 +8,10 @@ from rest_framework.response import Response
 from ..domain import DomainContext
 import django_filters
 import logging
-from taggit.serializers import  (TagListSerializerField,
-                                TaggitSerializer)
-
+from taggit.serializers import  (
+    TagListSerializerField,
+    TaggitSerializer
+)
 
 ctx = DomainContext()
 
@@ -33,4 +34,3 @@ class ItemViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self,*args,**kwargs):
         return ctx.item_service.find_by_tags(tags = self.request.query_params.getlist("tag"))
-

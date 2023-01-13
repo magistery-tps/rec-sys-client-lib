@@ -31,9 +31,6 @@ class SurpriseDistanceMatrixJob(Job):
 
         n_interactions = interactions.shape[0]
 
-        # self._logger.info(f'5000 USER_ID INTERACTIONS: {interactions[interactions["user_id"] == 5000].shape}')
-
-
         # Only run when found an interactions size change...
         if exists(f'{self._job_data_path}.pickle'):
             data = ut.Picket.load(self._job_data_path)
@@ -52,26 +49,9 @@ class SurpriseDistanceMatrixJob(Job):
             model   = self._model
         )
 
-
-        # user_seq = train_interactions[train_interactions["user_id"] == 5000]["user_seq"].unique()
-        # self._logger.info(f'5000 USER_SEQ: {user_seq}')
-        # self._logger.info(f'5000 USER_ID INTERACTIONS: {train_interactions[train_interactions["user_id"] == 5000].shape}')
-
-        # user_seqs = train_interactions["user_seq"].unique()
-        # user_seqs.sort()
-        # self._logger.info(f'TRAIN USER_SEQS: {user_seqs}')
-
         # Build similarity matrix from rating matrix...
         user_similarities, item_similarities = self._build_similatrity_matrix(rating_matrix)
 
-
-        # user_seqs = user_similarities["user_a"].unique()
-        # user_seqs.sort()
-        # self._logger.info(f'USER_SEQS A: {user_seqs}')
-
-        # user_seqs = user_similarities["user_b"].unique()
-        # user_seqs.sort()
-        # self._logger.info(f'USER_SEQS B: {user_seqs}')
 
         # Update user/item similarity matrix into RecSys API...
         self._upsert_recommender(user_similarities, item_similarities, train_interactions)
@@ -93,8 +73,6 @@ class SurpriseDistanceMatrixJob(Job):
             entity = 'item'
         )
 
-        # user_similarities = user_similarities[user_similarities['value'] > 0.0]
-        # item_similarities = item_similarities[item_similarities['value'] > 0.0]
         return user_similarities, item_similarities
 
 

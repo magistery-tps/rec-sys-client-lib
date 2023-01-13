@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'url', 'username', 'email']
+        fields = ['id', 'username', 'email']
 
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
@@ -15,4 +15,4 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset         = User.objects.all()
     serializer_class = UserSerializer
-    filterset_fields = ['url', 'username', 'email']
+    filterset_fields = ['username', 'email']

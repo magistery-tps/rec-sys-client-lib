@@ -14,3 +14,15 @@ class InteractionMapper(Mapper):
         })
 
 
+
+    def to_dto(self, model, host):
+        dto =  {
+            'user'              : int(model['user_id']),
+            'item'              : f'{host}/api/items/{model["item_id"]}/',
+            'rating'            : float(model['rating']),
+            'suitable_to_train' : bool(model['suitable_to_train'])
+        }
+
+        if 'id' in model:
+            dto['id'] = int(model['id'])
+        return dto

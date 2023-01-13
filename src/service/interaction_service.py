@@ -125,3 +125,8 @@ class InteractionService:
             data  = item_users
         )
         fig.set_xlabel(columns[1])
+
+
+    def add_many(self, interactions: pd.DataFrame, page_size=10):
+        iterator = ut.DataFramePaginationIterator(interactions, page_size=page_size)
+        [self.repository.add_many(page) for page in iterator]

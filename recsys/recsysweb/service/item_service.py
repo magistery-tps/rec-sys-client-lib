@@ -25,6 +25,8 @@ class ItemService:
 
 
     def find_by_tags(self, tags=[]):
+        tags = [tag.replace('"', '').replace("'", '') for tag in tags]
+
         positive_tags = [t for t in tags if '-' not in t]
         negative_tags = [t.replace('-', '') for t in tags if '-' in t]
 
