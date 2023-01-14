@@ -124,7 +124,7 @@ $ cp -v recsys.service ~/.config/systemd/user/
 **Step 17**: Importar variable de entoeno requeridas por la aplicación:
 
 ```bash
-$ echo "source ~/recsys/.shell.recsysrc" >> ~/.bashrc
+$ echo "source ~/rec-sys/.shell.recsysrc" >> ~/.bashrc
 ```
 
 **Step 18**: Referscar la configuración de systemd.
@@ -142,7 +142,7 @@ $ systemctl --user enable recsys
 **Step 20**: Config our database root password.
 
 ```bash
-$ vim recsys/recsys/settings.py
+$ vim rec-sys/recsys/settings.py
 ```
 
 ```python
