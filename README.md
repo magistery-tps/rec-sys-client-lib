@@ -216,7 +216,7 @@ Ambos jobs calcular matrices de distancia user-user/item-item en base a la matri
 
 ```bash
 $ cd ~
-$ git clone https://github.com/adrianmarino/airflow-systemd.git
+$ git clone https://github.com/magistery-tps/rec-sys.git
 $ mv airflow-systemd airflow
 $ cd recsys
 ```
