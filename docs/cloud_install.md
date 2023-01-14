@@ -155,7 +155,7 @@ DATABASES = {
 }
 ```
 
-**Step 21**: Config isntalled miniconda path.
+**Step 21**: Config isntalled miniconda path adn server port.
 
 ```bash
 $ vim service.conf
@@ -163,6 +163,7 @@ $ vim service.conf
 
 ```python
 export CONDA_PATH="$HOME/miniconda3"
+export PORT="80"
 ```
 
 **Step 21**: Start rec-sys app service.
