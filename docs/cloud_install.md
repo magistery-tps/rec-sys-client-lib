@@ -17,31 +17,31 @@
     $ sudo cp /etc/fstab /etc/fstab.bak
     $ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
     ```
-**Step 6**: Update pacakge index.
+
+**Step 6**: Install mariadb.
 
     ```bash
     $ sudo apt update
+    $ sudo apt-get install software-properties-common
+    $ sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+    $ sudo add-apt-repository 'deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu bionic main'
+    $ sudo apt update
+    $ sudo apt install mariadb-server
     ```
 
-**Step 7**: Install maridb:
-
-    ```bash
-    $ sudo install mariadb-server
-    ```
-
-**Step 8**: Install mariadb.
-
-    ```bash
-    $ sudo install mariadb-server
-    ```
-
-**Step 9**: Install miniconda.
+**Step 7**: Install miniconda.
 
     ```bash
     $ curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh
-    $ chmod +a Miniconda3-latest-Linux-x86_64.sh
+    $ chmod +x Miniconda3-latest-Linux-x86_64.sh
     $ bash Miniconda3-latest-Linux-x86_64.sh
     $ source ~/.bashrc
+    ```
+
+**Step 9**: Install default dev tools used to compile packages.
+
+    ```bash
+    $ sudo apt-get install build-essential gcc make perl dkms
     ```
 
 **Step 10**: Install mamba.
@@ -66,10 +66,16 @@ $ mamba env create -f environment.yml
 **Step 13**: Activar environment.
 
 ```bash
-$ mamba activate rec-sys
+$ conda activate rec-sys
 ```
 
-**Step 14**: Create database.
+**Step 14**: Asign a passworf to root database user.
+
+```bash
+$ sudo mysqladmin -u root password
+```
+
+**Step 15**: Create database.
 
 ```bash
 $ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS recsys"
@@ -78,13 +84,41 @@ $ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS recsys"
 **Step 15**: import database dump.
 
 ```bash
-$ mysqldump -u root -p  recsys <> database/recsys_database.sql
+$ mysqldump -u root -p
+```
+
+```sql
+MariaDB [recsys]> Use recsys;
+Database changed
+```
+
+```sql
+MariaDB [recsys]> source /home/adrianmarino1000/rec-sys/database/recsys_database.sql
+```
+
+```sql
+MariaDB [recsys]> show tables;
++-----------------------------------------------+
+| Tables_in_recsys                              |
++-----------------------------------------------+
+| account_emailconfirmation                     |
+| auth_group                                    |
+...
+| taggit_tag                                    |
+| taggit_taggeditem                             |
++-----------------------------------------------+
+31 rows in set (0.00 sec)
+```
+
+```sql
+MariaDB [recsys]> exit;
 ```
 
 **Step 16**: Copiar file.service a `~/.config/systemd/user/`:
 
 ```bash
-$ cp recsys.service ~/.config/systemd/user/
+$ mkdir -p ~/.config/systemd/user
+$ cp -v recsys.service ~/.config/systemd/user/
 ```
 
 **Step 17**: Importar variable de entoeno requeridas por la aplicación:
@@ -105,7 +139,33 @@ $ systemctl --user daemon-reload
 $ systemctl --user enable recsys
 ```
 
-**Step 20**: Iniciar el servicio en background.
+**Step 20**: Config our database root password.
+
+```bash
+$ vim recsys/recsys/settings.py
+```
+
+```python
+DATABASES = {
+    'default': {
+        ...
+        'PASSWORD': 'MY_PASSWORD',
+        ...
+    }
+}
+```
+
+**Step 21**: Config isntalled miniconda path.
+
+```bash
+$ vim service.conf
+```
+
+```python
+export CONDA_PATH="$HOME/miniconda3"
+```
+
+**Step 21**: Start rec-sys app service.
 
 ```bash
 $ systemctl --user start recsys

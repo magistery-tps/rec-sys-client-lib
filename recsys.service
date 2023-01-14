@@ -4,9 +4,9 @@ Description=RecSys server for user %u
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=%h/recsys
-ExecStart=%h/recsys/bin/start
-ExecStop=%h/recsys/bin/stop
+WorkingDirectory=%h/rec-sys
+ExecStart=%h/rec-sys/bin/start
+ExecStop=%h/rec-sys/bin/stop
 TimeoutStartSec=0
 Restart=on-failure
 RestartSec=5s
