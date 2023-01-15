@@ -16,4 +16,4 @@ if __name__ == '__main__':
     DomainContext(
         host      = 'http://recsys.sytes.net:8000',
         temp_path = '/home/adrian/development/personal/maestria/rec-sys/temp'
-    ).bert_item_distance_matrix_job('all-MiniLM-L6-v2').execute()
+    ).bert_item_distance_matrix_job('all-mpnet-base-v2').execute()

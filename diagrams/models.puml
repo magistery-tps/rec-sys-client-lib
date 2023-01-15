@@ -1,4 +1,4 @@
-@startuml Persistece Model
+@startuml
 class RecommenderEnsempleEvaluation {
     - id: int
     - enable: bool
@@ -11,28 +11,29 @@ class RecommenderEnsempleEvaluationMetric {
     - value: float
 }
 
-
 RecommenderEnsemble "1" *-- "n" RecommenderEnsempleEvaluation
 
 RecommenderEnsempleEvaluation "1" *-- "n" RecommenderEnsempleEvaluationMetric
 
 class Recommender {
     - id: int
+    - type: RecommenderType
     - name: str
     - description: str
     - position: int
     - enable: bool
-    - max_similar_users: int
-    - max_similar_items: int
     - user_similarity_matrix: SimilarityMatrix
     - item_similarity_matrix: SimilarityMatrix
+    - max_similar_users: int
+    - max_similar_items: int
+    - max_items_by_similar_user: int
 }
 
 enum RecommenderType {
-    COLLAVORATIVE_FILTERING
-    TOP_POPULARS
+    POPULARS
     NEW_POPULARS
     USER_PROFILE
+    COLLAVORATIVE_FILTERING
 }
 
 Recommender ..|> RecommenderType
@@ -56,6 +57,7 @@ enum SimilarityMatrixType {
 
 class SimilarityMatrixCell {
     - id: int
+    - matrix: SimilarityMatrix
     - row: int
     - column: int
     - value: float
@@ -66,15 +68,18 @@ class RecommenderEnsemble {
     - id: str
     - name: str
     - description: str
+    - position: int
+    - enable: bool
     - recommenderConfigs: List<RecommenderEnsembleConfig>
 }
 
 class RecommenderEnsembleConfig {
     - id: int
-    - recommender: Recommender
     - ensemble: RecommenderEnsemble
+    - recommender: Recommender
     - active_from_n_user_iterations: int
     - active_to_n_user_iterations: int
+    - n_items_by_session: int
 }
 
 RecommenderEnsemble "1" *-- "n" RecommenderEnsembleConfig
@@ -85,4 +90,36 @@ SimilarityMatrix "1" *-- "n" SimilarityMatrixCell
 
 Recommender "1" o-- "1" SimilarityMatrix: user_similarity_matrix
 Recommender "1" o-- "1" SimilarityMatrix: item_similarity_matrix
+
+class Interaction {
+    - id: int
+    - item: Item
+    - user: User
+    - rating: float
+}
+
+
+Interaction "n" *-- "1" Item
+
+Interaction "n" *-- "1" User
+
+class Item {
+    - id: int
+    - name: Str
+    - description: Str
+    - image: URL
+    - popularity: float
+    - rating: float
+    - votes: float
+    - tags: List<Tag>
+}
+
+
+class Tag {
+    - id: int
+    - name: Str
+}
+
+Item "n" *-- "n" Tag
+
 @enduml
