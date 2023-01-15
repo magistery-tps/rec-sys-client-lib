@@ -9,7 +9,7 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
-## [WIKI](https://github.com/magistery-tps/rec-sys/wiki)
+## WIKI
 
 Para mas detalle de como instalar la aplicación y detalla de implementación ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
 
