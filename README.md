@@ -11,7 +11,7 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 ## WIKI
 
-Para mas detalle de como instalar la aplicación y detalla de implementación ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
+Para mas detalle ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
 
 ## Screenshots
 
