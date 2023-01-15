@@ -166,8 +166,45 @@ export CONDA_PATH="$HOME/miniconda3"
 export PORT="80"
 ```
 
-**Step 21**: Start rec-sys app service.
+**Step 22**: Install screen.
 
 ```bash
-$ systemctl --user start recsys
+$ sudo apt install screen
 ```
+
+**Step 23**: open screen.
+
+```bash
+$ screen
+```
+
+**Step 24**: Get network interface name.
+
+```bash
+$ ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: ens4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 42:01:0a:96:00:03 brd ff:ff:ff:ff:ff:ff
+```
+
+**Step 25**: Setup por forwarnind form 80 to 8000.
+
+```bash
+$ sudo rec-sys/bin/setup-port-forwarding ens4
+```
+
+
+**Step 26**: Start rec-sys app service.
+
+```bash
+$ systemctl --user restart recsys
+```
+
+**Step 27**: Ctrl+A and Ctrl+D to detack from screen session.
+
+
+**Step 28**: Close ssh session.
+
+
+**Step 29**:  Go to recsys.systes.net
