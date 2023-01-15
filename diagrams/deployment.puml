@@ -12,6 +12,7 @@ cloud "Computing Cloud" #palegreen {
     node Airflow <<Job Scheduler>> #FEFECE {
         artifact [SVDSimJob]
         artifact [NFMSimJob]
+        artifact [BertSimJob]
     }
     database AirflowDB <<MySQL>>
 }
@@ -19,9 +20,14 @@ cloud "Computing Cloud" #palegreen {
 
 User -r-> RecSys: See & Make Recs
 RecSys -[#blue,dotted,thickness=2]-> SVDSimJob: Interactions
-RecSys <-[#green,dotted,thickness=2]- SVDSimJob: Update Similarity
+RecSys <-[#green,dotted,thickness=2]- SVDSimJob: Update SimMatrix
 RecSys -[#blue,dotted,thickness=2]-> NFMSimJob: Interactions
-RecSys <-[#green,dotted,thickness=2]- NFMSimJob: Update Similarity
+RecSys <-[#green,dotted,thickness=2]- NFMSimJob: Update SimMatrix
+
+
+RecSys -[#blue,dotted,thickness=2]-> BertSimJob: Interactions
+RecSys <-[#green,dotted,thickness=2]- BertSimJob: Update SimMatrix
+
 
 RecSys <-[dotted,thickness=1]-> RecSysDB
 Airflow <-[dotted,thickness=1]-> AirflowDB
