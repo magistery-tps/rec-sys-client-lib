@@ -13,6 +13,11 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 
 Para mas detalle ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
 
+
+## Probar Rec-sys
+
+Ir a  [recsys.sytes.net](http://recsys.sytes.net)
+
 ## Screenshots
 
 ### Recomendaciones
