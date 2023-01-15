@@ -9,8 +9,11 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
-## Screenshots
+## [WIKI](https://github.com/magistery-tps/rec-sys/wiki)
 
+Para mas detalle de como instalar la aplicación y detalla de implementación ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
+
+## Screenshots
 
 ### Recomendaciones
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
@@ -43,7 +46,3 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 4. El valor de estadisticas como popularidad, rating y cantidad de votaciones del item actual.
 5. Al hacer click sobre la imagen, es posible ver el detalle del item.
 
-
-## [WIKI](https://github.com/magistery-tps/rec-sys/wiki)
-
-Para mas detalle de como instalar la aplicación y detalla de implementación ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
