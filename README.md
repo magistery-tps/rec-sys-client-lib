@@ -9,37 +9,6 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 * [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
-
-
-## Diagramas de despliegue
-
-<img src="https://raw.githubusercontent.com/magistery-tps/rec-sys/main/diagrams/deployment.svg">
-
-Como se puede apreciar, la aplicación esta compuesta por dos grandes partes. [RecSys](http://recsys.sytes.net:8000) expone un interfaz web para los usuarios finales. Estos puedean realizar y consultar recomemdaciones de items. Por otro lado, [RecSys](http://recsys.sytes.net:8000) exponen una intarface REST. Esta permite a servicios externos consultar y modificar el modelo de datos de [RecSys](http://recsys.sytes.net:8000). tambien existent procesos o Jobs que corren en una instancia de [Airflow](https://airflow.apache.org/). Estos Jobs se encargan de consultar las interacciones de los usuarios a [RecSys](http://recsys.sytes.net:8000) y transformarlas en matrices de similitud user-user/item-item. Finamente actualizan estas similitudes en [RecSys](http://recsys.sytes.net:8000), para poder realizar recomendaciones al usuario final.
-
-
-
-## Componentes
-
-* [RecSys](http://recsys.sytes.net:8000)
-  * Expone una intefaz web para de recomendación de items
-    * Permite recomendar items personalizados al usuario final.
-    * Login with google.
-    * Pantalla para puntuación de items.
-    * Pantalla de visialización de recommendaciones.
-    * CRUD de items.
-    * Admin site.
-  * Expone una API REST para administar los distintos recommendadores y sus matrices de similitud asociadas.
-* `SurpriseSimilatiyMatrixJob`
-  * _svd_similarity_matrix_job_
-  * _nmf_similarity_matrix_job_
-* [amazon-spider-scrapper](https://github.com/adrianmarino/amazon-spider-scrapper)
-    * Es un fork del proyecto amazon-scrapper.
-    * Dada una búsqueda en Amazon, permite realizar scrapping del detalle de todos los resultados (Productos) y sus variaciones, junto con sus reviews.
-    * Utiliza headers fake, proxies random y delays variables para minimizar el banning de Amazon.
-    * Permite, reanudar el proceso de scrapping desde el ultimo productos scrappeado.
-
-
 ## Screenshots
 
 
