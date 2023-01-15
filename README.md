@@ -43,49 +43,6 @@ Implementación de un sistema de recomendación punta a punta. Desde el scrappin
 4. El valor de estadisticas como popularidad, rating y cantidad de votaciones del item actual.
 5. Al hacer click sobre la imagen, es posible ver el detalle del item.
 
-## Notebooks
-
-**[Amazon Books](https://nijianmo.github.io/amazon/index.html)**: Dataset de libros extraído de Amazon US.
-
-
- <p align="center">
-   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/amazon-books-dataset.png"  height="350" >
- </p>
- 
-  * **Raw pre-processing**
-    * Se realizo un pre-procesamiento inicial en [MongoDB](https://www.mongodb.com/home) dada la cantidad masiva de datos.
-      * [Queries](https://github.com/magistery-tps/rec-sys/blob/main/database/amazon-books.js)
-      * [Commands](https://github.com/magistery-tps/rec-sys/blob/main/database/commands.sh)
-  * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/build-datasets.ipynb)**
-    * Pre-procesamiento.
-    * Selección de features.
-    * Construcción de un datasets de items e interacciones de usuarios.
-  * **[data-loading](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/data-loader.ipynb)**
-    *  Preprosesamiento final.
-    *  Filtro de item e interaciones según un mínimo de popularidad.
-    *  Carga de datos via SQL en la base de datos de [RecSys](http://recsys.sytes.net:8000).
-  * **[similarity-matrix-jobs](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-books/distance-matrix-job.ipynb)**
-    * Testing de jobs:
-      * _svd_distance_matrix_job_
-      * _nmf_distance_matrix_job_
-    * Ambos jobs son instancias de _SurpriseSimilarityMatrixJob_.
-    * _SurpriseSimilarityMatrixJob_ consulta las interacciones via REST a [RecSys](http://recsys.sytes.net:8000).
-    * Predice los ratings de las interacciones faltantes.
-    * Cosntruye una matrix de ratings completa. Es decir, esta contien las interacciones actuales y las predichas.
-    * Calcula las similitudes user-user/item-item, solo para un numero N de usuarios e items vecinos. Esto disminuir los tiempo de ejecución y evita tener en tienta usuario e item muy lejanos.
-    * Finalmente, crear o actualiza via REST (En [RecSys](http://recsys.sytes.net:8000)) las entidades _Recommender_ para cada modelos SVD y NMF, junto con sus propias matrices de similitud (_SimilarityMatrix_, entidades asociada a _Recommender_).
-    * Las entidades _SimilarityMatrix_ son versionadas cada vez que correr cada job. Al correr un job, se crea una nueva versión de las matrices. Al finalizar el proceso, se borra la versión anterior quendado disponibilizada la nueva versión. Es posible mantener una ventana de versiones, pero por el momento no es necesario.
-    * Los jobs solo se ejecutan cuando se encuentran nuevas interacciones, para evitar re-procesamiento innecesario.
-
-**[Amazon Sneakers](https://www.amazon.com/sneakers/s?k=sneakers)**: Datasets de zapatillas extraído de Amazon US.
- * **[build-datasets](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/build-datasets.ipynb):** Construcción de un datasets de items e interacciones de usuarios en base a files generados en la etapa de scrapping de datos.
- * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/amazon-sneakers/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://recsys.sytes.net:8000) Abstraccion `Repository`.
-
-**[Movie Lens](https://grouplens.org/datasets/movielens/)**: Datasets de películas con scoring personalizado.
- * **[preprocessing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/preprocessing.ipynb)**
- * **[data-loader](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/movielens/data-loader.ipynb):** Carga de datos en la base de datos de RecSys](http://recsys.sytes.net:8000).
-
-**[RecSys REST client testing](https://github.com/magistery-tps/rec-sys/blob/main/notebooks/api-client-test.ipynb):** Administrar users, items, interacciones y matrices de distancia via [RecSys](http://recsys.sytes.net:8000) REST API.
 
 ## [WIKI](https://github.com/magistery-tps/rec-sys/wiki)
 
