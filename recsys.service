@@ -8,8 +8,6 @@ WorkingDirectory=%h/rec-sys
 ExecStart=%h/rec-sys/bin/start
 ExecStop=%h/rec-sys/bin/stop
 TimeoutStartSec=0
-Restart=on-failure
-RestartSec=5s
 
 [Install]
 WantedBy=default.target
