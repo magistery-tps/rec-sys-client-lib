@@ -1,5 +1,4 @@
 from .math                           import round_all, round_
-from.tensor                          import indexes_of, random_int, random_choice, apply, is_int
 from .list                           import combinations
 from .data_frame                     import normalize_column, \
                                             min_max_scale_column, \
