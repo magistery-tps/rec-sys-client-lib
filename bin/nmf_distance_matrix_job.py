@@ -4,6 +4,7 @@
 import sys
 sys.path.append('./src')
 from domain_context import DomainContext
+from pathlib import Path
 #------------------------------------------------------------------------------
 #
 #
