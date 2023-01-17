@@ -14,6 +14,6 @@ from domain_context import DomainContext
 #------------------------------------------------------------------------------
 if __name__ == '__main__':
     DomainContext(
-        host      = 'http://recsys.sytes.net:8000',
+        host      = 'http://recsys.sytes.net',
         temp_path = '/home/adrian/development/personal/maestria/rec-sys/temp'
     ).bert_item_distance_matrix_job('all-MiniLM-L12-v2').execute()
