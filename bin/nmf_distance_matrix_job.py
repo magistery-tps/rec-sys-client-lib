@@ -16,5 +16,5 @@ from pathlib import Path
 if __name__ == '__main__':
     DomainContext(
         host      = 'http://recsys.sytes.net',
-        temp_path = '/home/adrian/development/personal/maestria/rec-sys/temp'
+        temp_path = f'{Path.home()}/rec-sys/temp'
     ).nmf_distance_matrix_job.execute()
