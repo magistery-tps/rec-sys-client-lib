@@ -47,14 +47,22 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 
 ### Scoring
 
+En la pantalla de scoring o calificaciones. se pretenta una lsiat de item a calificar.
+
 <p align="center">
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="800" />
 </p>
 
 **Notas**
-1. Selecionar scoring o rating para el item actual.
-2. Presione **Vote** para aplicar el score selecionado en el punto 1 al item actual.
-3. Presione **Next** para saltear la votation del item actuar.
-4. El valor de estadisticas como popularidad, rating y cantidad de votaciones del item actual.
-5. Al hacer click sobre la imagen, es posible ver el detalle del item.
+1. Selecionar la calificación o rating para el item actual.
+2. Por defecto la calificacion es cero.
+3. El valor de estadisticas como popularidad, rating y cantidad de votaciones del item actual.
+4. Presione **Vote** para aplicar el score selecionado en el punto 1 al item actual.
+5. Presione **Next** para saltear la votation del item actuar.
+6. Ensemble: Especifica cual es el nombre del recomendador principal (El cuales un ensamble de otros recomendadores).
+7. Step: Espeficica cual es el recomendador oncluido en el ensamble que se utilizop para pgenerar la recomendacion actual.
+8. [Discount Cumulative Gain](https://en.wikipedia.org/wiki/Discounted_cumulative_gain)
+  * Es la metrica utilizada para valorar la calidad acumulada de las recomendaciones a partir de la primera calificación realizada por el usuario.
+  * Es un metrica a nivel usuario.
+9. Al hacer click sobre la imagen, es posible ver el detalle del item.
 
