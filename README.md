@@ -66,3 +66,33 @@ En la pantalla de scoring o calificaciones. se pretenta una lsiat de item a cali
   * Es un metrica a nivel usuario.
 9. Al hacer click sobre la imagen, es posible ver el detalle del item.
 
+
+
+### Remove ratings
+
+Es posible borrar todos los items del usaurio para volver a realiazr el proceso de calificacion desde cero.
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_5.png"  height="120" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_6.png"  height="120" />
+</p>
+
+
+### Manage Item
+
+Existe un CRUD de items que permite modificarlo mismos. Tambien es posible filtar los items por tags. Esto ultimo es muy util para encontar listas curadas de items.
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_4.png"  height="550" />
+</p>
+
+**Notas**
+
+1. El filtro de item soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
+2. Ver la vista de detalle de un item.
+3. Navegar una lista de items resulado de una buqeuda o
+
+
