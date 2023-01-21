@@ -40,15 +40,15 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 </p>
 
 **Notas**
-* Al hacer click sobre los simialres se abre su detalle junto con sus simialres.
-* Los item similares dependen del recomendador seleccionado en la vista de recommendaciones.
-* Ademas de las estadisticas asociadas a cada item es posible ver las similitud coseno de cada item similar al item detallado.
-* Los items similares estan ordenados por similitud coseno decreciente.
+1. Cada item tiene una lista de tags. En este caso los tags son generos pero se peude utilizar cualquier dato.
+2. Los item similares dependen del recomendador seleccionado en la vista de recommendaciones.Al hacer click sobre los simialres se abre su detalle junto con sus simialres.
+3. Ademas de las estadisticas asociadas a cada item es posible ver las similitud coseno de cada item similar al item detallado. Los items similares estan ordenados por similitud coseno decreciente.
+4. Son las estadisticas el item detallado: Su nivel de popularidad normalizado, la media de su rating y la cantidad de usaurios que lo calificaron.
 
 ### Scoring
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="295" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="800" />
 </p>
 
 **Notas**
