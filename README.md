@@ -91,7 +91,7 @@ Existe un CRUD de items que permite modificarlo mismos. Tambien es posible filta
 
 **Notas**
 
-1. El filtro de item soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
+1. El filtro soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
 2. Ver la vista de detalle de un item.
 3. Navegar una lista de items resulado de una buqeuda o
 
