@@ -36,7 +36,7 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 ### Item Detail & Similars
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="550" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="550" />
 </p>
 
 **Notas**
@@ -48,7 +48,7 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 ### Scoring
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_2.png"  height="295" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_3.png"  height="295" />
 </p>
 
 **Notas**
