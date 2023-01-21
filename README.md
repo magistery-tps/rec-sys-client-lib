@@ -1,7 +1,7 @@
 # UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación
 
 
-Implementación de un sistema de recomendación punta a punta. Desde el scrapping de datos hasta la implementación de una aplicación y los algoritmos necesarios.
+Implementación de un sistema de recomendación end-to-end. Desde el scrapping de datos hasta la implementación de una aplicación y los algoritmos necesarios.
 
 ## Requisitos
 
@@ -24,7 +24,14 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 ![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
 **Notas**
-* Al hacer click sobre un item, se puede visualizar el detalle del mismo junto con sus items similares.
+* 1,2 y 3 con resultados de 3 distintos recomendadores. Es posible configurar ditintos recomendadores y ensambles de los mismo.
+* Al hacer click sobre un ítem, se puede visualizar el detalle del mismo junto con sus items similares.
+* Los distintos carruseles o swimlanes de recomendaciones representan a distintos recomendadores.
+* Inicialmente se pueden ver los recomendadores por defecto:
+   * Top populars.
+   * New Populars: Populares no vistos por el usuario.
+* Dependiendo de los recomendadores o ensambles de recomendadores que se configuren, es necesario cumplir con un número mínimo de calificaciones para comenzar a visualizar sus recomendaciones. Por ejemplo, para recomendadores basados en filtros colaborativos, se requiere que el usuario califique 20 ítems como mínimo. Los ensambles de recomendadores combinan recomendadores basados en filtros colaborativos con recomendadores por popularidad o basados en contenido. Los ensambles pueden no tener un requisito mínimo de calificaciones, depende de la configuración.
+
 
 ### Item Detail & Similars
 
