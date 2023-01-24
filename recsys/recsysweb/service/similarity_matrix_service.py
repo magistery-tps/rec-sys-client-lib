@@ -50,5 +50,6 @@ class SimilarityMatrixService:
 
 
     def remove_cells_by_user(selg, user):
-        matrixs = SimilarityMatrix.objects.filter(type=SimilarityMatrixType.USER_TO_USER)
-        [SimilarityMatrixCell.objects.filter(matrix=matrix, row=user.id).delete() for matrix in matrixs]
+        for matrix in SimilarityMatrix.objects.filter(type=SimilarityMatrixType.USER_TO_USER):
+            SimilarityMatrixCell.objects.filter(matrix=matrix, row=user.id).delete()
+            SimilarityMatrixCell.objects.filter(matrix=matrix, column=user.id).delete()
