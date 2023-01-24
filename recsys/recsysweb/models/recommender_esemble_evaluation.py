@@ -13,6 +13,7 @@ class RecommenderEnsempleEvaluation(models.Model):
         unique       = True,
         verbose_name = 'Recommender Ensemble'
     )
+    mean_window_size = models.IntegerField(default=5, unique=False)
 
     class Meta:
         indexes = [

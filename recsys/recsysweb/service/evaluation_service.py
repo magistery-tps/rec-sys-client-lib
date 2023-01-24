@@ -39,7 +39,7 @@ class EvaluationService:
         evaluation = self.find_active()
         return RecommenderEnsempleEvaluationMetric \
             .objects \
-            .filter(evaluation=evaluation) \
+            .filter(evaluation=evaluation)[:evaluation.mean_window_size] \
             .aggregate(Avg('value')) \
             .get('value__avg', 0)
 
