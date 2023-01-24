@@ -22,11 +22,8 @@ dependencies:
     - bunch
     - pip
     - pip:
-        # - --extra-index-url https://download.pytorch.org/whl/cu116
-        # - torch==1.12.1+cu116
-        # - torchvision==0.13.1+cu116
-        # - pytorch-common==0.0.19
-        # - torchmetrics
+        - --extra-index-url https://download.pytorch.org/whl/cu116
+        - torch==1.12.1+cu116
         - simple-rest-client
         - django-apscheduler
         - surprise

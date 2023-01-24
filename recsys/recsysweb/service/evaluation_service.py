@@ -6,19 +6,18 @@ import statistics
 
 
 class Metrics:
+    @classmethod
+    def idiscount_cumulative_gain(clazz, ratings, descendent=True):
+        descendent_ratings = sorted(ratings, reverse=descendent)
+        return clazz.discount_cumulative_gain(descendent_ratings)
+
     @staticmethod
-    def normalized_discount_cumulative_gain(user_ratings):
-        dcg = 0
-        idcg = 0
+    def discount_cumulative_gain(ratings):
+        return sum([float(r) / math.log(i+2, 2) for i, r in enumerate(ratings)])
 
-        groud_truth = sorted(user_ratings, reverse=True)
-
-        for i, r in enumerate(user_ratings):
-            rel = int(r in groud_truth)
-            dcg += rel / math.log2(i+1+1)
-            idcg += groud_truth[i] / math.log2(i+1+1)
-
-        return dcg / idcg if idcg else 0
+    @classmethod
+    def normalized_discount_cumulative_gain(clazz, ratings, descendent=True):
+        return clazz.discount_cumulative_gain(ratings) / clazz.idiscount_cumulative_gain(ratings, descendent)
 
 
 @singleton

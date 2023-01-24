@@ -52,7 +52,9 @@ class ItemService:
 
 
     def score_items_by(self, user, items_rating):
-        for item in Item.objects.filter(id__in=list(items_rating.keys())):
+        ratings = list(filter(lambda it: it>0, items_rating.keys()))
+
+        for item in Item.objects.filter(id__in=ratings):
             interaction = Interaction.objects.create(
                 user   = user.id,
                 item   = item,
