@@ -9,16 +9,16 @@ class Metrics:
     @classmethod
     def idiscount_cumulative_gain(clazz, ratings, descendent=True):
         descendent_ratings = sorted(ratings, reverse=descendent)
-        return sum([float(r) / math.log(i+2, 2) for i, r in enumerate(ratings)])
+
+        ratings_set = list(set(ratings))
+        if len(ratings_set) == 1 and ratings_set[0] <= 2:
+            return (8 - ratings_set[0])
+
+        return clazz.discount_cumulative_gain(descendent_ratings)
 
 
     @staticmethod
     def discount_cumulative_gain(ratings):
-        ratings_set = list(set(ratings))
-
-        if len(ratings_set) == 1 and ratings_set[0] <= 2:
-            ratings = [v / ((idx+1)**2.5) for idx, v in enumerate(ratings)]
-
         return sum([float(r) / math.log(i+2, 2) for i, r in enumerate(ratings)])
 
     @classmethod
