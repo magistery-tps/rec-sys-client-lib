@@ -52,6 +52,8 @@ class Recommender(models.Model):
 
     class Meta:
         permissions = (
-            ("info", "Show recommender debug information"),
-            ("reset_interactions", "Reset User Interactions"),
+            ("info",                "Show recommender debug information"),
+            ("reset_interactions",  "Reset User Interactions"),
+            ("api_management",      "API Management"),
+            ("airflow_management",  "Airflow Management"),
         )

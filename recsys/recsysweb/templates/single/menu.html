@@ -87,15 +87,20 @@
                     <span class="bi-wrench"></span>
                 </a>
 
+                {% if perms.recsysweb.api_management %}
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active" href="/api"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>REST API</strong><br> A web interface to interact with RecSys REST API. An Authentication Token Header ir required. See <strong><span class='bi-wrench'></span> Configuration</strong>  menu option to generate an <strong>User Authentication Token</strong>.">
                     <span class="bi-plug-fill"></span>
                 </a>
+                {% endif %}
 
+
+                {% if perms.recsysweb.airflow_management %}
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active" href="http://nonosoft.ddns.net:8686/"  target="_blank" data-toggle="tooltip" data-hmlt=true title="<strong>Airflow</strong><br>Used to schedule background jobs that compute user-user & item-item similarity matrix with diferent models like SVD or NFM. Used for collaborative filtering recommendations.">
                     <span class="bi-calendar-week-fill"></span>
                 </a>
+                {% endif %}
 
                 <span class="bi-three-dots-vertical menu-item-separator"></span>
                 <a class="nav-item nav-link active" href="https://github.com/magistery-tps/rec-sys" target="_blank" data-toggle="tooltip" data-hmlt=true title="Go to <strong>Github</strong> project repostory.">
