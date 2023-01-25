@@ -1,6 +1,7 @@
 from django.db import models
 from .recommender_esemble_evaluation import RecommenderEnsempleEvaluation
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 class RecommenderEnsempleEvaluationMetric(models.Model):
@@ -22,6 +23,7 @@ class RecommenderEnsempleEvaluationMetric(models.Model):
         verbose_name = 'User'
     )
     value       = models.FloatField()
+    datetime    = models.DateTimeField(default=datetime.now, blank=True)
 
     class Meta:
         indexes = [

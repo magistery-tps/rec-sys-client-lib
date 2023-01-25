@@ -9,10 +9,16 @@ class Metrics:
     @classmethod
     def idiscount_cumulative_gain(clazz, ratings, descendent=True):
         descendent_ratings = sorted(ratings, reverse=descendent)
-        return clazz.discount_cumulative_gain(descendent_ratings)
+        return sum([float(r) / math.log(i+2, 2) for i, r in enumerate(ratings)])
+
 
     @staticmethod
     def discount_cumulative_gain(ratings):
+        ratings_set = list(set(ratings))
+
+        if len(ratings_set) == 1 and ratings_set[0] <= 2:
+            ratings = [v / ((idx+1)**2.5) for idx, v in enumerate(ratings)]
+
         return sum([float(r) / math.log(i+2, 2) for i, r in enumerate(ratings)])
 
     @classmethod
@@ -30,7 +36,8 @@ class EvaluationService:
         evaluation = self.find_active()
         return RecommenderEnsempleEvaluationMetric \
             .objects \
-            .filter(evaluation=evaluation, user=user)[:evaluation.mean_window_size] \
+            .filter(evaluation=evaluation, user=user) \
+            .order_by('-datetime') [:evaluation.mean_window_size] \
             .aggregate(Avg('value')) \
             .get('value__avg', 0)
 
@@ -39,7 +46,8 @@ class EvaluationService:
         evaluation = self.find_active()
         return RecommenderEnsempleEvaluationMetric \
             .objects \
-            .filter(evaluation=evaluation)[:evaluation.mean_window_size] \
+            .filter(evaluation=evaluation) \
+            .order_by('-datetime') [:evaluation.mean_window_size] \
             .aggregate(Avg('value')) \
             .get('value__avg', 0)
 

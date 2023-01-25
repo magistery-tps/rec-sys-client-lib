@@ -58,7 +58,7 @@ class InteractionService:
         return df_filtered
 
 
-    def find_all(self, page_size = 50000):
+    def find_all(self, page_size = 5000):
         return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
 
 

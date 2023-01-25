@@ -7,7 +7,7 @@ def url_params(url): return parse_qs(urlsplit(url).query)
 
 
 class ResourceIterator:
-    def __init__(self, api, resource, page_size=5, query={}):
+    def __init__(self, api, resource, page_size=10, query={}):
         self.call           = getattr(api, resource)
         self.page_size      = page_size
         self.next_offset    = 0

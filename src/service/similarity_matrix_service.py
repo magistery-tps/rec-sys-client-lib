@@ -122,7 +122,7 @@ class SimilarityMatrixService:
     def update(self, model): return self.__matrix_repository.update(model)
 
 
-    def add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=10_000):
+    def add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=5_000):
         cells['matrix']  = matrix.id
         cells['version'] = matrix.version
 
