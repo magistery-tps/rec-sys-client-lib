@@ -20,7 +20,7 @@ class DataFramePaginationIterator:
 
     def __next__(self):
         if self.page_num >= self.total_pages:
-            self._logger.info(f'Totals - Pages {self.total_pages} - Items {self.df.shape[0]}')
+            self._logger.info(f'Totals - Pages {self.total_pages} - Elements {self.df.shape[0]}')
             raise StopIteration
 
         offset = self.page_num * self.page_size
@@ -30,12 +30,12 @@ class DataFramePaginationIterator:
             n_items = offset + (self.df.shape[0] - offset)
             page    = self.df[offset:offset + n_items]
 
-            self._logger.info(f'Page {self.page_num+1}/{self.total_pages} - Items {n_items}/{self.df.shape[0]}')
+            self._logger.info(f'Page {self.page_num+1}/{self.total_pages} - Elements {n_items}/{self.df.shape[0]}')
         else:
             n_items = offset + self.page_size
             page    = self.df[offset:n_items]
 
-            self._logger.info(f'Page {self.page_num+1}/{self.total_pages} - Items {n_items}/{self.df.shape[0]}')
+            self._logger.info(f'Page {self.page_num+1}/{self.total_pages} - Elements {n_items}/{self.df.shape[0]}')
 
         self.page_num += 1
 
