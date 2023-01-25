@@ -15,6 +15,6 @@ from pathlib import Path
 #------------------------------------------------------------------------------
 if __name__ == '__main__':
     DomainContext(
-        host      = 'http://localhost:8000',
+        host      = 'http://recsys.sytes.net',
         temp_path = f'{Path.home()}/rec-sys/temp'
     ).svd_distance_matrix_job.execute()
