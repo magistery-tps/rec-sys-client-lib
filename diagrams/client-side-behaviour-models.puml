@@ -1,0 +1,145 @@
+@startuml
+
+
+
+abstract class Job {
+    + execute()
+}
+
+class SurpriseDistanceMatrixJob extends Job {
+    - n_most_similars_users: Int
+    - n_most_similars_items: Int
+    - recommender_name: Str
+}
+
+class BertItemDistanceMatrixJob extends Job {
+    - model_name: Str
+    - n_most_similars: Int
+}
+
+BertItemDistanceMatrixJob o-- ItemService
+BertItemDistanceMatrixJob o-- SimilarityMatrixService
+
+SurpriseDistanceMatrixJob o-- InteractionService
+SurpriseDistanceMatrixJob o-- RatingMatrixService
+SurpriseDistanceMatrixJob o-- SimilarityService
+SurpriseDistanceMatrixJob o-- SimilarityMatrixService
+SurpriseDistanceMatrixJob o-- RecommenderService
+
+
+class ItemService {
+    + find_all()
+    + find_by()
+}
+
+class RatingMatrixService {
+    + create()
+}
+
+class SimilarityService {
+    + similarities()
+    + filter_most_similars()
+}
+
+class SimilarityMatrixService {
+    + update_user_similarity_matrix()
+    + update_item_similarity_matrix()
+    + add_cells_and_update()
+    + create_or_get()
+    + update()
+    + add_cells()
+}
+
+class RecommenderService {
+    + upsert()
+    + update()
+}
+class InteractionService {
+    + n_interactions_by_user()
+    + filter_users_by_min_interactions()
+    + find_all()
+    + unrated_user_item()
+    + items_by_user()
+    + plot_n_users_by_item()
+    + add_many()
+}
+
+
+
+
+abstract class EntityRepository {
+    + find()
+}
+
+class ItemRepository extends EntityRepository {
+    + find_all()
+    + find_by()
+}
+ItemRepository o-- RecSysAPIClient
+
+
+class InteractionRepository extends EntityRepository {
+    + add_many()
+}
+InteractionRepository o-- RecSysAPIClient
+
+class RecommenderRepository extends EntityRepository {
+    + add()
+    + update()
+    + remove()
+}
+RecommenderRepository o-- RecSysAPIClient
+
+
+class SimilarityMatrixCellRepository extends EntityRepository {
+    + add_many()
+    + remove()
+}
+SimilarityMatrixCellRepository o-- RecSysAPIClient
+
+
+class SimilarityMatrixRepository extends EntityRepository {
+
+}
+SimilarityMatrixRepository o-- RecSysAPIClient
+
+
+
+class RecSysAPIClient {
+    + users()
+    + items()
+    + bulk_add_interactions()
+    + interactions()
+    + similarity_matrix()
+    + add_similarity_matrix()
+    + update_similarity_matrix()
+    + remove_similarity_matrix()
+    + similarity_matrix_versions()
+    + remove_similarity_version()
+    + similarity_cells()
+    + bulk_add_similarity_cells()
+    + remove_similarity_cell()
+    + recommenders()
+    + add_recommender()
+    + update_recommender()
+    + remove_recommender()
+}
+
+
+
+ItemService o-- ItemRepository
+
+InteractionService o-- InteractionRepository
+
+RatingMatrixService o-- InteractionRepository
+
+SimilarityMatrixService o-- SimilarityMatrixRepository
+SimilarityMatrixService o-- SimilarityMatrixCellRepository
+SimilarityMatrixService o-- InteractionService
+SimilarityMatrixService o-- SimilarityService
+
+
+RecommenderService o-- RecommenderRepository
+
+
+@enduml
