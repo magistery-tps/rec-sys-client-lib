@@ -6,7 +6,6 @@ Implementación de un sistema de recomendación end-to-end. Desde el scrapping d
 ## Requisitos
 
 * [anaconda](https://www.anaconda.com/products/individual) / [miniconda](https://docs.conda.io/en/latest/miniconda.html) / [mamba (Recomendado)](https://github.com/mamba-org/mamba)
-* [Setup de entorno (Window)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 * mariadb/mysql
 
 ## WIKI
