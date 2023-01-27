@@ -2,20 +2,22 @@
 
 
 
-abstract class Job {
+abstract class Job << Abstract >> {
     + execute()
 }
 
-class SurpriseDistanceMatrixJob extends Job {
+class SurpriseDistanceMatrixJob {
     - n_most_similars_users: Int
     - n_most_similars_items: Int
     - recommender_name: Str
 }
+Job ^-[#blue]- SurpriseDistanceMatrixJob: Is a
 
-class BertItemDistanceMatrixJob extends Job {
+class BertItemDistanceMatrixJob {
     - model_name: Str
     - n_most_similars: Int
 }
+Job ^-[#blue]- BertItemDistanceMatrixJob: Is a
 
 BertItemDistanceMatrixJob o-- ItemService
 BertItemDistanceMatrixJob o-- SimilarityMatrixService
@@ -27,14 +29,19 @@ SurpriseDistanceMatrixJob o-- SimilarityMatrixService
 SurpriseDistanceMatrixJob o-- RecommenderService
 
 
+
 class ItemService {
     + find_all()
     + find_by()
 }
+ItemService o-- ItemRepository
+
 
 class RatingMatrixService {
     + create()
 }
+RatingMatrixService o-- InteractionRepository
+
 
 class SimilarityService {
     + similarities()
@@ -49,11 +56,20 @@ class SimilarityMatrixService {
     + update()
     + add_cells()
 }
+SimilarityMatrixService o-- SimilarityMatrixRepository
+SimilarityMatrixService o-- SimilarityMatrixCellRepository
+SimilarityMatrixService o-- InteractionService
+SimilarityMatrixService o-- SimilarityService
+
+
 
 class RecommenderService {
     + upsert()
     + update()
 }
+RecommenderService o-- RecommenderRepository
+
+
 class InteractionService {
     + n_interactions_by_user()
     + filter_users_by_min_interactions()
@@ -63,45 +79,52 @@ class InteractionService {
     + plot_n_users_by_item()
     + add_many()
 }
+InteractionService o-- InteractionRepository
 
 
 
 
-abstract class EntityRepository {
+abstract class EntityRepository << Abstract >> {
     + find()
 }
 
-class ItemRepository extends EntityRepository {
+class ItemRepository {
     + find_all()
     + find_by()
 }
-ItemRepository o-- RecSysAPIClient
+EntityRepository ^-[#blue]- ItemRepository: Is a
+EntityRepository o-- RecSysAPIClient
 
-
-class InteractionRepository extends EntityRepository {
+class InteractionRepository {
     + add_many()
 }
-InteractionRepository o-- RecSysAPIClient
+EntityRepository ^-[#blue]- InteractionRepository: Is a
 
-class RecommenderRepository extends EntityRepository {
+class RecommenderRepository {
     + add()
     + update()
     + remove()
 }
-RecommenderRepository o-- RecSysAPIClient
+EntityRepository ^-[#blue]- RecommenderRepository: Is a
 
 
-class SimilarityMatrixCellRepository extends EntityRepository {
+class SimilarityMatrixCellRepository {
     + add_many()
     + remove()
 }
-SimilarityMatrixCellRepository o-- RecSysAPIClient
+EntityRepository ^-[#blue]- SimilarityMatrixCellRepository: Is a
 
 
-class SimilarityMatrixRepository extends EntityRepository {
-
+class SimilarityMatrixRepository {
+    + add()
+    + update()
+    + versions()
+    + previous_versions()
+    + remove_previous_versions()
+    + remove_version()
+    + remove()
 }
-SimilarityMatrixRepository o-- RecSysAPIClient
+EntityRepository ^-[#blue]- SimilarityMatrixRepository: Is a
 
 
 
@@ -124,22 +147,5 @@ class RecSysAPIClient {
     + update_recommender()
     + remove_recommender()
 }
-
-
-
-ItemService o-- ItemRepository
-
-InteractionService o-- InteractionRepository
-
-RatingMatrixService o-- InteractionRepository
-
-SimilarityMatrixService o-- SimilarityMatrixRepository
-SimilarityMatrixService o-- SimilarityMatrixCellRepository
-SimilarityMatrixService o-- InteractionService
-SimilarityMatrixService o-- SimilarityService
-
-
-RecommenderService o-- RecommenderRepository
-
 
 @enduml
