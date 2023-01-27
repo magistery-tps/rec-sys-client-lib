@@ -14,6 +14,17 @@ Implementación de un sistema de recomendación end-to-end. Desde el scrapping d
 Para mas detalle ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
 
 
+## Primeros Pasos
+
+<p align="center">
+    <a href="http://www.youtube.com/watch?v=jJbm_TPzHYI" target="_tab"/>
+    <img src="http://img.youtube.com/vi/jJbm_TPzHYI/0.jpg" 
+        title="RecSys: Primeros Pasos" 
+        alt="RecSys: Primeros Pasos"/>
+    </a>
+</p>
+
+
 ## Probar RecSys
 
 Ir a  [recsys.sytes.net](http://recsys.sytes.net)
