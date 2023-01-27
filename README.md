@@ -32,7 +32,7 @@ Ir a  [recsys.sytes.net](http://recsys.sytes.net)
 ## Screenshots
 
 ### Recomendaciones
-![See Recommendations](https://github.com/magistery-tps/rec-sys/blFob/main/images/screenshot.png)
+![See Recommendations](https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot.png)
 
 **Notas**
 * 1,2 y 3 con resultados de 3 distintos recomendadores. Es posible configurar ditintos recomendadores y ensambles de los mismo.
