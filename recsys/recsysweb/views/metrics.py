@@ -126,12 +126,16 @@ def all_users_plots(df, user_votes_df):
                     header=dict(
                         values=list(user_votes_df.columns),
                         fill_color='paleturquoise',
-                        align='left'
+                        align='left',
+                        font_size=18,
+                        height=35
                     ),
                     cells=dict(
                         values=user_votes_df.transpose().values.tolist(),
                         fill_color='lavender',
-                        align='left'
+                        align='left',
+                        font_size=18,
+                        height=35
                     )
                 )
             ]
