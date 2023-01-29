@@ -81,20 +81,22 @@ def all_users_plots(df):
         return None, None
     else:
         df = df \
-            .groupby([df['datetime'].dt.hour], as_index=False) \
+            .groupby([df['datetime'].dt.minute], as_index=False) \
             .value \
             .mean() \
             .reset_index(names='datetime')
 
+        df = df.rename(columns={'datetime': 'Minutes'})
+
+
         timeline_fig = px.line(
             df,
-            x='datetime',
+            x='Minutes',
             y='value',
             markers=True,
-            title='Timeline: Mean NDCG by hour.',
+            title='Timeline: Mean NDCG by minute.',
             labels={
                 'value': 'NDCG',
-                'value': 'Hour'
             }
         )
         timeline_fig = plot(timeline_fig, output_type='div')
@@ -102,7 +104,7 @@ def all_users_plots(df):
         hist_fig = px.histogram(
             df,
             x='value',
-            nbins=4,
+            nbins=3,
             title='Histogram: Vote steps by NDCG.',
             labels={
                 'value': 'NDCG'
