@@ -10,7 +10,9 @@
 {%block content%}
 
 
-<h2>{{ request.user}}</h2>
+
+{% if user_ndcg %}
+<h2>{{ request.user }}</h2>
     <br />
     <strong>Normalized Discount Cumulative Gain (NDCG):</strong> {{ user_ndcg }}
     <br />
@@ -24,6 +26,10 @@
     {% endautoescape %}
 
 <br />
+{% endif %}
+
+
+{% if all_users_ndgc %}
 <h2>All Users</h2>
     <br />
     <strong>Normalized Discount Cumulative Gain (NDCG):</strong> {{ all_users_ndgc }}
@@ -36,6 +42,7 @@
     {% autoescape off %}
     {{ all_users_ndcg_hist }}
     {% endautoescape %}
-    <br />
-    <br />
+{% endif %}
+<br />
+<br />
 {% endblock %}

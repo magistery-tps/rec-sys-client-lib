@@ -28,64 +28,85 @@ def show_metrics(request):
     all_users_ndgc        = ctx.evaluation_service.find_metric_by_active()
     all_users_ndgc_values = ctx.evaluation_service.find_metric_values_by_active()
 
-    user_ndcg_values.rename(columns={'value': 'NDCG'}, inplace=True)
-    user_ndcg_values['Step'] = user_ndcg_values.index
-    user_ndcg_values = user_ndcg_values.round({'NDCG': 3})
-
-    user_ndcg_timeline_fig = px.line(
-        user_ndcg_values,
-        x='Step',
-        y='NDCG',
-        markers=True,
-        title='Timeline: NDCG by vote step.'
-    )
-
-    user_ndcg_hist_fig = px.histogram(
-        user_ndcg_values,
-        x='NDCG',
-        nbins=2,
-        title='Histogram: Vote steps by NDCG.'
-    )
-
-
-    all_users_ndgc_values_by_datetime = all_users_ndgc_values \
-        .groupby([all_users_ndgc_values['datetime'].dt.hour], as_index=False) \
-        .value \
-        .mean() \
-        .reset_index(names='datetime')
-
-
-    all_users_ndgc_timeline_fig = px.line(
-        all_users_ndgc_values_by_datetime,
-        x='datetime',
-        y='value',
-        markers=True,
-        title='Timeline: Mean NDCG by hour.',
-        labels={
-            'value': 'NDCG',
-            'value': 'Hour'
-        }
-    )
-
-    all_user_ndcg_hist_fig = px.histogram(
-        all_users_ndgc_values,
-        x='value',
-        nbins=4,
-        title='Histogram: Vote steps by NDCG.',
-        labels={
-            'value': 'NDCG'
-        }
-    )
+    user_ndcg_timeline_plot, user_ndcg_hist_plot = user_plots(user_ndcg_values)
+    all_users_ndgc_timeline_plot, all_user_ndcg_hist_plot = all_users_plots(all_users_ndgc_values)
 
     response = {
-        'user_ndcg'                 : round(user_ndcg, 3),
-        'user_ndcg_timeline'        : plot(user_ndcg_timeline_fig, output_type='div'),
-        'user_ndcg_hist'            : plot(user_ndcg_hist_fig, output_type='div'),
+        'user_ndcg'                 : round(user_ndcg, 3) if user_ndcg else None,
+        'user_ndcg_timeline'        : user_ndcg_timeline_plot,
+        'user_ndcg_hist'            : user_ndcg_hist_plot,
 
-        'all_users_ndgc'            : round(all_users_ndgc, 3),
-        'all_users_ndgc_timeline'   : plot(all_users_ndgc_timeline_fig, output_type='div'),
-        'all_users_ndcg_hist'       : plot(all_user_ndcg_hist_fig, output_type='div')
+        'all_users_ndgc'            : round(all_users_ndgc, 3) if all_users_ndgc else None,
+        'all_users_ndgc_timeline'   : all_users_ndgc_timeline_plot,
+        'all_users_ndcg_hist'       : all_user_ndcg_hist_plot
     }
 
     return render(request, 'single/metrics.html', response)
 
+
+
+def user_plots(df):
+    if df.empty:
+        return None, None
+    else:
+        df.rename(columns={'value': 'NDCG'}, inplace=True)
+        df['Step'] = df.index
+        df = df.round({'NDCG': 3})
+
+
+        timeline_fig = px.line(
+            df,
+            x='Step',
+            y='NDCG',
+            markers=True,
+            title='Timeline: NDCG by vote step.'
+        )
+        timeline_fig = plot(timeline_fig, output_type='div')
+
+        hist_fig = px.histogram(
+            df,
+            x='NDCG',
+            nbins=2,
+            title='Histogram: Vote steps by NDCG.'
+        )
+        hist_fig = plot(hist_fig, output_type='div')
+
+        return timeline_fig, hist_fig
+
+
+
+def all_users_plots(df):
+    if df.empty:
+        return None, None
+    else:
+        df = df \
+            .groupby([df['datetime'].dt.hour], as_index=False) \
+            .value \
+            .mean() \
+            .reset_index(names='datetime')
+
+        timeline_fig = px.line(
+            df,
+            x='datetime',
+            y='value',
+            markers=True,
+            title='Timeline: Mean NDCG by hour.',
+            labels={
+                'value': 'NDCG',
+                'value': 'Hour'
+            }
+        )
+        timeline_fig = plot(timeline_fig, output_type='div')
+
+        hist_fig = px.histogram(
+            df,
+            x='value',
+            nbins=4,
+            title='Histogram: Vote steps by NDCG.',
+            labels={
+                'value': 'NDCG'
+            }
+        )
+        hist_fig = plot(hist_fig, output_type='div')
+
+        return timeline_fig, hist_fig

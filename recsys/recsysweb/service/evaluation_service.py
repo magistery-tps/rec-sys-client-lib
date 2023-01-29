@@ -61,8 +61,13 @@ class EvaluationService:
             .order_by('-datetime') \
             .only('datetime', 'value')
 
-        df = pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
-        df['datetime'] = pd.to_datetime(df['datetime'])
+
+        if query:
+            df = pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
+            df['datetime'] = pd.to_datetime(df['datetime'])
+        else:
+            df = pd.DataFrame()
+
         return df
 
     def find_metric_values_by_active_and_user(self, user):
@@ -73,8 +78,12 @@ class EvaluationService:
             .order_by('-datetime') \
             .only('datetime', 'value')
 
-        df=  pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
-        df['datetime'] = pd.to_datetime(df['datetime'])
+        if query:
+            df=  pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
+            df['datetime'] = pd.to_datetime(df['datetime'])
+        else:
+            df = pd.DataFrame()
+
         return df
 
 
