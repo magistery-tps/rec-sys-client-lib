@@ -36,6 +36,8 @@ urlpatterns = [
     path('items/detail/<int:id>/<int:recommender_id>',  views.detail_item,  name='items.detail'),
     path('items/remove/<int:id>',                       views.remove_item,  name='items.remove'),
     path('interactions/remove-all/',                    views.remove_all,   name='interactions.remove_all'),
+    path('metrics',                                     views.show_metrics, name='metrics'),
+
 
     path('api/', include(router.urls)),
 ]

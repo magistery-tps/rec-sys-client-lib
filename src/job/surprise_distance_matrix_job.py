@@ -77,7 +77,7 @@ class SurpriseDistanceMatrixJob(Job):
 
 
     def _upsert_recommender(self, user_similarities, item_similarities, interactions):
-        # Update user/item similarity matrix into RecSys API...
+        # Update user/item similarity matrix into RecSys API... 
         user_similarity_matrix = self.ctx.similarity_matrix_service.update_user_similarity_matrix(
             user_similarities,
             interactions,

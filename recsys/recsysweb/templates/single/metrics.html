@@ -1,0 +1,41 @@
+{% extends "content.html" %}
+{%block container_class %}container{% endblock %}
+
+{%block menu%}{% include "single/menu.html" %}{% endblock %}
+
+{%block head%}Metrics{% endblock %}
+
+{%block title%}<h4 class="display-8 fw-bold text-center"><span class="bi bi-speedometer">&ensp;Metrics</h1>{% endblock %}
+
+{%block content%}
+
+
+<h2>{{ request.user}}</h2>
+    <br />
+    <strong>Normalized Discount Cumulative Gain (NDCG):</strong> {{ user_ndcg }}
+    <br />
+    <br />
+    {% autoescape off %}
+    {{ user_ndcg_timeline }}
+    {% endautoescape %}
+    <br />
+    {% autoescape off %}
+    {{ user_ndcg_hist }}
+    {% endautoescape %}
+
+<br />
+<h2>All Users</h2>
+    <br />
+    <strong>Normalized Discount Cumulative Gain (NDCG):</strong> {{ all_users_ndgc }}
+    <br />
+    <br />
+    {% autoescape off %}
+    {{ all_users_ndgc_timeline }}
+    {% endautoescape %}
+    <br />
+    {% autoescape off %}
+    {{ all_users_ndcg_hist }}
+    {% endautoescape %}
+    <br />
+    <br />
+{% endblock %}

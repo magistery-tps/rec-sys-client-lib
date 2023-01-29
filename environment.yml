@@ -35,3 +35,4 @@ dependencies:
         - colorlog
         - sentence-transformers
         - singleton-decorator
+        - plotly

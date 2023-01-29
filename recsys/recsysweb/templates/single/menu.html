@@ -70,6 +70,20 @@
                 <span id="scoring-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
             </a>
 
+
+            <span class="bi-three-dots-vertical menu-item-separator"></span>
+            <a
+                class="nav-item nav-link active"
+                href="{% url 'metrics' %}"
+                data-toggle="tooltip"
+                data-hmlt=true
+                title="<strong>Metrics</strong>: Show metrics used to evaluate recommenders with real users."
+                onclick="showLoading('metrics')"
+            >
+                <span id="metrics" class="bi bi-speedometer"></span>
+                <span id="metrics-loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none" ></span>
+            </a>
+
             <span class="bi-three-dots-vertical menu-item-separator""></span>
             <a
                 class="nav-item nav-link active"

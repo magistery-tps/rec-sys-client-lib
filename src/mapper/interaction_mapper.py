@@ -10,7 +10,8 @@ class InteractionMapper(Mapper):
         return Model({
             'user_id': int(dto['user']),
             'item_id': int(substring_after(dto['item'], 'items/').replace('/', '')),
-            'rating' : float(dto['rating'])
+            'rating' : float(dto['rating']),
+            'suitable_to_train' : bool(dto['suitable_to_train'])
         })
 
 

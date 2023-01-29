@@ -3,6 +3,7 @@ from singleton_decorator import singleton
 from django.db.models import Avg
 import math
 import statistics
+import pandas as pd
 
 
 class Metrics:
@@ -50,6 +51,31 @@ class EvaluationService:
             .order_by('-datetime') [:evaluation.mean_window_size] \
             .aggregate(Avg('value')) \
             .get('value__avg', 0)
+
+
+    def find_metric_values_by_active(self):
+        evaluation = self.find_active()
+        query = RecommenderEnsempleEvaluationMetric \
+            .objects \
+            .filter(evaluation=evaluation) \
+            .order_by('-datetime') \
+            .only('datetime', 'value')
+
+        df = pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        return df
+
+    def find_metric_values_by_active_and_user(self, user):
+        evaluation = self.find_active()
+        query = RecommenderEnsempleEvaluationMetric \
+            .objects \
+            .filter(evaluation=evaluation, user=user) \
+            .order_by('-datetime') \
+            .only('datetime', 'value')
+
+        df=  pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        return df
 
 
     def evaluate_session(self, user, items_rating):

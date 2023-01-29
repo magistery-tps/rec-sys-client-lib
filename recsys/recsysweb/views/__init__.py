@@ -10,3 +10,5 @@ from .items             import (
 from .evaluation        import likes
 from .recs              import recommendations
 from .interactions      import remove_all
+from .metrics           import show_metrics
+
