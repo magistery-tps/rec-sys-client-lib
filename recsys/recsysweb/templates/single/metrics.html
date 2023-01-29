@@ -42,7 +42,13 @@
     {% autoescape off %}
     {{ all_users_ndcg_hist }}
     {% endautoescape %}
-{% endif %}
+    {% if perms.recsysweb.change_item %}
+        <br />
+        {% autoescape off %}
+        {{ user_votes_table }}
+        {% endautoescape %}
+        {% endif %}
+    {% endif %}
 <br />
 <br />
 {% endblock %}

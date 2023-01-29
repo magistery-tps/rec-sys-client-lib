@@ -1,9 +1,10 @@
 from ..models import RecommenderEnsempleEvaluation, RecommenderEnsempleEvaluationMetric
 from singleton_decorator import singleton
-from django.db.models import Avg
+from django.db.models import Avg, Count
 import math
 import statistics
 import pandas as pd
+from ..logger import get_logger
 
 
 class Metrics:
@@ -29,6 +30,9 @@ class Metrics:
 
 @singleton
 class EvaluationService:
+    def __init__(self):
+        self.logger = get_logger(self)
+
     def find_active(self):
         return RecommenderEnsempleEvaluation.objects.filter(enable=True)[0]
 
@@ -61,8 +65,8 @@ class EvaluationService:
             .order_by('-datetime') \
             .only('datetime', 'value')
 
-
         if query:
+            self.logger.info('Query:', query)
             df = pd.DataFrame(list(map(lambda it: {'datetime': it.datetime, 'value': it.value}, query)))
             df['datetime'] = pd.to_datetime(df['datetime'])
         else:
@@ -85,6 +89,18 @@ class EvaluationService:
             df = pd.DataFrame()
 
         return df
+
+
+    def user_votes_by_active(self):
+        evaluation = self.find_active()
+
+        query = list(RecommenderEnsempleEvaluationMetric.objects \
+            .filter(evaluation=evaluation) \
+            .values('user__username') \
+            .annotate(total=Count('value')) \
+            .values('user__username', 'total'))
+
+        return pd.DataFrame(query)
 
 
     def evaluate_session(self, user, items_rating):
