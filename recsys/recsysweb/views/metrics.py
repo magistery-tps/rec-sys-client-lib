@@ -38,7 +38,8 @@ def show_metrics(request):
 
         'all_users_ndgc'            : round(all_users_ndgc, 3) if all_users_ndgc else None,
         'all_users_ndgc_timeline'   : all_users_ndgc_timeline_plot,
-        'all_users_ndcg_hist'       : all_user_ndcg_hist_plot
+        'all_users_ndcg_hist'       : all_user_ndcg_hist_plot,
+        'user_n_interactions'       : ctx.interaction_service.count_by_user(request.user)
     }
 
     return render(request, 'single/metrics.html', response)
