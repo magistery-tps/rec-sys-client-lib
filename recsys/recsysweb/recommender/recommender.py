@@ -8,10 +8,15 @@ class Recommender:
     def __init__(self, config):
         self.config = config
 
+
+    def current_config(self, user): return self.config
+
+
     @property
     @abstractmethod
     def metadata(self):
         pass
+
 
     @abstractmethod
     def recommend(self, ctx: RecommenderContext):

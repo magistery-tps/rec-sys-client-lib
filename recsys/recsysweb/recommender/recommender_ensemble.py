@@ -20,12 +20,12 @@ class RecommenderEnsemble(Recommender):
             position    = self.config.position
         )
 
+    def current_config(self, user): return self._current_recommender(user).config
 
     @property
     def metadata(self): return self.__metadata
 
-
-    def __select_recommender(self, user):
+    def _current_recommender(self, user):
         n_user_interactions = self.__interaction_service.count_by_user(user)
 
         for idx, cfg in enumerate(self.__ensemble_configs):
@@ -40,11 +40,11 @@ class RecommenderEnsemble(Recommender):
 
 
     def recommend(self, ctx: RecommenderContext):
-        return self.__build_result(self.__select_recommender(ctx.user).recommend(ctx))
+        return self.__build_result(self._current_recommender(ctx.user).recommend(ctx))
 
 
     def find_similars(self, ctx: RecommenderContext):
-        result = self.__select_recommender(ctx.user).find_similars(ctx)
+        result = self._current_recommender(ctx.user).find_similars(ctx)
         return SimilarItemsResult(self.metadata, result.items)
 
 

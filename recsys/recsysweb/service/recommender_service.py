@@ -74,6 +74,10 @@ class RecommenderService:
 
 
     def find_recommendations_from_active_evaluation(self, user):
-        evaluation  = self.ctx.evaluation_service.find_active()
-        recommender = self.find_by_id(evaluation.ensemble.id)
+        recommender = self.find_recommender_from_active_evaluation(user)
         return recommender.recommend(ctx = RecommenderContext(user=user))
+
+
+    def find_recommender_from_active_evaluation(self, user):
+        evaluation  = self.ctx.evaluation_service.find_active()
+        return self.find_by_id(evaluation.ensemble.id)

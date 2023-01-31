@@ -20,6 +20,7 @@ dependencies:
     - mysql-connector-python
     - tqdm
     - bunch
+    - networkx
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116

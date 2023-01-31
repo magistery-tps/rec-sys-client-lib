@@ -24,7 +24,10 @@
     {% autoescape off %}
     {{ user_ndcg_hist }}
     {% endautoescape %}
-
+    <br />
+    {% autoescape off %}
+    {{ user_neighbors }}
+    {% endautoescape %}
 <br />
 {% endif %}
 
@@ -33,22 +36,26 @@
 <h2>All Users</h2>
     <br />
     <strong>Normalized Discount Cumulative Gain (NDCG):</strong> {{ all_users_ndgc }}
+
     <br />
     <br />
     {% autoescape off %}
     {{ all_users_ndgc_timeline }}
     {% endautoescape %}
+
     <br />
     {% autoescape off %}
     {{ all_users_ndcg_hist }}
     {% endautoescape %}
+
     {% if perms.recsysweb.change_item %}
         <br />
         {% autoescape off %}
         {{ user_votes_table }}
         {% endautoescape %}
-        {% endif %}
     {% endif %}
+
+{% endif %}
 <br />
 <br />
 {% endblock %}
