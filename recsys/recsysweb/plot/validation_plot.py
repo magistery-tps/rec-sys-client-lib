@@ -27,11 +27,13 @@ class ValidationPlot:
             )
             timeline_fig = plot(timeline_fig, output_type='div')
 
+
             hist_fig = px.histogram(
                 df,
                 x='NDCG',
-                nbins=2,
-                title='Histogram: Vote steps by NDCG.'
+                nbins=5,
+                title='Histogram: Vote steps by NDCG.',
+                marginal='violin' if df.shape[0] >= 5 else 'rug'
             )
             hist_fig = plot(hist_fig, output_type='div')
 
@@ -67,11 +69,12 @@ class ValidationPlot:
             hist_fig = px.histogram(
                 df,
                 x='value',
-                nbins=3,
+                nbins=5,
                 title='Histogram: Vote steps by NDCG.',
                 labels={
                     'value': 'NDCG'
-                }
+                },
+                marginal='violin' if df.shape[0] >= 5 else 'rug'
             )
             hist_fig = plot(hist_fig, output_type='div')
 
