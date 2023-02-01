@@ -118,7 +118,7 @@ Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como to
 
 
 <p align="center">
-  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_7.png"  height="550" />
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_7.png"  height="1300" />
 </p>
 
 **Notas**
