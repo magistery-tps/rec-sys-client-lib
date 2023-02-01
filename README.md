@@ -122,7 +122,7 @@ Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como to
 </p>
 
 **Notas**
-1. Sección de metricas para el usuario en session(Logueado).
+1. Sección de metricas para el usuario en sesión(Logueado).
 2. Sección de metricas generales.
 
 
