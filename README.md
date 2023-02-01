@@ -99,6 +99,26 @@ Existe un CRUD de items que permite modificarlo mismos. Tambien es posible filta
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_4.png"  height="550" />
 </p>
 
+
+### Metrics
+
+Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como todos los usuarios. La metricas Principal es Normalized Discount Cumulative Gain(NDGC). En ambas secciones se puede visualizar:
+
+* Timeline: Linea de tiempo de NDGC calculado en cada paso de votación. (Cada paso de votacion evalua una lsita de recomendaciones).
+* Histograma y boxplot de NDGC.
+* A nivel usuario se puede visualizar los usuarios mar cercanos, junto con su nivel de similitud con el usuario actual. Nota: El usuario actual tiene similitud 1 con sigo mismo.
+
+
+
+<p align="center">
+  <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_7.png"  height="550" />
+</p>
+
+**Notas**
+1. 
+2. Por defecto la calificacion es cero.
+
+
 **Notas**
 
 1. El filtro soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
