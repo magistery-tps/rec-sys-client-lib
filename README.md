@@ -99,6 +99,13 @@ Existe un CRUD de items que permite modificarlo mismos. Tambien es posible filta
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_4.png"  height="550" />
 </p>
 
+**Notas**
+
+1. El filtro soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
+2. Ver la vista de detalle de un item.
+3. Navegar una lista de items resulado de una buqeuda o
+
+
 
 ### Metrics
 
@@ -115,14 +122,8 @@ Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como to
 </p>
 
 **Notas**
-1. 
-2. Por defecto la calificacion es cero.
+1. Sección de metricas para el usuario en session(Logueado).
+2. Sección de metricas generales.
 
-
-**Notas**
-
-1. El filtro soporta pasar una lista de tags separados por comas. Ademas, se puede buscar items quw no contenga un tag con el operador se negación (**-**).
-2. Ver la vista de detalle de un item.
-3. Navegar una lista de items resulado de una buqeuda o
 
 
