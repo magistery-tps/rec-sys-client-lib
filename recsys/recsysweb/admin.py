@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 from .models import (
     Item,
     Interaction,
@@ -83,10 +85,18 @@ class ItemAdmin(admin.ModelAdmin):
 
     list_display = ['name', 'get_tags', 'id']
 
-
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('tags')
 
 
     def get_tags(self, obj):
         return u", ".join(o.name for o in obj.tags.all())
+
+
+admin.site.unregister(User)
+
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    list_display = ('id', 'username', 'email', 'first_name', 'last_name')
+    readonly_fields = ('id',)
+
