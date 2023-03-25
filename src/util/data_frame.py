@@ -10,7 +10,8 @@ def seq_by_id(df, entity=None, column_id=None, column_seq=None):
         column_id  = f'{entity}_id'
         column_seq = f'{entity}_seq'
 
-    return pd.Series(df[column_id].values, index=df[column_seq]).to_dict()
+    #                  entry.value                  entry.key
+    return pd.Series(df[column_seq].values, index=df[column_id]).to_dict()
 
 
 # DF Pipeline functions...
