@@ -8,7 +8,11 @@ class TMDbData:
         self.logger = get_logger(self)
 
     @property
-    def poster(self): return "https://image.tmdb.org/t/p/w500/" + self.data['poster_path']
+    def poster(self):
+        if 'poster_path' in self.data and self.data['poster_path']:
+            return "https://image.tmdb.org/t/p/w500/" + self.data['poster_path']
+        else:
+            return None
 
     @property
     def imdb_id(self): return self.data['imdb_id']

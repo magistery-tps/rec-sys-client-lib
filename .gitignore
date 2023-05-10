@@ -131,3 +131,9 @@ dmypy.json
 datasets/amazon-books/
 
 temp/
+
+datasets/interactions.json
+datasets/movielens-movies.json
+datasets/movies.json
+
+thesis-datasets/

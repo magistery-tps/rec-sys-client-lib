@@ -37,3 +37,4 @@ dependencies:
         - sentence-transformers
         - singleton-decorator
         - plotly
+        - parallel-pandas

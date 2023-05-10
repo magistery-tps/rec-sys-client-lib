@@ -26,9 +26,9 @@ class NonScoredPopularityRecommender(Recommender):
 
 
     def recommend(self, ctx: RecommenderContext):
-        user_unrated_items = self.__item_service.unrated_by(ctx.user, ctx.shuffle_limit)
- 
-        selected_items = random.sample(list(user_unrated_items), ctx.limit)
+        items = self.__item_service.unrated_by(ctx.user, ctx.shuffle_limit)
+
+        selected_items = random.sample(list(items), ctx.limit) if len(items) >= ctx.limit else items
 
         selected_items = sorted(
             selected_items,
@@ -39,7 +39,7 @@ class NonScoredPopularityRecommender(Recommender):
         return Recommendations(
             metadata = self.metadata,
             items    = selected_items,
-            info     = 'At the moment there are no recommendations.' if len(user_unrated_items) == 0 else ''
+            info     = 'At the moment there are no recommendations.' if len(items) == 0 else ''
         )
 
 
