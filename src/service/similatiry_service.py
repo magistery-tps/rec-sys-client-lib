@@ -1,12 +1,12 @@
-import numpy as np
-import util as ut
-import pandas as pd
-import model as ml
-from logger import get_logger
-from sklearn.metrics.pairwise import cosine_similarity
 import multiprocessing as mp
 from itertools import combinations
+
+import numpy as np
+import pandas as pd
 import tqdm
+from logger import get_logger
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 class EmbeddingCache:
     def __init__(self, embedding_matrix):
@@ -24,8 +24,7 @@ class SimilarityService:
     def __init__(self):
         self._logger = get_logger(self)
 
-
-    def similarities(self, embedding_matrix, entity='', n_workers=24, chunks=10_000):
+    def similarities(self, embedding_matrix, entity='', n_workers=200, chunks=1_000):
         embeddingCache = EmbeddingCache(embedding_matrix)
         similarities = []
 
@@ -39,16 +38,16 @@ class SimilarityService:
         self._logger.info(f'Compute {entity}_seq embeddings(size: {embedding_matrix.shape[1]})...')
         input_data = []
         for comb in row_id_combinations:
-            a_id,  b_id  = comb[0], comb[1]
+            a_id, b_id = comb[0], comb[1]
             a_emb, b_emb = embeddingCache[a_id], embeddingCache[b_id]
             input_data.append((a_id, b_id, a_emb, b_emb, entity))
 
         self._logger.info(f'Compute {entity}_id similarities...\n')
         with mp.Pool(processes=n_workers) as pool:
-            similarities = [r for r in tqdm.tqdm(pool.imap_unordered(compute_similatiry, input_data, chunks), total=len(input_data))]
+            similarities = [r for r in tqdm.tqdm(pool.imap_unordered(compute_similatiry, input_data, chunks),
+                                                 total=len(input_data))]
 
         return pd.DataFrame(similarities).drop_duplicates()
-
 
     def filter_most_similars(self, df, columns, n):
         self._logger.info(f'Filter {n} most similars')
@@ -71,10 +70,10 @@ class SimilarityService:
 
         filtered = pd.concat(results)
 
-        self._logger.info(f'Filtered: {filtered.shape[0]}/{df.shape[0]} ({(1-(filtered.shape[0]/df.shape[0]))*100:.1f}%)')
+        self._logger.info(
+            f'Filtered: {filtered.shape[0]}/{df.shape[0]} ({(1 - (filtered.shape[0] / df.shape[0])) * 100:.1f}%)')
 
         return filtered
-
 
 
 def compute_similatiry(args):

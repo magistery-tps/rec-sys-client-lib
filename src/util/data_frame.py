@@ -1,17 +1,27 @@
-from scipy.sparse import  dok_matrix, csr_matrix
-import logging
-import pandas as pd
 import logging
 
+import pandas as pd
+import tqdm
+from scipy.sparse import dok_matrix, csr_matrix
 
 
 def seq_by_id(df, entity=None, column_id=None, column_seq=None):
     if entity:
-        column_id  = f'{entity}_id'
+        column_id = f'{entity}_id'
         column_seq = f'{entity}_seq'
+    return df_to_dict(df, column_id, column_seq)
 
+
+def id_by_seq(df, entity=None, column_id=None, column_seq=None):
+    if entity:
+        column_id = f'{entity}_id'
+        column_seq = f'{entity}_seq'
+    return df_to_dict(df, column_seq, column_id)
+
+
+def df_to_dict(df, key_column, value_column):
     #                  entry.value                  entry.key
-    return pd.Series(df[column_seq].values, index=df[column_id]).to_dict()
+    return pd.Series(df[value_column].values, index=df[key_column]).to_dict()
 
 
 # DF Pipeline functions...
@@ -26,12 +36,14 @@ def normalize_column(df, source, target=None):
 def min_max_scale_column(df, source, target=None):
     if target is None:
         target = source
-    df[target] = (df[source]-df[source].min())/(df[source].max()-df[source].min())
+    df[target] = (df[source] - df[source].min()) / (df[source].max() - df[source].min())
     return df
+
 
 def apply_fn_to_column(df, target, fn):
     df[target] = fn(df)
     return df
+
 
 def clean_html_format(df, column):
     import re
@@ -39,7 +51,7 @@ def clean_html_format(df, column):
     # as per recommendation from @freylis, compile once only
     CLEANR = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
 
-    def clean_html(raw_html):  return re.sub(CLEANR, '', raw_html) if raw_html else '' 
+    def clean_html(raw_html):  return re.sub(CLEANR, '', raw_html) if raw_html else ''
 
     df[column] = df[column].apply(clean_html)
     return df
@@ -49,17 +61,16 @@ def distinct_by(df, columns=[]):
     n_before = df.shape[0]
     df = df.drop_duplicates(subset=columns)
     n_after = df.shape[0]
-    logging.info(f'Repeated rows by {columns} -> Count: {n_before - n_after}, Percent: {((n_before - n_after)/n_before)*100:.2f}%')
+    logging.info(
+        f'Repeated rows by {columns} -> Count: {n_before - n_after}, Percent: {((n_before - n_after) / n_before) * 100:.2f}%')
     return df
 
 
-
 def df_to_matrix(
-    df,
-    x_col,
-    y_col,
-    value_col   = 'rating',
-    progress    = 10
+        df,
+        x_col,
+        y_col,
+        value_col='rating'
 ):
     logging.info(f'Building matrix({x_col}, {y_col})')
 
@@ -68,18 +79,12 @@ def df_to_matrix(
         len(df[y_col].unique())
     ))
 
-    n_examples = df.shape[0]
-    count      = 0
-    for _, row in df.iterrows():
+    for _, row in tqdm.tqdm(df.iterrows(), total=df.shape[0]):
         try:
-            matrix[ int(row[x_col]), int(row[y_col]) ] = float(row[value_col])
+            matrix[int(row[x_col]), int(row[y_col])] = float(row[value_col])
         except IndexError as e:
             logging.error(f'Not found index matrix[{int(row[x_col])}, {int(row[y_col])}]')
             raise e
-
-        count += 1
-        if count % int(n_examples / progress) == 0:
-            logging.info(f'Building matrix{matrix.shape}... {(count / n_examples) * 100:.0f}%')
 
     return csr_matrix(matrix)
 

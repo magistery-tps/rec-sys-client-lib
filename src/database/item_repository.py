@@ -6,12 +6,14 @@ class ItemRepository(Repository):
     def save(self, row):
         query = """
             INSERT INTO
-                recsys.recsysweb_item(id, name, description, image, popularity)
+                recsys.recsysweb_item(id, name, description, image, rating, votes, popularity)
             VALUES (
                 :ID,
                 ":NAME",
                 ":DESC",
                 ":IMAGE",
+                0,
+                0,
                 0
             );
             """.replace(':ID', str(row['id'])) \

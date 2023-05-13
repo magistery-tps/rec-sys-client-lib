@@ -1,53 +1,51 @@
-import numpy as np
-import util as ut
-import pandas as pd
-import model as ml
-from logger import get_logger
-from enum import Enum
 import api
 import mapper
+import pandas as pd
+import util as ut
+from logger import get_logger
 
 
 class SimilarityMatrixService:
     def __init__(
-        self,
-        matrix_repository,
-        cell_repository,
-        interaction_service,
-        similarity_service
+            self,
+            matrix_repository,
+            cell_repository,
+            interaction_service,
+            similarity_service
     ):
-        self.__matrix_repository   = matrix_repository
-        self.__cell_repository     = cell_repository
+        self.__matrix_repository = matrix_repository
+        self.__cell_repository = cell_repository
         self.__interaction_service = interaction_service
-        self.__similarity_service  = similarity_service
-        self._logger               = get_logger(self)
-
+        self.__similarity_service = similarity_service
+        self._logger = get_logger(self)
 
     def update_user_similarity_matrix(
-        self,
-        user_similarities,
-        interactions,
-        name,
-        n_most_similars = 50
+            self,
+            user_similarities,
+            interactions,
+            name,
+            n_most_similars=50
     ):
         # Get similarity matrix...
-        similarity_matrix = self.create_or_get(name, type = api.SimilarityMatrixType.USER_TO_USER)
+        similarity_matrix = self.create_or_get(name, type=api.SimilarityMatrixType.USER_TO_USER)
 
         similarity_matrix.version += 1
 
         # Map sequences to ids
-        user_seq_by_id = ut.seq_by_id(interactions, entity='user')
+        user_id_by_seq = ut.id_by_seq(interactions, entity='user')
+        # breakpoint()
 
         # Prepare cells...
         cells = self.__similarity_service.filter_most_similars(
             user_similarities,
-            columns = ['user_a', 'user_b'],
-            n      = n_most_similars
+            columns=['user_a', 'user_b'],
+            n=n_most_similars
         )
 
-        cells           = cells.rename(columns={'user_a': 'row', 'user_b': 'column'})
-        cells['row']    = cells['row'].apply(lambda seq: user_seq_by_id[seq])
-        cells['column'] = cells['column'].apply(lambda seq: user_seq_by_id[seq])
+        cells = cells.rename(columns={'user_a': 'row', 'user_b': 'column'})
+
+        cells['row'] = cells['row'].apply(lambda seq: user_id_by_seq[seq])
+        cells['column'] = cells['column'].apply(lambda seq: user_id_by_seq[seq])
 
         self.add_cells_and_update(similarity_matrix, cells)
 
@@ -57,31 +55,32 @@ class SimilarityMatrixService:
         return similarity_matrix
 
     def update_item_similarity_matrix(
-        self,
-        item_similarities,
-        interactions,
-        name,
-        n_most_similars = 50
+            self,
+            item_similarities,
+            interactions,
+            name,
+            n_most_similars=50
     ):
         # Get similarity matrix...
-        similarity_matrix = self.create_or_get(name, type = api.SimilarityMatrixType.ITEM_TO_ITEM)
+        similarity_matrix = self.create_or_get(name, type=api.SimilarityMatrixType.ITEM_TO_ITEM)
 
         similarity_matrix.version += 1
 
         # Map sequences to ids...
-        item_seq_by_id = ut.seq_by_id(interactions, entity='item')
+        item_id_by_seq = ut.id_by_seq(interactions, entity='item')
+        # breakpoint()
 
         # Prepare most similar cells...
         cells = self.__similarity_service.filter_most_similars(
             item_similarities,
-            columns = ['item_a', 'item_b'],
-            n       = n_most_similars
+            columns=['item_a', 'item_b'],
+            n=n_most_similars
         ).rename(
             columns={'item_a': 'row', 'item_b': 'column'}
         )
-        cells           = cells.rename(columns={'item_a': 'row', 'item_b': 'column'})
-        cells['row']    = cells['row'].apply(lambda seq: item_seq_by_id[seq])
-        cells['column'] = cells['column'].apply(lambda seq: item_seq_by_id[seq])
+        cells = cells.rename(columns={'item_a': 'row', 'item_b': 'column'})
+        cells['row'] = cells['row'].apply(lambda seq: item_id_by_seq[seq])
+        cells['column'] = cells['column'].apply(lambda seq: item_id_by_seq[seq])
 
         self.add_cells_and_update(similarity_matrix, cells)
 
@@ -97,17 +96,16 @@ class SimilarityMatrixService:
         self.add_cells(similarity_matrix, cells)
         self.update(similarity_matrix)
 
-
     def create_or_get(
-        self,
-        name : str,
-        type : api.SimilarityMatrixType,
-        desc : str = None
+            self,
+            name: str,
+            type: api.SimilarityMatrixType,
+            desc: str = None
     ):
         if desc is None:
             desc = name
 
-        query={'name': name, 'type': str(type.value)}
+        query = {'name': name, 'type': str(type.value)}
 
         models = self.__matrix_repository.find(query)
 
@@ -118,14 +116,12 @@ class SimilarityMatrixService:
             self._logger.info(f'Insert {name} {type} matrix.')
             return self.__matrix_repository.add(name, type, desc)
 
-
-    def update(self, model): return self.__matrix_repository.update(model)
-
+    def update(self, model):
+        return self.__matrix_repository.update(model)
 
     def add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=5_000):
-        cells['matrix']  = matrix.id
+        cells['matrix'] = matrix.id
         cells['version'] = matrix.version
 
         iterator = ut.DataFramePaginationIterator(cells, page_size=page_size)
         [self.__cell_repository.add_many(page) for page in iterator]
-

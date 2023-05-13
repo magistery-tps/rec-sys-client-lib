@@ -26,6 +26,9 @@ class Database:
 
 
     def reset(self):
-      self.execute('DELETE FROM recsys.recsysweb_interaction')
-      self.execute('ALTER TABLE recsys.recsysweb_item MODIFY id int(11) NOT NULL')
-      self.execute('DELETE FROM recsys.recsysweb_item')
+        self.execute('DELETE FROM recsys.recsysweb_interaction')
+        self.execute('ALTER TABLE recsys.recsysweb_item MODIFY id int(11) NOT NULL')
+        self.execute('ALTER TABLE recsys.recsysweb_item MODIFY id int(11) NOT NULL')
+        self.execute('DELETE FROM recsys.recsysweb_item')
+        self.execute('DELETE FROM recsys.taggit_taggeditem')
+        self.execute('DELETE FROM recsys.taggit_tag')

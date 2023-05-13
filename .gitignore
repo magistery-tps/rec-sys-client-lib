@@ -136,4 +136,6 @@ datasets/interactions.json
 datasets/movielens-movies.json
 datasets/movies.json
 
-thesis-datasets/
+thesis-datasets
+
+.idea

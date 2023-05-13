@@ -7,5 +7,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunSQL("ALTER TABLE recsys.auth_user AUTO_INCREMENT=5000")
+        migrations.RunSQL("ALTER TABLE recsys.auth_user AUTO_INCREMENT=500000")
     ]

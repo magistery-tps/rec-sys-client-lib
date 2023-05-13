@@ -5,11 +5,17 @@ from singleton_decorator import singleton
 from django.core.paginator import Paginator
 from django.conf import settings
 from ..logger import get_logger
+import pickle
 
 
 class MinMaxScaler:
     def __init__(self, values): self.min_value, self.max_value = min(values), max(values)
     def __call__(self, value): return  (value - self.min_value) / (self.max_value - self.min_value)
+
+
+def load(path):
+    with open(f'{path}.pickle', 'rb') as handle:
+        return pickle.load(handle)
 
 
 @singleton
@@ -116,7 +122,7 @@ class ItemService:
 
 
     def most_populars(self, limit):
-        return Item.objects.all().order_by('popularity')[:limit]
+        return Item.objects.all().order_by('-popularity')[:limit]
 
 
     def unrated_by(self, user, limit):
@@ -150,3 +156,19 @@ class ItemService:
                 .replace(':USER_ID', str(user.id)) \
                 .replace(':LIMIT', str(limit))
         )
+
+    
+    def add_tags_from(self, path):
+        filtered_items = [(name, tags) for (name, tags) in load(path).items() if len(tags) > 0]
+
+        self.logger.info(f'Item with tags: {len(filtered_items)}')
+
+        for (id, tags) in filtered_items:
+            result = Item.objects.filter(id=id)
+            if len(result) > 0:
+                item = result[0]
+                self.logger.info(f'Item: {item}, Tags: {tags}')
+                for tag in tags:
+                    item.tags.add(tag)
+
+

@@ -24,13 +24,13 @@ class PopularityRecommender(Recommender):
         )
 
     def recommend(self, ctx: RecommenderContext):
-        items = self.__item_service.most_populars(ctx.shuffle_limit)
+        items = list(self.__item_service.most_populars(ctx.shuffle_limit))
 
-        selected_items = random.sample(list(items), ctx.limit) if len(items) >= ctx.limit else items
+        selected_items = random.sample(items, ctx.limit) if len(items) >= ctx.limit else items
 
         selected_items = sorted(
             selected_items,
-            key     = lambda item: item.popularity if item.popularity else 0,
+            key     = lambda item: item.popularity,
             reverse = True
         )
 
