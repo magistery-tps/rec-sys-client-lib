@@ -116,7 +116,6 @@ Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como to
 * A nivel usuario se puede visualizar los usuarios mar cercanos, junto con su nivel de similitud con el usuario actual. Nota: El usuario actual tiene similitud 1 con sigo mismo.
 
 
-
 <p align="center">
   <img src="https://github.com/magistery-tps/rec-sys/blob/main/images/screenshot_7.png"  height="1400" />
 </p>
@@ -124,6 +123,5 @@ Es posible visualizar metricas tanto a nivel usuario en sesion(Logueado) como to
 **Notas**
 1. Sección de metricas para el usuario en sesión(Logueado).
 2. Sección de metricas generales.
-
 
 

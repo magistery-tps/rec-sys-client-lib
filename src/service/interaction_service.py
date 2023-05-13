@@ -98,7 +98,7 @@ class InteractionService:
             if row[columns[2]] == None or row[columns[2]] < min_rating:
                 continue
 
-            user_id, item_id = row[columns[0]].astype(int), row[columns[1]].astype(int)
+            user_id, item_id = row[columns[0]], row[columns[1]]
 
             if user_id not in items_by_user:
                 items_by_user[user_id] = set()

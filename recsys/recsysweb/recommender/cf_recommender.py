@@ -92,7 +92,11 @@ class CollaborativeFilteringRecommender(Recommender):
 
         similar_user_interactions = []
         for similar_user_id in similar_user_ids:
-            similar_user_interactions.extend(Interaction.objects.filter(user=similar_user_id)[:self.config.max_items_by_similar_user])
+            interactions_query = Interaction.objects \
+                .filter(user=similar_user_id) \
+                .order_by('-rating')[:self.config.max_items_by_similar_user]
+
+            similar_user_interactions.extend(interactions_query)
 
         rating_by_item_id = {}
         for i in similar_user_interactions:

@@ -1,4 +1,3 @@
-from surprise import SVD
 import data as dt
 import util as ut
 from .job import Job
@@ -41,7 +40,6 @@ class SurpriseDistanceMatrixJob(Job):
             self._logger.info(f'Fount interactions size change.')
             self._logger.info(f'Start Computing...')
 
-
         # Build ratings matrix from user-item interactions..
         rating_matrix, train_interactions = self.ctx.rating_matrix_service.create(
             interactions,
@@ -77,7 +75,7 @@ class SurpriseDistanceMatrixJob(Job):
 
 
     def _upsert_recommender(self, user_similarities, item_similarities, interactions):
-        # Update user/item similarity matrix into RecSys API... 
+        # Update user/item similarity matrix into RecSys API...
         user_similarity_matrix = self.ctx.similarity_matrix_service.update_user_similarity_matrix(
             user_similarities,
             interactions,

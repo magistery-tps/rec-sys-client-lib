@@ -6,7 +6,6 @@ from singleton_decorator import singleton
 
 
 @singleton
-
 class SimilarityMatrixService:
     def __init__(self):
         self.logger = get_logger(self)
