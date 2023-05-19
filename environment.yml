@@ -1,4 +1,4 @@
-name: recsys
+name: recsys-client-side
 channels:
     - defaults
     - pytorch
@@ -11,31 +11,18 @@ dependencies:
     - jupyterlab
     - ipywidgets
     - scikit-learn
-    - django
-    - django-allauth
-    - djangorestframework
-    - django-heroku
-    - django-cors-headers
     - pymysql
     - mysql-connector-python
     - tqdm
     - bunch
-    - networkx
     - pyyaml
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116
         - torch==1.12.1+cu116
         - simple-rest-client
-        - django-apscheduler
         - surprise
-        - persist-queue
-        - django-filter
-        - django-extensions
-        - django-taggit
         - selectorlib
-        - colorlog
         - sentence-transformers
         - singleton-decorator
-        - plotly
         - parallel-pandas
