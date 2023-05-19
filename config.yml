@@ -1,0 +1,4 @@
+temp_path: './temp'
+api:
+  host: 'http://nonosoft.ddns.net:8000'
+  token: 'e3ff025094fe0ee474501bbeda0a2a44e80230c1'

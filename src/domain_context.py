@@ -10,20 +10,17 @@ from surprise import SVD, NMF
 
 
 class DomainContext(metaclass=ut.SingletonMeta):
-    def __init__(
-        self,
-        host,
-        token     = 'e3ff025094fe0ee474501bbeda0a2a44e80230c1',
-        temp_path = '../../temp'
-    ):
-        self.temp_path = temp_path
+    def __init__(self, cfg_path = './config'):
+        cfg = ut.YmlUtil.load(cfg_path)
+
+        self.temp_path = cfg.temp_path
         ut.mkdir(self.temp_path)
 
         LoggerBuilder.build()
         warnings.filterwarnings('ignore')
 
 
-        self.__client = api.RecSysApi(token, host)
+        self.__client = api.RecSysApi(cfg.api.token, cfg.api.host)
 
         # Mappers
         user_mapper                   = UserMapper()

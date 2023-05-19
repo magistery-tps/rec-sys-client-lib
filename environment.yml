@@ -1,4 +1,4 @@
-name: rec-sys
+name: recsys
 channels:
     - defaults
     - pytorch
@@ -21,6 +21,7 @@ dependencies:
     - tqdm
     - bunch
     - networkx
+    - pyyaml
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116
