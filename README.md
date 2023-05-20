@@ -4,6 +4,7 @@ Este repositorio contiene soporte para implementar:
 
 * Acceso via repositorios a base de datos de rec-sys.
 * Acceso via api REST para configurar recomendadores y actualizar datos en rec-sys.
+* Jobs: Construccion de matrices de similitud, user-user e item-item utilizando: SVD, NFM y Bert 
 
 ## Requisitos
 
