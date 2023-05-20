@@ -25,6 +25,18 @@ class SimilarityService:
         self._logger = get_logger(self)
 
     def similarities(self, embedding_matrix, entity='', n_workers=200, chunks=1_000):
+        """Create a similarity matrix given a embeddings matrix. Given a matrix with an embedding a
+        value return a matrix with a scaler similarity as value. Both matrix have same dimensions.
+
+        Args:
+            embedding_matrix (Embedding vector Matrix): A matrix of embedding vectors.
+            entity (str, optional): Name of entity to compute similarity. Defaults to ''.
+            n_workers (int, optional): Number of cpu processes used co compute similarity in  parallel way. Defaults to 200.
+            chunks (_type_, optional): Number of operations to compute for each worker. Defaults to 1_000.
+
+        Returns:
+            pd.DataFrame: A table with columns=[entity_a, entity_b, value].
+        """
         embeddingCache = EmbeddingCache(embedding_matrix)
         similarities = []
 
@@ -50,6 +62,21 @@ class SimilarityService:
         return pd.DataFrame(similarities).drop_duplicates()
 
     def filter_most_similars(self, df, columns, n):
+        """Returns each item with most N similar items relations from a give input pd.DataFrame table.
+        This input table has next structure:
+
+        columns=['entity_a', 'entity_b', 'value']
+
+        Where value is the similarity between entity_a and entity_b.
+
+        Args:
+            df (pd.DataFrame): _description_
+            columns (_type_): Columns that identifier a relation or similarity. i.e.: ['entity_a', 'entity_b']
+            n (int): Number of most similar rows to filter.
+
+        Returns:
+            pd.DataFrame: A table with only most N similar entity related to each entity into input table,
+        """
         self._logger.info(f'Filter {n} most similars')
 
         ids = []

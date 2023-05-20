@@ -26,8 +26,20 @@ class SimilarityMatrixService:
             name,
             n_most_similars=50
     ):
+        """Update a similarity matrix with a new version of cells. Each update create a new similarity matrix cells version
+         associated with a unique similarity matrix entity.
+
+        Args:
+            name (str): A similarity matrix name. It's a similarity matrix identifier.
+            user_similarities (pd.DataFrame): A table with columns[user_a, user_b, similarity].
+            interactions (ps.DataFrame): A table with columns=[user_id, user_seq, item_id, item_seq]. It contains real(non-predicted) user interactions.
+            n_most_similars (int, optional): Take into account only n_most_similars users. Defaults to 50.
+
+        Returns:
+            Model: A new or updated similarity matrix model.
+        """
         # Get similarity matrix...
-        similarity_matrix = self.create_or_get(name, type=api.SimilarityMatrixType.USER_TO_USER)
+        similarity_matrix = self.__create_or_get(name, type=api.SimilarityMatrixType.USER_TO_USER)
 
         similarity_matrix.version += 1
 
@@ -47,7 +59,7 @@ class SimilarityMatrixService:
         cells['row'] = cells['row'].apply(lambda seq: user_id_by_seq[seq])
         cells['column'] = cells['column'].apply(lambda seq: user_id_by_seq[seq])
 
-        self.add_cells_and_update(similarity_matrix, cells)
+        self.__add_cells_and_update(similarity_matrix, cells)
 
         # Remove previous matrix version after add new version cells...
         self.__matrix_repository.remove_previous_versions(similarity_matrix.id)
@@ -61,8 +73,20 @@ class SimilarityMatrixService:
             name,
             n_most_similars=50
     ):
+        """Update a similarity matrix with a new version of cells. Each update create a new similarity matrix cells version
+         associated with a unique similarity matrix entity.
+
+        Args:
+            name (str): A similarity matrix name. It's a similarity matrix identifier.
+            user_similarities (pd.DataFrame): A table with columns[item_a, item_b, similarity]..
+            interactions (ps.DataFrame): A table with columns=[user_id, user_seq, item_id, item_seq]. It contains real(non-predicted) user interactions.
+            n_most_similars (int, optional): Take into account only n_most_similars users. Defaults to 50.
+
+        Returns:
+            Model: A new or updated similarity matrix model.
+        """
         # Get similarity matrix...
-        similarity_matrix = self.create_or_get(name, type=api.SimilarityMatrixType.ITEM_TO_ITEM)
+        similarity_matrix = self.__create_or_get(name, type=api.SimilarityMatrixType.ITEM_TO_ITEM)
 
         similarity_matrix.version += 1
 
@@ -82,21 +106,23 @@ class SimilarityMatrixService:
         cells['row'] = cells['row'].apply(lambda seq: item_id_by_seq[seq])
         cells['column'] = cells['column'].apply(lambda seq: item_id_by_seq[seq])
 
-        self.add_cells_and_update(similarity_matrix, cells)
+        self.__add_cells_and_update(similarity_matrix, cells)
 
         # Remove previous matrix version after add new version cells...
         self.__matrix_repository.remove_previous_versions(similarity_matrix.id)
 
         return similarity_matrix
 
-    def add_cells_and_update(self, similarity_matrix, cells):
-        """
-            Add cells and update simialrity matrix fields.
-        """
-        self.add_cells(similarity_matrix, cells)
-        self.update(similarity_matrix)
 
-    def create_or_get(
+    def __add_cells_and_update(self, similarity_matrix, cells):
+        """
+            Add cells and update similarity matrix fields.
+        """
+        self.__add_cells(similarity_matrix, cells)
+        self.__update(similarity_matrix)
+
+
+    def __create_or_get(
             self,
             name: str,
             type: api.SimilarityMatrixType,
@@ -116,10 +142,12 @@ class SimilarityMatrixService:
             self._logger.info(f'Insert {name} {type} matrix.')
             return self.__matrix_repository.add(name, type, desc)
 
-    def update(self, model):
+
+    def __update(self, model):
         return self.__matrix_repository.update(model)
 
-    def add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=5_000):
+
+    def __add_cells(self, matrix: mapper.Model, cells: pd.DataFrame, page_size=5_000):
         cells['matrix'] = matrix.id
         cells['version'] = matrix.version
 

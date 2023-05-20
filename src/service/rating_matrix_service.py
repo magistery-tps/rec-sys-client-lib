@@ -34,6 +34,21 @@ class RatingMatrixService:
             min_n_interactions=20,
             rating_scale=np.arange(3, 6, 0.5)
     ):
+        """Create a new user-item rating matrix. It method create a complete rating matrix given an incomplete list of user interactions.
+        Train a given model with an incomplete list of user interactions to predict missing user interactions.
+        It only consider user with min_n_interactions and also user interactions with ratings contained into rating_scale range.
+
+        Args:
+            train_interactions (pd.DataFrame): Current user interactions DataFrame used to predict missing interactions.
+            model (ModelManager): A machine learning model used to predict missing user interactions.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating
+            matrix_type (RatingMatrixType, optional): Matrix type to build: USER_ITEM, ITEM_TO_USER(A USER_ITEM transposed version). Defaults to RatingMatrixType.USER_ITEM.
+            min_n_interactions (int, optional): Filter user with a minimum number of interactions. Defaults to 20.
+            rating_scale (int list, optional): rating values to filter. Defaults to np.arange(3, 6, 0.5).
+
+        Returns:
+            Matrix[used_seq, item_seq] = Rating: A sparse ratings matrix.
+        """
         train_interactions = train_interactions \
             .pipe(self.__interaction_service.filter_by_rating_scale, columns, rating_scale) \
             .pipe(self.__interaction_service.filter_users_by_min_interactions, columns, min_n_interactions)

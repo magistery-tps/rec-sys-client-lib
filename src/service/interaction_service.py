@@ -20,6 +20,16 @@ class InteractionService:
         columns            = ('user_seq', 'item_seq', 'rating'),
         min_n_interactions = 20
     ):
+        """Query into a given pd.DataFrame the number of interactions by user filtered by min_n_interactions count.
+
+        Args:
+            df (pd.DataFrame): DataFrame with user interactions.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating').
+            min_n_interactions (int, optional): Filter user with a minimum number of interactions. Defaults to 20.
+
+        Returns:
+            pd.DataFrame: A filtered table.
+        """
         return df  \
             .groupby(columns[0], as_index=False)[columns[1]] \
             .count() \
@@ -33,6 +43,16 @@ class InteractionService:
         columns      = ('user_seq', 'item_seq', 'rating'),
         rating_scale = np.arange(3, 6, 0.5)
     ):
+        """Filter a given interactions pd.DataFrame by ratings contained into rating_scale argument.
+
+        Args:
+            df (pd.DataFrame): DataFrame with user interactions.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating').
+            rating_scale (int list, optional): rating values to filter. Defaults to np.arange(3, 6, 0.5).
+
+        Returns:
+            pd.DataFrame: Input pd.DataFrame filtered.
+        """
         self._logger.info(f'Filter by {columns[2]} scale: {rating_scale}')
 
         df_filtered = df.pipe(lambda df: df[df[columns[2]].isin(rating_scale)])
@@ -47,6 +67,16 @@ class InteractionService:
         columns            = ('user_seq', 'item_seq', 'rating'),
         min_n_interactions = 20,
     ):
+        """Filter user into given interactions pd.DataFrame with min_n_interactions.
+
+        Args:
+            df (pd.DataFrame): DataFrame with user interactions.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating').
+            min_n_interactions (int, optional): Filter user with a minimum number of interactions. Defaults to 20.
+
+        Returns:
+            pd.DataFrame: Input pd.DataFrame filtered.
+        """
         self._logger.info(f'Filter interactions by user_n_interactions >= {min_n_interactions}')
 
         user_ids = self.n_interactions_by_user(df, columns, min_n_interactions)[columns[0]].unique()
@@ -57,7 +87,33 @@ class InteractionService:
         return df_filtered
 
 
+    def add_many(self, interactions: pd.DataFrame, page_size=10):
+        """Allows to add a list of user interactions from a pandas DataFrame. DataFrame must have next columns:
+
+        row =  {
+            'user'              : int user id,
+            'item'              : int item id,
+            'rating'            : float,
+            'suitable_to_train' : bool
+        }
+
+        Args:
+            interactions (pd.DataFrame): A DataFrame with user interaction as rows.
+            page_size(int, optional): Page size user to push interactions as a bulk insert.
+        """
+        iterator = ut.DataFramePaginationIterator(interactions, page_size=page_size)
+        [self.repository.add_many(page) for page in iterator]
+
+
     def find_all(self, page_size = 5000):
+        """Query all user interactions.
+
+        Args:
+            page_size (int, optional): Page size used to fetch user interactions. Defaults to 5000.
+
+        Returns:
+            pd.DataFrame: A pd.DataFrame with all user interactions.
+        """
         return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
 
 
@@ -67,6 +123,16 @@ class InteractionService:
         columns    = ('user_seq', 'item_seq', 'rating'),
         min_rating = 1
     ):
+        """Returns interactions that users has not performed yet.
+
+        Args:
+            df (ps.DataFrame): An user interactions pd.DataFrame.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating').
+            min_rating (int, optional): A user interaction with min_rating is consider a real user interaction. Defaults to 1.
+
+        Returns:
+            pd.DataFrame: A DataFrame of (user_id, item_id) tuples.
+        """
         items_by_user = self.items_by_user(df, columns, min_rating)
 
         all_item_ids = set(df[columns[1]].unique())
@@ -91,6 +157,18 @@ class InteractionService:
         columns    = ('user_seq', 'item_seq', 'rating'),
         min_rating = 1
     ):
+        """Return a dict with user_id key and a list of items as value.
+        Item query all items rated for each user. Considering min_raging
+        interactions as a real interaction.
+
+        Args:
+            df (ps.DataFrame): An user interactions pd.DataFrame.
+            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to ('user_seq', 'item_seq', 'rating').
+            min_rating (int, optional): A user interaction with min_rating is consider a real user interaction. Defaults to 1.
+
+        Returns:
+            dict: a dist is (user_id, [item_id]) tuples.
+        """
         items_by_user = {}
 
         for _, row in df.iterrows():
@@ -125,7 +203,3 @@ class InteractionService:
         )
         fig.set_xlabel(columns[1])
 
-
-    def add_many(self, interactions: pd.DataFrame, page_size=10):
-        iterator = ut.DataFramePaginationIterator(interactions, page_size=page_size)
-        [self.repository.add_many(page) for page in iterator]
