@@ -11,6 +11,16 @@ class EntityRepository:
 
 
     def find(self, query={}, page_size = 100000):
+        """
+        Allows to query entities by ani entity field.
+
+        Args:
+            query (dict, optional): A dict of field_name: value pairs. Defaults to {}.
+            page_size (int, optional): Page size. Defaults to 100000.
+
+        Returns:
+            a dict list: A lost of dict. Each dist represent an entity or model like an interaction, a similar matrix, etc...
+        """
         iterator = api.ResourceIterator(
             self._client,
             self._entity,

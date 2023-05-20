@@ -13,4 +13,9 @@ class SimilarityCellRepository(EntityRepository):
 
 
     def remove(self, id: int):
+        """Remove a similar matrix cell by identifier
+
+        Args:
+            id (int): A similar matrix cell identifier.
+        """
         return self._client.remove_similarity_cell(id)
