@@ -2,12 +2,8 @@
 
 Este repositorio contiene soporte para implementar:
 
-* Notebooks.
-* Acceso via repositorios a la base de datos de rec-sys.
-* Acceso via api rest: Cliente rest para configurar recomendadores y actualizar datos en rec-sys.
-* Airflow Dags: Esto acceden los datos y configuraciones via api rest.
- 
-* Todas las opciones anteriores actuan como clientes de la aplicacion rec-sysm ya sea acceso a su base de datos como su api rest. Se recomienda acceder via api rest.
+* Acceso via repositorios a base de datos de rec-sys.
+* Acceso via api REST para configurar recomendadores y actualizar datos en rec-sys.
 
 ## Requisitos
 
