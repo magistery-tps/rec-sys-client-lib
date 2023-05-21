@@ -4,7 +4,16 @@ import math
 
 
 class DataFramePaginationIterator:
+    """
+    Iterate a pd.DataFrame by row pages.
+    """
     def __init__(self, df: pd.DataFrame, page_size: int=10):
+        """Constructor
+
+        Args:
+            df (pd.DataFrame): a DataFrame to iterate.
+            page_size (int, optional): Rows pages size. Defaults to 10.
+        """
         self.df        = df
         self.page_size = page_size
         self.page_num    = 0

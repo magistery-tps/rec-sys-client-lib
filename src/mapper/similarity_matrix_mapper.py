@@ -4,6 +4,10 @@ from .model  import Model
 
 
 class SimilarityMatrixMapper(Mapper):
+    """
+    Map a SimilarityMatrix model to dto and vice versa.
+    """
+
     def to_model(self, dto):
         return Model({
             'id'         : int(dto['id']),

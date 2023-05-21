@@ -6,6 +6,9 @@ def substring_after(s, delim): return s.partition(delim)[2]
 
 
 class InteractionMapper(Mapper):
+    """
+    Map a Interaction model to dto and vice versa.
+    """
     def to_model(self, dto):
         return Model({
             'user_id': int(dto['user']),

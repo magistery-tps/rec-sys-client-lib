@@ -12,12 +12,28 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 class BertItemDistanceMatrixJob(Job):
+    """This job perform next steps:
+
+    1. Get all user interactions from rec-sys REST API.
+    2. Compute all items embeddings from item name and description using a bert model defined into model_name constructor arg.
+    3. Build item-item similarity matrix using cosine-similarity.
+    4. Create or update matrix from step 3. into rec-sys REST API.
+
+    When it matrix could be used into any rec-sys recommender to perform an similar items recommendation.
+    """
     def __init__(
         self,
         ctx,
         model_name,
         n_most_similars = 50
     ):
+        """
+
+        Args:
+            ctx (DomainContext): a reference to domain context uses to access to all services.
+            model_name (str): ber pre-trained model used to genera an embeddings from item name + description.
+            n_most_similars (int, optional): Used to filter similarity relations only for n_most_similars of each item. Defaults to 50.
+        """
         super().__init__(ctx)
         self.n_most_similars = n_most_similars
         self._job_data_path  = f'{self.ctx.temp_path}/bert_item_{model_name}_job_data'

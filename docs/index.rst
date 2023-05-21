@@ -6,9 +6,16 @@
 Welcome to recsys-client-side's documentation!
 ==============================================
 
+.. include:: job.rst
 .. include:: api.rst
-.. include:: repository.rst
+.. include:: database.rst
 .. include:: service.rst
+.. include:: repository.rst
+.. include:: mapper.rst
+.. include:: model.rst
+.. include:: logger.rst
+.. include:: data.rst
+
 
 Indices and tables
 ==================

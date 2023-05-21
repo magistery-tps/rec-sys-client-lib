@@ -9,6 +9,14 @@ from .job import Job
 
 
 class SurpriseDistanceMatrixJob(Job):
+    """This job perform next steps:
+
+    1. Get all user interactions from rec-sys REST API.
+    2. Train a model with current user interactions and predict al future interactions.
+    3. Build a ratings matrix using current and future interactions.
+    4. Build user-item and item-item similarity matrix using cosine-similarity.
+    5. Create or update matrix from step 4. into rec-sys REST API.
+    """
     def __init__(
             self,
             ctx,
@@ -18,6 +26,16 @@ class SurpriseDistanceMatrixJob(Job):
             n_most_similars_users=50,
             n_most_similars_items=10
     ):
+        """Constructor
+
+        Args:
+            ctx (DomainContext): a reference to domain context uses to access to all services.
+            model (model.surprise.ModelManager): User to predict future user interactions.
+            recommender_name (str): Recommender name associated to user-item and item-item similarity matrix.
+            min_item_votes (int, optional): User to filter user with more than min_item_votes interactions. Defaults to 50.
+            n_most_similars_users (int, optional): Used to filter similarity relations only for n_most_similars_users of each user. Defaults to 50.
+            n_most_similars_items (int, optional): Used to filter similarity relations only for n_most_similars_items of each item. Defaults to 10.
+        """
         super().__init__(ctx)
         self._min_item_votes = min_item_votes
         self._n_most_similars_users = n_most_similars_users

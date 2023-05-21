@@ -26,6 +26,7 @@ class DatasetFactory:
 
 
 class ModelManager:
+    """Is a Surprise model wrapper."""
     def __init__(self, model=SVD()):
         self.model = model
         self._logger = get_logger(self)

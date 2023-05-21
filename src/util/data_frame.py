@@ -20,6 +20,16 @@ def id_by_seq(df, entity=None, column_id=None, column_seq=None):
 
 
 def df_to_dict(df, key_column, value_column):
+    """Convert two pd.DataFrame columns to a key-value dict.
+
+    Args:
+        df (ps.DataFrame): a data frame.
+        key_column (str): key column.
+        value_column (str): value column.
+
+    Returns:
+        dict[key_column] = value_column: a dict.
+    """
     #                  entry.value                  entry.key
     return pd.Series(df[value_column].values, index=df[key_column]).to_dict()
 
@@ -72,6 +82,20 @@ def df_to_matrix(
         y_col,
         value_col='rating'
 ):
+    """Convert a pd.DtaFrame to a 2d space matrix.
+
+    Args:
+        df (ps.DataFrame): a pandas data frame.
+        x_col (str): column to uses as x axis.
+        y_col (str): column to uses as y axis.
+        value_col (str, optional): _description_. Defaults to 'rating'.
+
+    Raises:
+        IndexError: when ani value into x_col, y_col is out of index range.
+
+    Returns:
+        float[int, int]: a sparse matrix.
+    """
     logging.info(f'Building matrix({x_col}, {y_col})')
 
     matrix = dok_matrix((
@@ -89,10 +113,37 @@ def df_to_matrix(
     return csr_matrix(matrix)
 
 
-def concat(df_a, df_b): return pd.concat([df_a, df_b], axis=0)
+def concat(df_a, df_b):
+    """Union of two pd.DataFrame objects. Both must have same columns.
+
+    Args:
+        df_a (pd.DataFrame): tabla a.
+        df_b (pd.DataFrame): table b.
+
+    Returns:
+        pd.DataFrame: _description_
+    """
+    return pd.concat([df_a, df_b], axis=0)
 
 
-def save(df, path, header=True): df.to_csv(path, encoding='utf-8', index=False, header=header)
+def save(df, path, header=True):
+    """SAve a pd.DataFrame to a csv file.
+
+    Args:
+        df (pd.DataFrame): table.
+        path (str): csv file path.
+        header (bool, optional): Include column names. Defaults to True.
+    """
+    df.to_csv(path, encoding='utf-8', index=False, header=header)
 
 
-def load(path): return pd.read_csv(path)
+def load(path):
+    """Load a pd.DataFrame from a csv file path.
+
+    Args:
+        path (str): csv file path.
+
+    Returns:
+        pd.DataFrame: table.
+    """
+    return pd.read_csv(path)

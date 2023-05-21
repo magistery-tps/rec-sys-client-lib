@@ -4,6 +4,7 @@ from .repository import Repository
 class ItemRepository(Repository):
     def __init__(self, database): super().__init__(database)
     def save(self, row):
+        """ Insert rows into rec-sys database."""
         query = """
             INSERT INTO
                 recsys.recsysweb_item(id, name, description, image, rating, votes, popularity)

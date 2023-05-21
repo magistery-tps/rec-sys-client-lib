@@ -3,6 +3,10 @@ from .model  import Model
 
 
 class ItemMapper(Mapper):
+    """
+    Map a Item model to dto and vice versa.
+    """
+
     def to_model(self, dto):
         return Model({
             'id'         : int(dto['id']),
