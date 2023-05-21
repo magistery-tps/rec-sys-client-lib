@@ -4,16 +4,23 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import sys
 sys.path.append('../src')
-import repository
 import api
-import service
-import job
+import data.dataset
+import data.plot.diagram
+import data.plot
+import data.plot.variable
+import data
 import database
+import domain_context
+import job
+import logger
 import mapper
 import model
-import logger
-import data
-
+import model.surprise
+import repository
+import service
+import tmdb_api
+import util
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information

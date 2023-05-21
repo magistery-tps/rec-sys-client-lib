@@ -494,10 +494,10 @@ class RecSysApi:
 
         Args:
             body (dict): Represent a recommender dto.
-
         Returns:
             ItemResponse: an ItemResponse object.
         """
+
         return self._resp(self.api.recommenders.add(body=dto))
 
 
