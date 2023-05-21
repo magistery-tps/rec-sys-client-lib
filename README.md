@@ -42,11 +42,11 @@ See [api.recsys.RecSysApi](https://magistery-tps.github.io/rec-sys-client-side/#
 **Step 3**: Execute a job.
 
 ```python
-DomainContext().bert_item_distance_matrix_job('all-mpnet-base-v2').execute()
+ctx.bert_item_distance_matrix_job('all-mpnet-base-v2').execute()
 
-DomainContext().svd_distance_matrix_job.execute()
+ctx.svd_distance_matrix_job.execute()
 
-DomainContext().nmf_distance_matrix_job.execute()
+ctx.nmf_distance_matrix_job.execute()
 ```
 
 See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job-package) for more detail.
