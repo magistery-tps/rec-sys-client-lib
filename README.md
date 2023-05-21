@@ -1,18 +1,18 @@
 # UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación - client side applications
 
-Este repositorio contiene soporte para implementar:
+This repository give support to:
 
-* Acceso via repositorios a base de datos de [rec-sys](https://github.com/magistery-tps/rec-sys).
-* Acceso via api REST para configurar recomendadores y actualizar datos en [rec-sys](https://github.com/magistery-tps/rec-sys).
-* Jobs: Construccion y actaializacion de matrices de similitud user-user e item-item en [rec-sys](https://github.com/magistery-tps/rec-sys) utilizando los modelos SVD, NFM y Bert.
+* Access to [rec-sys](https://github.com/magistery-tps/rec-sys) via database repositories.
+* Acces to [rec-sys](https://github.com/magistery-tps/rec-sys) REST API to config and update recommender data.
+* Jobs: Used to build ad config similarities matrix (user-user / item-item) required by [rec-sys](https://github.com/magistery-tps/rec-sys) recommenders.
 
-## Requisitos
+## Requirements
 
-* [anaconda](https://www.anaconda.com/products/individual) / [miniconda](https://docs.conda.io/en/latest/miniconda.html) / [mamba (Recomendado)](https://github.com/mamba-org/mamba)
+* [anaconda](https://www.anaconda.com/products/individual) / [miniconda](https://docs.conda.io/en/latest/miniconda.html) / [mamba (Recommended)](https://github.com/mamba-org/mamba)
 * mariadb/mysql
 
 
-## Uso
+## Getting Started
 
 **Step 1**: First Import `src` directory into python class path:
 
