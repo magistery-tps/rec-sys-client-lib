@@ -7,6 +7,13 @@ sys.path.append('../src')
 import repository
 import api
 import service
+import job
+import database
+import mapper
+import model
+import logger
+import data
+
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
