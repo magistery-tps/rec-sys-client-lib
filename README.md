@@ -3,8 +3,8 @@
 This repository give support to:
 
 * Access to [rec-sys](https://github.com/magistery-tps/rec-sys) via database repositories.
-* Acces to [rec-sys](https://github.com/magistery-tps/rec-sys) REST API to config and update recommender data.
-* Jobs: Used to build ad config similarities matrix (user-user / item-item) required by [rec-sys](https://github.com/magistery-tps/rec-sys) recommenders.
+* Acces to [rec-sys](https://github.com/magistery-tps/rec-sys) REST API to config and update recommenders data.
+* Jobs: Used to build and config similarity matrix (user-user / item-item) required by [rec-sys](https://github.com/magistery-tps/rec-sys) recommenders.
 
 ## Requirements
 
