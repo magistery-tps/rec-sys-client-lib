@@ -29,33 +29,30 @@ from domain_context import DomainContext
 ctx = DomainContext()
 ```
 
-**Step 3**: Acces to a _REST API_ client
+**Step 3**: Access to a _REST API_ client
 
 ```python
-
 api_client = ctx.api
 
-
-
-
+# Get user interactions
+api_client.interacitons()
 ```
+See docummentation for more detail
 
 
-#------------------------------------------------------------------------------
-#
-#
-#
-#
-#------------------------------------------------------------------------------
-# Main
-#------------------------------------------------------------------------------
-if __name__ == '__main__':
-    DomainContext().bert_item_distance_matrix_job('all-mpnet-base-v2').execute()
-#------------------------------------------------------------------------------
+**Step 3**: Execute a job.
 
+```python
+DomainContext().bert_item_distance_matrix_job('all-mpnet-base-v2').execute()
 
-```
+DomainContext().svd_distance_matrix_job.execute()
 
+DomainContext().nmf_distance_matrix_job.execute()
+``
+
+## API Documentation
+
+Got to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side)
 
 ## WIKI
 
