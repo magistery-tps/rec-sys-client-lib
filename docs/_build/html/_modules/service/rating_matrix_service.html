@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>service.rating_matrix_service &mdash; rec-sys-client-side 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> rec-sys-client-side
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">rec-sys-client-side</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">service.rating_matrix_service</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for service.rating_matrix_service</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="kn">import</span> <span class="nn">data</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">model</span> <span class="k">as</span> <span class="nn">ml</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">util</span> <span class="k">as</span> <span class="nn">ut</span>
+<span class="kn">from</span> <span class="nn">logger</span> <span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="n">RatingMatrixType</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">(</span><span class="s1">&#39;RatingMatrixType&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;USER_ITEM&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_USER&#39;</span><span class="p">])</span>
+
+
+<div class="viewcode-block" id="check_consecutive"><a class="viewcode-back" href="../../service.html#service.rating_matrix_service.check_consecutive">[docs]</a><span class="k">def</span> <span class="nf">check_consecutive</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="to_rating_matrix"><a class="viewcode-back" href="../../service.html#service.rating_matrix_service.to_rating_matrix">[docs]</a><span class="k">def</span> <span class="nf">to_rating_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">matrix_type</span><span class="o">=</span><span class="n">RatingMatrixType</span><span class="o">.</span><span class="n">USER_ITEM</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">matrix_type</span> <span class="o">==</span> <span class="n">RatingMatrixType</span><span class="o">.</span><span class="n">USER_ITEM</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ut</span><span class="o">.</span><span class="n">df_to_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">value_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">matrix_type</span> <span class="o">==</span> <span class="n">RatingMatrixType</span><span class="o">.</span><span class="n">ITEM_USER</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ut</span><span class="o">.</span><span class="n">df_to_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value_col</span><span class="o">=</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="RatingMatrixService"><a class="viewcode-back" href="../../service.html#service.rating_matrix_service.RatingMatrixService">[docs]</a><span class="k">class</span> <span class="nc">RatingMatrixService</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction_service</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__interaction_service</span> <span class="o">=</span> <span class="n">interaction_service</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RatingMatrixService.create"><a class="viewcode-back" href="../../service.html#service.rating_matrix_service.RatingMatrixService.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">train_interactions</span><span class="p">,</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;user_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;item_seq&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">),</span>
+            <span class="n">matrix_type</span><span class="o">=</span><span class="n">RatingMatrixType</span><span class="o">.</span><span class="n">USER_ITEM</span><span class="p">,</span>
+            <span class="n">min_n_interactions</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">rating_scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new user-item rating matrix. It method create a complete rating matrix given an incomplete list of user interactions.</span>
+<span class="sd">        Train a given model with an incomplete list of user interactions to predict missing user interactions.</span>
+<span class="sd">        It only consider user with min_n_interactions and also user interactions with ratings contained into rating_scale range.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_interactions (pd.DataFrame): Current user interactions DataFrame used to predict missing interactions.</span>
+<span class="sd">            model (ModelManager): A machine learning model used to predict missing user interactions.</span>
+<span class="sd">            columns (tuple, optional): Column names that represent user id , item id an rating. The order is important. Defaults to (&#39;user_seq&#39;, &#39;item_seq&#39;, &#39;rating</span>
+<span class="sd">            matrix_type (RatingMatrixType, optional): Matrix type to build: USER_ITEM, ITEM_TO_USER(A USER_ITEM transposed version). Defaults to RatingMatrixType.USER_ITEM.</span>
+<span class="sd">            min_n_interactions (int, optional): Filter user with a minimum number of interactions. Defaults to 20.</span>
+<span class="sd">            rating_scale (int list, optional): rating values to filter. Defaults to np.arange(3, 6, 0.5).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Matrix[used_seq, item_seq] = Rating: A sparse ratings matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">train_interactions</span> <span class="o">=</span> <span class="n">train_interactions</span> \
+            <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__interaction_service</span><span class="o">.</span><span class="n">filter_by_rating_scale</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">rating_scale</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__interaction_service</span><span class="o">.</span><span class="n">filter_users_by_min_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">min_n_interactions</span><span class="p">)</span>
+
+        <span class="c1"># self._logger.info(train_interactions[&#39;user_id&#39;].unique())</span>
+
+        <span class="c1"># Add user/item numeric sequences...</span>
+        <span class="n">train_interactions</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">Sequencer</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="n">seq_col_name</span><span class="o">=</span><span class="s1">&#39;user_seq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">)</span>
+        <span class="n">train_interactions</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">Sequencer</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;item_id&#39;</span><span class="p">,</span> <span class="n">seq_col_name</span><span class="o">=</span><span class="s1">&#39;item_seq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">perform</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Check user_seq: </span><span class="si">{</span><span class="n">check_consecutive</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">[</span><span class="s2">&quot;user_seq&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Check item_seq: </span><span class="si">{</span><span class="n">check_consecutive</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">[</span><span class="s2">&quot;item_seq&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">future_interactions</span> <span class="o">=</span> <span class="n">train_interactions</span> \
+            <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__interaction_service</span><span class="o">.</span><span class="n">unrated_user_item</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__interactions_info</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__interactions_info</span><span class="p">(</span><span class="n">future_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Future&#39;</span><span class="p">)</span>
+
+        <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">ml</span><span class="o">.</span><span class="n">DatasetFactory</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+
+        <span class="n">ml</span><span class="o">.</span><span class="n">ModelManager</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">predict_inplase</span><span class="p">(</span><span class="n">future_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+
+        <span class="n">all_interactions</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">train_interactions</span><span class="p">,</span> <span class="n">future_interactions</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__interactions_info</span><span class="p">(</span><span class="n">all_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Train + Predited&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Compute interactions sparse </span><span class="si">{</span><span class="n">matrix_type</span><span class="si">}</span><span class="s1"> matrix...&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">to_rating_matrix</span><span class="p">(</span><span class="n">all_interactions</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">matrix_type</span><span class="p">),</span> <span class="n">train_interactions</span></div>
+
+    <span class="k">def</span> <span class="nf">__interactions_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s1"> interactions: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> - Users: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, Items: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

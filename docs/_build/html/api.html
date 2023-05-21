@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>api package &mdash; rec-sys-client-side 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rec-sys-client-side
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">api package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-api.recsys">api.recsys module</a></li>
+<li><a class="reference internal" href="#module-api.resource_iterator">api.resource_iterator module</a></li>
+<li><a class="reference internal" href="#module-api">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rec-sys-client-side</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">api package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-package">
+<h1>api package<a class="headerlink" href="#api-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-api.recsys">
+<span id="api-recsys-module"></span><h2>api.recsys module<a class="headerlink" href="#module-api.recsys" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.ActionsFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">ActionsFactory</span></span><a class="reference internal" href="_modules/api/recsys.html#ActionsFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.ActionsFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.ActionsFactory.create">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#ActionsFactory.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.ActionsFactory.create" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.InteractionResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">InteractionResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#InteractionResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.InteractionResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.InteractionResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/interactions/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/interactions/?offset={}&amp;limit={}&amp;user={}&amp;item={}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/interactions/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/interactions/{}/'}}</span></em><a class="headerlink" href="#api.recsys.InteractionResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.ItemResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">ItemResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#ItemResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.ItemResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.ItemResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/items/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/items/?offset={}&amp;limit={}&amp;name={}&amp;description={}{}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/items/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/items/{}/'}}</span></em><a class="headerlink" href="#api.recsys.ItemResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.ItemResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">ItemResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#ItemResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.ItemResponse" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object that represent an api response. this contains an status(http code) and a response body properties.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.ListResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">ListResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#ListResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.ListResponse" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object that represent an api response. This contains an status(http code), body, and results properties.</p>
+<p>results represent a list of items. Used to query a list of instance for a give REST Result list interactions, users, etc..</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">RecSysApi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'http://localhost:8000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>rec-sys REST API client. Used to interact with rec-sys services.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.add_recommender">
+<span class="sig-name descname"><span class="pre">add_recommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.add_recommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.add_recommender" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new recommender. A recommender is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>recommender = {</dt><dd><p>‘id’                     : int,
+‘name’                   : str,
+‘user_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“user_similarity_matrix”]}/’,
+‘item_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“item_similarity_matrix”]}/’</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>dict</em>) – Represent a recommender dto.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.add_similarity_matrix">
+<span class="sig-name descname"><span class="pre">add_similarity_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="index.html#api.recsys.SimilarityMatrixType" title="api.recsys.SimilarityMatrixType"><span class="pre">SimilarityMatrixType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.add_similarity_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.add_similarity_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new similarity matrix. A similarity matrix is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix = {</dt><dd><p>‘name’        : str,
+‘type’        : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],
+‘description’ : str,
+‘version’     : int</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>dict</em>) – Represent a similarity matrix dto.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.bulk_add_interactions">
+<span class="sig-name descname"><span class="pre">bulk_add_interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.bulk_add_interactions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.bulk_add_interactions" title="Permalink to this definition"></a></dt>
+<dd><p>Add new user interactions in bulk way. An interaction is must be represented by a dict:</p>
+<dl class="simple">
+<dt>interaction = {</dt><dd><p>‘user’              : int,
+‘item’              : int,
+‘rating’            : float,
+‘suitable_to_train’ : bool</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>an interactions list</em>) – A list of dicts. Each dist represent an interaction dto.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.bulk_add_similarity_cells">
+<span class="sig-name descname"><span class="pre">bulk_add_similarity_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.bulk_add_similarity_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.bulk_add_similarity_cells" title="Permalink to this definition"></a></dt>
+<dd><p>Add new similarity cells in bulk way. A similarity matrix cell is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix_cell = {</dt><dd><p>‘row’     : int,
+‘column’  : int,
+‘value’   : float,
+‘version’ : int,
+‘matrix’  : str, format: f’{host}/api/similarity-matrix/{SIMILARITY_MATRIX_ID}/’</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>an similarity matrix cel list</em>) – A list of dicts. Each dist represent an similarity matrix cell dto.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.interactions">
+<span class="sig-name descname"><span class="pre">interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.interactions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.interactions" title="Permalink to this definition"></a></dt>
+<dd><p>Query user interactions. An interaction is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>interaction = {</dt><dd><p>‘user’              : int,
+‘item’              : int,
+‘rating’            : float,
+‘suitable_to_train’ : bool</p>
+</dd>
+</dl>
+<p>}</p>
+<p>It method also allow as to query using pagination an also filter by user id and/or item id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Page start from offset. Defaults to 0.</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Page size. Defaults to 10.</p></li>
+<li><p><strong>user</strong> (<em>str</em><em>, </em><em>optional</em>) – User identifier. Defaults to ‘’.</p></li>
+<li><p><strong>item</strong> (<em>str</em><em>, </em><em>optional</em>) – Item identifier. Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ListResponse instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ListResponse" title="api.recsys.ListResponse">ListResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.recommenders">
+<span class="sig-name descname"><span class="pre">recommenders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.recommenders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.recommenders" title="Permalink to this definition"></a></dt>
+<dd><p>Query recommenders. An recommender is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>recommender = {</dt><dd><p>‘id’                     : int,
+‘name’                   : str,
+‘user_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“user_similarity_matrix”]}/’,
+‘item_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“item_similarity_matrix”]}/’</p>
+</dd>
+</dl>
+<p>}</p>
+<p>Where user_similarity_matrix and item_similarity_matrix are identifier.
+It method also allow as to query using pagination an also filter by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Page start from offset. Defaults to 0.</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Page size. Defaults to 10.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Recommender name. Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ListResponse instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ListResponse" title="api.recsys.ListResponse">ListResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.remove_recommender">
+<span class="sig-name descname"><span class="pre">remove_recommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.remove_recommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.remove_recommender" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a recommender by a given identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Recommender identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.remove_similarity_cell">
+<span class="sig-name descname"><span class="pre">remove_similarity_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.remove_similarity_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.remove_similarity_cell" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similarity matrix cell by a given identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Similarity matrix cell identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.remove_similarity_matrix">
+<span class="sig-name descname"><span class="pre">remove_similarity_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.remove_similarity_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.remove_similarity_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similarity matrix by a given identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Similarity matrix identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.remove_similarity_version">
+<span class="sig-name descname"><span class="pre">remove_similarity_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.remove_similarity_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.remove_similarity_version" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similarity matrix version by a given identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Similarity matrix version identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.similarity_cells">
+<span class="sig-name descname"><span class="pre">similarity_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.similarity_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.similarity_cells" title="Permalink to this definition"></a></dt>
+<dd><p>Query cells for a given similarity matrix. A similarity matrix cell is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix_cell = {</dt><dd><p>‘row’     : int,
+‘column’  : int,
+‘value’   : float,
+‘version’ : int,
+‘matrix’  : str, format: f’{host}/api/similarity-matrix/{SIMILARITY_MATRIX_ID}/’</p>
+</dd>
+</dl>
+<p>}</p>
+<p>It method also allow as to query using pagination an also filter by row, columns and matrix identifiers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Page start from offset. Defaults to 0.</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Page size. Defaults to 10.</p></li>
+<li><p><strong>row</strong> (<em>str</em><em>, </em><em>optional</em>) – Similar matrix row identifier. Defaults to ‘’.</p></li>
+<li><p><strong>column</strong> (<em>str</em><em>, </em><em>optional</em>) – Similar matrix column identifier. Defaults to ‘’.</p></li>
+<li><p><strong>matrix</strong> (<em>str</em><em>, </em><em>optional</em>) – Similar matrix identifier. Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ListResponse instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ListResponse" title="api.recsys.ListResponse">ListResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.similarity_matrix">
+<span class="sig-name descname"><span class="pre">similarity_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.similarity_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.similarity_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Query a similarity matrix. An interaction is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix = {</dt><dd><p>‘name’        : str,
+‘type’        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],
+‘description’ : str,
+‘version’     : int</p>
+</dd>
+</dl>
+<p>}</p>
+<p>It method also allow as to query using pagination an also filter by name, type, description, version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Page start from offset. Defaults to 0.</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Page size. Defaults to 10.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Similarity matrix name. Defaults to ‘’.</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – Similarity matrix type: 1 is USER_TO_USER. 2 is ITEM_TO_ITEM. Defaults to ‘’</p></li>
+<li><p><strong>description</strong> (<em>str</em><em>, </em><em>optional</em>) – Similarity matrix description. Defaults to ‘’.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Similarity matrix version. Defaults to ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ListResponse instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ListResponse" title="api.recsys.ListResponse">ListResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.similarity_matrix_versions">
+<span class="sig-name descname"><span class="pre">similarity_matrix_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.similarity_matrix_versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.similarity_matrix_versions" title="Permalink to this definition"></a></dt>
+<dd><p>Query versions of a given similarity matrix. It method also allow as to query using pagination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – A similarity matrix identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ListResponse instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ListResponse" title="api.recsys.ListResponse">ListResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.update_recommender">
+<span class="sig-name descname"><span class="pre">update_recommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.update_recommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.update_recommender" title="Permalink to this definition"></a></dt>
+<dd><p>update a recommender by a given identifier. A recommender is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>recommender = {</dt><dd><p>‘id’                     : int,
+‘name’                   : str,
+‘user_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“user_similarity_matrix”]}/’,
+‘item_similarity_matrix’ : str - format: f’{host}/api/similarity-matrix/{model[“item_similarity_matrix”]}/’</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>dict</em>) – Represent a recommender dto with updated values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.update_similarity_matrix">
+<span class="sig-name descname"><span class="pre">update_similarity_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.update_similarity_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.update_similarity_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Update a similarity matrix with a given identifier. A similarity matrix is a dict dto with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix = {</dt><dd><p>‘name’        : str,
+‘type’        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],
+‘description’ : str,
+‘version’     : int</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>dict</em>) – Represent a similarity matrix dto with updated values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.recsys.RecSysApi.users">
+<span class="sig-name descname"><span class="pre">users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecSysApi.users"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecSysApi.users" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.RecommenderResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">RecommenderResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#RecommenderResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.RecommenderResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.RecommenderResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/recommenders/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/recommenders/?offset={}&amp;limit={}&amp;name={}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/recommenders/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/recommenders/{}/'}}</span></em><a class="headerlink" href="#api.recsys.RecommenderResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixCellResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixCellResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#SimilarityMatrixCellResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.SimilarityMatrixCellResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixCellResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix-cells/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix-cells/?offset={}&amp;limit={}&amp;row={}&amp;column={}&amp;matrix={}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix-cells/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix-cells/{}/'}}</span></em><a class="headerlink" href="#api.recsys.SimilarityMatrixCellResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#SimilarityMatrixResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.SimilarityMatrixResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/?offset={}&amp;limit={}&amp;name={}&amp;type={}&amp;description={}&amp;version={}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/{}/'},</span> <span class="pre">'remove_version':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/{}/versions/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/{}/'},</span> <span class="pre">'versions':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/similarity-matrix/{}/versions/'}}</span></em><a class="headerlink" href="#api.recsys.SimilarityMatrixResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#SimilarityMatrixType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.SimilarityMatrixType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixType.ITEM_TO_ITEM">
+<span class="sig-name descname"><span class="pre">ITEM_TO_ITEM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#api.recsys.SimilarityMatrixType.ITEM_TO_ITEM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.SimilarityMatrixType.USER_TO_USER">
+<span class="sig-name descname"><span class="pre">USER_TO_USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#api.recsys.SimilarityMatrixType.USER_TO_USER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.recsys.UserResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.recsys.</span></span><span class="sig-name descname"><span class="pre">UserResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/recsys.html#UserResource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.recsys.UserResource" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.recsys.UserResource.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'add':</span> <span class="pre">{'method':</span> <span class="pre">'POST',</span> <span class="pre">'url':</span> <span class="pre">'/api/users/'},</span> <span class="pre">'pages':</span> <span class="pre">{'method':</span> <span class="pre">'GET',</span> <span class="pre">'url':</span> <span class="pre">'/api/users/?offset={}&amp;limit={}&amp;username={}&amp;email={}'},</span> <span class="pre">'remove':</span> <span class="pre">{'method':</span> <span class="pre">'DELETE',</span> <span class="pre">'url':</span> <span class="pre">'/api/users/{}/'},</span> <span class="pre">'update':</span> <span class="pre">{'method':</span> <span class="pre">'PUT',</span> <span class="pre">'url':</span> <span class="pre">'/api/users/{}/'}}</span></em><a class="headerlink" href="#api.recsys.UserResource.actions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api.resource_iterator">
+<span id="api-resource-iterator-module"></span><h2>api.resource_iterator module<a class="headerlink" href="#module-api.resource_iterator" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.resource_iterator.ResourceIterator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.resource_iterator.</span></span><span class="sig-name descname"><span class="pre">ResourceIterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/resource_iterator.html#ResourceIterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.resource_iterator.ResourceIterator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="api.resource_iterator.ResourceIterator.count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count</span></span><a class="headerlink" href="#api.resource_iterator.ResourceIterator.count" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="api.resource_iterator.ResourceIterator.page">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">page</span></span><a class="headerlink" href="#api.resource_iterator.ResourceIterator.page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.resource_iterator.ResourceIterator.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/resource_iterator.html#ResourceIterator.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.resource_iterator.ResourceIterator.reset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="api.resource_iterator.ResourceIterator.total_pages">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_pages</span></span><a class="headerlink" href="#api.resource_iterator.ResourceIterator.total_pages" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.resource_iterator.url_params">
+<span class="sig-prename descclassname"><span class="pre">api.resource_iterator.</span></span><span class="sig-name descname"><span class="pre">url_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/resource_iterator.html#url_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.resource_iterator.url_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-api" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>repository package &mdash; rec-sys-client-side 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rec-sys-client-side
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">repository package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-repository.entity_repository">repository.entity_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.interaction_repository">repository.interaction_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.item_repository">repository.item_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.recommender_repository">repository.recommender_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.similarity_cell_repository">repository.similarity_cell_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.similarity_matrix_repository">repository.similarity_matrix_repository module</a></li>
+<li><a class="reference internal" href="#module-repository.user_repository">repository.user_repository module</a></li>
+<li><a class="reference internal" href="#module-repository">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rec-sys-client-side</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">repository package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/repository.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="repository-package">
+<h1>repository package<a class="headerlink" href="#repository-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-repository.entity_repository">
+<span id="repository-entity-repository-module"></span><h2>repository.entity_repository module<a class="headerlink" href="#module-repository.entity_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.entity_repository.EntityRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.entity_repository.</span></span><span class="sig-name descname"><span class="pre">EntityRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/entity_repository.html#EntityRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.entity_repository.EntityRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.entity_repository.EntityRepository.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/entity_repository.html#EntityRepository.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.entity_repository.EntityRepository.find" title="Permalink to this definition"></a></dt>
+<dd><p>Allows to query entities by ani entity field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>dict</em><em>, </em><em>optional</em>) – A dict of field_name: value pairs. Defaults to {}.</p></li>
+<li><p><strong>page_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Page size. Defaults to 100000.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A lost of dict. Each dist represent an entity or model like an interaction, a similar matrix, etc…</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dict list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-repository.interaction_repository">
+<span id="repository-interaction-repository-module"></span><h2>repository.interaction_repository module<a class="headerlink" href="#module-repository.interaction_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.interaction_repository.InteractionRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.interaction_repository.</span></span><span class="sig-name descname"><span class="pre">InteractionRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/interaction_repository.html#InteractionRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.interaction_repository.InteractionRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.interaction_repository.InteractionRepository.add_many">
+<span class="sig-name descname"><span class="pre">add_many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/interaction_repository.html#InteractionRepository.add_many"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.interaction_repository.InteractionRepository.add_many" title="Permalink to this definition"></a></dt>
+<dd><p>Allows to add a list of user interactions from a pandas DataFrame. DataFrame must have next columns:</p>
+<dl class="simple">
+<dt>row =  {</dt><dd><p>‘user’              : int user id,
+‘item’              : int item id,
+‘rating’            : float,
+‘suitable_to_train’ : bool</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cells</strong> (<em>pd.DataFrame</em>) – A DataFrame with user interaction as rows.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-repository.item_repository">
+<span id="repository-item-repository-module"></span><h2>repository.item_repository module<a class="headerlink" href="#module-repository.item_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.item_repository.ItemRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.item_repository.</span></span><span class="sig-name descname"><span class="pre">ItemRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/item_repository.html#ItemRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.item_repository.ItemRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="module-repository.recommender_repository">
+<span id="repository-recommender-repository-module"></span><h2>repository.recommender_repository module<a class="headerlink" href="#module-repository.recommender_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.recommender_repository.RecommenderRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.recommender_repository.</span></span><span class="sig-name descname"><span class="pre">RecommenderRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/recommender_repository.html#RecommenderRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.recommender_repository.RecommenderRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.recommender_repository.RecommenderRepository.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/recommender_repository.html#RecommenderRepository.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.recommender_repository.RecommenderRepository.add" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new recommender Model with next structure:</p>
+<dl class="simple">
+<dt>recommender = Model({</dt><dd><p>‘id’                     : int,
+‘name’                   : str,
+‘user_similarity_matrix’ : str identifier,
+‘item_similarity_matrix’ : str identifier</p>
+</dd>
+</dl>
+<p>})</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>Model</em>) – Is a dict that represent a recommender model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.recommender_repository.RecommenderRepository.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/recommender_repository.html#RecommenderRepository.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.recommender_repository.RecommenderRepository.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a recommender by identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – A recommender identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.recommender_repository.RecommenderRepository.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/recommender_repository.html#RecommenderRepository.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.recommender_repository.RecommenderRepository.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update a recommender Model with next structure:</p>
+<dl class="simple">
+<dt>recommender = Model({</dt><dd><p>‘id’                     : int,
+‘name’                   : str,
+‘user_similarity_matrix’ : str identifier,
+‘item_similarity_matrix’ : str identifier</p>
+</dd>
+</dl>
+<p>})</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>Model</em>) – Is a dict that represent a recommender model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-repository.similarity_cell_repository">
+<span id="repository-similarity-cell-repository-module"></span><h2>repository.similarity_cell_repository module<a class="headerlink" href="#module-repository.similarity_cell_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.similarity_cell_repository.SimilarityCellRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.similarity_cell_repository.</span></span><span class="sig-name descname"><span class="pre">SimilarityCellRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_cell_repository.html#SimilarityCellRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_cell_repository.SimilarityCellRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_cell_repository.SimilarityCellRepository.add_many">
+<span class="sig-name descname"><span class="pre">add_many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_cell_repository.html#SimilarityCellRepository.add_many"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_cell_repository.SimilarityCellRepository.add_many" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_cell_repository.SimilarityCellRepository.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_cell_repository.html#SimilarityCellRepository.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_cell_repository.SimilarityCellRepository.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similar matrix cell by identifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – A similar matrix cell identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-repository.similarity_matrix_repository">
+<span id="repository-similarity-matrix-repository-module"></span><h2>repository.similarity_matrix_repository module<a class="headerlink" href="#module-repository.similarity_matrix_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.similarity_matrix_repository.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="index.html#api.recsys.SimilarityMatrixType" title="api.recsys.SimilarityMatrixType"><span class="pre">SimilarityMatrixType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.add" title="Permalink to this definition"></a></dt>
+<dd><p>Create a similarity matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Similarity matrix name.</p></li>
+<li><p><strong>type</strong> (<em>api.SimilarityMatrixType</em>) – Type of similarity matrix.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – A description.</p></li>
+<li><p><strong>version</strong> (<em>int</em><em>, </em><em>optional</em>) – A similarity matrix initial version. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A similarity matrix model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.previous_versions">
+<span class="sig-name descname"><span class="pre">previous_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.previous_versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.previous_versions" title="Permalink to this definition"></a></dt>
+<dd><p>Query previous versions of a given similarity matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – A similarity matrix identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of int versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similar matrix cell by identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – A similar matrix cell identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.remove_previous_versions">
+<span class="sig-name descname"><span class="pre">remove_previous_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.remove_previous_versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.remove_previous_versions" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a previous similar matrix cell version by identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – A similar matrix cell identifier.</p></li>
+<li><p><strong>version</strong> (<em>int</em>) – A previous similar matrix cell version number.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.remove_version">
+<span class="sig-name descname"><span class="pre">remove_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.remove_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.remove_version" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a similar matrix cell version by identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – A similar matrix cell identifier.</p></li>
+<li><p><strong>version</strong> (<em>int</em>) – A similar matrix cell version number.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update a similarity matrix Model with next structure:</p>
+<dl class="simple">
+<dt>similarity_matrix = Model({</dt><dd><p>‘id’         : int,
+‘name’       : str,
+‘type’       : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],
+‘description’: str,
+‘version’    : int</p>
+</dd>
+</dl>
+<p>})</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>Model</em>) – Is a dict that represent a similarity matrix model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an ItemResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="index.html#api.recsys.ItemResponse" title="api.recsys.ItemResponse">ItemResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="repository.similarity_matrix_repository.SimilarityMatrixRepository.versions">
+<span class="sig-name descname"><span class="pre">versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/similarity_matrix_repository.html#SimilarityMatrixRepository.versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.similarity_matrix_repository.SimilarityMatrixRepository.versions" title="Permalink to this definition"></a></dt>
+<dd><p>Query versions of a given similarity matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – A similarity matrix identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of int versions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-repository.user_repository">
+<span id="repository-user-repository-module"></span><h2>repository.user_repository module<a class="headerlink" href="#module-repository.user_repository" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="repository.user_repository.UserRepository">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">repository.user_repository.</span></span><span class="sig-name descname"><span class="pre">UserRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/repository/user_repository.html#UserRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#repository.user_repository.UserRepository" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#repository.entity_repository.EntityRepository" title="repository.entity_repository.EntityRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">EntityRepository</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="module-repository">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-repository" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
