@@ -51,6 +51,18 @@ ctx.nmf_distance_matrix_job.execute()
 
 See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job-package) for more detail.
 
+**Step 4**: Also could run jobs from bash.
+
+```bash
+$ conda activate recsys-client-side
+
+$ python bin/svd_distance_matrix_job.py
+$ python bin/nmf_distance_matrix_job.py
+
+$ python bin/nmf_distance_matrix_job.py
+
+
+
 
 ## API Documentation
 
