@@ -20,12 +20,13 @@ class RecommenderRepository(EntityRepository):
     def add(self, model: Model):
         """Add a new recommender Model with next structure:
 
-        recommender = Model({
-            'id'                     : int,
-            'name'                   : str,
-            'user_similarity_matrix' : str identifier,
-            'item_similarity_matrix' : str identifier
-        })
+        Examples:
+            recommender = Model({
+                'id'                     : int,
+                'name'                   : str,
+                'user_similarity_matrix' : str identifier,
+                'item_similarity_matrix' : str identifier
+            })
 
         Args:
             model (Model): Is a dict that represent a recommender model.
@@ -42,12 +43,13 @@ class RecommenderRepository(EntityRepository):
     def update(self, model: Model):
         """Update a recommender Model with next structure:
 
-        recommender = Model({
-            'id'                     : int,
-            'name'                   : str,
-            'user_similarity_matrix' : str identifier,
-            'item_similarity_matrix' : str identifier
-        })
+        Examples:
+            recommender = Model({
+                'id'                     : int,
+                'name'                   : str,
+                'user_similarity_matrix' : str identifier,
+                'item_similarity_matrix' : str identifier
+            })
 
         Args:
             model (Model): Is a dict that represent a recommender model.

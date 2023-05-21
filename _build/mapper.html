@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mapper package &mdash; rec-sys-client-side 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="model package" href="model.html" />
+    <link rel="prev" title="logger package" href="logger.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rec-sys-client-side
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">api package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.dataset.html">data.dataset package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.plot.diagram.html">data.plot.diagram package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.plot.html">data.plot package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.plot.variable.html">data.plot.variable package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">data package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">database package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_context.html">domain_context module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job.html">job package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">logger package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mapper package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.interaction_mapper">mapper.interaction_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.item_mapper">mapper.item_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.mapper">mapper.mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.model">mapper.model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.recommender_mapper">mapper.recommender_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.similarity_matrix_cell_mapper">mapper.similarity_matrix_cell_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.similarity_matrix_mapper">mapper.similarity_matrix_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper.user_mapper">mapper.user_mapper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mapper">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.surprise.html">model.surprise package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repository.html">repository package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service.html">service package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmdb_api.html">tmdb_api module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rec-sys-client-side</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">mapper package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mapper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mapper-package">
+<h1>mapper package<a class="headerlink" href="#mapper-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-mapper.interaction_mapper">
+<span id="mapper-interaction-mapper-module"></span><h2>mapper.interaction_mapper module<a class="headerlink" href="#module-mapper.interaction_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.interaction_mapper.InteractionMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.interaction_mapper.</span></span><span class="sig-name descname"><span class="pre">InteractionMapper</span></span><a class="reference internal" href="_modules/mapper/interaction_mapper.html#InteractionMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.interaction_mapper.InteractionMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Interaction model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.interaction_mapper.InteractionMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/interaction_mapper.html#InteractionMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.interaction_mapper.InteractionMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.interaction_mapper.InteractionMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/interaction_mapper.html#InteractionMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.interaction_mapper.InteractionMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mapper.interaction_mapper.substring_after">
+<span class="sig-prename descclassname"><span class="pre">mapper.interaction_mapper.</span></span><span class="sig-name descname"><span class="pre">substring_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/interaction_mapper.html#substring_after"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.interaction_mapper.substring_after" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-mapper.item_mapper">
+<span id="mapper-item-mapper-module"></span><h2>mapper.item_mapper module<a class="headerlink" href="#module-mapper.item_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.item_mapper.ItemMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.item_mapper.</span></span><span class="sig-name descname"><span class="pre">ItemMapper</span></span><a class="reference internal" href="_modules/mapper/item_mapper.html#ItemMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.item_mapper.ItemMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Item model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.item_mapper.ItemMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/item_mapper.html#ItemMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.item_mapper.ItemMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper.mapper">
+<span id="mapper-mapper-module"></span><h2>mapper.mapper module<a class="headerlink" href="#module-mapper.mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.mapper.Mapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.mapper.</span></span><span class="sig-name descname"><span class="pre">Mapper</span></span><a class="reference internal" href="_modules/mapper/mapper.html#Mapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.mapper.Mapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Common mapper interface. This interface is used for all entity mappers.
+An entity mapper. Mapper subclass convert object from mapper.Model to a dict DTO and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.mapper.Mapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/mapper.html#Mapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.mapper.Mapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.mapper.Mapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/mapper.html#Mapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.mapper.Mapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper.model">
+<span id="mapper-model-module"></span><h2>mapper.model module<a class="headerlink" href="#module-mapper.model" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.model.Model" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Bunch</span></code></p>
+<p>A DTO object that represent a domain model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Bunch</strong> (<em>dict</em>) – a model state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-mapper.recommender_mapper">
+<span id="mapper-recommender-mapper-module"></span><h2>mapper.recommender_mapper module<a class="headerlink" href="#module-mapper.recommender_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.recommender_mapper.RecommenderMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.recommender_mapper.</span></span><span class="sig-name descname"><span class="pre">RecommenderMapper</span></span><a class="reference internal" href="_modules/mapper/recommender_mapper.html#RecommenderMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.recommender_mapper.RecommenderMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Recommender model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.recommender_mapper.RecommenderMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/recommender_mapper.html#RecommenderMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.recommender_mapper.RecommenderMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.recommender_mapper.RecommenderMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/recommender_mapper.html#RecommenderMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.recommender_mapper.RecommenderMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper.similarity_matrix_cell_mapper">
+<span id="mapper-similarity-matrix-cell-mapper-module"></span><h2>mapper.similarity_matrix_cell_mapper module<a class="headerlink" href="#module-mapper.similarity_matrix_cell_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.similarity_matrix_cell_mapper.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixCellMapper</span></span><a class="reference internal" href="_modules/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a SimilarityMatrixCell model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper.similarity_matrix_mapper">
+<span id="mapper-similarity-matrix-mapper-module"></span><h2>mapper.similarity_matrix_mapper module<a class="headerlink" href="#module-mapper.similarity_matrix_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_mapper.SimilarityMatrixMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.similarity_matrix_mapper.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixMapper</span></span><a class="reference internal" href="_modules/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_mapper.SimilarityMatrixMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a SimilarityMatrix model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper.user_mapper">
+<span id="mapper-user-mapper-module"></span><h2>mapper.user_mapper module<a class="headerlink" href="#module-mapper.user_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mapper.user_mapper.UserMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mapper.user_mapper.</span></span><span class="sig-name descname"><span class="pre">UserMapper</span></span><a class="reference internal" href="_modules/mapper/user_mapper.html#UserMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.user_mapper.UserMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mapper.mapper.Mapper" title="mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a User dto to model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mapper.user_mapper.UserMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mapper/user_mapper.html#UserMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mapper.user_mapper.UserMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mapper">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mapper" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="logger.html" class="btn btn-neutral float-left" title="logger package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="model.html" class="btn btn-neutral float-right" title="model package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -42,13 +42,14 @@ class SimilarityMatrixRepository(EntityRepository):
     def update(self, model):
         """Update a similarity matrix Model with next structure:
 
-        similarity_matrix = Model({
-            'id'         : int,
-            'name'       : str,
-            'type'       : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],
-            'description': str,
-            'version'    : int
-        })
+        Examples:
+            similarity_matrix = Model({
+                'id'         : int,
+                'name'       : str,
+                'type'       : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],
+                'description': str,
+                'version'    : int
+            })
 
         Args:
             model (Model): Is a dict that represent a similarity matrix model.

@@ -18,12 +18,13 @@ class InteractionRepository(EntityRepository):
         """
         Allows to add a list of user interactions from a pandas DataFrame. DataFrame must have next columns:
 
-        row =  {
-            'user'              : int user id,
-            'item'              : int item id,
-            'rating'            : float,
-            'suitable_to_train' : bool
-        }
+        Examples:
+            row =  {
+                'user'              : int user id,
+                'item'              : int item id,
+                'rating'            : float,
+                'suitable_to_train' : bool
+            }
 
         Args:
             cells (pd.DataFrame): A DataFrame with user interaction as rows.
