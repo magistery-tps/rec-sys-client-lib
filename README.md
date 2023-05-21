@@ -71,7 +71,7 @@ $ python bin/multi_qa_mpnet_base_dot_v1_bert_item_distance_matrix_job.py
 
 ## API Documentation
 
-Got to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side).
+Go to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side).
 
 ## WIKI
 
