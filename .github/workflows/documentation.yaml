@@ -8,12 +8,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
+      - uses: conda-incubator/setup-miniconda@v2
+
+      - name: Install mamba
+        run: |
+          conda install -c conda-forge mamba
+
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme
+          mamba env create -f environment.yml
+
       - name: Sphinx build
         run: |
           sphinx-build docs _build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
