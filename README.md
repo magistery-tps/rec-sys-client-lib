@@ -37,7 +37,7 @@ api_client = ctx.api
 # Get user interactions
 api_client.interacitons()
 ```
-See [api.recsys.RecSysApi](https://magistery-tps.github.io/rec-sys-client-side/#api-package) for more detail.
+See [api.recsys.RecSysApi](https://magistery-tps.github.io/rec-sys-client-side/#api) for more detail.
 
 **Step 3**: Execute a job.
 
@@ -49,7 +49,7 @@ ctx.svd_distance_matrix_job.execute()
 ctx.nmf_distance_matrix_job.execute()
 ```
 
-See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job-package) for more detail.
+See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job) for more detail.
 
 **Step 4**: Also could run jobs from bash.
 
