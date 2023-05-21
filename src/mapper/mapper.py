@@ -7,7 +7,7 @@ class Mapper(metaclass=ABCMeta):
     An entity mapper. Mapper subclass convert object from mapper.Model to a dict DTO and vice versa.
     """
 
-    def to_model(self, dto)-> Model:
+    def to_model(self, dto):
         """Convert a DTO dict model to a mapper.Model object.
 
         Args:
@@ -18,7 +18,7 @@ class Mapper(metaclass=ABCMeta):
         """
         pass
 
-    def to_dto(self, model, host='')-> disc:
+    def to_dto(self, model, host=''):
         """Convert a mapper.Model object to a DTO dict object.
 
         Args:
