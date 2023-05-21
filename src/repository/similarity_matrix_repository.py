@@ -4,7 +4,17 @@ import api
 
 
 class SimilarityMatrixRepository(EntityRepository):
-    def __init__(self, client, mapper): super().__init__(client, mapper, 'similarity_matrix')
+
+
+    def __init__(self, client, mapper):
+        """Constructor
+
+        Args:
+            client (api.RecSysApi): a RecSysApi api client.
+            mapper (mapper.SimilarityMatrixMapper): mapper to map objects between dto-model.
+        """
+
+        super().__init__(client, mapper, 'similarity_matrix')
 
 
     def add(

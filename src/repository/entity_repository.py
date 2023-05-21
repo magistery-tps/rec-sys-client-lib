@@ -4,6 +4,13 @@ from logger import get_logger
 
 class EntityRepository:
     def __init__(self, client, mapper, entity):
+        """Constructor
+
+        Args:
+            client (api.RecSysApi): a RecSysApi api client.
+            mapper (mapper.RecommenderMapper): mapper to map objects between dto-model.
+            entity (str): api resource name of entity in lower case.
+        """
         self._entity = entity
         self._client = client
         self._mapper = mapper

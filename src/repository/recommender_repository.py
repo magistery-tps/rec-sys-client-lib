@@ -4,7 +4,17 @@ import api
 
 
 class RecommenderRepository(EntityRepository):
-    def __init__(self, client, mapper): super().__init__(client, mapper, 'recommenders')
+
+
+    def __init__(self, client, mapper):
+        """Constructor
+
+        Args:
+            client (api.RecSysApi): a RecSysApi api client.
+            mapper (mapper.RecommenderMapper): mapper to map objects between dto-model.
+        """
+
+        super().__init__(client, mapper, 'recommenders')
 
 
     def add(self, model: Model):
@@ -23,6 +33,7 @@ class RecommenderRepository(EntityRepository):
         Returns:
             ItemResponse: an ItemResponse object.
         """
+
         dto      = self._mapper.to_dto(model, self._client.host)
         response = self._client.add_recommender(dto)
         return self._mapper.to_model(response.body[0])
@@ -44,6 +55,7 @@ class RecommenderRepository(EntityRepository):
         Returns:
             ItemResponse: an ItemResponse object.
         """
+
         dto = self._mapper.to_dto(model, self._client.host)
         response = self._client.update_recommender(dto)
         return self._mapper.to_model(response.body[0])
@@ -55,4 +67,5 @@ class RecommenderRepository(EntityRepository):
         Args:
             id (int): A recommender identifier.
         """
+
         self._client.remove_recommender(id)

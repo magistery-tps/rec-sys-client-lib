@@ -4,8 +4,15 @@ import pandas as pd
 
 
 class InteractionRepository(EntityRepository):
-    def __init__(self, client, mapper): super().__init__(client, mapper, 'interactions')
+    def __init__(self, client, mapper):
+        """Constructor
 
+        Args:
+            client (api.RecSysApi): a RecSysApi api client.
+            mapper (mapper.InteractionMapper): mapper to map objects between dto-model.
+        """
+
+        super().__init__(client, mapper, 'interactions')
 
     def add_many(self, cells: pd.DataFrame):
         """
@@ -24,5 +31,6 @@ class InteractionRepository(EntityRepository):
         Returns:
             ItemResponse: an ItemResponse object.
         """
+
         dtos = [self._mapper.to_dto(row, self._client.host) for _, row in cells.iterrows()]
         return self._client.bulk_add_interactions(dtos)

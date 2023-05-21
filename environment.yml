@@ -16,6 +16,8 @@ dependencies:
     - tqdm
     - bunch
     - pyyaml
+    - sphinx
+    - sphinx_rtd_theme
     - pip
     - pip:
         - --extra-index-url https://download.pytorch.org/whl/cu116

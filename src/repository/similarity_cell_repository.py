@@ -4,7 +4,17 @@ import pandas as pd
 
 
 class SimilarityCellRepository(EntityRepository):
-    def __init__(self, client, mapper): super().__init__(client, mapper, 'similarity_matrix_cell')
+
+
+    def __init__(self, client, mapper):
+        """Constructor
+
+        Args:
+            client (api.RecSysApi): a RecSysApi api client.
+            mapper (mapper.SimilarityMatrixCellMapper): mapper to map objects between dto-model.
+        """
+
+        super().__init__(client, mapper, 'similarity_matrix_cell')
 
 
     def add_many(self, cells: pd.DataFrame):
