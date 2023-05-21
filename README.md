@@ -57,12 +57,17 @@ See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job-package) 
 $ conda activate recsys-client-side
 
 $ python bin/svd_distance_matrix_job.py
-$ python bin/nmf_distance_matrix_job.py
 
 $ python bin/nmf_distance_matrix_job.py
 
+$ python bin/all_minilm_l12_v2_bert_item_distance_matrix_job.py
 
+$ python bin/all_mpnet_base_v2_bert_item_distance_matrix_job.py
 
+$ python bin/all_minilm_l6_v2_bert_item_distance_matrix_job.py
+
+$ python bin/multi_qa_mpnet_base_dot_v1_bert_item_distance_matrix_job.py
+```
 
 ## API Documentation
 
