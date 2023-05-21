@@ -49,7 +49,7 @@ DomainContext().svd_distance_matrix_job.execute()
 DomainContext().nmf_distance_matrix_job.execute()
 ```
 
-See [jons.Job](https://magistery-tps.github.io/rec-sys-client-side/#jobs-package) for more detail.
+See [job.Job](https://magistery-tps.github.io/rec-sys-client-side/#job-package) for more detail.
 
 
 ## API Documentation
