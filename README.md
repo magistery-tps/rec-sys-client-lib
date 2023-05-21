@@ -1,4 +1,4 @@
-# UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación - client side applications
+# UBA - Maestría en Explotación de Datos y Descubrimiento de Conocimiento - Sistemas de recomendación - recsys-client-side API
 
 This repository give support to:
 
@@ -37,8 +37,7 @@ api_client = ctx.api
 # Get user interactions
 api_client.interacitons()
 ```
-See docummentation for more detail
-
+See [api.recsys.RecSysApi]([https://magistery-tps.github.io/rec-sys-client-side](https://magistery-tps.github.io/rec-sys-client-side/#api-package)) for more detail.
 
 **Step 3**: Execute a job.
 
@@ -48,13 +47,13 @@ DomainContext().bert_item_distance_matrix_job('all-mpnet-base-v2').execute()
 DomainContext().svd_distance_matrix_job.execute()
 
 DomainContext().nmf_distance_matrix_job.execute()
-``
+```
 
 ## API Documentation
 
-Got to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side)
+Got to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side).
 
 ## WIKI
 
-Para mas detalle ver la [WIKI](https://github.com/magistery-tps/rec-sys/wiki) del proyecto.
+Go to [rec-sys WIKI](https://github.com/magistery-tps/rec-sys/wiki) for model project details.
 
