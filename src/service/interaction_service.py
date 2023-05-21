@@ -90,13 +90,12 @@ class InteractionService:
     def add_many(self, interactions: pd.DataFrame, page_size=10):
         """Allows to add a list of user interactions from a pandas DataFrame. DataFrame must have next columns:
 
-        Examples:
-            row =  {
-                'user'              : int user id,
-                'item'              : int item id,
-                'rating'            : float,
-                'suitable_to_train' : bool
-            }
+        row =  {\n
+            'user'              : int user id,\n
+            'item'              : int item id,\n
+            'rating'            : float,\n
+            'suitable_to_train' : bool\n
+        }
 
         Args:
             interactions (pd.DataFrame): A DataFrame with user interaction as rows.

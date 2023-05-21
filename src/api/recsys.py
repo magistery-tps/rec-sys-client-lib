@@ -189,13 +189,12 @@ class RecSysApi:
         """
         Add new user interactions in bulk way. An interaction is must be represented by a dict:
 
-        Examples:
-            interaction = {
-                'user'              : int,
-                'item'              : int,
-                'rating'            : float,
-                'suitable_to_train' : bool
-            }
+        interaction = {\n
+            'user'              : int,\n
+            'item'              : int,\n
+            'rating'            : float,\n
+            'suitable_to_train' : bool\n
+        }
 
         Args:
             body (an interactions list): A list of dicts. Each dist represent an interaction dto.
@@ -210,11 +209,11 @@ class RecSysApi:
         """
         Query user interactions. An interaction is a dict dto with next structure:
 
-        interaction = {
-            'user'              : int,
-            'item'              : int,
-            'rating'            : float,
-            'suitable_to_train' : bool
+        interaction = {\n
+            'user'              : int,\n
+            'item'              : int,\n
+            'rating'            : float,\n
+            'suitable_to_train' : bool\n
         }
 
         It method also allow as to query using pagination an also filter by user id and/or item id.
@@ -250,13 +249,12 @@ class RecSysApi:
         """
         Query a similarity matrix. An interaction is a dict dto with next structure:
 
-        Examples:
-            similarity_matrix = {
-                'name'        : str,
-                'type'        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],
-                'description' : str,
-                'version'     : int
-            }
+        similarity_matrix = {\n
+            'name'        : str,\n
+            'type'        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],\n
+            'description' : str,\n
+            'version'     : int\n
+        }
 
         It method also allow as to query using pagination an also filter by name, type, description, version.
 
@@ -289,13 +287,12 @@ class RecSysApi:
 
         Add a new similarity matrix. A similarity matrix is a dict dto with next structure:
 
-        Examples:
-            similarity_matrix = {
-                'name'        : str,
-                'type'        : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],
-                'description' : str,
-                'version'     : int
-            }
+        similarity_matrix = {\n
+            'name'        : str,\n
+            'type'        : api.SimilarityMatrixType [USER_TO_USER, ITEM_TO_ITEM],\n
+            'description' : str,\n
+            'version'     : int\n
+        }
 
         Args:
             body (dict): Represent a similarity matrix dto.
@@ -315,13 +312,12 @@ class RecSysApi:
         """
         Update a similarity matrix with a given identifier. A similarity matrix is a dict dto with next structure:
 
-        Examples:
-            similarity_matrix = {
-                'name'        : str,
-                'type'        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],
-                'description' : str,
-                'version'     : int
-            }
+        similarity_matrix = {\n
+            'name'        : str,\n
+            'type'        : int [USER_TO_USER = 1, ITEM_TO_ITEM = 2],\n
+            'description' : str,\n
+            'version'     : int\n
+        }
 
         Args:
             body (dict): Represent a similarity matrix dto with updated values.
@@ -387,14 +383,13 @@ class RecSysApi:
         """
         Query cells for a given similarity matrix. A similarity matrix cell is a dict dto with next structure:
 
-        Examples:
-            similarity_matrix_cell = {
-                'row'     : int,
-                'column'  : int,
-                'value'   : float,
-                'version' : int,
-                'matrix'  : str, format: f'{host}/api/similarity-matrix/{SIMILARITY_MATRIX_ID}/'
-            }
+        similarity_matrix_cell = {\n
+            'row'     : int,\n
+            'column'  : int,\n
+            'value'   : float,\n
+            'version' : int,\n
+            'matrix'  : str, format: f'{host}/api/similarity-matrix/{SIM_MATRIX_ID}/'\n
+        }
 
         It method also allow as to query using pagination an also filter by row, columns and matrix identifiers.
 
@@ -421,14 +416,13 @@ class RecSysApi:
 
         Add new similarity cells in bulk way. A similarity matrix cell is a dict dto with next structure:
 
-        Examples:
-            similarity_matrix_cell = {
-                'row'     : int,
-                'column'  : int,
-                'value'   : float,
-                'version' : int,
-                'matrix'  : str, format: f'{host}/api/similarity-matrix/{SIMILARITY_MATRIX_ID}/'
-            }
+        similarity_matrix_cell = {\n
+            'row'     : int,\n
+            'column'  : int,\n
+            'value'   : float,\n
+            'version' : int,\n
+            'matrix'  : str, format: f'{host}/api/similarity-matrix/{SIM_MATRIX_ID}/'\n
+        }
 
         Args:
             body (an similarity matrix cel list): A list of dicts. Each dist represent an similarity matrix cell dto.
@@ -466,13 +460,12 @@ class RecSysApi:
         """
         Query recommenders. An recommender is a dict dto with next structure:
 
-        Examples:
-            recommender = {
-                'id'                     : int,
-                'name'                   : str,
-                'user_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["user_similarity_matrix"]}/',
-                'item_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["item_similarity_matrix"]}/'
-            }
+        recommender = {\n
+            'id'                     : int,\n
+            'name'                   : str,\n
+            'user_similarity_matrix' : f'{host}/api/similarity-matrix/{USER_SIM_MATRIX_ID}/',\n
+            'item_similarity_matrix' : f'{host}/api/similarity-matrix/{ITEM_SIM_MATRIX_ID}/'\n
+        }
 
         Where user_similarity_matrix and item_similarity_matrix are identifier.
         It method also allow as to query using pagination an also filter by name.
@@ -492,13 +485,12 @@ class RecSysApi:
         """
         Add a new recommender. A recommender is a dict dto with next structure:
 
-        Examples:
-            recommender = {
-                'id'                     : int,
-                'name'                   : str,
-                'user_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["user_similarity_matrix"]}/',
-                'item_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["item_similarity_matrix"]}/'
-            }
+        recommender = {\n
+            'id'                     : int,\n
+            'name'                   : str,\n
+            'user_similarity_matrix' : f'{host}/api/similarity-matrix/{USER_SIM_MATRIX_ID}/',\n
+            'item_similarity_matrix' : f'{host}/api/similarity-matrix/{ITEM_SIM_MATRIX_ID}/'\n
+        }
 
         Args:
             body (dict): Represent a recommender dto.
@@ -513,13 +505,12 @@ class RecSysApi:
         """
         update a recommender by a given identifier. A recommender is a dict dto with next structure:
 
-        Examples:
-            recommender = {
-                'id'                     : int,
-                'name'                   : str,
-                'user_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["user_similarity_matrix"]}/',
-                'item_similarity_matrix' : str - format: f'{host}/api/similarity-matrix/{model["item_similarity_matrix"]}/'
-            }
+        recommender = {\n
+            'id'                     : int,\n
+            'name'                   : str,\n
+            'user_similarity_matrix' : f'{host}/api/similarity-matrix/{USER_SIM_MATRIX_ID}/',\n
+            'item_similarity_matrix' : f'{host}/api/similarity-matrix/{ITEM_SIM_MATRIX_ID}/'\n
+        }
 
         Args:
             body (dict): Represent a recommender dto with updated values.
