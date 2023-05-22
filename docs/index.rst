@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-recsys-client-side-lib documentation
+recsys-client-lib documentation
 =====================================
 
 This library give support for:
