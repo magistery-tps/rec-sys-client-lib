@@ -1,23 +1,25 @@
-repository
+Modules
 ==========
 
 .. toctree::
    :maxdepth: 4
 
+   domain_context
+   job
    api
+   database
+   service
+   repository
+   model
+   model.surprise
+   logger
+   mapper
+   util
+   tmdb_api
+   data
    data.dataset
    data.plot.diagram
    data.plot
    data.plot.variable
-   data
-   database
-   domain_context
-   job
-   logger
-   mapper
-   model
-   model.surprise
-   repository
-   service
-   tmdb_api
-   util
+
+
