@@ -28,6 +28,7 @@ class BertItemDistanceMatrixJob(Job):
         n_most_similars = 50
     ):
         """
+        Constructor
 
         Args:
             ctx (DomainContext): a reference to domain context uses to access to all services.

@@ -1,9 +1,9 @@
-# recsys-client-side API
+# recsys-client-side-lib
 
-This repository give support to:
+This library give support for:
 
 * Access to [rec-sys](https://github.com/magistery-tps/rec-sys) via database repositories.
-* Acces to [rec-sys](https://github.com/magistery-tps/rec-sys) REST API to config and update recommenders data.
+* Access to [rec-sys](https://github.com/magistery-tps/rec-sys) REST API to config and update recommenders data.
 * Jobs: Used to build and config similarity matrix (user-user / item-item) required by [rec-sys](https://github.com/magistery-tps/rec-sys) recommenders.
 
 ## Requirements

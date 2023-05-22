@@ -26,7 +26,8 @@ class SurpriseDistanceMatrixJob(Job):
             n_most_similars_users=50,
             n_most_similars_items=10
     ):
-        """Constructor
+        """
+        Constructor
 
         Args:
             ctx (DomainContext): a reference to domain context uses to access to all services.
