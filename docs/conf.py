@@ -25,7 +25,7 @@ import util
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'rec-sys-client-side'
+project = 'rec-sys-client-lib'
 copyright = '2023, Adrian Norberto Marino'
 author = 'Adrian Norberto Marino'
 release = '0.0.1'
