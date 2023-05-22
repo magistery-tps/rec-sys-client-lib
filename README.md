@@ -1,4 +1,4 @@
-# recsys-client-side-lib
+# recsys-client-lib
 
 This library give support for:
 
@@ -37,7 +37,7 @@ api_client = ctx.api
 # Get user interactions
 api_client.interacitons()
 ```
-See [api.recsys.RecSysApi](https://magistery-tps.github.io/rec-sys-client-side-lib/api.html) for more detail.
+See [api.recsys.RecSysApi](https://magistery-tps.github.io/rec-sys-client-lib/api.html) for more detail.
 
 **Step 3**: Execute a job.
 
@@ -49,7 +49,7 @@ ctx.svd_distance_matrix_job.execute()
 ctx.nmf_distance_matrix_job.execute()
 ```
 
-See [job](https://magistery-tps.github.io/rec-sys-client-side-lib/job.html) for more detail.
+See [job](https://magistery-tps.github.io/rec-sys-client-lib/job.html) for more detail.
 
 **Step 4**: Also could run jobs from bash.
 
@@ -71,7 +71,7 @@ $ python bin/multi_qa_mpnet_base_dot_v1_bert_item_distance_matrix_job.py
 
 ## API Documentation
 
-Go to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-side-lib).
+Go to [rec-sys-client-side Documentation](https://magistery-tps.github.io/rec-sys-client-lib).
 
 ## WIKI
 
