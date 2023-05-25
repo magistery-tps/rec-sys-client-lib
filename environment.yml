@@ -1,4 +1,4 @@
-name: recsys-client-side
+name: recsys-client-lib
 channels:
     - defaults
     - pytorch
@@ -10,7 +10,6 @@ dependencies:
     - pandas
     - jupyterlab
     - ipywidgets
-    - scikit-learn
     - pymysql
     - mysql-connector-python
     - tqdm
@@ -18,13 +17,14 @@ dependencies:
     - pyyaml
     - sphinx
     - sphinx_rtd_theme
+    - scikit-learn
+    - scikit-surprise
     - pip
     - pip:
+        - apache-airflow
         - --extra-index-url https://download.pytorch.org/whl/cu116
         - torch==1.12.1+cu116
         - simple-rest-client
-        - surprise
-        - selectorlib
         - sentence-transformers
         - singleton-decorator
         - parallel-pandas

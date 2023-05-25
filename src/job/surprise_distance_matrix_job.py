@@ -22,7 +22,6 @@ class SurpriseDistanceMatrixJob(Job):
             ctx,
             model,
             recommender_name,
-            min_item_votes=50,
             n_most_similars_users=50,
             n_most_similars_items=10
     ):
@@ -38,12 +37,11 @@ class SurpriseDistanceMatrixJob(Job):
             n_most_similars_items (int, optional): Used to filter similarity relations only for n_most_similars_items of each item. Defaults to 10.
         """
         super().__init__(ctx)
-        self._min_item_votes = min_item_votes
         self._n_most_similars_users = n_most_similars_users
         self._n_most_similars_items = n_most_similars_items
         self._model = model
         self._recommender_name = recommender_name
-        self._job_data_path = f'{self.ctx.temp_path}/{self._recommender_name.lower()}_job_data'
+        self._job_data_path = f'{self.ctx.temp_path}/{self._recommender_name.lower()}_job_data.picket'
 
     def _perform(self):
         # Get user-item interactions from RecSys API...

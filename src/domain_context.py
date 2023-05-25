@@ -13,17 +13,17 @@ class DomainContext(metaclass=ut.SingletonMeta):
     """A singleton object that build all lib services required into a job a notebook.
     Is a facade that allows to access any lib services configured and ready for use. 
     """
-    def __init__(self, cfg_path = './config'):
-        cfg = ut.YmlUtil.load(cfg_path)
+    def __init__(self, cfg_path = './config.yml'):
+        self.cfg = ut.YmlUtil.load(cfg_path)
 
-        self.temp_path = cfg.temp_path
+        self.temp_path = self.cfg.temp_path
         ut.mkdir(self.temp_path)
 
         LoggerBuilder.build()
         warnings.filterwarnings('ignore')
 
 
-        self.__client = api.RecSysApi(cfg.api.token, cfg.api.host)
+        self.__client = api.RecSysApi(self.cfg.api.token, self.cfg.api.host)
 
         # Mappers
         user_mapper                   = UserMapper()

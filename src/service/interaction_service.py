@@ -2,7 +2,6 @@ import numpy as np
 import api
 from repository import InteractionRepository
 import util as ut
-import seaborn as sns
 import multiprocessing as mp
 import pandas as pd
 from logger import get_logger
@@ -104,9 +103,8 @@ class InteractionService:
         iterator = ut.DataFramePaginationIterator(interactions, page_size=page_size)
         [self.repository.add_many(page) for page in iterator]
 
-
     def find_all(self, page_size = 5000):
-        """Query all user interactions.
+        """Find all user interactions.
 
         Args:
             page_size (int, optional): Page size used to fetch user interactions. Defaults to 5000.
@@ -114,7 +112,20 @@ class InteractionService:
         Returns:
             pd.DataFrame: A pd.DataFrame with all user interactions.
         """
-        return pd.DataFrame.from_records(self.repository.find(page_size=page_size))
+        return self.find_by(page_size=page_size)
+
+
+    def find_by(self, query={}, page_size = 5000):
+        """Find user interactions by query criterion.
+
+        Args:
+            query (dict, optional): A dict of field_name: value pairs. Defaults to {}.
+            page_size (int, optional): Page size used to fetch user interactions. Defaults to 5000.
+
+        Returns:
+            pd.DataFrame: A pd.DataFrame with all user interactions.
+        """
+        return pd.DataFrame.from_records(self.repository.find(query, page_size))
 
 
     def unrated_user_item(
@@ -184,22 +195,4 @@ class InteractionService:
 
         return items_by_user
 
-
-    def plot_n_users_by_item(self, df, columns = ('user_id', 'item_id', 'rating')):
-        item_users = df \
-            .groupby(columns[1], as_index=False)[columns[0]]  \
-            .count() \
-            .sort_values(by=columns[0], ascending=False) \
-            .rename(columns={columns[0]: f'n_{columns[0]}'}) \
-            .reset_index(drop=True)
-
-        item_users.reset_index(inplace=True)
-
-        sns.set_theme(style="ticks")
-        fig = sns.lineplot(
-            x     = 'index',
-            y     = f'n_{columns[0]}',
-            data  = item_users
-        )
-        fig.set_xlabel(columns[1])
 

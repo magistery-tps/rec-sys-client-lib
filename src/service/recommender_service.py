@@ -34,7 +34,7 @@ class RecommenderService:
             model = models[0]
             model.user_similarity_matrix = user_similarity_matrix.id
             model.item_similarity_matrix = item_similarity_matrix.id
-            return self.__repository.__update(model)
+            return self.__repository.update(model)
         else:
             self._logger.info(f'Insert {name} recommender.')
             model = mapper.Model({
@@ -43,7 +43,3 @@ class RecommenderService:
                 'item_similarity_matrix': item_similarity_matrix.id
             })
             return self.__repository.add(model)
-
-
-    def __update(self, model):
-        return self.__repository.update(model)

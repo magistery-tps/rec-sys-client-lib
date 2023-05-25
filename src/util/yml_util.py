@@ -10,7 +10,7 @@ from .attr_dict import AttrDict
 class YmlUtil:
     @staticmethod
     def load(path):
-        with open(f'{path}.yml', 'rb') as handle:
+        with open(f'{path}', 'rb') as handle:
             data = load(handle, Loader=Loader)
             print(data)
             return AttrDict.from_nested_dicts(data)

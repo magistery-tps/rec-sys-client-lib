@@ -1,8 +1,7 @@
 import numpy as np
 import api
 from repository import ItemRepository
-import util as ut
-import seaborn as sns
+import util as unrated_user_item
 import multiprocessing as mp
 import pandas as pd
 from logger import get_logger
