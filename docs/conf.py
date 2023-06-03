@@ -4,28 +4,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import sys
 sys.path.append('../src')
-import api
-import data.dataset
-import data.plot.diagram
-import data.plot
-import data.plot.variable
-import data
-import database
-import domain_context
-import job
-import logger
-import mapper
-import model
-import model.surprise
-import repository
-import service
-import tmdb_api
-import util
+import recsys.data.dataset
+from recsys import data, job, util, service, api, tmdb_api, logger, database, model, domain_context, repository, mapper
+import recsys.data.plot
+import recsys.data.plot.variable
+import recsys.data
+import recsys.model.surprise
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'rec-sys-client-lib'
+project = 'rec-sys-client-src'
 copyright = '2023, Adrian Norberto Marino'
 author = 'Adrian Norberto Marino'
 release = '0.0.1'

@@ -14,7 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+src/
 lib64/
 parts/
 sdist/
@@ -140,3 +140,4 @@ thesis-datasets
 
 .idea
 .vscode
+weights/

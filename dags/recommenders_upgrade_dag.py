@@ -6,7 +6,9 @@ from airflow.models import Variable
 
 sys.path.append(Variable.get('recsys.client.src_path'))
 
-import dag.task as ts
+import recsys.dag.task as ts
+import numpy as np
+
 
 with DAG(
     'Recommenders-Upgrade',
@@ -26,7 +28,7 @@ with DAG(
         for all interactions real and predicted. Use rating matrix to compute user-user
         and item-item similarity matrix and upsert matrix to rec-sys API.
         Finally, compute user-user and item-item similarity matrix using mean from
-        all models similarity matrix and upsert to rec-sys API.
+        all model similarity matrix and upsert to rec-sys API.
     """,
     schedule_interval = '*/10 * * * *',
     start_date        = days_ago(0),
@@ -48,26 +50,30 @@ with DAG(
         dag,
         task_id           = 'compute_svd_rating_matrix',
         interactions_path = 'fetch_interactions.json',
-        model             = 'SVD'
+        model             = 'SVD',
+        min_n_interactions = 20,
+        rating_scale       = np.arange(0, 6, 0.5)
     )
 
     nmf_rating_matrix = ts.compute_surprise_rating_matrix_task(
         dag,
         task_id           = 'compute_nmf_rating_matrix',
         interactions_path = 'fetch_interactions.json',
-        model             = 'NMF'
+        model             = 'NMF',
+        min_n_interactions = 20,
+        rating_scale       = np.arange(0, 6, 0.5)
     )
 
     svd_sim = ts.compute_similarities_task(
         dag,
         task_id            = 'compute_svd_similarities',
-        rating_matrix_path = 'compute_svd_rating_matrix.picket',
+        rating_matrix_path = 'compute_svd_rating_matrix.npz'
     )
 
     nmf_sim = ts.compute_similarities_task(
         dag,
         task_id            = 'compute_nmf_similarities',
-        rating_matrix_path = 'compute_nmf_rating_matrix.picket',
+        rating_matrix_path = 'compute_nmf_rating_matrix.npz'
     )
 
     upgrade_svd_rec = ts.update_recommender_task(
@@ -76,7 +82,9 @@ with DAG(
         recommender_name       = 'SVD',
         interactions_path      = 'fetch_interactions.json',
         user_similarities_path = 'compute_svd_similarities_user_similarities.json',
-        item_similarities_path = 'compute_svd_similarities_item_similarities.json'
+        item_similarities_path = 'compute_svd_similarities_item_similarities.json',
+        n_most_similars_users  = 50,
+        n_most_similars_items  = 10
     )
 
     upgrade_nmf_rec = ts.update_recommender_task(
@@ -85,7 +93,9 @@ with DAG(
         recommender_name       = 'NMF',
         interactions_path      = 'fetch_interactions.json',
         user_similarities_path = 'compute_nmf_similarities_user_similarities.json',
-        item_similarities_path = 'compute_nmf_similarities_item_similarities.json'
+        item_similarities_path = 'compute_nmf_similarities_item_similarities.json',
+        n_most_similars_users  = 50,
+        n_most_similars_items  = 10
     )
 
     fetch >> check_count >> check_branch

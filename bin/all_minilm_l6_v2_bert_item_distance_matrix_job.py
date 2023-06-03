@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 import sys
 sys.path.append('./src')
-from domain_context import DomainContext
+from recsys.domain_context import DomainContext
 #------------------------------------------------------------------------------
 #
 #

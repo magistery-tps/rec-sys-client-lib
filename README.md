@@ -21,10 +21,10 @@ import sys
 sys.path.append('./src')
 ```
 
-**Step 2**: Import `DomainContext` class. `DomainContext` is a python class that build and config all services required to interact with [rec-sys](https://github.com/magistery-tps/rec-sys) via _REST API_ or _Database Client_. `DomainContext` can be seen as a `facade` pattern. 
+**Step 2**: Import `DomainContext` class. `DomainContext` is a python class that build and config all services required to interact with [rec-sys](https://github.com/magistery-tps/rec-sys) via _REST API_ or _Database Client_. `DomainContext` can be seen as a `facade` pattern.
 
 ```python
-from domain_context import DomainContext
+from recsys.domain_context import DomainContext
 
 ctx = DomainContext()
 ```
