@@ -1,5 +1,5 @@
-model package
-=============
+recsys.model package
+====================
 
 Subpackages
 -----------
@@ -7,12 +7,12 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   model.surprise
+   recsys.model.surprise
 
 Module contents
 ---------------
 
-.. automodule:: model
+.. automodule:: recsys.model
    :members:
    :undoc-members:
    :show-inheritance:

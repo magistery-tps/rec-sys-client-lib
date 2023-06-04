@@ -1,10 +1,10 @@
-logger package
-==============
+recsys.logger package
+=====================
 
 Module contents
 ---------------
 
-.. automodule:: logger
+.. automodule:: recsys.logger
    :members:
    :undoc-members:
    :show-inheritance:
