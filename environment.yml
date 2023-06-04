@@ -4,8 +4,6 @@ channels:
     - pytorch
     - conda-forge
 dependencies:
-    - seaborn
-    - matplotlib
     - numpy=1.21
     - pandas
     - jupyterlab
