@@ -1,22 +1,7 @@
-Modules
-==========
+src
+===
 
 .. toctree::
    :maxdepth: 4
 
-   domain_context
-   job
-   api
-   database
-   service
-   repository
-   model
-   model.surprise
-   logger
-   mapper
-   util
-   tmdb_api
-   data
-   data.dataset
-
-
+   recsys
