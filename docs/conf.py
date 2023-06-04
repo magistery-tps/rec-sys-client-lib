@@ -10,21 +10,20 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
 import sys
-sys.path.insert(0, os.path.abspath('../src'))
+sys.path.append('../src')
 
-import src.recsys.api
-import src.recsys.dag
-import src.recsys.data
-import src.recsys.database
-import src.recsys.job
-import src.recsys.logger
-import src.recsys.mapper
-import src.recsys.model
-import src.recsys.repository
-import src.recsys.service
-import src.recsys.util
+import recsys.api
+import recsys.dag
+import recsys.data
+import recsys.database
+import recsys.job
+import recsys.logger
+import recsys.mapper
+import recsys.model
+import recsys.repository
+import recsys.service
+import recsys.util
 
 
 # -- Project information -----------------------------------------------------
