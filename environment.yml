@@ -6,8 +6,6 @@ channels:
 dependencies:
     - numpy=1.21
     - pandas
-    - jupyterlab
-    - ipywidgets
     - pymysql
     - mysql-connector-python
     - tqdm
