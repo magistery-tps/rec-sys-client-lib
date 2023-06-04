@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>recsys.database package &mdash; rec-sys-client-lib 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="recsys.job package" href="recsys.job.html" />
+    <link rel="prev" title="recsys.data.dataset package" href="recsys.data.dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rec-sys-client-lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="recsys.html">recsys package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="recsys.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="recsys.api.html">recsys.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.dag.html">recsys.dag package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.data.html">recsys.data package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">recsys.database package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recsys-database-database-module">recsys.database.database module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recsys-database-interaction-repository-module">recsys.database.interaction_repository module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recsys-database-item-repository-module">recsys.database.item_repository module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recsys-database-repository-module">recsys.database.repository module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.job.html">recsys.job package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.logger.html">recsys.logger package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.mapper.html">recsys.mapper package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.model.html">recsys.model package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.repository.html">recsys.repository package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.service.html">recsys.service package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recsys.util.html">recsys.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="recsys.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys.html#recsys-domain-context-module">recsys.domain_context module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys.html#recsys-tmdb-api-module">recsys.tmdb_api module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rec-sys-client-lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="recsys.html">recsys package</a></li>
+      <li class="breadcrumb-item active">recsys.database package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/recsys.database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="recsys-database-package">
+<h1>recsys.database package<a class="headerlink" href="#recsys-database-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="recsys-database-database-module">
+<h2>recsys.database.database module<a class="headerlink" href="#recsys-database-database-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="recsys-database-interaction-repository-module">
+<h2>recsys.database.interaction_repository module<a class="headerlink" href="#recsys-database-interaction-repository-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="recsys-database-item-repository-module">
+<h2>recsys.database.item_repository module<a class="headerlink" href="#recsys-database-item-repository-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="recsys-database-repository-module">
+<h2>recsys.database.repository module<a class="headerlink" href="#recsys-database-repository-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="recsys.data.dataset.html" class="btn btn-neutral float-left" title="recsys.data.dataset package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="recsys.job.html" class="btn btn-neutral float-right" title="recsys.job package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
