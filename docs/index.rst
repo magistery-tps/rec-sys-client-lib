@@ -16,6 +16,8 @@ This library give support for:
    :maxdepth: 2
    :caption: Contents:
 
+   recsys
+
 Indices and tables
 ==================
 
