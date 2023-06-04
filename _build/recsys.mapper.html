@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>recsys.mapper package &mdash; rec-sys-client-src 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> rec-sys-client-src
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="domain_context.html">domain_context module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rec-sys-client-src</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">recsys.mapper package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/recsys.mapper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="recsys-mapper-package">
+<h1>recsys.mapper package<a class="headerlink" href="#recsys-mapper-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-recsys.mapper.interaction_mapper">
+<span id="recsys-mapper-interaction-mapper-module"></span><h2>recsys.mapper.interaction_mapper module<a class="headerlink" href="#module-recsys.mapper.interaction_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.interaction_mapper.InteractionMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.interaction_mapper.</span></span><span class="sig-name descname"><span class="pre">InteractionMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/interaction_mapper.html#InteractionMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.interaction_mapper.InteractionMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Interaction model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.interaction_mapper.InteractionMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/interaction_mapper.html#InteractionMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.interaction_mapper.InteractionMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.interaction_mapper.InteractionMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/interaction_mapper.html#InteractionMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.interaction_mapper.InteractionMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="recsys.mapper.interaction_mapper.substring_after">
+<span class="sig-prename descclassname"><span class="pre">recsys.mapper.interaction_mapper.</span></span><span class="sig-name descname"><span class="pre">substring_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/interaction_mapper.html#substring_after"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.interaction_mapper.substring_after" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-recsys.mapper.item_mapper">
+<span id="recsys-mapper-item-mapper-module"></span><h2>recsys.mapper.item_mapper module<a class="headerlink" href="#module-recsys.mapper.item_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.item_mapper.ItemMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.item_mapper.</span></span><span class="sig-name descname"><span class="pre">ItemMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/item_mapper.html#ItemMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.item_mapper.ItemMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Item model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.item_mapper.ItemMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/item_mapper.html#ItemMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.item_mapper.ItemMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.mapper">
+<span id="recsys-mapper-mapper-module"></span><h2>recsys.mapper.mapper module<a class="headerlink" href="#module-recsys.mapper.mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.mapper.Mapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.mapper.</span></span><span class="sig-name descname"><span class="pre">Mapper</span></span><a class="reference internal" href="_modules/recsys/mapper/mapper.html#Mapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.mapper.Mapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Common mapper interface. This interface is used for all entity mappers.
+An entity mapper. Mapper subclass convert object from mapper.Model to a dict DTO and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.mapper.Mapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/mapper.html#Mapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.mapper.Mapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.mapper.Mapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/mapper.html#Mapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.mapper.Mapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.model">
+<span id="recsys-mapper-model-module"></span><h2>recsys.mapper.model module<a class="headerlink" href="#module-recsys.mapper.model" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.model.Model" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Bunch</span></code></p>
+<p>A DTO object that represent a domain model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Bunch</strong> (<em>dict</em>) – a model state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.recommender_mapper">
+<span id="recsys-mapper-recommender-mapper-module"></span><h2>recsys.mapper.recommender_mapper module<a class="headerlink" href="#module-recsys.mapper.recommender_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.recommender_mapper.RecommenderMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.recommender_mapper.</span></span><span class="sig-name descname"><span class="pre">RecommenderMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/recommender_mapper.html#RecommenderMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.recommender_mapper.RecommenderMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a Recommender model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.recommender_mapper.RecommenderMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/recommender_mapper.html#RecommenderMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.recommender_mapper.RecommenderMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.recommender_mapper.RecommenderMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/recommender_mapper.html#RecommenderMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.recommender_mapper.RecommenderMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.similarity_matrix_cell_mapper">
+<span id="recsys-mapper-similarity-matrix-cell-mapper-module"></span><h2>recsys.mapper.similarity_matrix_cell_mapper module<a class="headerlink" href="#module-recsys.mapper.similarity_matrix_cell_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.similarity_matrix_cell_mapper.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixCellMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a SimilarityMatrixCell model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_cell_mapper.html#SimilarityMatrixCellMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_cell_mapper.SimilarityMatrixCellMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.similarity_matrix_mapper">
+<span id="recsys-mapper-similarity-matrix-mapper-module"></span><h2>recsys.mapper.similarity_matrix_mapper module<a class="headerlink" href="#module-recsys.mapper.similarity_matrix_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.similarity_matrix_mapper.</span></span><span class="sig-name descname"><span class="pre">SimilarityMatrixMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a SimilarityMatrix model to dto and vice versa.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_dto">
+<span class="sig-name descname"><span class="pre">to_dto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper.to_dto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_dto" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a mapper.Model object to a DTO dict object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>mapper.Model</em>) – Represent  a mapper.Model object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a DTO dict object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/similarity_matrix_mapper.html#SimilarityMatrixMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.similarity_matrix_mapper.SimilarityMatrixMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper.user_mapper">
+<span id="recsys-mapper-user-mapper-module"></span><h2>recsys.mapper.user_mapper module<a class="headerlink" href="#module-recsys.mapper.user_mapper" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="recsys.mapper.user_mapper.UserMapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">recsys.mapper.user_mapper.</span></span><span class="sig-name descname"><span class="pre">UserMapper</span></span><a class="reference internal" href="_modules/recsys/mapper/user_mapper.html#UserMapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.user_mapper.UserMapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#recsys.mapper.mapper.Mapper" title="recsys.mapper.mapper.Mapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapper</span></code></a></p>
+<p>Map a User dto to model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="recsys.mapper.user_mapper.UserMapper.to_model">
+<span class="sig-name descname"><span class="pre">to_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dto</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/recsys/mapper/user_mapper.html#UserMapper.to_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#recsys.mapper.user_mapper.UserMapper.to_model" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a DTO dict model to a mapper.Model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dto</strong> (<em>dict</em>) – Represent a DTO object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A model object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mapper.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-recsys.mapper">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-recsys.mapper" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Adrian Norberto Marino.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

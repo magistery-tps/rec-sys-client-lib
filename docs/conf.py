@@ -4,11 +4,10 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import sys
 sys.path.append('../src')
-import recsys.data.dataset
+
 from recsys import data, job, util, service, api, tmdb_api, logger, database, model, domain_context, repository, mapper
-import recsys.data.plot
-import recsys.data.plot.variable
-import recsys.data
+
+import recsys.data.dataset
 import recsys.model.surprise
 
 # -- Project information -----------------------------------------------------
