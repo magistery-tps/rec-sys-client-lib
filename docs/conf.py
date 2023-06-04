@@ -14,6 +14,18 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
+import src.recsys.api
+import src.recsys.dag
+import src.recsys.data
+import src.recsys.database
+import src.recsys.job
+import src.recsys.logger
+import src.recsys.mapper
+import src.recsys.model
+import src.recsys.repository
+import src.recsys.service
+import src.recsys.util
+
 
 # -- Project information -----------------------------------------------------
 
