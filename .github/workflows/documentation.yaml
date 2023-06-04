@@ -23,7 +23,9 @@ jobs:
             conda init bash
             source ~/.bashrc
             conda activate recsys-client-lib
-            sphinx-build docs _build
+            cd docs
+            make html
+            cp _build ../
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
