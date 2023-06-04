@@ -5,10 +5,20 @@
 import sys
 sys.path.append('../src')
 
-from recsys import data, job, util, service, api, tmdb_api, logger, database, model, domain_context, repository, mapper
-
+import recsys.data
 import recsys.data.dataset
+import recsys.job
+import recsys.util
+import recsys.service
+import recsys.api
+import recsys.tmdb_api
+import recsys.logger
+import recsys.database
+import recsys.model
 import recsys.model.surprise
+import recsys.domain_context
+import recsys.repository
+import recsys.mapper
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
