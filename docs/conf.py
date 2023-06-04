@@ -14,20 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
-import recsys.data
-import recsys.data.dataset
-import recsys.job
-import recsys.util
-import recsys.service
-import recsys.api
-import recsys.tmdb_api
-import recsys.logger
-import recsys.database
-import recsys.model
-import recsys.model.surprise
-import recsys.domain_context
-import recsys.repository
-import recsys.mapper
 
 # -- Project information -----------------------------------------------------
 
