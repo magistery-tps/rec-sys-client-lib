@@ -66,14 +66,16 @@ with DAG(
 
     svd_sim = ts.compute_similarities_task(
         dag,
-        task_id            = 'compute_svd_similarities',
-        rating_matrix_path = 'compute_svd_rating_matrix.npz'
+        task_id                  = 'compute_svd_similarities',
+        future_interactions_path = 'compute_svd_rating_matrix_future_similarities.json',
+        train_interactions_path  = 'compute_svd_rating_matrix_train_similarities.json'
     )
 
     nmf_sim = ts.compute_similarities_task(
         dag,
-        task_id            = 'compute_nmf_similarities',
-        rating_matrix_path = 'compute_nmf_rating_matrix.npz'
+        task_id                  = 'compute_nmf_similarities',
+        future_interactions_path = 'compute_nmf_rating_matrix_future_similarities.json',
+        train_interactions_path  = 'compute_nmf_rating_matrix_train_similarities.json'
     )
 
     upgrade_svd_rec = ts.update_recommender_task(

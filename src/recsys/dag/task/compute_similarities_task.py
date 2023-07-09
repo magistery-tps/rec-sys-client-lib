@@ -23,38 +23,48 @@ def python_callable(**ctx):
             orient='records'
         )
 
+    def save_similarities(df, name):
+        df.to_json(
+            f'{domain.cfg.temp_path}/{ctx["task_id"]}_{name}_similarities.json',
+            orient='records'
+        )
+
+    # --------------------------------------------------------------------------
+    # Main Process
+    # --------------------------------------------------------------------------
+
     train_interactions  = load_interactions('train_interactions_path')
     future_interactions = load_interactions('future_interactions_path')
-    
-    interactions = np.concatenate
 
-    domain.rating_matrix_service.create(
+    rating_matrix = domain.rating_matrix_service.create(
         self,
         train_interactions,
         future_interactions,
         columns=('user_seq', 'item_seq', 'rating'),
         matrix_type=RatingMatrixType.USER_ITEM
     )
+    del train_interactions
+    del train_interactions
 
+    #
     # Build similarity matrix from rating matrix...
+    #
+
     user_similarities = domain.similarity_service.similarities(
         rating_matrix,
         entity='user'
     )
-    user_similarities.to_json(
-        f'{domain.cfg.temp_path}/{ctx["task_id"]}_user_similarities.json',
-        orient='records'
-    )
-
+    save_similarities(user_similarities, 'user')
+    del user_similarities
 
     item_similarities = domain.similarity_service.similarities(
         rating_matrix.transpose(),
         entity='item'
     )
-    item_similarities.to_json(
-        f'{domain.cfg.temp_path}/{ctx["task_id"]}_item_similarities.json',
-        orient='records'
-    )
+    del rating_matrix
+
+    save_similarities(item_similarities, 'item')
+    del item_similarities
 
 
 def compute_similarities_task(

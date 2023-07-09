@@ -48,10 +48,14 @@ def python_callable(**ctx):
         rating_scale       = ctx['rating_scale'],
         columns            = ('user_seq', 'item_seq', 'rating')
     )
+    del train_interactions
+    del model
 
     save_interactions(future_interactions, 'future')
-    save_interactions(filtered_train_interactions, 'train')
+    del future_interactions
 
+    save_interactions(filtered_train_interactions, 'train')
+    del filtered_train_interactions
 
 
 
