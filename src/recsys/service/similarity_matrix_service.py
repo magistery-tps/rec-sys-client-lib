@@ -41,8 +41,14 @@ class SimilarityMatrixService:
 
         similarity_matrix.version += 1
 
+        interactions.to_json('/var/tmp/rec-sys-client/temporal.json', orient='records')
+
         # Map sequences to ids
         user_id_by_seq = ut.id_by_seq(interactions, entity='user')
+
+        self._logger.info(f'User seq 461, id: {user_id_by_seq[461]}.')
+
+        self._logger.info(f'Map: {user_id_by_seq}.')
 
         # Prepare cells...
         cells = self.__similarity_service.filter_most_similars(
@@ -70,8 +76,9 @@ class SimilarityMatrixService:
             name,
             n_most_similars=50
     ):
-        """Update a similarity matrix with a new version of cells. Each update create a new similarity matrix cells version
-         associated with a unique similarity matrix entity.
+        """
+        Update a similarity matrix with a new version of cells. Each update create a new similarity matrix cells version
+        associated with a unique similarity matrix entity.
 
         Args:
             name (str): A similarity matrix name. It's a similarity matrix identifier.

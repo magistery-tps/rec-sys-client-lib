@@ -67,37 +67,37 @@ with DAG(
     svd_sim = ts.compute_similarities_task(
         dag,
         task_id                  = 'compute_svd_similarities',
-        future_interactions_path = 'compute_svd_rating_matrix_future_similarities.json',
-        train_interactions_path  = 'compute_svd_rating_matrix_train_similarities.json'
+        future_interactions_path = 'compute_svd_rating_matrix_future_interactions.json',
+        train_interactions_path  = 'compute_svd_rating_matrix_train_interactions.json'
     )
 
     nmf_sim = ts.compute_similarities_task(
         dag,
         task_id                  = 'compute_nmf_similarities',
-        future_interactions_path = 'compute_nmf_rating_matrix_future_similarities.json',
-        train_interactions_path  = 'compute_nmf_rating_matrix_train_similarities.json'
+        future_interactions_path = 'compute_nmf_rating_matrix_future_interactions.json',
+        train_interactions_path  = 'compute_nmf_rating_matrix_train_interactions.json'
     )
 
     upgrade_svd_rec = ts.update_recommender_task(
         dag,
-        task_id                = 'update_svd_recommender',
-        recommender_name       = 'SVD',
-        interactions_path      = 'fetch_interactions.json',
-        user_similarities_path = 'compute_svd_similarities_user_similarities.json',
-        item_similarities_path = 'compute_svd_similarities_item_similarities.json',
-        n_most_similars_users  = 50,
-        n_most_similars_items  = 10
+        task_id                 = 'update_svd_recommender',
+        recommender_name        = 'SVD',
+        interactions_path       = 'compute_svd_rating_matrix_train_interactions.json',
+        user_similarities_path  = 'compute_svd_similarities_user_similarities.json',
+        item_similarities_path  = 'compute_svd_similarities_item_similarities.json',
+        n_most_similars_users   = 50,
+        n_most_similars_items   = 10
     )
 
     upgrade_nmf_rec = ts.update_recommender_task(
         dag,
-        task_id                = 'update_nmf_recommender',
-        recommender_name       = 'NMF',
-        interactions_path      = 'fetch_interactions.json',
-        user_similarities_path = 'compute_nmf_similarities_user_similarities.json',
-        item_similarities_path = 'compute_nmf_similarities_item_similarities.json',
-        n_most_similars_users  = 50,
-        n_most_similars_items  = 10
+        task_id                 = 'update_nmf_recommender',
+        recommender_name        = 'NMF',
+        interactions_path       = 'compute_nmf_rating_matrix_train_interactions.json',
+        user_similarities_path  = 'compute_nmf_similarities_user_similarities.json',
+        item_similarities_path  = 'compute_nmf_similarities_item_similarities.json',
+        n_most_similars_users   = 50,
+        n_most_similars_items   = 10
     )
 
     fetch >> check_count >> check_branch

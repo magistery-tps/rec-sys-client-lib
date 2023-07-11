@@ -66,12 +66,20 @@ class SurpriseDistanceMatrixJob(Job):
             self._logger.info(f'Start Computing...')
 
         # Build ratings matrix from user-item interactions..
-        rating_matrix, train_interactions = self.ctx.rating_matrix_service.create(
-            interactions,
-            columns=('user_seq', 'item_seq', 'rating'),
-            train_predict_fn   = ml.SurpriseTrainPredictFn(self._model),
-            min_n_interactions = 20,
-            rating_scale       = np.arange(0, 6, 0.5)
+        future_interactions, train_interactions = self.ctx \
+            .interaction_inference_service \
+            .predict(
+                interactions,
+                columns=('user_seq', 'item_seq', 'rating'),
+                train_predict_fn   = ml.SurpriseTrainPredictFn(self._model),
+                min_n_interactions = 20,
+                rating_scale       = np.arange(0, 6, 0.5)
+            )
+
+        rating_matrix = self.ctx.rating_matrix_service.create(
+            train_interactions,
+            future_interactions,
+            columns=('user_seq', 'item_seq', 'rating')
         )
 
         # Build similarity matrix from rating matrix...
@@ -96,17 +104,17 @@ class SurpriseDistanceMatrixJob(Job):
 
         return user_similarities, item_similarities
 
-    def _upsert_recommender(self, user_similarities, item_similarities, interactions):
+    def _upsert_recommender(self, user_similarities, item_similarities, train_interactions):
         # Update user/item similarity matrix into RecSys API...
         user_similarity_matrix = self.ctx.similarity_matrix_service.update_user_similarity_matrix(
             user_similarities,
-            interactions,
+            train_interactions,
             name=f'{self._recommender_name}-user-to-user',
             n_most_similars=self._n_most_similars_users
         )
         item_similarity_matrix = self.ctx.similarity_matrix_service.update_item_similarity_matrix(
             item_similarities,
-            interactions,
+            train_interactions,
             name=f'{self._recommender_name}-item-to-item',
             n_most_similars=self._n_most_similars_items
         )

@@ -39,7 +39,6 @@ class SimilarityService:
             pd.DataFrame: A table with columns=[entity_a, entity_b, value].
         """
         embeddingCache = EmbeddingCache(embedding_matrix)
-        similarities = []
 
         row_ids = list(range(embedding_matrix.shape[0]))
 

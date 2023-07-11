@@ -5,46 +5,36 @@ def python_callable(**ctx):
     import sys
     sys.path.append(ctx['rec_sys_src_path'])
     from recsys.domain_context import DomainContext
-    from recsys.util import Picket
     import pandas as pd
-    import numpy  as np
-    from surprise import SVD, NMF
-    from scipy import sparse
 
-    domain = DomainContext(cfg_path = ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
 
     # --------------------------------------------------------------------------
     # Functions
     # --------------------------------------------------------------------------
 
     def load_interactions(path):
-        return pd.read_json(
-            f'{domain.cfg.temp_path}/{ctx[path]}',
-            orient='records'
-        )
+        complete_path = f'{domain.cfg.temp_path}/{ctx[path]}'
+        return pd.read_json(complete_path, orient='records')
 
     def save_similarities(df, name):
-        df.to_json(
-            f'{domain.cfg.temp_path}/{ctx["task_id"]}_{name}_similarities.json',
-            orient='records'
-        )
+        complete_path = f'{domain.cfg.temp_path}/{ctx["task_id"]}_{name}_similarities.json'
+        df.to_json(complete_path, orient='records')
 
     # --------------------------------------------------------------------------
     # Main Process
     # --------------------------------------------------------------------------
 
-    train_interactions  = load_interactions('train_interactions_path')
+    train_interactions = load_interactions('train_interactions_path')
     future_interactions = load_interactions('future_interactions_path')
 
     rating_matrix = domain.rating_matrix_service.create(
-        self,
         train_interactions,
         future_interactions,
-        columns=('user_seq', 'item_seq', 'rating'),
-        matrix_type=RatingMatrixType.USER_ITEM
+        columns=('user_seq', 'item_seq', 'rating')
     )
     del train_interactions
-    del train_interactions
+    del future_interactions
 
     #
     # Build similarity matrix from rating matrix...
@@ -68,19 +58,17 @@ def python_callable(**ctx):
 
 
 def compute_similarities_task(
-    dag,
-    task_id,
-    train_interactions_path,
-    future_interactions_path
+        dag,
+        task_id,
+        train_interactions_path,
+        future_interactions_path
 ):
     return python_rec_sys_operator(
         dag,
         task_id,
         python_callable,
-        params = {
+        params={
             'train_interactions_path': train_interactions_path,
             'future_interactions_path': future_interactions_path
         }
     )
-
-

@@ -10,7 +10,7 @@ def python_callable(**ctx):
     from os.path import exists
     import logging
 
-    domain = DomainContext(cfg_path = ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
 
     # Only run when found an interactions size change...
 
@@ -30,7 +30,6 @@ def python_callable(**ctx):
             logging.info(f'Not found interaction size change.')
             return 'False'
 
-
     logging.info(f'Found interaction size change.')
     return 'True'
 
@@ -40,7 +39,5 @@ def check_interactions_change_task(dag, interactions_path, task_id='check_intera
         dag,
         task_id,
         python_callable,
-        params = { 'interactions_path': interactions_path}
+        params={'interactions_path': interactions_path}
     )
-
-

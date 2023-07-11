@@ -7,9 +7,8 @@ def python_callable(**ctx):
     from recsys.domain_context import DomainContext
     from recsys.util import Picket
     import pandas as pd
-    import logging
 
-    domain = DomainContext(cfg_path = ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
 
     # Only run when found an interactions size change...
 
@@ -21,7 +20,7 @@ def python_callable(**ctx):
     # Save input interactions count...
     Picket.save(
         f'{domain.cfg.temp_path}/check_interactions_change.picket',
-        { 'n_interactions': n_interactions }
+        {'n_interactions': n_interactions}
     )
 
 
@@ -30,7 +29,5 @@ def mark_n_processed_interactions_task(dag, interactions_path, task_id='mark_n_p
         dag,
         task_id,
         python_callable,
-        params = { 'interactions_path': interactions_path}
+        params={'interactions_path': interactions_path}
     )
-
-
