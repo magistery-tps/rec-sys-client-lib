@@ -84,8 +84,6 @@ class InteractionService:
 
         excluded_user_seqs = df[~df[columns[0]].isin(selected_user_seqs)][columns[0]].unique()
 
-        self._logger.info(f'Excluded user seqs: {excluded_user_seqs}')
-
         return df_filtered
 
 
