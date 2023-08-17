@@ -4,9 +4,11 @@ from recsys import util as unrated_user_item, api
 import multiprocessing as mp
 import pandas as pd
 from recsys.logger import get_logger
+from .entity_service import EntityService
 
 
-class ItemService:
+
+class ItemService(EntityService):
     def __init__(self, repository: ItemRepository):
         self.repository = repository
         self._logger    = get_logger(self)

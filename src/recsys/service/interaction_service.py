@@ -4,9 +4,11 @@ from recsys import util as ut, api
 import multiprocessing as mp
 import pandas as pd
 from recsys.logger import get_logger
+from .entity_service import EntityService
 
 
-class InteractionService:
+
+class InteractionService(EntityService):
     def __init__(self, repository: InteractionRepository):
         self.repository = repository
         self._logger    = get_logger(self)

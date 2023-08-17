@@ -44,3 +44,8 @@ class EntityRepository:
         self._logger.info(f'{iterator.total} Total {self._entity.capitalize()} ')
 
         return models
+    
+    
+    @property
+    def describe(self):
+        return list(filter(lambda it: not (it.startswith('_') or it == 'describe'), dir(self)))

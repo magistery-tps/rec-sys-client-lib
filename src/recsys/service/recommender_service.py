@@ -3,9 +3,10 @@ from recsys import util as ut, api, model as ml, mapper
 import pandas as pd
 from recsys.logger import get_logger
 from enum import Enum
+from .entity_service import EntityService
 
 
-class RecommenderService:
+class RecommenderService(EntityService):
     def __init__(self, repository):
         self.__repository = repository
         self._logger      = get_logger(self)

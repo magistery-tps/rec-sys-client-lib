@@ -3,13 +3,14 @@ from enum import Enum
 from recsys import data as dt, util as ut, model as ml
 import numpy as np
 from recsys.logger import get_logger
+from .entity_service import EntityService
 
 
 def check_consecutive(l):
     return sorted(l) == list(range(min(l), max(l) + 1))
 
 
-class InteractionInferenceService:
+class InteractionInferenceService(EntityService):
     def __init__(self, interaction_service):
         self.__interaction_service = interaction_service
         self._logger = get_logger(self)

@@ -2,6 +2,8 @@ from enum import Enum
 
 from recsys import util as ut
 from recsys.logger import get_logger
+from .entity_service import EntityService
+
 
 RatingMatrixType = Enum('RatingMatrixType', ['USER_ITEM', 'ITEM_USER'])
 
@@ -13,7 +15,7 @@ def to_rating_matrix(df, columns, matrix_type=RatingMatrixType.USER_ITEM):
         return ut.df_to_matrix(df, x_col=columns[1], y_col=columns[0], value_col=columns[2])
 
 
-class RatingMatrixService:
+class RatingMatrixService(EntityService):
     def __init__(self):
         self._logger = get_logger(self)
 

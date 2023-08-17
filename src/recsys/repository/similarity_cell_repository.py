@@ -14,7 +14,7 @@ class SimilarityCellRepository(EntityRepository):
             mapper (mapper.SimilarityMatrixCellMapper): mapper to map objects between dto-model.
         """
 
-        super().__init__(client, mapper, 'similarity_matrix_cell')
+        super().__init__(client, mapper, 'similarity_cells')
 
 
     def add_many(self, cells: pd.DataFrame):

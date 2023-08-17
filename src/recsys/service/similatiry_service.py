@@ -7,6 +7,7 @@ import tqdm
 from recsys.logger import get_logger
 from sklearn.metrics.pairwise import cosine_similarity
 import logging
+from .entity_service import EntityService
 
 
 class EmbeddingCache:
@@ -21,7 +22,7 @@ class EmbeddingCache:
         return self.embeddings[row_id]
 
 
-class SimilarityService:
+class SimilarityService(EntityService):
     def __init__(self):
         self._logger = get_logger(self)
 

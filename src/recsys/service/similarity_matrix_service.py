@@ -1,9 +1,10 @@
 import pandas as pd
 from recsys import util as ut, api, mapper
 from recsys.logger import get_logger
+from .entity_service import EntityService
 
 
-class SimilarityMatrixService:
+class SimilarityMatrixService(EntityService):
     def __init__(
             self,
             matrix_repository,
