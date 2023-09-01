@@ -4,9 +4,9 @@ from itertools import combinations
 import numpy as np
 import pandas as pd
 import tqdm
-from recsys.logger import get_logger
 from sklearn.metrics.pairwise import cosine_similarity
-import logging
+
+from recsys.logger import get_logger
 from .entity_service import EntityService
 
 
@@ -33,7 +33,8 @@ class SimilarityService(EntityService):
         Args:
             embedding_matrix (Embedding vector Matrix): A matrix of embedding vectors.
             entity (str, optional): Name of entity to compute similarity. Defaults to ''.
-            n_workers (int, optional): Number of cpu processes used co compute similarity in  parallel way. Defaults to 200.
+            n_workers (int, optional): Number of cpu processes used co compute similarity in  parallel way.
+                                        Defaults to 200.
             chunks (_type_, optional): Number of operations to compute for each worker. Defaults to 1_000.
 
         Returns:
@@ -58,7 +59,8 @@ class SimilarityService(EntityService):
         self._logger.info(f'Compute {entity}_id similarities...\n')
 
         with mp.Pool(processes=n_workers) as pool:
-            similarities = [r for r in tqdm.tqdm(pool.imap_unordered(compute_similatiry_fn, input_data, chunks), total=len(input_data))]
+            similarities = [r for r in tqdm.tqdm(pool.imap_unordered(compute_similatiry_fn, input_data, chunks),
+                                                 total=len(input_data))]
 
         return pd.DataFrame(similarities).drop_duplicates()
 
@@ -88,13 +90,13 @@ class SimilarityService(EntityService):
         results = []
         for element_id in element_ids:
             for column in columns:
-                most_similares = df[df[column] == element_id] \
+                most_similars = df[df[column] == element_id] \
                     .sort_values(['value'], ascending=False) \
                     .head(n)
-                if most_similares.shape[0] > 0:
+                if most_similars.shape[0] > 0:
                     break
 
-            results.append(most_similares)
+            results.append(most_similars)
 
         filtered = pd.concat(results)
 

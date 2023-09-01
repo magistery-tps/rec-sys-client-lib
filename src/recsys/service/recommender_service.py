@@ -1,22 +1,18 @@
-import numpy as np
-from recsys import util as ut, api, model as ml, mapper
-import pandas as pd
+from recsys import mapper
 from recsys.logger import get_logger
-from enum import Enum
 from .entity_service import EntityService
 
 
 class RecommenderService(EntityService):
     def __init__(self, repository):
         self.__repository = repository
-        self._logger      = get_logger(self)
-
+        self._logger = get_logger(self)
 
     def upsert(
-        self,
-        name                   : str,
-        user_similarity_matrix : mapper.Model,
-        item_similarity_matrix : mapper.Model
+            self,
+            name: str,
+            user_similarity_matrix: mapper.Model,
+            item_similarity_matrix: mapper.Model
     ):
         """Add or update a recommender.
 

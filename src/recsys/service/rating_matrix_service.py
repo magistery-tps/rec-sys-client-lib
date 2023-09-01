@@ -4,7 +4,6 @@ from recsys import util as ut
 from recsys.logger import get_logger
 from .entity_service import EntityService
 
-
 RatingMatrixType = Enum('RatingMatrixType', ['USER_ITEM', 'ITEM_USER'])
 
 
@@ -41,7 +40,3 @@ class RatingMatrixService(EntityService):
 
         self._logger.info(f'Compute interactions sparse {matrix_type} matrix...')
         return to_rating_matrix(interactions, columns, matrix_type)
-
-    def __interactions_info(self, df, columns, prefix=''):
-        self._logger.info(
-            f'{prefix} interactions: {df.shape[0]} - Users: {df[columns[0]].unique().shape[0]}, Items: {df[columns[1]].unique().shape[0]}')

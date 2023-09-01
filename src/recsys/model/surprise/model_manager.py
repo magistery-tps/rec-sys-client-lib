@@ -57,7 +57,7 @@ class ModelManager:
 
         return ratings
 
-    def predict_inplase(
+    def predict_inplace(
             self,
             user_item_df,
             columns=('user_seq', 'item_seq', 'value')
@@ -76,4 +76,4 @@ class SurpriseTrainPredictFn:
 
         ModelManager(self.model) \
             .train(train_dataset) \
-            .predict_inplase(future_interactions, columns)
+            .predict_inplace(future_interactions, columns)

@@ -1,5 +1,6 @@
 temp_path: "/var/tmp/rec-sys-client"
 weights_path: "/home/adrian/development/personal/maestria/thesis-paper/rec-sys-client-lib/weights"
+metrics_path: "/home/adrian/development/personal/maestria/thesis-paper/rec-sys-client-lib/metrics"
 api:
   host: "http://recsys.ddns.net:8000"
   token: "e3ff025094fe0ee474501bbeda0a2a44e80230c1"

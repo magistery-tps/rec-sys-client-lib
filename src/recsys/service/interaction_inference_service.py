@@ -1,7 +1,6 @@
-from enum import Enum
-
-from recsys import data as dt, util as ut, model as ml
 import numpy as np
+
+from recsys import data as dt
 from recsys.logger import get_logger
 from .entity_service import EntityService
 
@@ -14,7 +13,6 @@ class InteractionInferenceService(EntityService):
     def __init__(self, interaction_service):
         self.__interaction_service = interaction_service
         self._logger = get_logger(self)
-
 
     def predict(
             self,
@@ -41,7 +39,6 @@ class InteractionInferenceService(EntityService):
         train_interactions = train_interactions \
             .pipe(self.__interaction_service.filter_by_rating_scale, columns, rating_scale)
 
-
         train_interactions = train_interactions \
             .pipe(self.__interaction_service.filter_users_by_min_interactions, columns, min_n_interactions)
 
@@ -61,7 +58,6 @@ class InteractionInferenceService(EntityService):
         train_predict_fn(train_interactions, future_interactions, columns)
 
         return future_interactions, train_interactions
-
 
     def __interactions_info(self, df, columns, prefix=''):
         self._logger.info(
