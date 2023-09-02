@@ -24,3 +24,5 @@ from .stopwatch                      import Stopwatch
 from .yml_util import YmlUtil
 
 from .attr_dict import AttrDict
+
+from .dict_utils import merge_dicts

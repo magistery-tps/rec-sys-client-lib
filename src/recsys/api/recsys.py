@@ -5,6 +5,7 @@ from enum import Enum
 import bunch
 import json
 import pandas as pd
+import recsys.util as ut
 
 
 class ListResponse:
@@ -53,7 +54,7 @@ class ActionsFactory:
             'update': { 'method': 'PUT',    'url': "/api/" + name + "/{}/" },
             'remove': { 'method': 'DELETE', 'url': "/api/" + name + "/{}/" }
         }
-        return actions | extra_actions
+        return ut.merge_dicts(actions, extra_actions)
 
 
 class SimilarityMatrixType(Enum):
