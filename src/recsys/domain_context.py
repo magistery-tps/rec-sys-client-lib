@@ -94,6 +94,9 @@ class DomainContext(metaclass=ut.SingletonMeta):
             model: BertItemDistanceMatrixJob(self, model) for model in models
         }
 
+    @property
+    def describe(self):
+        return list(filter(lambda it: not (it.startswith('_') or it == 'describe'), dir(self)))
 
 
     @property
