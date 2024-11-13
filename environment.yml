@@ -17,7 +17,7 @@ dependencies:
     - scikit-surprise
     - pip
     - pip:
-        - apache-airflow==2.6.1
+        - apache-airflow==2.10.3
         - --extra-index-url https://download.pytorch.org/whl/cu116
         - torch==1.12.1+cu116
         - simple-rest-client
