@@ -1,5 +1,5 @@
 from airflow.models import Variable
-from airflow.operators.python import ExternalPythonOperator
+from airflow.providers.standard.operators.python import ExternalPythonOperator
 
 
 def python_rec_sys_operator(dag, task_id, python_callable, params={}):
@@ -16,7 +16,7 @@ def python_rec_sys_operator(dag, task_id, python_callable, params={}):
         python=Variable.get("recsys.client.env_path"),
         task_id=task_id,
         python_callable=python_callable,
-        provide_context=True,
+
         do_xcom_push=True,
         op_kwargs=op_kwargs
     )

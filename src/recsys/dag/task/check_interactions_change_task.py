@@ -1,16 +1,22 @@
 from .python_rec_sys_operator import python_rec_sys_operator
 
 
-def python_callable(**ctx):
+def python_callable(
+    task_id,
+    rec_sys_src_path,
+    rec_sys_cfg_path,
+    airflow_path,
+    interactions_path
+):
     import sys
-    sys.path.append(ctx['rec_sys_src_path'])
+    sys.path.append(rec_sys_src_path)
     from recsys.domain_context import DomainContext
     from recsys.util import Picket
     import pandas as pd
     from os.path import exists
     import logging
 
-    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=rec_sys_cfg_path)
 
     # Only run when found an interactions size change...
 
@@ -18,7 +24,7 @@ def python_callable(**ctx):
 
     if exists(change_mark_path):
         n_current_interactions = pd.read_json(
-            f'{domain.cfg.temp_path}/{ctx["interactions_path"]}',
+            f'{domain.cfg.temp_path}/{interactions_path}',
             orient='records'
         ).shape[0]
 

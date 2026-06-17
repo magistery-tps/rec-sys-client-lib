@@ -141,9 +141,12 @@ class SimilarityMatrixService(EntityService):
 
         models = self.__matrix_repository.find(query)
 
-        if len(models) > 0 and models[0].name == name:
+        # Buscar la matriz de forma segura en toda la lista devuelta por la API
+        found_matrix = next((m for m in models if m.name == name), None)
+
+        if found_matrix is not None:
             self._logger.info(f'Already exists {name} {type} matrix.')
-            return models[0]
+            return found_matrix
         else:
             self._logger.info(f'Insert {name} {type} matrix.')
             return self.__matrix_repository.add(name, type, desc)

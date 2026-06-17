@@ -1,19 +1,26 @@
 from .python_rec_sys_operator import python_rec_sys_operator
 
 
-def python_callable(**ctx):
+def python_callable(
+    task_id,
+    rec_sys_src_path,
+    rec_sys_cfg_path,
+    airflow_path,
+    query,
+    page_size
+):
     import sys
-    sys.path.append(ctx['rec_sys_src_path'])
+    sys.path.append(rec_sys_src_path)
     from recsys.domain_context import DomainContext
     from recsys.data import Sequencer
 
-    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=rec_sys_cfg_path)
 
     interactions = domain \
         .interaction_service \
-        .find_by(ctx['query'], ctx['page_size'])
+        .find_by(query, page_size)
 
-    output_path = f'{domain.cfg.temp_path}/{ctx["task_id"]}.json'
+    output_path = f'{domain.cfg.temp_path}/{task_id}.json'
 
     # Add user/item numeric sequences...
     interactions = Sequencer(column='user_id', seq_col_name='user_seq').perform(interactions)

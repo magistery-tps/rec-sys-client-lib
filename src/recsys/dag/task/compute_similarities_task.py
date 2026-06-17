@@ -1,24 +1,31 @@
 from .python_rec_sys_operator import python_rec_sys_operator
 
 
-def python_callable(**ctx):
+def python_callable(
+    task_id,
+    rec_sys_src_path,
+    rec_sys_cfg_path,
+    airflow_path,
+    train_interactions_path,
+    future_interactions_path
+):
     import sys
-    sys.path.append(ctx['rec_sys_src_path'])
+    sys.path.append(rec_sys_src_path)
     from recsys.domain_context import DomainContext
     import pandas as pd
 
-    domain = DomainContext(cfg_path=ctx['rec_sys_cfg_path'])
+    domain = DomainContext(cfg_path=rec_sys_cfg_path)
 
     # --------------------------------------------------------------------------
     # Functions
     # --------------------------------------------------------------------------
 
     def load_interactions(path):
-        complete_path = f'{domain.cfg.temp_path}/{ctx[path]}'
+        complete_path = f'{domain.cfg.temp_path}/{train_interactions_path if path == "train_interactions_path" else future_interactions_path}'
         return pd.read_json(complete_path, orient='records')
 
     def save_similarities(df, name):
-        complete_path = f'{domain.cfg.temp_path}/{ctx["task_id"]}_{name}_similarities.json'
+        complete_path = f'{domain.cfg.temp_path}/{task_id}_{name}_similarities.json'
         df.to_json(complete_path, orient='records')
 
     # --------------------------------------------------------------------------

@@ -4,7 +4,7 @@ channels:
     - pytorch
     - conda-forge
 dependencies:
-    - numpy=1.21
+    - numpy=1.2
     - pandas
     - pymysql
     - mysql-connector-python
@@ -17,7 +17,7 @@ dependencies:
     - scikit-surprise
     - pip
     - pip:
-        - apache-airflow==2.10.3
+        - apache-airflow
         - --extra-index-url https://download.pytorch.org/whl/cu116
         - torch==1.12.1+cu116
         - simple-rest-client

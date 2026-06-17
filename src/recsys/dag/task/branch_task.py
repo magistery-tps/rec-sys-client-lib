@@ -1,7 +1,7 @@
 import recsys.dag.task as ts
 import logging
 from recsys.dag.util import EnhancedTaskContext, XComHelper
-from airflow.operators.python_operator import BranchPythonOperator
+from airflow.operators.python import BranchPythonOperator
 from recsys.dag.util import XComHelper
 
 
@@ -25,7 +25,7 @@ def branch_task(dag, true_task_id, task_id='branch_decision', false_task_id=[]):
         dag             = dag,
         task_id         = task_id,
         python_callable = python_callable,
-        provide_context = True,
+
         do_xcom_push    = True,
         op_kwargs       = { 'true_task_id'  : true_task_id, 'false_task_id' : false_task_id}
     )
