@@ -2,7 +2,8 @@ from airflow.models import Variable
 from airflow.providers.standard.operators.python import ExternalPythonOperator
 
 
-def python_rec_sys_operator(dag, task_id, python_callable, params={}):
+def python_rec_sys_operator(dag, task_id, python_callable, params={}, is_gpu=False):
+    pool = 'gpu_pool' if is_gpu else 'default_pool'
     op_kwargs = {
         'task_id': task_id,
         'rec_sys_src_path': Variable.get('recsys.client.src_path'),
@@ -18,5 +19,6 @@ def python_rec_sys_operator(dag, task_id, python_callable, params={}):
         python_callable=python_callable,
 
         do_xcom_push=True,
-        op_kwargs=op_kwargs
+        op_kwargs=op_kwargs,
+        pool=pool
     )

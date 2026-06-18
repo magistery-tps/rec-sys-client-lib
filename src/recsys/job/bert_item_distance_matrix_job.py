@@ -59,7 +59,7 @@ class BertItemDistanceMatrixJob(Job):
         items['description'] = items['name'] + ' ' + items['description']
 
         data = items[['item_id', 'description']].to_dict()
-        data['embedding'] = self.model.encode(data['description'])
+        data['embedding'] = self.model.encode(list(data['description'].values()))
         embedding_matrix  = sparse.csr_matrix(np.vstack(data['embedding']))
 
 
